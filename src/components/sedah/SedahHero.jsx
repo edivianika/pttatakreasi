@@ -27,11 +27,6 @@ const SedahHero = () => {
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left Content - Mobile Optimized */}
           <div className="space-y-6 md:space-y-8 order-2 lg:order-1 px-2 sm:px-0">
-            {/* Mobile-only urgency banner */}
-            <div className="block sm:hidden bg-gradient-to-r from-red-500 to-red-600 text-white p-3 rounded-lg text-center mb-4 mx-2 sm:mx-0">
-              <div className="text-sm font-bold">🔥 PROMO TERBATAS!</div>
-              <div className="text-xs">Hanya 10 unit pertama dengan diskon 60 juta</div>
-            </div>
             {/* Badge - Mobile Responsive */}
             <div className="hidden sm:inline-flex items-center gap-2 bg-red-100 text-red-800 px-3 py-2 md:px-4 rounded-full text-xs md:text-sm font-semibold mx-2 sm:mx-0">
               <Clock size={14} className="md:w-4 md:h-4" />
