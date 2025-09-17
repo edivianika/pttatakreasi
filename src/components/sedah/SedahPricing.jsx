@@ -66,16 +66,12 @@ const SedahPricing = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            <AlertTriangle size={16} />
-            PROMO TERBATAS - Hanya 10 Unit Pertama!
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Pilih <span className="text-green-600">Tipe Rumah</span> Impian Anda
+            🏠 Pilih <span className="text-green-600">Tipe Rumah</span> Anda
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Dapatkan diskon hingga <strong className="text-red-600">60 juta rupiah</strong> untuk 10 unit pertama. 
-            Harga promo terbatas, jangan sampai kehabisan!
+            <span className="text-red-600 font-bold text-2xl">DISKON 60 JUTA!</span> 
+            <br />Hanya 10 unit pertama • DP 5% • Angsuran ringan
           </p>
         </div>
 
@@ -177,24 +173,6 @@ const SedahPricing = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Masih Bingung Pilih Tipe Mana?
-            </h3>
-            <p className="text-lg text-gray-600 mb-6">
-              Tim konsultan kami siap membantu Anda memilih rumah yang tepat sesuai kebutuhan dan budget.
-            </p>
-            <button
-              onClick={() => handleWhatsAppClick('Konsultasi')}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <Users size={20} className="inline mr-2" />
-              Konsultasi Gratis Sekarang
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

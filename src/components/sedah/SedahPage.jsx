@@ -105,12 +105,9 @@ const SedahPage = () => {
       {/* Main Content */}
       <div className="relative">
         <SedahHero />
-        <SedahAbout />
         <SedahPricing />
-        <SedahLocation />
         <SedahGallery />
         <SedahTestimonials />
-        <SedahGuarantee />
         <SedahForm />
         <SedahFooter />
       </div>

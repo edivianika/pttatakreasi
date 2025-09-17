@@ -236,23 +236,6 @@ const SedahTestimonials = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-8 text-white text-center">
-          <h3 className="text-2xl font-bold mb-4">
-            Bergabunglah dengan Keluarga Bahagia Kami
-          </h3>
-          <p className="text-green-100 mb-6 max-w-2xl mx-auto">
-            Jadilah bagian dari 500+ keluarga yang sudah merasakan kenyamanan dan keamanan 
-            tinggal di hunian syariah berkualitas.
-          </p>
-          <button
-            onClick={handleWhatsAppClick}
-            className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            <Home size={20} className="inline mr-2" />
-            Konsultasi Sekarang
-          </button>
-        </div>
       </div>
     </section>
   );

@@ -94,26 +94,25 @@ const SedahHero = () => {
                 <span className="text-gray-800">Residence</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium leading-relaxed">
-                Hunian Syariah dengan
-                <span className="text-green-600 font-bold"> Kemudahan Pembayaran</span>
+                <span className="text-red-600 font-bold text-xl md:text-2xl">DISKON 60 JUTA!</span>
                 <br />
-                <span className="text-gray-600">Developer Berpengalaman & Terpercaya</span>
+                <span className="text-green-600 font-bold">DP 5% • Angsuran Ringan • 100% Syariah</span>
+                <br />
+                <span className="text-gray-600">Hanya 10 Unit Pertama</span>
               </p>
             </div>
 
-            {/* Value Proposition - Mobile Stack */}
-            <div className="space-y-3 md:space-y-4 px-2 sm:px-0">
-              <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
-                <Shield className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
-                <span><strong>100% Syariah</strong> - Tanpa Riba, Transparan & Amanah</span>
-              </div>
-              <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
-                <CreditCard className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
-                <span><strong>Kemudahan Pembayaran</strong> - Angsuran Ringan, DP Murah, Cicilan Fleksibel</span>
-              </div>
-              <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
-                <Award className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
-                <span><strong>Developer Berpengalaman</strong> - 15+ Proyek Sukses, 500+ Keluarga Bahagia</span>
+            {/* Value Proposition - Simplified */}
+            <div className="px-2 sm:px-0">
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <div className="flex items-center gap-3 text-base md:text-lg text-gray-700">
+                  <Shield className="text-green-600 flex-shrink-0" size={24} />
+                  <div>
+                    <span className="font-bold text-green-700">100% Syariah & Halal</span>
+                    <br />
+                    <span className="text-sm text-gray-600">Tanpa riba, transparan, sertifikat halal MUI</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -142,15 +141,18 @@ const SedahHero = () => {
               </div>
             </div>
 
-            {/* CTA Button - Single */}
+            {/* CTA Button - Compelling */}
             <div className="px-2 sm:px-0">
               <button
                 onClick={handleWhatsAppClick}
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 animate-pulse"
               >
                 <Users size={18} className="md:w-5 md:h-5" />
-                Konsultasi Gratis
+                🚨 AMBIL PROMO SEKARANG!
               </button>
+              <p className="text-center text-sm text-gray-600 mt-2">
+                ⏰ Sisa 7 unit lagi! Jangan sampai kehabisan
+              </p>
             </div>
 
           </div>
