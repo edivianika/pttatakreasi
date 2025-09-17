@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MapPin, Star, Shield, Home, Users, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Star, Shield, Home, Users, Clock, ChevronLeft, ChevronRight, CreditCard, Award } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahHero = () => {
