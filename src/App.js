@@ -70,11 +70,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-               <Routes>
-                 <Route path="/" element={<LandingPage />} />
-                 <Route path="/narraya" element={<NarrayaPage />} />
-                 <Route path="/sedah" element={<SedahPage />} />
-               </Routes>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/narraya" element={<NarrayaPage />} />
+          <Route path="/sedah" element={<SedahPage />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

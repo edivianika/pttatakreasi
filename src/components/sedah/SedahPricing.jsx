@@ -1,110 +1,244 @@
-import React from 'react';
-import { MessageCircle, Home, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Check, Star, Clock, Users, Home, Shield, AlertTriangle } from "lucide-react";
+import { companyInfo } from "../mockData";
 
-const SedahPricing = ({ onWhatsAppClick }) => {
-  const unitTypes = [
+const SedahPricing = () => {
+  const [remainingUnits, setRemainingUnits] = useState(10);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const endTime = now + (7 * 24 * 60 * 60 * 1000); // 7 days from now
+      const distance = endTime - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleWhatsAppClick = (type) => {
+    const message = `Halo TKBM, saya tertarik dengan rumah tipe ${type} di Sedah Green Residence. Mohon informasi lebih lanjut.`;
+    const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const pricingData = [
     {
-      type: "Tipe 36",
-      area: "36 m²",
-      rooms: "2 Kamar Tidur",
-      features: ["Living Room", "Dapur", "Kamar Mandi", "Teras"],
-      originalPrice: "Rp 233 juta",
-      promoPrice: "Rp 173 juta",
-      discount: "Hemat Rp 60 juta"
+      type: "36",
+      name: "Tipe 36",
+      originalPrice: 233,
+      promoPrice: 173,
+      discount: 60,
+      features: [
+        "2 Kamar Tidur",
+        "1 Kamar Mandi",
+        "Ruang Tamu + Keluarga",
+        "Dapur + Ruang Makan",
+        "Carport 1 Mobil",
+        "Taman Depan & Belakang"
+      ],
+      specs: {
+        luasTanah: "60 m²",
+        luasBangunan: "36 m²",
+        kamarTidur: "2",
+        kamarMandi: "1",
+        carport: "1"
+      },
+      popular: false
     },
     {
-      type: "Tipe 45",
-      area: "45 m²", 
-      rooms: "3 Kamar Tidur",
-      features: ["Living Room", "Dapur", "2 Kamar Mandi", "Teras", "Gudang"],
-      originalPrice: "Rp 233 juta",
-      promoPrice: "Rp 173 juta",
-      discount: "Hemat Rp 60 juta"
+      type: "45",
+      name: "Tipe 45",
+      originalPrice: 258,
+      promoPrice: 198,
+      discount: 60,
+      features: [
+        "3 Kamar Tidur",
+        "2 Kamar Mandi",
+        "Ruang Tamu + Keluarga",
+        "Dapur + Ruang Makan",
+        "Carport 2 Mobil",
+        "Taman Depan & Belakang",
+        "Ruang Jemur"
+      ],
+      specs: {
+        luasTanah: "72 m²",
+        luasBangunan: "45 m²",
+        kamarTidur: "3",
+        kamarMandi: "2",
+        carport: "2"
+      },
+      popular: true
     }
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#3D3D3D] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Tipe & Harga
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: 'Nunito, sans-serif' }}>
-              Pilih tipe hunian yang sesuai dengan kebutuhan keluarga Anda
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            <AlertTriangle size={16} />
+            PROMO TERBATAS - Hanya 10 Unit Pertama!
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Pilih <span className="text-green-600">Tipe Rumah</span> Impian Anda
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Dapatkan diskon hingga <strong className="text-red-600">60 juta rupiah</strong> untuk 10 unit pertama. 
+            Harga promo terbatas, jangan sampai kehabisan!
+          </p>
+        </div>
+
+        {/* Urgency Counter */}
+        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-6 mb-12 text-white">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-4">⏰ Promo Berakhir Dalam:</h3>
+            <div className="flex justify-center items-center gap-4 mb-4">
+              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
+                {timeLeft.days}d
+              </div>
+              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
+                {timeLeft.hours}h
+              </div>
+              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
+                {timeLeft.minutes}m
+              </div>
+              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
+                {timeLeft.seconds}s
+              </div>
+            </div>
+            <p className="text-lg">
+              Sisa unit promo: <strong>{remainingUnits} unit</strong> dari 10 unit
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {unitTypes.map((unit, index) => (
-              <div key={index} className="bg-[#D6CCC2] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="text-center mb-6">
-                  <div className="bg-[#A3B18A] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Home className="w-8 h-8 text-white" />
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {pricingData.map((item, index) => (
+            <div
+              key={index}
+              className={`relative bg-white rounded-2xl shadow-xl border-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+                item.popular 
+                  ? 'border-green-500 ring-4 ring-green-100' 
+                  : 'border-gray-200'
+              }`}
+            >
+              {/* Popular Badge */}
+              {item.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-green-500 text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-1">
+                    <Star size={16} />
+                    MOST POPULAR
                   </div>
-                  <h3 className="text-2xl font-bold text-[#3D3D3D] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    {unit.type}
-                  </h3>
-                  <p className="text-gray-600" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                    Luas {unit.area} • {unit.rooms}
-                  </p>
                 </div>
+              )}
 
-                {/* Features */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-[#3D3D3D] mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Fasilitas:
-                  </h4>
-                  <div className="space-y-2">
-                    {unit.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-[#A3B18A] flex-shrink-0" />
-                        <span className="text-gray-700" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
+              <div className="p-8">
+                {/* Header */}
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {item.name}
+                  </h3>
+                  <div className="text-sm text-gray-600 mb-4">
+                    Luas Tanah: {item.specs.luasTanah} | Luas Bangunan: {item.specs.luasBangunan}
                   </div>
                 </div>
 
                 {/* Pricing */}
-                <div className="text-center mb-6">
-                  <div className="mb-2">
-                    <span className="text-lg text-gray-500 line-through" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                      {unit.originalPrice}
-                    </span>
+                <div className="text-center mb-8">
+                  <div className="text-4xl font-bold text-green-600 mb-2">
+                    Rp {item.promoPrice} Juta
                   </div>
-                  <div className="text-3xl font-bold text-[#BFA87B] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    {unit.promoPrice}
+                  <div className="text-lg text-gray-500 mb-2">
+                    <span className="line-through">Rp {item.originalPrice} Juta</span>
                   </div>
-                  <div className="text-sm font-semibold text-[#A3B18A]" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                    {unit.discount}
+                  <div className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-bold inline-block">
+                    Hemat Rp {item.discount} Juta!
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <button 
-                  onClick={() => onWhatsAppClick(`${unit.type} - ${unit.promoPrice}`)}
-                  className="w-full bg-[#A3B18A] hover:bg-[#8FA375] text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <MessageCircle size={18} />
-                  Tanya via WhatsApp
-                </button>
-              </div>
-            ))}
-          </div>
+                {/* Specs */}
+                <div className="grid grid-cols-2 gap-4 mb-8 text-center">
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <Home size={20} className="text-green-600 mx-auto mb-1" />
+                    <div className="text-sm text-gray-600">Kamar Tidur</div>
+                    <div className="font-bold text-gray-900">{item.specs.kamarTidur}</div>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <Shield size={20} className="text-green-600 mx-auto mb-1" />
+                    <div className="text-sm text-gray-600">Kamar Mandi</div>
+                    <div className="font-bold text-gray-900">{item.specs.kamarMandi}</div>
+                  </div>
+                </div>
 
-          {/* Promo Notice */}
-          <div className="mt-12 text-center">
-            <div className="bg-[#BFA87B]/10 border border-[#BFA87B]/30 rounded-xl p-6 max-w-2xl mx-auto">
-              <p className="text-[#3D3D3D] font-semibold" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                ⚡ Promo terbatas hanya untuk 10 unit pertama
-              </p>
-              <p className="text-gray-600 text-sm mt-2" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                Segera hubungi kami untuk mendapatkan harga promo ini
-              </p>
+                {/* Features */}
+                <div className="mb-8">
+                  <h4 className="font-bold text-gray-900 mb-4">Fasilitas Lengkap:</h4>
+                  <ul className="space-y-2">
+                    {item.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-3 text-gray-700">
+                        <Check size={16} className="text-green-500 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CTA Button */}
+                <button
+                  onClick={() => handleWhatsAppClick(item.type)}
+                  className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-200 transform hover:scale-105 ${
+                    item.popular
+                      ? 'bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-gray-900 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  <Users size={20} className="inline mr-2" />
+                  Konsultasi {item.name}
+                </button>
+
+                {/* Urgency Note */}
+                <div className="mt-4 text-center">
+                  <div className="text-sm text-gray-600">
+                    <Clock size={14} className="inline mr-1" />
+                    Sisa unit terbatas!
+                  </div>
+                </div>
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Masih Bingung Pilih Tipe Mana?
+            </h3>
+            <p className="text-lg text-gray-600 mb-6">
+              Tim konsultan kami siap membantu Anda memilih rumah yang tepat sesuai kebutuhan dan budget.
+            </p>
+            <button
+              onClick={() => handleWhatsAppClick('Konsultasi')}
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <Users size={20} className="inline mr-2" />
+              Konsultasi Gratis Sekarang
+            </button>
           </div>
         </div>
       </div>

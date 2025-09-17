@@ -1,61 +1,191 @@
-import React from 'react';
-import { MessageCircle, CheckCircle } from 'lucide-react';
+import React from "react";
+import { MapPin, Star, Shield, Home, Users, Clock } from "lucide-react";
+import { companyInfo } from "../mockData";
 
-const SedahHero = ({ onWhatsAppClick }) => {
+const SedahHero = () => {
+  const handleWhatsAppClick = () => {
+    const message = "Halo TKBM, saya tertarik dengan promo rumah di Sedah Green Residence. Mohon informasi lebih lanjut.";
+    const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleCallClick = () => {
+    window.open(`tel:${companyInfo.whatsapp}`, '_self');
+  };
+
   return (
-    <section className="pt-16 relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&h=1080&fit=crop')`,
-        }}
-      />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#A3B18A]/90 to-[#A3B18A]/70"></div>
-      
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <CheckCircle size={16} />
-            <span className="text-sm font-medium">Tanpa Riba • Tanpa Denda • Tanpa Sita • Tanpa BI Checking</span>
+    <section className="relative min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
+      {/* Background Pattern - Optimized for mobile */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-4 w-20 h-20 md:top-20 md:left-10 md:w-32 md:h-32 bg-green-500 rounded-full"></div>
+        <div className="absolute top-20 right-4 w-16 h-16 md:top-40 md:right-20 md:w-24 md:h-24 bg-green-400 rounded-full"></div>
+        <div className="absolute bottom-20 left-1/4 w-12 h-12 md:w-20 md:h-20 bg-green-300 rounded-full"></div>
+        <div className="absolute bottom-32 right-1/3 w-16 h-16 md:w-28 md:h-28 bg-green-600 rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8 md:py-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Content - Mobile Optimized */}
+          <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
+            {/* Mobile-only urgency banner */}
+            <div className="block sm:hidden bg-gradient-to-r from-red-500 to-red-600 text-white p-3 rounded-lg text-center mb-4">
+              <div className="text-sm font-bold">🔥 PROMO TERBATAS!</div>
+              <div className="text-xs">Hanya 10 unit pertama dengan diskon 60 juta</div>
+            </div>
+            {/* Badge - Mobile Responsive */}
+            <div className="hidden sm:inline-flex items-center gap-2 bg-red-100 text-red-800 px-3 py-2 md:px-4 rounded-full text-xs md:text-sm font-semibold">
+              <Clock size={14} className="md:w-4 md:h-4" />
+              <span className="hidden sm:inline">PROMO TERBATAS - Hanya 10 Unit Pertama!</span>
+            </div>
+
+            {/* Main Headline - Mobile Typography */}
+            <div className="space-y-3 md:space-y-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                <span className="text-green-600">Sedah Green</span>
+                <br />
+                <span className="text-gray-800">Residence</span>
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium leading-relaxed">
+                Hunian Syariah Berkualitas di
+                <span className="text-green-600 font-bold"> Jenangan, Ponorogo</span>
+              </p>
+            </div>
+
+            {/* Value Proposition - Mobile Stack */}
+            <div className="space-y-3 md:space-y-4">
+              <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
+                <Shield className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                <span><strong>100% Syariah</strong> - Tanpa Riba, Transparan & Amanah</span>
+              </div>
+              <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
+                <Home className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                <span><strong>57 Unit Tersedia</strong> - Tipe 36 & 45 dengan Fasilitas Lengkap</span>
+              </div>
+              <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
+                <MapPin className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                <span><strong>Lokasi Strategis</strong> - Dekat Fasilitas Umum & Transportasi</span>
+              </div>
+            </div>
+
+            {/* Pricing Highlight - Mobile Optimized */}
+            <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl md:rounded-2xl p-4 md:p-6 text-white relative overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full translate-y-8 -translate-x-8"></div>
+              
+              <div className="text-center space-y-2 relative z-10">
+                <p className="text-base md:text-lg font-medium">Mulai Dari</p>
+                <div className="space-y-1">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                    Rp 173 Juta
+                  </div>
+                  <div className="text-sm md:text-lg opacity-90">
+                    <span className="line-through">Rp 233 Juta</span>
+                    <span className="ml-1 md:ml-2 bg-red-500 px-2 py-1 rounded text-xs md:text-sm font-bold animate-pulse">
+                      Diskon 60 Juta!
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs md:text-sm opacity-90">
+                  *Harga promo berlaku untuk 10 unit pertama
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Buttons - Mobile Stack */}
+            <div className="flex flex-col gap-3 md:gap-4">
+              <button
+                onClick={handleWhatsAppClick}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              >
+                <Users size={18} className="md:w-5 md:h-5" />
+                Konsultasi Gratis
+              </button>
+              <button
+                onClick={handleCallClick}
+                className="bg-white hover:bg-gray-50 text-green-600 font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg border-2 border-green-500 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              >
+                <Clock size={18} className="md:w-5 md:h-5" />
+                Hubungi Sekarang
+              </button>
+            </div>
+
+            {/* Trust Indicators - Mobile Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm text-gray-600">
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
+                <Star className="text-yellow-500" size={14} />
+                <span>500+ Keluarga Bahagia</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
+                <Shield className="text-green-500" size={14} />
+                <span>Developer Terpercaya</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center sm:justify-start sm:col-span-3 md:col-span-1">
+                <Home className="text-blue-500" size={14} />
+                <span>15+ Proyek Sukses</span>
+              </div>
+            </div>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Hunian Syariah Modern
-            <br />
-            <span className="text-[#BFA87B]">di Sedah, Ponorogo</span>
-          </h1>
+          {/* Right Content - Image/Visual - Mobile First */}
+          <div className="relative order-1 lg:order-2">
+            <div className="relative z-10 group">
+              <img
+                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop"
+                alt="Sedah Green Residence - Hunian Syariah Berkualitas"
+                className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover rounded-xl md:rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
+              />
+              
+              {/* Gradient overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl md:rounded-2xl"></div>
+              
+              {/* Overlay Info - Mobile Responsive */}
+              <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 bg-white/95 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
+                <div className="grid grid-cols-2 gap-3 md:gap-4 text-center">
+                  <div>
+                    <div className="text-lg md:text-2xl font-bold text-green-600">57</div>
+                    <div className="text-xs md:text-sm text-gray-600">Unit Tersedia</div>
+                  </div>
+                  <div>
+                    <div className="text-lg md:text-2xl font-bold text-red-600">10</div>
+                    <div className="text-xs md:text-sm text-gray-600">Unit Promo</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          {/* Subtitle */}
-          <p className="text-xl sm:text-2xl mb-8 text-white/95 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Nunito, sans-serif' }}>
-            57 unit rumah tropis elegan. Harga mulai <span className="line-through opacity-70">Rp 233 juta</span> — 
-            kini <span className="font-bold text-[#BFA87B]">promo Rp 173 juta</span>. 
-            Diskon hingga <span className="font-bold text-[#BFA87B]">Rp 60 juta</span> untuk 10 unit pertama.
-          </p>
+            {/* Floating Cards - Mobile Hidden/Adjusted */}
+            <div className="hidden sm:block absolute -top-2 -left-2 md:-top-4 md:-left-4 bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg z-20 animate-bounce">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-xs md:text-sm font-semibold text-gray-800">Ready Stock</span>
+              </div>
+            </div>
 
-          {/* CTA Button */}
-          <button 
-            onClick={() => onWhatsAppClick("Hero Section")}
-            className="bg-[#A3B18A] hover:bg-[#8FA375] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-2xl flex items-center gap-3 mx-auto"
-          >
-            <MessageCircle size={24} />
-            Cek Unit & Dapatkan Promo
-          </button>
+            <div className="hidden sm:block absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 bg-green-500 text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg z-20">
+              <div className="text-center">
+                <div className="text-sm md:text-lg font-bold">100%</div>
+                <div className="text-xs">Syariah</div>
+              </div>
+            </div>
 
-          {/* Additional Info */}
-          <div className="mt-8 text-white/80 text-sm">
-            <p>✨ Promo terbatas untuk 10 unit pertama</p>
+            {/* Mobile-only floating elements */}
+            <div className="block sm:hidden absolute -top-2 -right-2 bg-green-500 text-white rounded-lg p-2 shadow-lg z-20">
+              <div className="text-center">
+                <div className="text-xs font-bold">100%</div>
+                <div className="text-xs">Syariah</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F5F5F0] to-transparent"></div>
+      {/* Bottom Wave - Mobile Responsive */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-12 md:h-16 fill-white">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
+        </svg>
+      </div>
     </section>
   );
 };
