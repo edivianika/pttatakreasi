@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Star, Shield, Home, Users, Clock } from "lucide-react";
+import { MapPin, Star, Shield, Home, Users, Clock, CreditCard, Award } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahHero = () => {
@@ -46,8 +46,10 @@ const SedahHero = () => {
                 <span className="text-gray-800">Residence</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium leading-relaxed">
-                Hunian Syariah Berkualitas di
-                <span className="text-green-600 font-bold"> Jenangan, Ponorogo</span>
+                Hunian Syariah dengan
+                <span className="text-green-600 font-bold"> Kemudahan Pembayaran</span>
+                <br />
+                <span className="text-gray-600">Developer Berpengalaman & Terpercaya</span>
               </p>
             </div>
 
@@ -58,12 +60,12 @@ const SedahHero = () => {
                 <span><strong>100% Syariah</strong> - Tanpa Riba, Transparan & Amanah</span>
               </div>
               <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
-                <Home className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
-                <span><strong>57 Unit Tersedia</strong> - Tipe 36 & 45 dengan Fasilitas Lengkap</span>
+                <CreditCard className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                <span><strong>Kemudahan Pembayaran</strong> - Angsuran Ringan, DP Murah, Cicilan Fleksibel</span>
               </div>
               <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
-                <MapPin className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
-                <span><strong>Lokasi Strategis</strong> - Dekat Fasilitas Umum & Transportasi</span>
+                <Award className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                <span><strong>Developer Berpengalaman</strong> - 15+ Proyek Sukses, 500+ Keluarga Bahagia</span>
               </div>
             </div>
 
@@ -89,6 +91,11 @@ const SedahHero = () => {
                 <p className="text-xs md:text-sm opacity-90">
                   *Harga promo berlaku untuk 10 unit pertama
                 </p>
+                <div className="mt-3 pt-3 border-t border-white/20">
+                  <p className="text-xs md:text-sm font-medium">
+                    💳 DP Mulai 5% • Angsuran Ringan • Cicilan Fleksibel
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -113,15 +120,15 @@ const SedahHero = () => {
             {/* Trust Indicators - Mobile Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm text-gray-600 px-2 sm:px-0">
               <div className="flex items-center gap-2 justify-center sm:justify-start">
-                <Star className="text-yellow-500" size={14} />
-                <span>500+ Keluarga Bahagia</span>
+                <CreditCard className="text-green-500" size={14} />
+                <span>DP Mulai 5%</span>
               </div>
               <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <Shield className="text-green-500" size={14} />
-                <span>Developer Terpercaya</span>
+                <span>100% Syariah</span>
               </div>
               <div className="flex items-center gap-2 justify-center sm:justify-start sm:col-span-3 md:col-span-1">
-                <Home className="text-blue-500" size={14} />
+                <Award className="text-blue-500" size={14} />
                 <span>15+ Proyek Sukses</span>
               </div>
             </div>
