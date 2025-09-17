@@ -78,9 +78,16 @@ code {
 
 @layer base {
   * {
-    @apply border-border;
-    }
+    @apply border-border outline-ring/50;
+  }
   body {
     @apply bg-background text-foreground;
-    }
+  }
+}
+
+/* Custom styles for Sedah Green Residence */
+@layer utilities {
+  .shadow-xs {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
 }
