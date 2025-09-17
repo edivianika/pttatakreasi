@@ -1,32 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Check, Star, Clock, Users, Home, Shield, AlertTriangle } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahPricing = () => {
   const [remainingUnits, setRemainingUnits] = useState(10);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const endTime = now + (7 * 24 * 60 * 60 * 1000); // 7 days from now
-      const distance = endTime - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   const handleWhatsAppClick = (type) => {
     const message = `Halo TKBM, saya tertarik dengan rumah tipe ${type} di Sedah Green Residence. Mohon informasi lebih lanjut.`;
@@ -102,29 +79,6 @@ const SedahPricing = () => {
           </p>
         </div>
 
-        {/* Urgency Counter */}
-        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-6 mb-12 text-white">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">⏰ Promo Berakhir Dalam:</h3>
-            <div className="flex justify-center items-center gap-4 mb-4">
-              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
-                {timeLeft.days}d
-              </div>
-              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
-                {timeLeft.hours}h
-              </div>
-              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
-                {timeLeft.minutes}m
-              </div>
-              <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-xl">
-                {timeLeft.seconds}s
-              </div>
-            </div>
-            <p className="text-lg">
-              Sisa unit promo: <strong>{remainingUnits} unit</strong> dari 10 unit
-            </p>
-          </div>
-        </div>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
