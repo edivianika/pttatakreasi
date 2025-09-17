@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Star, Shield, Home, Users, CreditCard, Award } from "lucide-react";
+import { MapPin, Star, Shield, Home, Users, CreditCard, Award, Clock } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahHero = () => {
