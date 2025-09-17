@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MessageCircle, Phone, MapPin } from "lucide-react";
+import { MessageCircle, Phone, MapPin, Clock } from "lucide-react";
 import SedahHero from "./SedahHero";
 import SedahPricing from "./SedahPricing";
 import SedahLocation from "./SedahLocation";

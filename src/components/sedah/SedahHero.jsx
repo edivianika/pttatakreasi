@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Star, Shield, Home, Users, Clock, CreditCard, Award } from "lucide-react";
+import { MapPin, Star, Shield, Home, Users, CreditCard, Award } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahHero = () => {
@@ -9,9 +9,6 @@ const SedahHero = () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  const handleCallClick = () => {
-    window.open(`tel:${companyInfo.whatsapp}`, '_self');
-  };
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
@@ -27,6 +24,11 @@ const SedahHero = () => {
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left Content - Mobile Optimized */}
           <div className="space-y-6 md:space-y-8 order-2 lg:order-1 px-2 sm:px-0">
+            {/* Mobile-only urgency banner */}
+            <div className="block sm:hidden bg-gradient-to-r from-red-500 to-red-600 text-white p-3 rounded-lg text-center mb-4 mx-2 sm:mx-0">
+              <div className="text-sm font-bold">🔥 PROMO TERBATAS!</div>
+              <div className="text-xs">Hanya 10 unit pertama dengan diskon 60 juta</div>
+            </div>
             {/* Badge - Mobile Responsive */}
             <div className="hidden sm:inline-flex items-center gap-2 bg-red-100 text-red-800 px-3 py-2 md:px-4 rounded-full text-xs md:text-sm font-semibold mx-2 sm:mx-0">
               <Clock size={14} className="md:w-4 md:h-4" />
@@ -94,21 +96,14 @@ const SedahHero = () => {
               </div>
             </div>
 
-            {/* CTA Buttons - Mobile Stack */}
-            <div className="flex flex-col gap-3 md:gap-4 px-2 sm:px-0">
+            {/* CTA Button - Single */}
+            <div className="px-2 sm:px-0">
               <button
                 onClick={handleWhatsAppClick}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 <Users size={18} className="md:w-5 md:h-5" />
                 Konsultasi Gratis
-              </button>
-              <button
-                onClick={handleCallClick}
-                className="bg-white hover:bg-gray-50 text-green-600 font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg border-2 border-green-500 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-              >
-                <Clock size={18} className="md:w-5 md:h-5" />
-                Hubungi Sekarang
               </button>
             </div>
 
