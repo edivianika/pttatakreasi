@@ -139,11 +139,6 @@ const SedahHero = () => {
                 <p className="text-xs md:text-sm opacity-90">
                   *Harga promo berlaku untuk 10 unit pertama
                 </p>
-                <div className="mt-3 pt-3 border-t border-white/20">
-                  <p className="text-xs md:text-sm font-medium">
-                    💳 DP Mulai 5% • Angsuran Ringan • Cicilan Fleksibel
-                  </p>
-                </div>
               </div>
             </div>
 
