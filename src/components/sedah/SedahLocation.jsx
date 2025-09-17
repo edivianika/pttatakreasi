@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Clock, Car, ShoppingCart, GraduationCap, Hospital, Utensils, Wifi, Shield } from "lucide-react";
+import { MapPin, Clock, Wifi, Shield } from "lucide-react";
 
 const SedahLocation = () => {
   const handleWhatsAppClick = () => {
@@ -23,67 +23,6 @@ const SedahLocation = () => {
     }
   };
 
-  const facilities = [
-    {
-      icon: <MapPin className="text-green-600" size={24} />,
-      title: "Lokasi Strategis",
-      description: "Dekat dengan pusat kota Ponorogo dan akses transportasi utama"
-    },
-    {
-      icon: <Car className="text-blue-600" size={24} />,
-      title: "Akses Mudah",
-      description: "Jalan raya yang lebar dan mudah diakses kendaraan pribadi"
-    },
-    {
-      icon: <Shield className="text-green-600" size={24} />,
-      title: "Lingkungan Aman",
-      description: "Area perumahan yang tenang dan aman untuk keluarga"
-    },
-    {
-      icon: <Wifi className="text-blue-600" size={24} />,
-      title: "Infrastruktur Lengkap",
-      description: "Listrik, air, internet, dan fasilitas umum sudah tersedia"
-    }
-  ];
-
-  const nearbyPlaces = [
-    {
-      icon: <MapPin className="text-red-500" size={20} />,
-      name: "Alun-alun Ponorogo",
-      distance: "15 menit",
-      description: "Pusat kota dengan berbagai fasilitas"
-    },
-    {
-      icon: <Car className="text-blue-500" size={20} />,
-      name: "Terminal Bus Ponorogo",
-      distance: "10 menit",
-      description: "Akses transportasi antar kota"
-    },
-    {
-      icon: <Hospital className="text-green-500" size={20} />,
-      name: "RSUD Dr. Hardjono",
-      distance: "12 menit",
-      description: "Rumah sakit terdekat"
-    },
-    {
-      icon: <GraduationCap className="text-purple-500" size={20} />,
-      name: "SD, SMP, SMA Terdekat",
-      distance: "8 menit",
-      description: "Pendidikan berkualitas untuk anak"
-    },
-    {
-      icon: <ShoppingCart className="text-orange-500" size={20} />,
-      name: "Pasar Tradisional",
-      distance: "5 menit",
-      description: "Kebutuhan sehari-hari mudah didapat"
-    },
-    {
-      icon: <Utensils className="text-pink-500" size={20} />,
-      name: "Kuliner & Restoran",
-      distance: "3 menit",
-      description: "Berbagai pilihan makanan lezat"
-    }
-  ];
 
   return (
     <section className="py-20 bg-gray-50">
@@ -146,63 +85,6 @@ const SedahLocation = () => {
 
           {/* Right Content - Facilities & Nearby Places */}
           <div className="space-y-8">
-            {/* Key Facilities */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Keunggulan Lokasi
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {facilities.map((facility, index) => (
-                  <div key={index} className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-200">
-                    <div className="flex items-start gap-3">
-                      {facility.icon}
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-1">
-                          {facility.title}
-                        </h4>
-                        <p className="text-sm text-gray-600">
-                          {facility.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Nearby Places */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Fasilitas Terdekat
-              </h3>
-              <div className="space-y-3">
-                {nearbyPlaces.map((place, index) => (
-                  <div key={index} className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        {place.icon}
-                        <div>
-                          <h4 className="font-bold text-gray-900">
-                            {place.name}
-                          </h4>
-                          <p className="text-sm text-gray-600">
-                            {place.description}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-green-600 font-bold">
-                          {place.distance}
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          dengan kendaraan
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* CTA Section */}
             <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 text-white">
