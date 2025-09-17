@@ -23,23 +23,23 @@ const SedahHero = () => {
         <div className="absolute bottom-32 right-1/3 w-16 h-16 md:w-28 md:h-28 bg-green-600 rounded-full"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 md:py-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left Content - Mobile Optimized */}
-          <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
+          <div className="space-y-6 md:space-y-8 order-2 lg:order-1 px-2 sm:px-0">
             {/* Mobile-only urgency banner */}
-            <div className="block sm:hidden bg-gradient-to-r from-red-500 to-red-600 text-white p-3 rounded-lg text-center mb-4">
+            <div className="block sm:hidden bg-gradient-to-r from-red-500 to-red-600 text-white p-3 rounded-lg text-center mb-4 mx-2 sm:mx-0">
               <div className="text-sm font-bold">🔥 PROMO TERBATAS!</div>
               <div className="text-xs">Hanya 10 unit pertama dengan diskon 60 juta</div>
             </div>
             {/* Badge - Mobile Responsive */}
-            <div className="hidden sm:inline-flex items-center gap-2 bg-red-100 text-red-800 px-3 py-2 md:px-4 rounded-full text-xs md:text-sm font-semibold">
+            <div className="hidden sm:inline-flex items-center gap-2 bg-red-100 text-red-800 px-3 py-2 md:px-4 rounded-full text-xs md:text-sm font-semibold mx-2 sm:mx-0">
               <Clock size={14} className="md:w-4 md:h-4" />
               <span className="hidden sm:inline">PROMO TERBATAS - Hanya 10 Unit Pertama!</span>
             </div>
 
             {/* Main Headline - Mobile Typography */}
-            <div className="space-y-3 md:space-y-4">
+            <div className="space-y-3 md:space-y-4 px-2 sm:px-0">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 <span className="text-green-600">Sedah Green</span>
                 <br />
@@ -52,7 +52,7 @@ const SedahHero = () => {
             </div>
 
             {/* Value Proposition - Mobile Stack */}
-            <div className="space-y-3 md:space-y-4">
+            <div className="space-y-3 md:space-y-4 px-2 sm:px-0">
               <div className="flex items-start gap-3 text-base md:text-lg text-gray-700">
                 <Shield className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
                 <span><strong>100% Syariah</strong> - Tanpa Riba, Transparan & Amanah</span>
@@ -68,7 +68,7 @@ const SedahHero = () => {
             </div>
 
             {/* Pricing Highlight - Mobile Optimized */}
-            <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl md:rounded-2xl p-4 md:p-6 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl md:rounded-2xl p-4 md:p-6 text-white relative overflow-hidden mx-2 sm:mx-0">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
               <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full translate-y-8 -translate-x-8"></div>
@@ -93,7 +93,7 @@ const SedahHero = () => {
             </div>
 
             {/* CTA Buttons - Mobile Stack */}
-            <div className="flex flex-col gap-3 md:gap-4">
+            <div className="flex flex-col gap-3 md:gap-4 px-2 sm:px-0">
               <button
                 onClick={handleWhatsAppClick}
                 className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
@@ -111,7 +111,7 @@ const SedahHero = () => {
             </div>
 
             {/* Trust Indicators - Mobile Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm text-gray-600">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm text-gray-600 px-2 sm:px-0">
               <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <Star className="text-yellow-500" size={14} />
                 <span>500+ Keluarga Bahagia</span>
@@ -128,7 +128,7 @@ const SedahHero = () => {
           </div>
 
           {/* Right Content - Image/Visual - Mobile First */}
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-1 lg:order-2 px-2 sm:px-0">
             <div className="relative z-10 group">
               <img
                 src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop"
