@@ -1,8 +1,59 @@
-import React from "react";
-import { MapPin, Star, Shield, Home, Users, CreditCard, Award, Clock } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { MapPin, Star, Shield, Home, Users, CreditCard, Award, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahHero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      src: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      alt: "Tampak Depan Sedah Green Residence",
+      title: "Tampak Depan Perumahan"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop",
+      alt: "Rumah Tipe 36 Sedah Green Residence",
+      title: "Rumah Tipe 36"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=800&h=600&fit=crop",
+      alt: "Rumah Tipe 45 Sedah Green Residence",
+      title: "Rumah Tipe 45"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+      alt: "Interior Ruang Tamu Sedah Green Residence",
+      title: "Interior Modern"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      alt: "Taman dan Fasilitas Sedah Green Residence",
+      title: "Taman & Fasilitas"
+    }
+  ];
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
   const handleWhatsAppClick = () => {
     const message = "Halo TKBM, saya tertarik dengan promo rumah di Sedah Green Residence. Mohon informasi lebih lanjut.";
     const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
@@ -124,28 +175,73 @@ const SedahHero = () => {
             </div>
           </div>
 
-          {/* Right Content - Image/Visual - Mobile First */}
+          {/* Right Content - Slideshow - Mobile First */}
           <div className="relative order-1 lg:order-2 px-2 sm:px-0">
             <div className="relative z-10 group">
-              <img
-                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop"
-                alt="Sedah Green Residence - Hunian Syariah Berkualitas"
-                className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover rounded-xl md:rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
-              />
-              
-              {/* Gradient overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl md:rounded-2xl"></div>
-              
-              {/* Overlay Info - Mobile Responsive */}
-              <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 bg-white/95 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
-                <div className="grid grid-cols-2 gap-3 md:gap-4 text-center">
-                  <div>
-                    <div className="text-lg md:text-2xl font-bold text-green-600">57</div>
-                    <div className="text-xs md:text-sm text-gray-600">Unit Tersedia</div>
+              {/* Slideshow Container */}
+              <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl md:rounded-2xl shadow-2xl overflow-hidden">
+                {/* Slides */}
+                {slides.map((slide, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-500 ${
+                      index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <div>
-                    <div className="text-lg md:text-2xl font-bold text-red-600">10</div>
-                    <div className="text-xs md:text-sm text-gray-600">Unit Promo</div>
+                ))}
+                
+                {/* Gradient overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl md:rounded-2xl"></div>
+                
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight size={20} />
+                </button>
+                
+                {/* Slide Indicators */}
+                <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentSlide 
+                          ? 'bg-white scale-125' 
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                
+                {/* Overlay Info - Mobile Responsive */}
+                <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 bg-white/95 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
+                  <div className="grid grid-cols-2 gap-3 md:gap-4 text-center">
+                    <div>
+                      <div className="text-lg md:text-2xl font-bold text-green-600">57</div>
+                      <div className="text-xs md:text-sm text-gray-600">Unit Tersedia</div>
+                    </div>
+                    <div>
+                      <div className="text-lg md:text-2xl font-bold text-red-600">10</div>
+                      <div className="text-xs md:text-sm text-gray-600">Unit Promo</div>
+                    </div>
                   </div>
                 </div>
               </div>
