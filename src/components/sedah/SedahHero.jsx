@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MapPin, Star, Shield, Home, Users, CreditCard, Award, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Star, Shield, Home, Users, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahHero = () => {
@@ -153,21 +153,6 @@ const SedahHero = () => {
               </button>
             </div>
 
-            {/* Trust Indicators - Mobile Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm text-gray-600 px-2 sm:px-0">
-              <div className="flex items-center gap-2 justify-center sm:justify-start">
-                <CreditCard className="text-green-500" size={14} />
-                <span>DP Mulai 5%</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center sm:justify-start">
-                <Shield className="text-green-500" size={14} />
-                <span>100% Syariah</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center sm:justify-start sm:col-span-3 md:col-span-1">
-                <Award className="text-blue-500" size={14} />
-                <span>15+ Proyek Sukses</span>
-              </div>
-            </div>
           </div>
 
           {/* Right Content - Slideshow - Mobile First */}
