@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MessageCircle, Phone, MapPin, Clock } from "lucide-react";
 import SedahHero from "./SedahHero";
+import SedahAbout from "./SedahAbout";
 import SedahPricing from "./SedahPricing";
 import SedahLocation from "./SedahLocation";
 import SedahGallery from "./SedahGallery";
@@ -104,6 +105,7 @@ const SedahPage = () => {
       {/* Main Content */}
       <div className="relative">
         <SedahHero />
+        <SedahAbout />
         <SedahPricing />
         <SedahLocation />
         <SedahGallery />
