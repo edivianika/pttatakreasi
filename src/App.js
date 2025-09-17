@@ -11,6 +11,7 @@ import TrustBadges from "./components/TrustBadges";
 import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/NarrayaPage";
+import SedahPage from "./components/sedah/SedahPage";
 import { MessageCircle } from "lucide-react";
 import { companyInfo } from "./components/mockData";
 
@@ -69,10 +70,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/narraya" element={<NarrayaPage />} />
-        </Routes>
+               <Routes>
+                 <Route path="/" element={<LandingPage />} />
+                 <Route path="/narraya" element={<NarrayaPage />} />
+                 <Route path="/sedah" element={<SedahPage />} />
+               </Routes>
       </BrowserRouter>
     </div>
   );
