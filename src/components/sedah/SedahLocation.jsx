@@ -1,11 +1,42 @@
-import React from "react";
-import { MapPin, Clock, Wifi, Shield } from "lucide-react";
+import React, { useState } from "react";
+import { MapPin, Clock, Wifi, Shield, ChevronLeft, ChevronRight } from "lucide-react";
 
 const SedahLocation = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const handleWhatsAppClick = () => {
     const message = "Halo TKBM, saya tertarik dengan lokasi Sedah Green Residence. Mohon informasi lebih lanjut.";
     const whatsappUrl = `https://wa.me/081331388887?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const locationBenefits = [
+    {
+      icon: <Clock className="text-green-600" size={32} />,
+      bgColor: "bg-green-100",
+      title: "Akses Cepat",
+      description: "Hanya 15 menit ke pusat kota Ponorogo dengan kendaraan pribadi"
+    },
+    {
+      icon: <Shield className="text-blue-600" size={32} />,
+      bgColor: "bg-blue-100",
+      title: "Lingkungan Aman",
+      description: "Area perumahan yang tenang dan aman untuk keluarga"
+    },
+    {
+      icon: <Wifi className="text-purple-600" size={32} />,
+      bgColor: "bg-purple-100",
+      title: "Infrastruktur Lengkap",
+      description: "Listrik, air, internet, dan fasilitas umum sudah tersedia"
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % locationBenefits.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + locationBenefits.length) % locationBenefits.length);
   };
 
   const locationData = {
@@ -105,40 +136,70 @@ const SedahLocation = () => {
           </div>
         </div>
 
-        {/* Bottom Info */}
-        <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg">
-          <div className="text-center">
+        {/* Bottom Info - Slide Cards */}
+        <div className="mt-16">
+          <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Mengapa Memilih Lokasi Ini?
             </h3>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="text-green-600" size={32} />
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">Akses Cepat</h4>
-                <p className="text-gray-600">
-                  Hanya 15 menit ke pusat kota Ponorogo dengan kendaraan pribadi
-                </p>
+          </div>
+          
+          {/* Carousel Container */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-600 hover:text-gray-900 rounded-full p-2 shadow-lg transition-all duration-200"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-600 hover:text-gray-900 rounded-full p-2 shadow-lg transition-all duration-200"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Slide Container */}
+            <div className="overflow-hidden rounded-2xl">
+              <div 
+                className="flex transition-transform duration-300 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {locationBenefits.map((benefit, index) => (
+                  <div key={index} className="w-full flex-shrink-0">
+                    <div className="bg-white rounded-2xl p-8 shadow-lg mx-2">
+                      <div className="text-center">
+                        <div className={`${benefit.bgColor} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6`}>
+                          {benefit.icon}
+                        </div>
+                        <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                          {benefit.title}
+                        </h4>
+                        <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto">
+                          {benefit.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="text-center">
-                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="text-blue-600" size={32} />
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">Lingkungan Aman</h4>
-                <p className="text-gray-600">
-                  Area perumahan yang tenang dan aman untuk keluarga
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Wifi className="text-purple-600" size={32} />
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">Infrastruktur Lengkap</h4>
-                <p className="text-gray-600">
-                  Listrik, air, internet, dan fasilitas umum sudah tersedia
-                </p>
-              </div>
+            </div>
+
+            {/* Slide Indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {locationBenefits.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    index === currentSlide 
+                      ? 'bg-green-600 w-8' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
