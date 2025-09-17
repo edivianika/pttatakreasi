@@ -3,10 +3,7 @@ import { MessageCircle, Phone, MapPin, Clock } from "lucide-react";
 import SedahHero from "./SedahHero";
 import SedahAbout from "./SedahAbout";
 import SedahPricing from "./SedahPricing";
-import SedahLocation from "./SedahLocation";
-import SedahGallery from "./SedahGallery";
 import SedahTestimonials from "./SedahTestimonials";
-import SedahGuarantee from "./SedahGuarantee";
 import SedahForm from "./SedahForm";
 import SedahFooter from "./SedahFooter";
 import { companyInfo } from "../mockData";
@@ -105,8 +102,8 @@ const SedahPage = () => {
       {/* Main Content */}
       <div className="relative">
         <SedahHero />
+        <SedahAbout />
         <SedahPricing />
-        <SedahGallery />
         <SedahTestimonials />
         <SedahForm />
         <SedahFooter />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Star, Quote, ChevronLeft, ChevronRight, Users, Shield, Home } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, Home } from "lucide-react";
 
 const SedahTestimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -103,39 +103,13 @@ const SedahTestimonials = () => {
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             <span className="text-green-600">Testimoni</span> Pelanggan
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Dengarkan pengalaman nyata dari keluarga yang sudah merasakan kenyamanan 
-            tinggal di Sedah Green Residence.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Pengalaman nyata dari keluarga yang sudah merasakan kenyamanan tinggal di Sedah Green Residence.
           </p>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="text-center bg-white rounded-2xl p-6 shadow-lg">
-            <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="text-green-600" size={32} />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">500+</div>
-            <div className="text-gray-600">Keluarga Bahagia</div>
-          </div>
-          <div className="text-center bg-white rounded-2xl p-6 shadow-lg">
-            <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Star className="text-blue-600" size={32} />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">4.9/5</div>
-            <div className="text-gray-600">Rating Kepuasan</div>
-          </div>
-          <div className="text-center bg-white rounded-2xl p-6 shadow-lg">
-            <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="text-purple-600" size={32} />
-            </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">100%</div>
-            <div className="text-gray-600">Syariah & Amanah</div>
-          </div>
         </div>
 
         {/* Main Testimonial */}
@@ -197,45 +171,22 @@ const SedahTestimonials = () => {
           </div>
         </div>
 
-        {/* Testimonial Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {testimonials.slice(0, 6).map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-              {/* Rating */}
-              <div className="flex mb-4">
-                {renderStars(testimonial.rating)}
-              </div>
-
-              {/* Review */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-4 italic">
-                "{testimonial.review.length > 120 
-                  ? testimonial.review.substring(0, 120) + '...' 
-                  : testimonial.review}"
-              </p>
-
-              {/* Customer Info */}
-              <div className="flex items-center gap-3">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <div className="font-bold text-gray-900 text-sm">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-gray-600 text-xs">
-                    {testimonial.profession}
-                  </div>
-                  <div className="text-green-600 text-xs font-semibold">
-                    {testimonial.houseType}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* CTA Section */}
+        <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 text-white text-center">
+          <h3 className="text-xl font-bold mb-3">
+            Bergabunglah dengan Keluarga Bahagia Kami
+          </h3>
+          <p className="text-green-100 mb-4">
+            Jadilah bagian dari 500+ keluarga yang sudah merasakan kenyamanan dan keamanan tinggal di hunian syariah berkualitas.
+          </p>
+          <button
+            onClick={handleWhatsAppClick}
+            className="bg-white text-green-600 font-bold py-3 px-6 rounded-xl hover:bg-gray-100 transition-all duration-200 transform hover:scale-105"
+          >
+            <Home size={18} className="inline mr-2" />
+            Konsultasi Sekarang
+          </button>
         </div>
-
       </div>
     </section>
   );

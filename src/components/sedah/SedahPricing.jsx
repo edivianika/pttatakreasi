@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Check, Star, Clock, Users, Home, Shield, AlertTriangle } from "lucide-react";
+import { Star, Clock, Users, Home, Shield } from "lucide-react";
 import { companyInfo } from "../mockData";
 
 const SedahPricing = () => {
@@ -65,13 +65,12 @@ const SedahPricing = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            🏠 Pilih <span className="text-green-600">Tipe Rumah</span> Anda
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Pilih <span className="text-green-600">Tipe Rumah</span> Impian Anda
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            <span className="text-red-600 font-bold text-2xl">DISKON 60 JUTA!</span> 
-            <br />Hanya 10 unit pertama • DP 5% • Angsuran ringan
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Dapatkan diskon hingga <strong className="text-red-600">60 juta rupiah</strong> untuk 10 unit pertama
           </p>
         </div>
 
@@ -121,31 +120,24 @@ const SedahPricing = () => {
                   </div>
                 </div>
 
-                {/* Specs */}
-                <div className="grid grid-cols-2 gap-4 mb-8 text-center">
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <Home size={20} className="text-green-600 mx-auto mb-1" />
-                    <div className="text-sm text-gray-600">Kamar Tidur</div>
-                    <div className="font-bold text-gray-900">{item.specs.kamarTidur}</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <Shield size={20} className="text-green-600 mx-auto mb-1" />
-                    <div className="text-sm text-gray-600">Kamar Mandi</div>
-                    <div className="font-bold text-gray-900">{item.specs.kamarMandi}</div>
-                  </div>
-                </div>
-
-                {/* Features */}
+                {/* Key Features */}
                 <div className="mb-8">
-                  <h4 className="font-bold text-gray-900 mb-4">Fasilitas Lengkap:</h4>
-                  <ul className="space-y-2">
-                    {item.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-3 text-gray-700">
-                        <Check size={16} className="text-green-500 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="grid grid-cols-2 gap-4 text-center mb-6">
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <Home size={20} className="text-green-600 mx-auto mb-1" />
+                      <div className="text-sm text-gray-600">Kamar Tidur</div>
+                      <div className="font-bold text-gray-900">{item.specs.kamarTidur}</div>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <Shield size={20} className="text-green-600 mx-auto mb-1" />
+                      <div className="text-sm text-gray-600">Kamar Mandi</div>
+                      <div className="font-bold text-gray-900">{item.specs.kamarMandi}</div>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center text-sm text-gray-600">
+                    Luas Tanah: {item.specs.luasTanah} | Luas Bangunan: {item.specs.luasBangunan}
+                  </div>
                 </div>
 
                 {/* CTA Button */}
@@ -173,6 +165,24 @@ const SedahPricing = () => {
           ))}
         </div>
 
+        {/* Bottom CTA */}
+        <div className="text-center mt-12">
+          <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-6 max-w-2xl mx-auto">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Masih Bingung Pilih Tipe Mana?
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Tim konsultan kami siap membantu Anda memilih rumah yang tepat.
+            </p>
+            <button
+              onClick={() => handleWhatsAppClick('Konsultasi')}
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105"
+            >
+              <Users size={18} className="inline mr-2" />
+              Konsultasi Gratis
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
