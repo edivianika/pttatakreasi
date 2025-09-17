@@ -12,6 +12,7 @@ import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/NarrayaPage";
 import SedahPage from "./components/sedah/SedahPage";
+import SedahResidencePage from "./components/sedah/SedahResidencePage";
 import { MessageCircle } from "lucide-react";
 import { companyInfo } from "./components/mockData";
 
@@ -74,6 +75,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/narraya" element={<NarrayaPage />} />
           <Route path="/sedah" element={<SedahPage />} />
+          <Route path="/sedahresidence" element={<SedahResidencePage />} />
         </Routes>
       </BrowserRouter>
     </div>

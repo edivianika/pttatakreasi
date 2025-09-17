@@ -158,16 +158,12 @@ Mohon informasi lebih lanjut. Terima kasih.`;
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold mb-4 inline-block">
-              ⏰ PROMO TERBATAS - Hanya 10 Unit!
-            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              🚨 <span className="text-red-600">AMBIL PROMO</span> Sekarang!
+              <span className="text-green-600">Konsultasi</span> Gratis
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              <span className="text-red-600 font-bold">DISKON 60 JUTA!</span> 
-              <br />DP 5% • Angsuran ringan • 100% Syariah
-              <br />Konsultasi gratis, jangan sampai kehabisan!
+              Dapatkan informasi lengkap dan konsultasi gratis dari tim ahli kami. 
+              Kami siap membantu mewujudkan impian hunian syariah Anda.
             </p>
           </div>
 
@@ -335,7 +331,7 @@ Mohon informasi lebih lanjut. Terima kasih.`;
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 flex items-center justify-center gap-2 animate-pulse"
+                  className="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -345,7 +341,7 @@ Mohon informasi lebih lanjut. Terima kasih.`;
                   ) : (
                     <>
                       <Send size={20} />
-                      🚨 AMBIL PROMO SEKARANG!
+                      Kirim Konsultasi
                     </>
                   )}
                 </button>
