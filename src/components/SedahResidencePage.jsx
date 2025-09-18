@@ -473,8 +473,8 @@ function SedahGreenResidence() {
               {[
                 {
                   title: "DP Fleksibel",
-                  description: "Mulai dari 5 juta saja, bisa dicicil hingga 24 bulan",
-                  features: ["DP mulai 5 juta", "Cicil DP 24 bulan", "Tanpa bunga"]
+                  description: "DP bisa diangsur hingga 3 bulan",
+                  features: ["DP mulai 5 juta", "DP Fleksibel", "Tanpa bunga"]
                 },
                 {
                   title: "Cicilan Ringan",
