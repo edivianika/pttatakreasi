@@ -13,7 +13,7 @@ export const projectsData = [
       "Hunian modern tropis",
       "Fasilitas lengkap"
     ],
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
+    image: "/tatakreasi/perumahan-ponorogo-narraya-green-residence.png",
     description: "Hunian premium dengan lokasi strategis di jantung kota Ponorogo"
   },
   {
@@ -28,7 +28,7 @@ export const projectsData = [
       "Mushola terintegrasi",
       "Area bermain anak"
     ],
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&h=300&fit=crop",
+    image: "/tatakreasi/perumahan-ponorogo-sedah-green-residence.png",
     description: "Cluster islami yang nyaman dengan fasilitas lengkap untuk keluarga"
   },
   {
@@ -43,7 +43,7 @@ export const projectsData = [
       "Desain arsitektur modern",
       "Akses mudah kemana-mana"
     ],
-    image: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=500&h=300&fit=crop",
+    image: "/tatakreasi/perumahan-ponorogo-grand-sezha.png",
     description: "Hunian eksklusif di tengah kota dengan kemudahan akses terbaik"
   }
 ];

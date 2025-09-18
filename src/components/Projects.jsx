@@ -66,13 +66,29 @@ const Projects = () => {
 
                 {/* Action Buttons */}
                 <div className="pt-4">
-                  {project.name === "Narraya" ? (
+                  {project.name === "Narraya Green Residence" ? (
                     <Link 
                       to="/narraya"
                       className="btn-primary w-full flex items-center justify-center gap-2"
                     >
                       <ExternalLink size={16} />
-                      Lihat Detail
+                      Info Detail
+                    </Link>
+                  ) : project.name === "Sedah Green Residence" ? (
+                    <Link 
+                      to="/sedahresidence"
+                      className="btn-primary w-full flex items-center justify-center gap-2"
+                    >
+                      <ExternalLink size={16} />
+                      Info Detail
+                    </Link>
+                  ) : project.name === "Grand Sezha" ? (
+                    <Link 
+                      to="https://grandsezha.com"
+                      className="btn-primary w-full flex items-center justify-center gap-2"
+                    >
+                      <ExternalLink size={16} />
+                      Info Detail
                     </Link>
                   ) : (
                     <button 
