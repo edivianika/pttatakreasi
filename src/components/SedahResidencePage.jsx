@@ -144,7 +144,7 @@ function SedahGreenResidence() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const whatsappNumber = "6281331388870";
+  const whatsappNumber = "628133138887";
   const whatsappMessage = "Halo, saya tertarik dengan Sedah Green Residence. Mohon info lebih lanjut.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 

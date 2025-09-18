@@ -119,7 +119,7 @@ export const companyInfo = {
   shortName: "TKBM",
   tagline: "Developer Properti Syariah Terpercaya",
   whatsapp: "081331388887",
-  whatsappFormatted: "0813 3138 887",
+  whatsappFormatted: "+6281331388887",
   address: "Ponorogo, Jawa Timur",
   established: "2015",
   projects: "15+ Proyek Sukses",
