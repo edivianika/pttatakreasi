@@ -826,15 +826,15 @@ function SedahGreenResidence() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-emerald-600">
+        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-emerald-600 px-6 md:px-0">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="container px-6 md:px-8 lg:px-6"
+            className="container md:px-6"
           >
-            <div className="text-center text-white">
+            <div className="text-center text-white px-4 sm:px-0">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -855,11 +855,11 @@ function SedahGreenResidence() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0"
               >
                 <Button 
                   size="lg" 
-                  className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-lg px-8 py-6 font-semibold"
+                  className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-lg px-8 py-6 font-semibold w-auto max-w-xs"
                   onClick={() => window.open(whatsappUrl, '_blank')}
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
@@ -874,7 +874,7 @@ function SedahGreenResidence() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-4 md:px-0"
+                className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-4 sm:px-0"
               >
                 <div>
                   <MapPin className="h-8 w-8 mx-auto mb-4 text-emerald-200" />
@@ -898,15 +898,15 @@ function SedahGreenResidence() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t bg-slate-800 text-white">
+      <footer className="w-full border-t bg-slate-800 text-white px-6 md:px-0">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="container px-6 py-12 md:px-8 lg:px-6"
+          className="container py-12 md:px-6"
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 sm:px-0">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <SedahGreenLogo size={40} />
@@ -936,7 +936,7 @@ function SedahGreenResidence() {
             <div>
               <h3 className="font-semibold mb-4">Ikuti Kami</h3>
               <Button 
-                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-full"
+                className="w-auto bg-emerald-600 hover:bg-emerald-700 rounded-full px-6 py-2"
                 onClick={() => window.open(whatsappUrl, '_blank')}
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
@@ -944,7 +944,7 @@ function SedahGreenResidence() {
               </Button>
             </div>
           </div>
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400 px-4 sm:px-0">
             <p>&copy; 2024 Sedah Green Residence. Semua hak dilindungi undang-undang.</p>
           </div>
         </motion.div>
