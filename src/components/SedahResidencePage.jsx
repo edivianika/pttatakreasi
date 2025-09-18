@@ -528,7 +528,7 @@ function SedahGreenResidence() {
                 Harga Spesial
               </motion.div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-slate-800">
-                Investasi Terbaik untuk Keluarga
+                Hunian Terbaik untuk Keluarga
               </h2>
             </div>
             <div className="max-w-4xl mx-auto">
@@ -549,7 +549,7 @@ function SedahGreenResidence() {
                         <p className="text-amber-600 font-semibold">Hemat Rp 60.000.000!</p>
                       </div>
                       <div className="space-y-2">
-                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Tanah: 72 m²</p>
+                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Tanah: 66 m²</p>
                         <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Bangunan: 36 m²</p>
                         <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />2 Kamar Tidur</p>
                         <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />1 Kamar Mandi</p>
@@ -637,13 +637,13 @@ function SedahGreenResidence() {
                 },
                 {
                   src: "/sedah/sedah green residence-perumahan syariah ponorogo3.png",
-                  title: "Mushola",
-                  description: "Fasilitas ibadah yang nyaman untuk warga"
+                  title: "Lingkungan Asri",
+                  description: "Lingkungan asri tertata rapi"
                 },
                 {
                   src: "/sedah/sedah green residence-perumahan syariah ponorogo4.png",
-                  title: "Taman Keluarga",
-                  description: "Area bermain anak dan keluarga yang aman"
+                  title: "Nyaman",
+                  description: "Area Nyaman dekat masjid , dekat pesantren"
                 },
                 {
                   src: "/sedah/sedah green residence-perumahan syariah ponorogo5.png",
@@ -652,13 +652,13 @@ function SedahGreenResidence() {
                 },
                 {
                   src: "/sedah/sedah green residence-perumahan syariah ponorogo6.png",
-                  title: "Security Gate",
-                  description: "Keamanan 24 jam dengan sistem one gate"
+                  title: "Rumah tipe 36",
+                  description: "Rumah Tipe 36"
                 },
                 {
                   src: "/sedah/sedah green residence-perumahan syariah ponorogo7.png",
-                  title: "Security Gate",
-                  description: "Keamanan 24 jam dengan sistem one gate"
+                  title: "Rumah tipe 45",
+                  description: "Rumah Tipe 45"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -702,7 +702,7 @@ function SedahGreenResidence() {
                 Testimoni
               </motion.div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-slate-800">
-                Kata Mereka yang Sudah Merasakan
+                Mereka yang sudah beli rumah di PT Tata Kreasi
               </h2>
             </div>
             <motion.div
@@ -715,19 +715,19 @@ function SedahGreenResidence() {
               {[
                 {
                   quote: "Alhamdulillah, proses pembelian sangat mudah dan sesuai syariah. Cicilan ringan dan tidak memberatkan keluarga.",
-                  author: "Bapak Ahmad Wijaya",
-                  role: "Warga Sedah Green Residence",
+                  author: "Bapak Adi",
+                  role: "Warga Grand Sezha",
                   rating: 5
                 },
                 {
                   quote: "Lingkungannya asri dan aman untuk anak-anak. Fasilitas lengkap, terutama mushola yang sangat membantu.",
-                  author: "Ibu Siti Nurhaliza",
+                  author: "Ibu Siti",
                   role: "Penghuni Blok A",
                   rating: 5
                 },
                 {
                   quote: "Investasi terbaik untuk keluarga. Lokasinya strategis dan akses ke mana-mana mudah. Recommended!",
-                  author: "Bapak Dedi Setiawan",
+                  author: "Bapak Winno",
                   role: "Penghuni Blok B",
                   rating: 5
                 }
@@ -799,16 +799,12 @@ function SedahGreenResidence() {
                     answer: "Ya, Sedah Green Residence menerapkan sistem jual beli syariah tanpa riba, tanpa denda keterlambatan, dan tanpa sita. Semua sesuai dengan prinsip syariah Islam."
                   },
                   {
-                    question: "Berapa minimal DP yang harus dibayar?",
-                    answer: "DP minimal hanya 5 juta rupiah dan bisa dicicil hingga 24 bulan tanpa bunga. Sangat terjangkau untuk semua kalangan."
-                  },
-                  {
                     question: "Apakah ada fasilitas umum?",
                     answer: "Ya, tersedia mushola, taman keluarga, area bermain anak, security 24 jam, dan akses jalan yang lebar serta terawat."
                   },
                   {
                     question: "Bagaimana dengan legalitas tanah?",
-                    answer: "Semua sertifikat sudah SHM (Sertifikat Hak Milik) dan legal. Proses balik nama mudah dan cepat."
+                    answer: "Anda akan mendapatkan sertifikat SHM (Sertifikat Hak Milik)"
                   },
                   {
                     question: "Apakah bisa survey lokasi dulu?",
