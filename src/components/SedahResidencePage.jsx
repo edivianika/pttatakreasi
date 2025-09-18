@@ -20,6 +20,43 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
 
+// Logo Component
+function SedahGreenLogo({ size = 40, className = "" }) {
+  return (
+    <div className={`relative ${className}`} style={{ width: size, height: size }}>
+      <div 
+        className="w-full h-full rounded-full flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%)',
+          border: '2px solid #d4af37'
+        }}
+      >
+        <span 
+          className="font-bold text-emerald-800"
+          style={{ 
+            fontSize: size * 0.5,
+            fontFamily: 'serif',
+            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+          }}
+        >
+          S
+        </span>
+      </div>
+      {/* House roof accent */}
+      <div 
+        className="absolute -top-1 left-1/2 transform -translate-x-1/2"
+        style={{
+          width: 0,
+          height: 0,
+          borderLeft: `${size * 0.15}px solid transparent`,
+          borderRight: `${size * 0.15}px solid transparent`,
+          borderBottom: `${size * 0.2}px solid #d4af37`,
+        }}
+      />
+    </div>
+  );
+}
+
 // Elegant Shape Component
 function ElegantShape({
   className,
@@ -145,11 +182,10 @@ function SedahGreenResidence() {
             <motion.div
               whileHover={{ rotate: 5, scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="h-10 w-10 rounded-full bg-emerald-600 flex items-center justify-center"
             >
-              <Home className="h-5 w-5 text-white" />
+              <SedahGreenLogo size={40} />
             </motion.div>
-            <span className="font-bold text-xl text-slate-800">Sedah Green</span>
+            <span className="font-bold text-xl text-slate-800">Sedah Green Residence</span>
           </div>
           <nav className="hidden md:flex gap-6">
             <a href="#home" className="text-sm font-medium transition-colors hover:text-emerald-600">
@@ -194,10 +230,8 @@ function SedahGreenResidence() {
         >
           <div className="container flex h-16 items-center justify-between px-4">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-emerald-600 flex items-center justify-center">
-                <Home className="h-5 w-5 text-white" />
-              </div>
-              <span className="font-bold text-xl text-slate-800">Sedah Green</span>
+              <SedahGreenLogo size={40} />
+              <span className="font-bold text-xl text-slate-800">Sedah Green Residence</span>
             </div>
             <button onClick={toggleMenu}>
               <X className="h-6 w-6" />
@@ -891,9 +925,7 @@ function SedahGreenResidence() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-emerald-600 flex items-center justify-center">
-                  <Home className="h-5 w-5 text-white" />
-                </div>
+                <SedahGreenLogo size={40} />
                 <span className="font-bold text-xl">Sedah Green Residence</span>
               </div>
               <p className="text-slate-300">
