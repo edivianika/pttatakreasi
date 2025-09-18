@@ -144,7 +144,7 @@ function SedahGreenResidence() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const whatsappNumber = "6281234567890";
+  const whatsappNumber = "6281331388870";
   const whatsappMessage = "Halo, saya tertarik dengan Sedah Green Residence. Mohon info lebih lanjut.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -867,7 +867,7 @@ function SedahGreenResidence() {
                 </Button>
                 <div className="flex items-center text-white/90">
                   <Phone className="h-5 w-5 mr-2" />
-                  <span>+62 812-3456-7890</span>
+                  <span>0813-3138-887</span>
                 </div>
               </motion.div>
               <motion.div
@@ -884,7 +884,7 @@ function SedahGreenResidence() {
                 <div>
                   <MessageCircle className="h-8 w-8 mx-auto mb-4 text-emerald-200" />
                   <h3 className="font-semibold mb-2">WhatsApp</h3>
-                  <p className="text-emerald-100">+62 812-3456-7890</p>
+                  <p className="text-emerald-100">0813-3138-887</p>
                 </div>
                 <div>
                   <Home className="h-8 w-8 mx-auto mb-4 text-emerald-200" />
@@ -929,7 +929,7 @@ function SedahGreenResidence() {
               <h3 className="font-semibold mb-4">Kontak</h3>
               <div className="space-y-2 text-slate-300">
                 <p className="flex items-center"><MapPin className="h-4 w-4 mr-2" />Sedah, Jenangan, Ponorogo</p>
-                <p className="flex items-center"><Phone className="h-4 w-4 mr-2" />+62 812-3456-7890</p>
+                <p className="flex items-center"><Phone className="h-4 w-4 mr-2" />0813-3138-887</p>
                 <p className="flex items-center"><MessageCircle className="h-4 w-4 mr-2" />WhatsApp 24 Jam</p>
               </div>
             </div>
