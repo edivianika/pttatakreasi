@@ -832,7 +832,7 @@ function SedahGreenResidence() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="container px-4 md:px-6"
+            className="container px-6 md:px-8 lg:px-6"
           >
             <div className="text-center text-white">
               <motion.h2
@@ -849,7 +849,7 @@ function SedahGreenResidence() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-xl mb-8 max-w-2xl mx-auto"
               >
-                Hanya tersisa beberapa unit dengan harga promo. Amankan hunian syariah impian keluarga Anda sekarang juga!
+                Promo hanya 10 unit pertama. Amankan hunian syariah impian keluarga Anda sekarang juga!
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -874,7 +874,7 @@ function SedahGreenResidence() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+                className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-4 md:px-0"
               >
                 <div>
                   <MapPin className="h-8 w-8 mx-auto mb-4 text-emerald-200" />
@@ -904,7 +904,7 @@ function SedahGreenResidence() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="container px-4 py-12 md:px-6"
+          className="container px-6 py-12 md:px-8 lg:px-6"
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
