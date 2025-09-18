@@ -3,6 +3,7 @@ import { MessageCircle, Shield, DollarSign, TrendingUp } from 'lucide-react';
 import { companyInfo } from './mockData';
 import { HeroAnimatedText, SubtitleAnimatedText } from './AnimatedText';
 import AnimatedText from './AnimatedText';
+import { HeroBackgroundPaths } from './ui/hero-background-paths';
 
 const Hero = () => {
   const handleWhatsAppClick = () => {
@@ -12,8 +13,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="hero-section parallax-hero">
-      <div className="container">
+    <section id="home" className="hero-section parallax-hero relative">
+      {/* Animated Background Paths */}
+      <HeroBackgroundPaths />
+      
+      <div className="container relative z-10">
         <div className="hero-content fade-in-up">
           {/* Main Headlines with Animation */}
           <div className="mb-6">
@@ -105,9 +109,9 @@ const Hero = () => {
       </div>
 
       {/* Enhanced Decorative Elements */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
-      <div className="absolute top-1/4 right-10 w-20 h-20 bg-emerald-200/20 rounded-full blur-xl float-animation"></div>
-      <div className="absolute top-1/3 left-10 w-16 h-16 bg-amber-200/20 rounded-full blur-xl float-animation" style={{animationDelay: '2s'}}></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-20"></div>
+      <div className="absolute top-1/4 right-10 w-20 h-20 bg-emerald-200/30 rounded-full blur-xl float-animation z-5"></div>
+      <div className="absolute top-1/3 left-10 w-16 h-16 bg-amber-200/30 rounded-full blur-xl float-animation z-5" style={{animationDelay: '2s'}}></div>
     </section>
   );
 };

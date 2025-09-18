@@ -101,7 +101,7 @@ Pesan: ${formData.message || 'Tidak ada pesan tambahan'}
 
 Mohon informasi lebih lanjut. Terima kasih.`;
 
-      const whatsappUrl = `https://wa.me/081331388887?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/628133138887?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
       
       setIsSubmitted(true);
@@ -114,7 +114,7 @@ Mohon informasi lebih lanjut. Terima kasih.`;
 
   const handleWhatsAppClick = () => {
     const message = "Halo TKBM, saya tertarik dengan Sedah Green Residence. Mohon informasi lebih lanjut.";
-    const whatsappUrl = `https://wa.me/081331388887?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/628133138887?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
