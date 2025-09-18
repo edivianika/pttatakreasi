@@ -23,37 +23,17 @@ import { cn } from "../lib/utils";
 // Logo Component
 function SedahGreenLogo({ size = 40, className = "" }) {
   return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <div 
-        className="w-full h-full rounded-full flex items-center justify-center"
-        style={{
-          background: 'linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%)',
-          border: '2px solid #d4af37'
-        }}
-      >
-        <span 
-          className="font-bold text-emerald-800"
-          style={{ 
-            fontSize: size * 0.5,
-            fontFamily: 'serif',
-            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
-          }}
-        >
-          S
-        </span>
-      </div>
-      {/* House roof accent */}
-      <div 
-        className="absolute -top-1 left-1/2 transform -translate-x-1/2"
-        style={{
-          width: 0,
-          height: 0,
-          borderLeft: `${size * 0.15}px solid transparent`,
-          borderRight: `${size * 0.15}px solid transparent`,
-          borderBottom: `${size * 0.2}px solid #d4af37`,
-        }}
-      />
-    </div>
+    <img
+      src="/sedah-logo.jpg"
+      alt="Sedah Green Residence Logo"
+      className={`${className}`}
+      style={{ 
+        width: size, 
+        height: size, 
+        objectFit: 'contain',
+        borderRadius: '8px' // Optional: adds slight rounded corners
+      }}
+    />
   );
 }
 
@@ -386,7 +366,7 @@ function SedahGreenResidence() {
               >
                 <div className="relative h-[350px] w-full md:h-[450px] lg:h-[500px] xl:h-[550px] overflow-hidden rounded-3xl shadow-2xl">
                   <img
-                    src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                    src="/hero-sedah.png"
                     alt="Sedah Green Residence - Modern Minimalist Houses"
                     className="h-full w-full object-cover"
                   />
