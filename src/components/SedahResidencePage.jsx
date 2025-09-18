@@ -24,7 +24,7 @@ import { cn } from "../lib/utils";
 function SedahGreenLogo({ size = 40, className = "" }) {
   return (
     <img
-      src="/sedah-logo.jpg"
+      src="/sedah-logo.png"
       alt="Sedah Green Residence Logo"
       className={`${className}`}
       style={{ 
