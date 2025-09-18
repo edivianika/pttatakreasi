@@ -541,12 +541,12 @@ function SedahGreenResidence() {
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div>
-                    <h3 className="text-3xl font-bold text-slate-800 mb-4">Rumah Type 36/72</h3>
+                    <h3 className="text-3xl font-bold text-slate-800 mb-4">Rumah Type 36/66</h3>
                     <div className="space-y-4">
                       <div>
                         <p className="text-slate-600 line-through text-xl">Harga Normal: Rp 233.000.000</p>
-                        <p className="text-4xl font-bold text-emerald-600">Rp 177.000.000</p>
-                        <p className="text-amber-600 font-semibold">Hemat Rp 56.000.000!</p>
+                        <p className="text-4xl font-bold text-emerald-600">Rp 173.000.000</p>
+                        <p className="text-amber-600 font-semibold">Hemat Rp 60.000.000!</p>
                       </div>
                       <div className="space-y-2">
                         <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Tanah: 72 m²</p>
@@ -557,6 +557,7 @@ function SedahGreenResidence() {
                       </div>
                     </div>
                   </div>
+{/*                   
                   <div className="bg-white p-6 rounded-2xl shadow-lg">
                     <h4 className="text-xl font-bold text-slate-800 mb-4">Simulasi Pembayaran</h4>
                     <div className="space-y-3">
@@ -585,7 +586,9 @@ function SedahGreenResidence() {
                       <MessageCircle className="h-4 w-4 mr-2" />
                       Konsultasi Sekarang
                     </Button>
-                  </div>
+                  </div> */}
+
+
                 </div>
               </motion.div>
             </div>
@@ -623,32 +626,37 @@ function SedahGreenResidence() {
             >
               {[
                 {
-                  src: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo.png",
                   title: "Rumah Modern Minimalis",
                   description: "Desain tropis modern dengan ventilasi optimal"
                 },
                 {
-                  src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo2.png",
                   title: "Lingkungan Hijau",
                   description: "Taman dan area hijau yang asri dan sejuk"
                 },
                 {
-                  src: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo3.png",
                   title: "Mushola",
                   description: "Fasilitas ibadah yang nyaman untuk warga"
                 },
                 {
-                  src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo4.png",
                   title: "Taman Keluarga",
                   description: "Area bermain anak dan keluarga yang aman"
                 },
                 {
-                  src: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo5.png",
                   title: "Jalan Lingkungan",
                   description: "Akses jalan yang lebar dan terawat"
                 },
                 {
-                  src: "https://images.unsplash.com/photo-1600607688960-e095ff8d5c6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo6.png",
+                  title: "Security Gate",
+                  description: "Keamanan 24 jam dengan sistem one gate"
+                },
+                {
+                  src: "/sedah/sedah green residence-perumahan syariah ponorogo7.png",
                   title: "Security Gate",
                   description: "Keamanan 24 jam dengan sistem one gate"
                 }
