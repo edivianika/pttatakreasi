@@ -6,7 +6,7 @@ import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPi
 
 const NarrayaCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
-  const [discount, setDiscount] = useState(60000000); // 60 juta default
+  const [discount, setDiscount] = useState(150000000); // 60 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [kreditTerm, setKreditTerm] = useState(3); // 3 tahun default
@@ -25,41 +25,18 @@ const NarrayaCalculator = () => {
 
   // Unit data for Narraya Green Residence
   const unitData = [
-    { unit: "A1", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "A2", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "A3", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "A4", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "A5", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "A6", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "A7", lb: 45, lt: 80, hargaCash: 289500000 },
-    { unit: "B1", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B2", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B3", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B4", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B5", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B6", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B7", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "B8", lb: 50, lt: 85, hargaCash: 315000000 },
-    { unit: "C1", lb: 60, lt: 95, hargaCash: 365000000 },
-    { unit: "C2", lb: 60, lt: 95, hargaCash: 365000000 },
-    { unit: "C3", lb: 60, lt: 95, hargaCash: 365000000 },
-    { unit: "C4", lb: 60, lt: 95, hargaCash: 365000000 },
-    { unit: "C5", lb: 60, lt: 95, hargaCash: 365000000 },
-    { unit: "C6", lb: 60, lt: 95, hargaCash: 365000000 },
-    { unit: "D1", lb: 70, lt: 105, hargaCash: 425000000 },
-    { unit: "D2", lb: 70, lt: 105, hargaCash: 425000000 },
-    { unit: "D3", lb: 70, lt: 105, hargaCash: 425000000 },
-    { unit: "D4", lb: 70, lt: 105, hargaCash: 425000000 },
-    { unit: "D5", lb: 70, lt: 105, hargaCash: 425000000 },
-    { unit: "E1", lb: 80, lt: 120, hargaCash: 485000000 },
-    { unit: "E2", lb: 80, lt: 120, hargaCash: 485000000 },
-    { unit: "E3", lb: 80, lt: 120, hargaCash: 485000000 },
-    { unit: "E4", lb: 80, lt: 120, hargaCash: 485000000 },
-    { unit: "F1", lb: 90, lt: 135, hargaCash: 545000000 },
-    { unit: "F2", lb: 90, lt: 135, hargaCash: 545000000 },
-    { unit: "F3", lb: 90, lt: 135, hargaCash: 545000000 },
-    { unit: "G1", lb: 100, lt: 150, hargaCash: 605000000 },
-    { unit: "G2", lb: 100, lt: 150, hargaCash: 605000000 },
+    { unit: "A01", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A02", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A03", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A04", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A05", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A06", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A07", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A08", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A09", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A10", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A11", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A12", lb: 85, lt: 96, hargaCash: 954884250 },
   ];
 
   useEffect(() => {
@@ -126,7 +103,7 @@ const NarrayaCalculator = () => {
   }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, kreditTerm, kreditDP]);
 
   const handleDiscountChange = (value) => {
-    const maxDiscount = 60000000;
+    const maxDiscount = 200000000;
     const actualValue = Math.min(parseInt(value) || 0, maxDiscount);
     setDiscount(actualValue);
   };
@@ -162,8 +139,9 @@ Kredit (${kreditTerm} tahun, DP ${kreditDP}%):
 - Angsuran: ${formatCurrency(calculation.angsuranKredit)}
 
 Mohon informasi lebih lanjut.`;
+
     
-    const whatsappUrl = `https://wa.me/628133138887?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/6288219448304?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -229,6 +207,25 @@ Mohon informasi lebih lanjut.`;
               ))}
             </select>
           </div>
+
+          {/* Site Plan Preview */}
+          {selectedUnit && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="bg-blue-50 rounded-lg p-3 border border-blue-200 mb-4"
+            >
+              <div className="text-center">
+                <p className="text-sm font-semibold text-blue-800">
+                  🎯 Unit {selectedUnit} Terpilih
+                </p>
+                <p className="text-xs text-blue-600 mt-1">
+                  Klik unit di site plan untuk melihat detail lengkap
+                </p>
+              </div>
+            </motion.div>
+          )}
 
           {/* Results Container */}
           {selectedUnit && calculation.unitInfo && (
@@ -390,6 +387,141 @@ Mohon informasi lebih lanjut.`;
                   </div>
                 </div>
               </div>
+
+              {/* Site Plan Image */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-white rounded-lg p-4 shadow-lg border border-slate-200"
+              >
+                <h4 className="text-sm font-bold text-slate-800 mb-3 text-center flex items-center justify-center gap-2">
+                  <span className="text-lg">📍</span>
+                  Site Plan Narraya Green Residence
+                </h4>
+                <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-4 border-2 border-slate-200">
+                  {/* Site Plan Grid */}
+                  <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
+                    {/* Left Column - A01, A03, A05, A07, A09, A11 */}
+                    <div className="space-y-2">
+                      {['A11', 'A09', 'A07', 'A05', 'A03', 'A01'].map((unit, index) => (
+                        <motion.div
+                          key={unit}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                          className={`relative h-14 rounded-lg border-2 transition-all duration-300 cursor-pointer group ${
+                            selectedUnit === unit
+                              ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-700 shadow-xl scale-105'
+                              : 'bg-gradient-to-br from-yellow-200 to-yellow-300 border-yellow-400 hover:from-yellow-300 hover:to-yellow-400 hover:scale-102'
+                          }`}
+                          onClick={() => setSelectedUnit(unit)}
+                        >
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className={`text-sm font-bold transition-colors duration-300 ${
+                              selectedUnit === unit ? 'text-white' : 'text-slate-700 group-hover:text-slate-800'
+                            }`}>
+                              {unit}
+                            </span>
+                          </div>
+                          {selectedUnit === unit && (
+                            <>
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
+                              >
+                                <motion.div
+                                  animate={{ scale: [1, 1.2, 1] }}
+                                  transition={{ duration: 1, repeat: Infinity }}
+                                  className="w-2 h-2 bg-white rounded-full"
+                                ></motion.div>
+                              </motion.div>
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0 rounded-lg border-2 border-blue-300 animate-pulse"
+                              ></motion.div>
+                            </>
+                          )}
+                        </motion.div>
+                      ))}
+                    </div>
+                    
+                    {/* Right Column - A02, A04, A06, A08, A10, A12 */}
+                    <div className="space-y-2">
+                      {['A12', 'A10', 'A08', 'A06', 'A04', 'A02'].map((unit, index) => (
+                        <motion.div
+                          key={unit}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                          className={`relative h-14 rounded-lg border-2 transition-all duration-300 cursor-pointer group ${
+                            selectedUnit === unit
+                              ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-700 shadow-xl scale-105'
+                              : 'bg-gradient-to-br from-yellow-200 to-yellow-300 border-yellow-400 hover:from-yellow-300 hover:to-yellow-400 hover:scale-102'
+                          }`}
+                          onClick={() => setSelectedUnit(unit)}
+                        >
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className={`text-sm font-bold transition-colors duration-300 ${
+                              selectedUnit === unit ? 'text-white' : 'text-slate-700 group-hover:text-slate-800'
+                            }`}>
+                              {unit}
+                            </span>
+                          </div>
+                          {selectedUnit === unit && (
+                            <>
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
+                              >
+                                <motion.div
+                                  animate={{ scale: [1, 1.2, 1] }}
+                                  transition={{ duration: 1, repeat: Infinity }}
+                                  className="w-2 h-2 bg-white rounded-full"
+                                ></motion.div>
+                              </motion.div>
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0 rounded-lg border-2 border-blue-300 animate-pulse"
+                              ></motion.div>
+                            </>
+                          )}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Central Pathway */}
+                  <div className="absolute inset-x-1/2 top-2 bottom-2 w-1 bg-gradient-to-b from-slate-300 to-slate-400 transform -translate-x-1/2 rounded-full"></div>
+                  
+                  {/* Legend */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className="mt-4 text-center"
+                  >
+                    <div className="inline-flex items-center gap-3 text-xs text-slate-600">
+                      <div className="flex items-center gap-1">
+                        <div className="w-3 h-3 bg-gradient-to-br from-yellow-200 to-yellow-300 border border-yellow-400 rounded"></div>
+                        <span>Unit Tersedia</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-blue-600 border border-blue-700 rounded"></div>
+                        <span>Unit Terpilih</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-2">
