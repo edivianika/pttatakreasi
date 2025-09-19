@@ -13,6 +13,7 @@ import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/NarrayaPage";
 import SedahPage from "./components/sedah/SedahPage";
 import SedahResidencePage from "./components/SedahResidencePage";
+import ScrollToTop from "./components/ScrollToTop";
 import { MessageCircle } from "lucide-react";
 import { companyInfo } from "./components/mockData";
 
@@ -71,6 +72,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/narraya" element={<NarrayaPage />} />

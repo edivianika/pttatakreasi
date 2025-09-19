@@ -434,3 +434,54 @@
 .py-16 { padding: 4rem 0; }
 .py-12 { padding: 3rem 0; }
 .py-8 { padding: 2rem 0; }
+
+/* Mobile scroll behavior */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure proper mobile viewport */
+body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 0;
+  }
+  
+  /* Ensure pages start from top on mobile */
+  .page-container {
+    min-height: 100vh;
+    padding-top: 0;
+  }
+  
+  /* Better mobile navigation */
+  .nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  /* Mobile page transitions */
+  .page-transition {
+    animation: slideInFromTop 0.3s ease-out;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -9,6 +9,13 @@ const NarrayaPage = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+    
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);

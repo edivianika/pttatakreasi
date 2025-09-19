@@ -132,6 +132,13 @@ function SedahGreenResidence() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -949,6 +956,47 @@ function SedahGreenResidence() {
           </div>
         </motion.div>
       </footer>
+
+      {/* Floating WhatsApp Button - Mobile Only */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        className="fixed bottom-6 right-6 z-50 md:hidden"
+      >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => window.open(whatsappUrl, '_blank')}
+          className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+          style={{
+            width: '60px',
+            height: '60px',
+            boxShadow: '0 4px 20px rgba(34, 197, 94, 0.4)'
+          }}
+        >
+          <MessageCircle size={28} />
+        </motion.button>
+        
+        {/* Pulse animation ring */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.7, 0, 0.7],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+          className="absolute inset-0 bg-green-500 rounded-full"
+          style={{
+            width: '60px',
+            height: '60px',
+            zIndex: -1
+          }}
+        />
+      </motion.div>
     </div>
   );
 }
