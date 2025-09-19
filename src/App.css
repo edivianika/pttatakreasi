@@ -103,6 +103,10 @@
   justify-content: center;
   gap: 8px;
   line-height: 1.3;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn-primary:hover {
@@ -131,6 +135,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn-secondary:hover {
@@ -338,10 +346,37 @@
   .btn-secondary {
     width: 100%;
     min-height: 52px;
+    font-size: 1rem;
+    padding: 16px 24px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.95);
   }
   
   .parallax-bg {
     background-attachment: scroll;
+  }
+  
+  /* Ensure proper touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better mobile spacing */
+  .hero-content {
+    padding: 0 0.5rem;
+  }
+  
+  /* Trust badges mobile optimization */
+  .trust-badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    margin: 2px;
   }
 }
 

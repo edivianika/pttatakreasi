@@ -12,6 +12,16 @@ const Hero = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleViewProjectsClick = () => {
+    const projectsElement = document.getElementById('projects');
+    if (projectsElement) {
+      projectsElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section id="home" className="hero-section parallax-hero relative">
       {/* Animated Background Paths */}
@@ -92,14 +102,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
               onClick={handleWhatsAppClick}
-              className="btn-primary text-lg px-8 py-4"
+              className="btn-primary text-lg px-8 py-4 w-full sm:w-auto"
             >
               <MessageCircle size={20} />
               Konsultasi via WhatsApp
             </button>
             <button 
-              onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-              className="btn-secondary"
+              onClick={handleViewProjectsClick}
+              className="btn-secondary w-full sm:w-auto"
             >
               Lihat Proyek Kami
             </button>
