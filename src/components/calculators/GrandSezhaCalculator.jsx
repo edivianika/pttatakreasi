@@ -107,6 +107,7 @@ Mohon informasi lebih lanjut.`;
             <Calculator size={24} className="text-blue-600" />
             <h1 className="text-xl font-bold text-slate-800">Kalkulator Grand Sezha</h1>
           </div>
+        </div>
       </motion.header>
 
       {/* Main Content */}
