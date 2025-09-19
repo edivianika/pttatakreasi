@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calculator, Home, MapPin, DollarSign, MessageCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { trackCalculatorUsage, trackWhatsAppClick } from '../utils/facebookPixel';
+import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPixel';
 
 const SedahCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
