@@ -13,6 +13,10 @@ import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/NarrayaPage";
 import SedahPage from "./components/sedah/SedahPage";
 import SedahResidencePage from "./components/SedahResidencePage";
+import CalculatorPage from "./components/CalculatorPage";
+import NarrayaCalculator from "./components/calculators/NarrayaCalculator";
+import SedahCalculator from "./components/calculators/SedahCalculator";
+import GrandSezhaCalculator from "./components/calculators/GrandSezhaCalculator";
 import ScrollToTop from "./components/ScrollToTop";
 import { MessageCircle } from "lucide-react";
 import { companyInfo } from "./components/mockData";
@@ -78,6 +82,10 @@ function App() {
           <Route path="/narraya" element={<NarrayaPage />} />
           <Route path="/sedah" element={<SedahPage />} />
           <Route path="/sedahresidence" element={<SedahResidencePage />} />
+          <Route path="/kalkulator" element={<CalculatorPage />} />
+          <Route path="/kalkulator/narraya" element={<NarrayaCalculator />} />
+          <Route path="/kalkulator/sedah" element={<SedahCalculator />} />
+          <Route path="/kalkulator/grandsezha" element={<GrandSezhaCalculator />} />
         </Routes>
       </BrowserRouter>
     </div>

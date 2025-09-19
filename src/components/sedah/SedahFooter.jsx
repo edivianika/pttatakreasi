@@ -200,7 +200,7 @@ const SedahFooter = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm text-center md:text-left">
-              © 2024 {companyInfo.name}. All rights reserved. | 
+              © 2025 {companyInfo.name}. All rights reserved. | 
               <span className="ml-1">Developer Properti Syariah Terpercaya</span>
             </div>
             

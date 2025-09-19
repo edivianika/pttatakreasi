@@ -352,7 +352,7 @@ const NarrayaPage = () => {
               </div>
             </div>
             <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
-              © 2024 TKBM Properti Syariah. Semua hak dilindungi.
+              © 2025 TKBM Properti Syariah. Semua hak dilindungi.
             </p>
             <p className="text-xs sm:text-sm text-gray-500">
               Wujudkan impian hunian syariah bersama kami

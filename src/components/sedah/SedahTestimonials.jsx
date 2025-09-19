@@ -35,7 +35,7 @@ const SedahTestimonials = () => {
       review: "Developer lokal yang terpercaya! Pelayanan excellent, lokasi strategis, dan yang terpenting 100% syariah tanpa riba. Recommended untuk investasi jangka panjang. Proses pembelian sangat mudah dan transparan.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-      year: "2024",
+      year: "2025",
       houseType: "Tipe 45"
     },
     {
@@ -46,7 +46,7 @@ const SedahTestimonials = () => {
       review: "Subhanallah, impian punya rumah tanpa riba akhirnya terwujud. Tim TKBM sangat membantu dari awal hingga serah terima. Fasilitas lengkap dan lingkungan nyaman untuk keluarga. Anak-anak senang tinggal di sini.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-      year: "2024",
+      year: "2025",
       houseType: "Tipe 36"
     },
     {
@@ -57,7 +57,7 @@ const SedahTestimonials = () => {
       review: "Kualitas bangunan sangat bagus, sesuai dengan yang dijanjikan. Developer sangat profesional dan amanah. Lokasi strategis, dekat dengan tempat kerja dan sekolah anak. Sangat puas dengan pelayanan TKBM.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
-      year: "2024",
+      year: "2025",
       houseType: "Tipe 45"
     },
     {
@@ -68,7 +68,7 @@ const SedahTestimonials = () => {
       review: "Lingkungan yang sangat nyaman dan aman. Tetangga-tetangga baik, ada mushola yang nyaman untuk ibadah. Developer sangat membantu dalam proses pembelian dan serah terima. Highly recommended!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
-      year: "2024",
+      year: "2025",
       houseType: "Tipe 36"
     }
   ];
