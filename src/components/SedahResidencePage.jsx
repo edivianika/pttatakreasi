@@ -153,6 +153,12 @@ function SedahGreenResidence() {
       // Update title
       document.title = 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM';
       
+      // Update URL for Open Graph
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) {
+        ogUrl.setAttribute('content', window.location.href);
+      }
+      
       // Update description
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
@@ -172,7 +178,23 @@ function SedahGreenResidence() {
 
       const ogImage = document.querySelector('meta[property="og:image"]');
       if (ogImage) {
-        ogImage.setAttribute('content', window.location.origin + '/sedah/sedah green residence-perumahan syariah ponorogo.png');
+        ogImage.setAttribute('content', window.location.origin + '/sedah/sedah%20green%20residence-perumahan%20syariah%20ponorogo.png');
+      }
+
+      // Add additional Open Graph image properties
+      const ogImageWidth = document.querySelector('meta[property="og:image:width"]');
+      if (ogImageWidth) {
+        ogImageWidth.setAttribute('content', '1200');
+      }
+
+      const ogImageHeight = document.querySelector('meta[property="og:image:height"]');
+      if (ogImageHeight) {
+        ogImageHeight.setAttribute('content', '630');
+      }
+
+      const ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
+      if (ogImageAlt) {
+        ogImageAlt.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo');
       }
 
       // Update Twitter tags
@@ -188,7 +210,12 @@ function SedahGreenResidence() {
 
       const twitterImage = document.querySelector('meta[property="twitter:image"]');
       if (twitterImage) {
-        twitterImage.setAttribute('content', window.location.origin + '/sedah/sedah green residence-perumahan syariah ponorogo.png');
+        twitterImage.setAttribute('content', window.location.origin + '/sedah/sedah%20green%20residence-perumahan%20syariah%20ponorogo.png');
+      }
+
+      const twitterImageAlt = document.querySelector('meta[property="twitter:image:alt"]');
+      if (twitterImageAlt) {
+        twitterImageAlt.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo');
       }
     };
 
