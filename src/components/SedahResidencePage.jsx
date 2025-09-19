@@ -19,6 +19,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
+import { trackProjectView, trackWhatsAppClick } from "../utils/facebookPixel";
 
 // Logo Component
 function SedahGreenLogo({ size = 40, className = "" }) {
@@ -221,6 +222,9 @@ function SedahGreenResidence() {
 
     changeFavicon();
     updateMetaTags();
+    
+    // Track project page view
+    trackProjectView('Sedah Green Residence');
 
     // Cleanup function to restore original favicon and meta tags when component unmounts
     return () => {
@@ -286,6 +290,12 @@ function SedahGreenResidence() {
   const whatsappMessage = "Halo, saya tertarik dengan Sedah Green Residence. Mohon info lebih lanjut.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
+  // Handle WhatsApp click with tracking
+  const handleWhatsAppClick = () => {
+    trackWhatsAppClick('Sedah Green Residence', 'Sedah Green Residence');
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-slate-50 via-emerald-50/30 to-slate-100">
       {/* Header */}
@@ -326,7 +336,7 @@ function SedahGreenResidence() {
             <Button 
               size="sm" 
               className="rounded-full bg-emerald-600 hover:bg-emerald-700"
-              onClick={() => window.open(whatsappUrl, '_blank')}
+              onClick={handleWhatsAppClick}
             >
               <MessageCircle className="h-4 w-4 mr-2" />
               WhatsApp
@@ -375,7 +385,7 @@ function SedahGreenResidence() {
             <motion.div variants={itemFadeIn} className="pt-4">
               <Button 
                 className="w-full rounded-full bg-emerald-600 hover:bg-emerald-700"
-                onClick={() => window.open(whatsappUrl, '_blank')}
+                onClick={handleWhatsAppClick}
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
                 Hubungi WhatsApp
@@ -475,7 +485,7 @@ function SedahGreenResidence() {
                   <Button 
                     size="lg" 
                     className="rounded-full group bg-emerald-600 hover:bg-emerald-700 text-lg px-8 py-6"
-                    onClick={() => window.open(whatsappUrl, '_blank')}
+                    onClick={handleWhatsAppClick}
                   >
                     <MessageCircle className="mr-2 h-5 w-5" />
                     Amankan Unit Sekarang
@@ -719,7 +729,7 @@ function SedahGreenResidence() {
                     </div>
                     <Button 
                       className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 rounded-full"
-                      onClick={() => window.open(whatsappUrl, '_blank')}
+                      onClick={handleWhatsAppClick}
                     >
                       <MessageCircle className="h-4 w-4 mr-2" />
                       Konsultasi Sekarang
@@ -998,7 +1008,7 @@ function SedahGreenResidence() {
                 <Button 
                   size="lg" 
                   className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-lg px-8 py-6 font-semibold w-auto max-w-xs"
-                  onClick={() => window.open(whatsappUrl, '_blank')}
+                  onClick={handleWhatsAppClick}
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Hubungi Sekarang via WhatsApp
@@ -1075,7 +1085,7 @@ function SedahGreenResidence() {
               <h3 className="font-semibold mb-4">Ikuti Kami</h3>
               <Button 
                 className="w-auto bg-emerald-600 hover:bg-emerald-700 rounded-full px-6 py-2"
-                onClick={() => window.open(whatsappUrl, '_blank')}
+                onClick={handleWhatsAppClick}
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
                 Chat WhatsApp

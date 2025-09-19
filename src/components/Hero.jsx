@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MessageCircle, Shield, DollarSign, TrendingUp } from 'lucide-react';
 import { companyInfo } from './mockData';
 import { HeroAnimatedText, SubtitleAnimatedText } from './AnimatedText';
 import AnimatedText from './AnimatedText';
 import { HeroBackgroundPaths } from './ui/hero-background-paths';
+import { trackViewContent, trackWhatsAppClick } from '../utils/facebookPixel';
 
 const Hero = () => {
+  // Track page view when Hero component mounts
+  useEffect(() => {
+    trackViewContent('Homepage', 'website');
+  }, []);
+
   const handleWhatsAppClick = () => {
+    // Track WhatsApp click as lead
+    trackWhatsAppClick('Homepage', 'General Inquiry');
+    
     const message = "Halo TKBM, saya tertarik dengan hunian syariah premium Anda. Mohon informasi lebih lanjut tentang proyek yang tersedia.";
     const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

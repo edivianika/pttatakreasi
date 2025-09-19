@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MessageCircle, Phone, MapPin, Clock, Award, Shield } from 'lucide-react';
 import { companyInfo } from './mockData';
+import { trackWhatsAppClick } from '../utils/facebookPixel';
 
 const FinalCTA = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -12,6 +13,9 @@ const FinalCTA = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
+    // Track WhatsApp click as lead
+    trackWhatsAppClick('Final CTA', 'General Inquiry');
+    
     const message = "Assalamualaikum TKBM, saya tertarik untuk segera memiliki hunian syariah dari Anda. Mohon informasi lengkap dan jadwal survey lokasi.";
     const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

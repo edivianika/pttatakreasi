@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calculator, Home, MapPin, DollarSign, MessageCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackCalculatorUsage, trackWhatsAppClick } from '../utils/facebookPixel';
 
 const SedahCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
@@ -89,6 +90,9 @@ const SedahCalculator = () => {
       left: 0,
       behavior: 'smooth'
     });
+
+    // Track calculator usage
+    trackCalculatorUsage('Sedah', '');
   }, []);
 
   // Calculate based on selected unit and options
@@ -106,6 +110,9 @@ const SedahCalculator = () => {
       });
       return;
     }
+
+    // Track unit selection
+    trackCalculatorUsage('Sedah', selectedUnit);
 
     const unit = unitData.find(item => item.unit === selectedUnit);
     if (!unit) return;
@@ -156,6 +163,9 @@ const SedahCalculator = () => {
 
   const handleWhatsAppClick = () => {
     if (!calculation.unitInfo) return;
+    
+    // Track WhatsApp click as lead
+    trackWhatsAppClick('Sedah Calculator', `Unit ${calculation.unitInfo.unit}`);
     
     const message = `Halo TKBM, saya tertarik dengan Sedah Green Residence Unit ${calculation.unitInfo.unit}. Berdasarkan kalkulator, saya ingin konsultasi lebih lanjut tentang:
 
