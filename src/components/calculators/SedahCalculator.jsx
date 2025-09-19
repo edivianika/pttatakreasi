@@ -211,23 +211,14 @@ Mohon informasi lebih lanjut.`;
         >
           <div className="text-center mb-4">
             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">
+              <br />
               Penghitung Harga Perumahan
             </h2>
             <p className="text-slate-600 text-sm mb-3">
               Pilih unit rumah untuk melihat detail harganya.
             </p>
             
-            {/* Price Disclaimer */}
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-amber-600">⚠️</span>
-                <span className="text-sm font-bold text-amber-800">PENTING</span>
-              </div>
-              <p className="text-xs text-amber-700 text-center">
-                <strong>Harga dapat berubah sewaktu-waktu tanpa pemberitahuan.</strong><br/>
-                Kalkulator ini hanya untuk estimasi. Hubungi admin WhatsApp untuk harga terkini.
-              </p>
-            </div>
+           
           </div>
 
           {/* Unit Selection */}
