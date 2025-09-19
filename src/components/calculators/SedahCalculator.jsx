@@ -8,7 +8,7 @@ const SedahCalculator = () => {
   const [discount, setDiscount] = useState(60000000); // 60 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
-  const [kreditTerm, setKreditTerm] = useState(5); // 5 tahun default
+  const [kreditTerm, setKreditTerm] = useState(3); // 5 tahun default
   const [kreditDP, setKreditDP] = useState(30); // 30% default
 
   const [calculation, setCalculation] = useState({
@@ -196,7 +196,7 @@ Mohon informasi lebih lanjut.`;
           </div>
           <div className="flex items-center gap-2">
             <Calculator size={24} className="text-green-600" />
-            <h1 className="text-xl font-bold text-slate-800">Kalkulator Sedah</h1>
+            <h1 className="text-xl font-bold text-slate-800">Price Sedah Green Residence</h1>
           </div>
         </div>
       </motion.header>
@@ -213,9 +213,21 @@ Mohon informasi lebih lanjut.`;
             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">
               Penghitung Harga Perumahan
             </h2>
-            <p className="text-slate-600 text-sm">
+            <p className="text-slate-600 text-sm mb-3">
               Pilih unit rumah untuk melihat detail harganya.
             </p>
+            
+            {/* Price Disclaimer */}
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-amber-600">⚠️</span>
+                <span className="text-sm font-bold text-amber-800">PENTING</span>
+              </div>
+              <p className="text-xs text-amber-700 text-center">
+                <strong>Harga dapat berubah sewaktu-waktu tanpa pemberitahuan.</strong><br/>
+                Kalkulator ini hanya untuk estimasi. Hubungi admin WhatsApp untuk harga terkini.
+              </p>
+            </div>
           </div>
 
           {/* Unit Selection */}
@@ -409,6 +421,44 @@ Mohon informasi lebih lanjut.`;
                   Konsultasi via WhatsApp
                 </button>
                 
+              </div>
+
+              {/* Terms and Conditions */}
+              <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                <h4 className="text-sm font-bold text-slate-800 mb-3 text-center">⚠️ Syarat dan Ketentuan</h4>
+                
+                <div className="space-y-2 text-xs text-slate-600">
+                  <div className="flex items-start gap-2">
+                    <span className="text-amber-600 font-bold">•</span>
+                    <p><strong>Harga dapat berubah sewaktu-waktu</strong> tanpa pemberitahuan sebelumnya. Harga yang tertera di kalkulator ini hanya estimasi dan tidak mengikat.</p>
+                  </div>
+                  
+                  <div className="flex items-start gap-2">
+                    <span className="text-amber-600 font-bold">•</span>
+                    <p><strong>Harga final</strong> akan ditentukan berdasarkan kondisi terkini dan kebijakan perusahaan pada saat pembelian.</p>
+                  </div>
+                  
+                  <div className="flex items-start gap-2">
+                    <span className="text-amber-600 font-bold">•</span>
+                    <p><strong>Untuk informasi harga terbaru dan lengkap</strong>, silakan hubungi admin via WhatsApp untuk konsultasi langsung.</p>
+                  </div>
+                  
+                  <div className="flex items-start gap-2">
+                    <span className="text-amber-600 font-bold">•</span>
+                    <p><strong>Kalkulator ini hanya untuk estimasi</strong> dan tidak menggantikan konsultasi resmi dengan tim sales TKBM.</p>
+                  </div>
+                  
+                  <div className="flex items-start gap-2">
+                    <span className="text-amber-600 font-bold">•</span>
+                    <p><strong>Akad syariah</strong> akan dilakukan sesuai dengan ketentuan yang berlaku dan disepakati bersama.</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 p-3 bg-amber-100 rounded-lg border border-amber-200">
+                  <p className="text-xs text-amber-800 text-center font-semibold">
+                    💬 <strong>Hubungi Admin WhatsApp</strong> untuk informasi harga terkini dan konsultasi lengkap
+                  </p>
+                </div>
               </div>
             </motion.div>
           )}
