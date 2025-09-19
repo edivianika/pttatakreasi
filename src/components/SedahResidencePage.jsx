@@ -138,6 +138,110 @@ function SedahGreenResidence() {
       left: 0,
       behavior: 'smooth'
     });
+
+    // Change favicon to Sedah logo
+    const changeFavicon = () => {
+      const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+      link.type = 'image/png';
+      link.rel = 'shortcut icon';
+      link.href = '/sedah-logo.png';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    };
+
+    // Update meta tags for Sedah Green Residence
+    const updateMetaTags = () => {
+      // Update title
+      document.title = 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM';
+      
+      // Update description
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🌿 Konsep Green Living dengan Fasilitas Lengkap. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+      }
+
+      // Update Open Graph tags
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM');
+      }
+
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) {
+        ogDescription.setAttribute('content', '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🌿 Konsep Green Living dengan Fasilitas Lengkap. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+      }
+
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      if (ogImage) {
+        ogImage.setAttribute('content', window.location.origin + '/sedah/sedah green residence-perumahan syariah ponorogo.png');
+      }
+
+      // Update Twitter tags
+      const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+      if (twitterTitle) {
+        twitterTitle.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM');
+      }
+
+      const twitterDescription = document.querySelector('meta[property="twitter:description"]');
+      if (twitterDescription) {
+        twitterDescription.setAttribute('content', '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🌿 Konsep Green Living dengan Fasilitas Lengkap. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+      }
+
+      const twitterImage = document.querySelector('meta[property="twitter:image"]');
+      if (twitterImage) {
+        twitterImage.setAttribute('content', window.location.origin + '/sedah/sedah green residence-perumahan syariah ponorogo.png');
+      }
+    };
+
+    changeFavicon();
+    updateMetaTags();
+
+    // Cleanup function to restore original favicon and meta tags when component unmounts
+    return () => {
+      // Restore original favicon
+      const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+      link.type = 'image/png';
+      link.rel = 'shortcut icon';
+      link.href = '/logo.png';
+      document.getElementsByTagName('head')[0].appendChild(link);
+
+      // Restore original meta tags
+      document.title = 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo';
+      
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', '🏠 TKBM - Developer Properti Syariah Terpercaya di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🏘️ Proyek: Sedah Green Residence, Narraya Green Residence, Grand Sezha. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+      }
+
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo');
+      }
+
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) {
+        ogDescription.setAttribute('content', '🏠 TKBM - Developer Properti Syariah Terpercaya di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🏘️ Proyek: Sedah Green Residence, Narraya Green Residence, Grand Sezha. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+      }
+
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      if (ogImage) {
+        ogImage.setAttribute('content', window.location.origin + '/tatakreasi/perumahan-ponorogo-sedah-green-residence.png');
+      }
+
+      const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+      if (twitterTitle) {
+        twitterTitle.setAttribute('content', 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo');
+      }
+
+      const twitterDescription = document.querySelector('meta[property="twitter:description"]');
+      if (twitterDescription) {
+        twitterDescription.setAttribute('content', '🏠 TKBM - Developer Properti Syariah Terpercaya di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🏘️ Proyek: Sedah Green Residence, Narraya Green Residence, Grand Sezha. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+      }
+
+      const twitterImage = document.querySelector('meta[property="twitter:image"]');
+      if (twitterImage) {
+        twitterImage.setAttribute('content', window.location.origin + '/tatakreasi/perumahan-ponorogo-sedah-green-residence.png');
+      }
+    };
     
     const handleScroll = () => {
       setScrollY(window.scrollY);
