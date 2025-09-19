@@ -202,32 +202,32 @@ Mohon informasi lebih lanjut.`;
       </motion.header>
 
       {/* Main Content */}
-      <div className="container py-8 px-4">
+      <div className="container py-4 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">
+          <div className="text-center mb-4">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">
               Penghitung Harga Perumahan
             </h2>
-            <p className="text-slate-600 text-lg">
+            <p className="text-slate-600 text-sm">
               Pilih unit rumah untuk melihat detail harganya.
             </p>
           </div>
 
           {/* Unit Selection */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <label htmlFor="unit-select" className="text-lg font-semibold text-slate-700">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
+            <label htmlFor="unit-select" className="text-sm font-semibold text-slate-700">
               Pilih Unit:
             </label>
             <select
               id="unit-select"
               value={selectedUnit}
               onChange={(e) => setSelectedUnit(e.target.value)}
-              className="w-full sm:w-auto px-6 py-3 border-2 border-slate-300 rounded-full shadow-sm bg-white text-lg font-medium text-slate-800 focus:outline-none focus:ring-4 focus:ring-green-500 focus:border-green-500 transition-all duration-300 cursor-pointer"
+              className="w-full sm:w-auto px-4 py-2 border-2 border-slate-300 rounded-full shadow-sm bg-white text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 cursor-pointer"
             >
               <option value="">-- Pilih Unit --</option>
               {unitData.map((unit) => (
@@ -244,77 +244,77 @@ Mohon informasi lebih lanjut.`;
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-4"
             >
               {/* Unit Info Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {/* Unit Info */}
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
-                  <p className="text-sm font-medium text-slate-500">Nomor Unit</p>
-                  <p className="text-2xl font-bold text-slate-900 mt-1">
+                <div className="bg-white rounded-lg p-3 shadow-lg border-l-4 border-blue-500">
+                  <p className="text-xs font-medium text-slate-500">Nomor Unit</p>
+                  <p className="text-lg font-bold text-slate-900 mt-1">
                     {calculation.unitInfo.unit.charAt(0)} - {calculation.unitInfo.unit.substring(1)}
                   </p>
-                  <p className="text-sm text-slate-600 mt-1">
+                  <p className="text-xs text-slate-600 mt-1">
                     LT: {calculation.unitInfo.lt} / LB: {calculation.unitInfo.lb}
                   </p>
                 </div>
 
                 {/* Harga Normal */}
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-teal-500">
-                  <p className="text-sm font-medium text-slate-500">Harga Normal</p>
-                  <p className="text-2xl font-bold text-slate-900 mt-1">
+                <div className="bg-white rounded-lg p-3 shadow-lg border-l-4 border-teal-500">
+                  <p className="text-xs font-medium text-slate-500">Harga Normal</p>
+                  <p className="text-lg font-bold text-slate-900 mt-1">
                     {formatCurrency(calculation.hargaNormal)}
                   </p>
                 </div>
 
                 {/* Diskon */}
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
-                  <p className="text-sm font-medium text-slate-500">Diskon</p>
+                <div className="bg-white rounded-lg p-3 shadow-lg border-l-4 border-amber-500">
+                  <p className="text-xs font-medium text-slate-500">Diskon</p>
                   <input
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
                     max="60000000"
-                    className="w-full mt-1 p-2 rounded-lg border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
-                  <p className="text-sm font-bold text-slate-600 mt-1">
+                  <p className="text-xs font-bold text-slate-600 mt-1">
                     {formatCurrency(discount)}
                   </p>
                 </div>
               </div>
 
               {/* Harga Setelah Diskon */}
-              <div className="bg-amber-50 rounded-xl p-6 border-l-4 border-amber-700">
-                <p className="text-lg font-medium text-amber-800">Harga Setelah Diskon</p>
-                <p className="text-3xl sm:text-4xl font-extrabold text-amber-900 mt-1">
+              <div className="bg-amber-50 rounded-lg p-3 border-l-4 border-amber-700">
+                <p className="text-sm font-medium text-amber-800">Harga Setelah Diskon</p>
+                <p className="text-xl font-extrabold text-amber-900 mt-1">
                   {formatCurrency(calculation.hargaSetelahDiskon)}
                 </p>
               </div>
 
               {/* Payment Options */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {/* Cash Lunak */}
-                <div className="bg-white rounded-xl p-6 shadow-lg border-t-4 border-blue-600">
-                  <h3 className="text-xl font-bold text-blue-800 mb-4 text-center">Harga Cash Lunak</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <label className="text-base text-slate-600">Jangka Waktu:</label>
+                <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-blue-600">
+                  <h3 className="text-sm font-bold text-blue-800 mb-2 text-center">Harga Cash Lunak</h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-1">
+                      <label className="text-xs text-slate-600">Jangka Waktu:</label>
                       <select
                         value={cashLunakTerm}
                         onChange={(e) => setCashLunakTerm(parseInt(e.target.value))}
-                        className="w-1/2 px-3 py-2 border rounded-md text-sm text-center font-medium bg-slate-100"
+                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
                         <option value={1}>1 Tahun</option>
                         <option value={2}>2 Tahun</option>
                         <option value={3}>3 Tahun</option>
                       </select>
                     </div>
-                    <div className="flex items-center justify-between gap-2">
-                      <label className="text-base text-slate-600">DP Awal (%):</label>
+                    <div className="flex items-center justify-between gap-1">
+                      <label className="text-xs text-slate-600">DP Awal (%):</label>
                       <select
                         value={cashLunakDP}
                         onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
-                        className="w-1/2 px-3 py-2 border rounded-md text-sm text-center font-medium bg-slate-100"
+                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
                         <option value={30}>30%</option>
                         <option value={40}>40%</option>
@@ -322,19 +322,19 @@ Mohon informasi lebih lanjut.`;
                       </select>
                     </div>
                   </div>
-                  <div className="mt-6 space-y-3">
+                  <div className="mt-3 space-y-2">
                     <div>
-                      <p className="text-sm font-medium text-slate-500">DP Awal</p>
-                      <p className="text-xl font-bold text-blue-900">
+                      <p className="text-xs font-medium text-slate-500">DP Awal</p>
+                      <p className="text-sm font-bold text-blue-900">
                         {formatCurrency(calculation.dpCashLunak)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-500">Angsuran</p>
-                      <p className="text-xl font-bold text-blue-900">
+                      <p className="text-xs font-medium text-slate-500">Angsuran</p>
+                      <p className="text-sm font-bold text-blue-900">
                         {formatCurrency(calculation.angsuranCashLunak)}
                       </p>
-                      <p className="text-sm text-slate-500">
+                      <p className="text-xs text-slate-500">
                         {cashLunakTerm * 12} kali angsuran
                       </p>
                     </div>
@@ -342,15 +342,15 @@ Mohon informasi lebih lanjut.`;
                 </div>
 
                 {/* Kredit */}
-                <div className="bg-white rounded-xl p-6 shadow-lg border-t-4 border-rose-600">
-                  <h3 className="text-xl font-bold text-rose-800 mb-4 text-center">Harga Kredit</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <label className="text-base text-slate-600">Jangka Waktu:</label>
+                <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-rose-600">
+                  <h3 className="text-sm font-bold text-rose-800 mb-2 text-center">Harga Kredit</h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-1">
+                      <label className="text-xs text-slate-600">Jangka Waktu:</label>
                       <select
                         value={kreditTerm}
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
-                        className="w-1/2 px-3 py-2 border rounded-md text-sm text-center font-medium bg-slate-100"
+                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
                         <option value={1}>1 Tahun</option>
                         <option value={2}>2 Tahun</option>
@@ -361,37 +361,37 @@ Mohon informasi lebih lanjut.`;
                         <option value={7}>7 Tahun</option>
                       </select>
                     </div>
-                    <div className="flex items-center justify-between gap-2">
-                      <label className="text-base text-slate-600">DP Awal (%):</label>
+                    <div className="flex items-center justify-between gap-1">
+                      <label className="text-xs text-slate-600">DP Awal (%):</label>
                       <select
                         value={kreditDP}
                         onChange={(e) => setKreditDP(parseInt(e.target.value))}
-                        className="w-1/2 px-3 py-2 border rounded-md text-sm text-center font-medium bg-slate-100"
+                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
                         <option value={30}>30%</option>
                         <option value={50}>50%</option>
                       </select>
                     </div>
                   </div>
-                  <div className="mt-6 space-y-3">
+                  <div className="mt-3 space-y-2">
                     <div>
-                      <p className="text-sm font-medium text-slate-500">Total Harga Kredit</p>
-                      <p className="text-xl font-bold text-rose-900">
+                      <p className="text-xs font-medium text-slate-500">Total Harga Kredit</p>
+                      <p className="text-sm font-bold text-rose-900">
                         {formatCurrency(calculation.hargaKredit)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-500">DP Awal</p>
-                      <p className="text-xl font-bold text-rose-900">
+                      <p className="text-xs font-medium text-slate-500">DP Awal</p>
+                      <p className="text-sm font-bold text-rose-900">
                         {formatCurrency(calculation.dpKredit)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-500">Angsuran</p>
-                      <p className="text-xl font-bold text-rose-900">
+                      <p className="text-xs font-medium text-slate-500">Angsuran</p>
+                      <p className="text-sm font-bold text-rose-900">
                         {formatCurrency(calculation.angsuranKredit)}
                       </p>
-                      <p className="text-sm text-slate-500">
+                      <p className="text-xs text-slate-500">
                         {kreditTerm * 12} kali angsuran
                       </p>
                     </div>
@@ -400,22 +400,15 @@ Mohon informasi lebih lanjut.`;
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <button
                   onClick={handleWhatsAppClick}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                  className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                 >
-                  <MessageCircle size={20} />
+                  <MessageCircle size={16} />
                   Konsultasi via WhatsApp
                 </button>
                 
-                <button
-                  onClick={() => window.open('tel:+628133138887')}
-                  className="flex-1 bg-slate-600 hover:bg-slate-700 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  <Phone size={20} />
-                  Hubungi Kami
-                </button>
               </div>
             </motion.div>
           )}
