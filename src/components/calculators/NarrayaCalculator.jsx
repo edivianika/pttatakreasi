@@ -193,14 +193,24 @@ Mohon informasi lebih lanjut.`;
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-4">
-            {/* House Image */}
-            <div className="mb-4 flex justify-center">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200 shadow-lg border-2 border-blue-300">
-                <img 
-                  src="/tatakreasi/perumahan-ponorogo-narraya-green-residence.png" 
-                  alt="Narraya Green Residence" 
-                  className="w-full h-full object-cover"
-                />
+            {/* House Image Hero */}
+            <div className="mb-6 flex justify-center">
+              <div className="w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl border border-blue-200">
+                <div className="aspect-video relative">
+                  <img 
+                    src="/tatakreasi/perumahan-ponorogo-narraya-green-residence.png" 
+                    alt="Narraya Green Residence" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  <div className="absolute bottom-2 left-3 right-3">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2">
+                      <p className="text-xs font-semibold text-slate-800 text-center">
+                        Narraya Green Residence
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
