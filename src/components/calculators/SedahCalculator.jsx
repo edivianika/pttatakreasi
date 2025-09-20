@@ -198,16 +198,28 @@ Mohon informasi lebih lanjut.`;
         className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm"
       >
         <div className="container flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-3">
-            <Link to="/kalkulator" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <ArrowLeft size={24} className="text-slate-600" />
-              <span className="font-semibold text-slate-800">Kembali</span>
+          <div className="flex items-center gap-2">
+            <Link to="/kalkulator" className="flex items-center gap-2 hover:opacity-80 transition-opacity group">
+              <div className="p-1 rounded-full bg-slate-100 group-hover:bg-slate-200 transition-colors">
+                <ArrowLeft size={20} className="text-slate-600" />
+              </div>
+              <span className="font-medium text-slate-700 text-sm hidden sm:block">Kembali</span>
             </Link>
           </div>
-          <div className="flex items-center gap-2">
-            <Calculator size={24} className="text-green-600" />
-            <h1 className="text-xl font-bold text-slate-800">Price Sedah Green Residence</h1>
+          <div className="flex items-center gap-2 flex-1 justify-center">
+            <div className="p-1.5 rounded-full bg-green-100">
+              <Calculator size={20} className="text-green-600" />
+            </div>
+            <div className="text-center">
+              <h1 className="text-sm sm:text-lg font-bold text-slate-800 leading-tight">
+                Price Sedah
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                Green Residence
+              </p>
+            </div>
           </div>
+          <div className="w-16"></div> {/* Spacer for centering */}
         </div>
       </motion.header>
 
