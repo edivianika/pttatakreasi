@@ -236,15 +236,23 @@ Mohon informasi lebih lanjut.`;
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-4">
+            {/* House Image */}
+            <div className="mb-4 flex justify-center">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gradient-to-br from-green-100 to-green-200 shadow-lg border-2 border-green-300">
+                <img 
+                  src="/tatakreasi/perumahan-ponorogo-sedah-green-residence.png" 
+                  alt="Sedah Green Residence" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">
-              <br />
               Penghitung Harga Perumahan
             </h2>
             <p className="text-slate-600 text-sm mb-3">
               Pilih unit rumah untuk melihat detail harganya.
             </p>
-            
-           
           </div>
 
           {/* Unit Selection */}
