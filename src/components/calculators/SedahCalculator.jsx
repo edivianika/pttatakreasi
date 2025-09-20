@@ -206,9 +206,13 @@ Mohon informasi lebih lanjut.`;
               <span className="font-medium text-slate-700 text-sm hidden sm:block">Kembali</span>
             </Link>
           </div>
-          <div className="flex items-center gap-2 flex-1 justify-center">
-            <div className="p-1.5 rounded-full bg-green-100">
-              <Calculator size={20} className="text-green-600" />
+          <div className="flex items-center gap-3 flex-1 justify-center">
+            <div className="w-10 h-10 rounded-full overflow-hidden bg-white shadow-sm border border-slate-200">
+              <img 
+                src="/sedah-logo.png" 
+                alt="Sedah Green Residence Logo" 
+                className="w-full h-full object-contain p-1"
+              />
             </div>
             <div className="text-center">
               <h1 className="text-sm sm:text-lg font-bold text-slate-800 leading-tight">
