@@ -109,7 +109,7 @@ const YouTubeVideo = ({
         )}
         
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-emerald-700/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70" />
       </div>
 
       {/* Video Controls */}
@@ -140,8 +140,11 @@ const YouTubeVideo = ({
       <div className="relative z-10 h-full flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
+            {/* Text Background Overlay */}
+            <div className="absolute inset-0 bg-black/30 rounded-2xl -m-4 sm:-m-6 lg:-m-8"></div>
+            <div className="relative z-10">
             <div className="mb-4 sm:mb-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-white drop-shadow-2xl" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
                 {title}
               </h1>
               <HeroAnimatedText 
@@ -152,7 +155,8 @@ const YouTubeVideo = ({
                   "Keluarga Bahagia & Berkah"
                 ]}
                 interval={4000}
-                className="text-emerald-300"
+                className="text-emerald-200 drop-shadow-xl"
+                style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}
               />
             </div>
             <div className="mb-6 sm:mb-8">
@@ -164,10 +168,11 @@ const YouTubeVideo = ({
                   "dengan Akad Syariah"
                 ]}
                 interval={3500}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-xl"
+                style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}
               />
             </div>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90 leading-relaxed px-2">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-white leading-relaxed px-2 drop-shadow-lg" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.7)'}}>
               {description}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
@@ -185,6 +190,7 @@ const YouTubeVideo = ({
                 <Phone size={20} className="sm:w-6 sm:h-6" />
                 <span className="text-sm sm:text-base">Hubungi Kami</span>
               </button>
+            </div>
             </div>
           </div>
         </div>
