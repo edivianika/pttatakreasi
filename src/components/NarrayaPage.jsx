@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, MessageCircle } from 'lucide-react';
+import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, MessageCircle, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { companyInfo } from './mockData';
 import Gallery from './Gallery';
@@ -7,6 +7,7 @@ import HeroVideo from './HeroVideo';
 
 const NarrayaPage = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -25,6 +26,18 @@ const NarrayaPage = () => {
     const message = "Halo TKBM, saya tertarik dengan proyek Narraya. Mohon informasi lebih lanjut tentang hunian syariah ini.";
     const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
   };
 
   const features = [
@@ -111,40 +124,115 @@ const NarrayaPage = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
+            {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
               <img 
-                src="/logo.png" 
-                alt="TKBM Logo" 
-                className="w-10 h-10 object-contain"
+                src="/narraya-logo.jpeg" 
+                alt="Narraya Green Residence Logo" 
+                className="w-12 h-12 object-contain"
               />
               <div>
-                <h1 className="font-bold text-lg text-emerald-800">TKBM</h1>
-                <p className="text-xs text-gray-600">Properti Syariah</p>
+                <h1 className="font-bold text-lg text-emerald-800">NARRAYA</h1>
+                <p className="text-xs text-gray-600">Green Residence</p>
               </div>
             </Link>
-            <Link 
-              to="/" 
-              className="flex items-center gap-2 text-gray-600 hover:text-emerald-600 transition-colors"
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <button 
+                onClick={() => scrollToSection('overview')}
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              >
+                Tentang
+              </button>
+              <button 
+                onClick={() => scrollToSection('details')}
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              >
+                Detail Proyek
+              </button>
+              <button 
+                onClick={() => scrollToSection('gallery')}
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              >
+                Galeri
+              </button>
+              <button 
+                onClick={() => scrollToSection('amenities')}
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              >
+                Fasilitas
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')}
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              >
+                Testimoni
+              </button>
+              <button 
+                onClick={handleWhatsAppClick}
+                className="bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition-colors font-medium flex items-center gap-2"
+              >
+                <MessageCircle size={16} />
+                Konsultasi
+              </button>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={toggleMenu}
+              className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors"
             >
-              <ArrowLeft size={20} />
-              <span>Kembali ke Beranda</span>
-            </Link>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden bg-white border-t border-gray-200 py-4">
+              <nav className="flex flex-col space-y-4">
+                <button 
+                  onClick={() => scrollToSection('overview')}
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
+                >
+                  Tentang
+                </button>
+                <button 
+                  onClick={() => scrollToSection('details')}
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
+                >
+                  Detail Proyek
+                </button>
+                <button 
+                  onClick={() => scrollToSection('gallery')}
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
+                >
+                  Galeri
+                </button>
+                <button 
+                  onClick={() => scrollToSection('amenities')}
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
+                >
+                  Fasilitas
+                </button>
+                <button 
+                  onClick={() => scrollToSection('testimonials')}
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
+                >
+                  Testimoni
+                </button>
+                <button 
+                  onClick={handleWhatsAppClick}
+                  className="bg-emerald-600 text-white px-4 py-3 rounded-full hover:bg-emerald-700 transition-colors font-medium flex items-center gap-2 mx-4"
+                >
+                  <MessageCircle size={16} />
+                  Konsultasi Gratis
+                </button>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
-
-      {/* Narraya Logo Section */}
-      <div className="pt-16 pb-8 bg-gradient-to-b from-emerald-50 to-white">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex justify-center">
-            <img 
-              src="/narraya-logo.jpeg" 
-              alt="Narraya Green Residence Logo" 
-              className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
-            />
-          </div>
-        </div>
-      </div>
 
       {/* Hero Section with Video */}
       <div className="pt-16">
@@ -160,7 +248,7 @@ const NarrayaPage = () => {
       </div>
 
       {/* Project Overview */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="overview" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -195,7 +283,7 @@ const NarrayaPage = () => {
       </section>
 
       {/* Project Details */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section id="details" className="py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -248,7 +336,7 @@ const NarrayaPage = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section id="gallery" className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <Gallery 
@@ -261,7 +349,7 @@ const NarrayaPage = () => {
       </section>
 
       {/* Amenities */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-emerald-50">
+      <section id="amenities" className="py-12 sm:py-16 lg:py-20 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -287,7 +375,7 @@ const NarrayaPage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section id="testimonials" className="py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -364,16 +452,6 @@ const NarrayaPage = () => {
                 <p className="text-xs text-gray-400">Properti Syariah</p>
               </div>
             </div>
-            
-            {/* Narraya Logo in Footer */}
-            <div className="mb-6">
-              <img 
-                src="/narraya-logo.jpeg" 
-                alt="Narraya Green Residence Logo" 
-                className="w-24 h-24 sm:w-32 sm:h-32 object-contain mx-auto"
-              />
-            </div>
-            
             <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
               © 2025 TKBM Properti Syariah. Semua hak dilindungi.
             </p>
