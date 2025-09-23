@@ -52,9 +52,17 @@ const HeroVideo = ({
   }, []);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-screen overflow-hidden bg-[#020617]">
+      {/* Dark Radial Glow Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `radial-gradient(circle 500px at 50% 200px, #3e3e3e, transparent)`,
+        }}
+      />
+      
       {/* Video Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-10">
         {videoSrc ? (
           <video
             ref={videoRef}
@@ -112,7 +120,7 @@ const HeroVideo = ({
       )}
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
+      <div className="relative z-20 h-full flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="mb-4 sm:mb-6">
