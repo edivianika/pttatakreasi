@@ -133,6 +133,19 @@ const NarrayaPage = () => {
         </div>
       </header>
 
+      {/* Narraya Logo Section */}
+      <div className="pt-16 pb-8 bg-gradient-to-b from-emerald-50 to-white">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <img 
+              src="/narraya-logo.jpeg" 
+              alt="Narraya Green Residence Logo" 
+              className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section with Video */}
       <div className="pt-16">
         <HeroVideo
@@ -351,6 +364,16 @@ const NarrayaPage = () => {
                 <p className="text-xs text-gray-400">Properti Syariah</p>
               </div>
             </div>
+            
+            {/* Narraya Logo in Footer */}
+            <div className="mb-6">
+              <img 
+                src="/narraya-logo.jpeg" 
+                alt="Narraya Green Residence Logo" 
+                className="w-24 h-24 sm:w-32 sm:h-32 object-contain mx-auto"
+              />
+            </div>
+            
             <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
               © 2025 TKBM Properti Syariah. Semua hak dilindungi.
             </p>
