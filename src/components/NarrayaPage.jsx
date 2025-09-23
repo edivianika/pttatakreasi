@@ -3,7 +3,7 @@ import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, Messag
 import { Link } from 'react-router-dom';
 import { companyInfo } from './mockData';
 import Gallery from './Gallery';
-import HeroVideo from './HeroVideo';
+import YouTubeVideo from './YouTubeVideo';
 
 const NarrayaPage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -129,7 +129,7 @@ const NarrayaPage = () => {
   ];
 
   // Hero video and images
-  const heroVideo = 'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=165&oauth2_token_id=57447761';
+  const youtubeUrl = 'https://www.youtube.com/watch?v=LCtM9ZAT0t0';
   const heroPoster = 'https://images.unsplash.com/photo-1560448204-e4596d6bbf7a?w=1920&h=1080&fit=crop';
   const heroFallback = 'https://images.unsplash.com/photo-1560448204-e4596d6bbf7a?w=1920&h=1080&fit=crop';
 
@@ -249,10 +249,10 @@ const NarrayaPage = () => {
         </div>
       </header>
 
-      {/* Hero Section with Video */}
+      {/* Hero Section with YouTube Video */}
       <div className="pt-16">
-        <HeroVideo
-          videoSrc={heroVideo}
+        <YouTubeVideo
+          youtubeUrl={youtubeUrl}
           posterImage={heroPoster}
           fallbackImage={heroFallback}
           title="Narraya"
