@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageCircle, Phone } from 'lucide-react';
 import { HeroAnimatedText, SubtitleAnimatedText } from './AnimatedText';
+import { BackgroundPaths } from './ui/background-paths';
 
 const HeroVideo = ({ 
   fallbackImage,
@@ -12,30 +13,25 @@ const HeroVideo = ({
 }) => {
 
   return (
-    <div className="relative h-screen overflow-hidden bg-[#020617]">
-      {/* Dark Radial Glow Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `radial-gradient(circle 500px at 50% 200px, #3e3e3e, transparent)`,
-        }}
-      />
+    <div className="relative h-screen overflow-hidden">
+      {/* Background Paths */}
+      <BackgroundPaths title="Narraya Green Residence" />
       
-      {/* Image Background */}
+      {/* Image Background Overlay */}
       <div className="absolute inset-0 z-10">
         <img
           src={fallbackImage}
           alt="Hero Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-20"
         />
         
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-emerald-700/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/60 to-emerald-700/40" />
       </div>
 
 
-      {/* Content */}
-      <div className="relative z-20 h-full flex items-center">
+      {/* Content Overlay */}
+      <div className="absolute inset-0 z-30 flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="mb-4 sm:mb-6">
