@@ -12,7 +12,7 @@ const YouTubeVideo = ({
   onWhatsAppClick,
   onContactClick 
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [showControls, setShowControls] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -26,7 +26,7 @@ const YouTubeVideo = ({
   };
 
   const videoId = getYouTubeVideoId(youtubeUrl);
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&cc_load_policy=0&start=0&end=0`;
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&cc_load_policy=0&start=0&end=0`;
 
   const togglePlay = () => {
     if (iframeRef.current) {
@@ -61,10 +61,14 @@ const YouTubeVideo = ({
   };
 
   useEffect(() => {
-    // Set initial mute state
+    // Set initial mute state and ensure video is playing
     if (iframeRef.current && isVideoLoaded) {
       const iframe = iframeRef.current;
       iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+      // Ensure video is playing on load
+      setTimeout(() => {
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }, 1000);
     }
   }, [isVideoLoaded]);
 
