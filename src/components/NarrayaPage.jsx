@@ -128,23 +128,14 @@ const NarrayaPage = () => {
     'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop'
   ];
 
-  // Hero video and images
-  const heroVideo = 'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=165&oauth2_token_id=57447761';
-  const heroPoster = 'https://images.unsplash.com/photo-1560448204-e4596d6bbf7a?w=1920&h=1080&fit=crop';
+  // Hero image
   const heroFallback = 'https://images.unsplash.com/photo-1560448204-e4596d6bbf7a?w=1920&h=1080&fit=crop';
 
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617] relative">
-        {/* Dark Radial Glow Background */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `radial-gradient(circle 500px at 50% 200px, #3e3e3e, transparent)`,
-          }}
-        />
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
@@ -154,8 +145,8 @@ const NarrayaPage = () => {
                 className="w-12 h-12 object-contain"
               />
               <div>
-                <h1 className="font-bold text-lg text-white">NARRAYA</h1>
-                <p className="text-xs text-gray-300">Green Residence</p>
+                <h1 className="font-bold text-lg text-emerald-800">NARRAYA</h1>
+                <p className="text-xs text-gray-600">Green Residence</p>
               </div>
             </Link>
 
@@ -163,31 +154,31 @@ const NarrayaPage = () => {
             <nav className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection('overview')}
-                className="text-gray-300 hover:text-white transition-colors font-medium"
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
               >
                 Tentang
               </button>
               <button 
                 onClick={() => scrollToSection('details')}
-                className="text-gray-300 hover:text-white transition-colors font-medium"
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
               >
                 Detail Proyek
               </button>
               <button 
                 onClick={() => scrollToSection('gallery')}
-                className="text-gray-300 hover:text-white transition-colors font-medium"
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
               >
                 Galeri
               </button>
               <button 
                 onClick={() => scrollToSection('amenities')}
-                className="text-gray-300 hover:text-white transition-colors font-medium"
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
               >
                 Fasilitas
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}
-                className="text-gray-300 hover:text-white transition-colors font-medium"
+                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
               >
                 Testimoni
               </button>
@@ -203,7 +194,7 @@ const NarrayaPage = () => {
             {/* Mobile Menu Button */}
             <button 
               onClick={toggleMenu}
-              className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+              className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -211,35 +202,35 @@ const NarrayaPage = () => {
 
           {/* Mobile Navigation Menu */}
           {isMenuOpen && (
-            <div className="md:hidden bg-[#020617] border-t border-gray-700 py-4 relative z-10">
+            <div className="md:hidden bg-white border-t border-gray-200 py-4">
               <nav className="flex flex-col space-y-4">
                 <button 
                   onClick={() => scrollToSection('overview')}
-                  className="text-gray-300 hover:text-white transition-colors font-medium text-left px-4 py-2"
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
                 >
                   Tentang
                 </button>
                 <button 
                   onClick={() => scrollToSection('details')}
-                  className="text-gray-300 hover:text-white transition-colors font-medium text-left px-4 py-2"
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
                 >
                   Detail Proyek
                 </button>
                 <button 
                   onClick={() => scrollToSection('gallery')}
-                  className="text-gray-300 hover:text-white transition-colors font-medium text-left px-4 py-2"
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
                 >
                   Galeri
                 </button>
                 <button 
                   onClick={() => scrollToSection('amenities')}
-                  className="text-gray-300 hover:text-white transition-colors font-medium text-left px-4 py-2"
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
                 >
                   Fasilitas
                 </button>
                 <button 
                   onClick={() => scrollToSection('testimonials')}
-                  className="text-gray-300 hover:text-white transition-colors font-medium text-left px-4 py-2"
+                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
                 >
                   Testimoni
                 </button>
@@ -256,11 +247,9 @@ const NarrayaPage = () => {
         </div>
       </header>
 
-      {/* Hero Section with Video */}
+      {/* Hero Section */}
       <div className="pt-16">
         <HeroVideo
-          videoSrc={heroVideo}
-          posterImage={heroPoster}
           fallbackImage={heroFallback}
           title="Narraya"
           description="Wujudkan impian keluarga muslim dengan hunian syariah yang nyaman, aman, dan penuh berkah"
