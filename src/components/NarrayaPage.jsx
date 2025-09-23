@@ -3,7 +3,6 @@ import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, Messag
 import { Link } from 'react-router-dom';
 import { companyInfo } from './mockData';
 import Gallery from './Gallery';
-import HeroVideo from './HeroVideo';
 
 const NarrayaPage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -128,8 +127,6 @@ const NarrayaPage = () => {
     'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop'
   ];
 
-  // Hero image
-  const heroFallback = 'https://images.unsplash.com/photo-1560448204-e4596d6bbf7a?w=1920&h=1080&fit=crop';
 
   return (
     <div className="min-h-screen bg-white">
@@ -247,19 +244,9 @@ const NarrayaPage = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <div className="pt-16">
-        <HeroVideo
-          fallbackImage={heroFallback}
-          title="Narraya"
-          description="Wujudkan impian keluarga muslim dengan hunian syariah yang nyaman, aman, dan penuh berkah"
-          onWhatsAppClick={handleWhatsAppClick}
-          onContactClick={handleWhatsAppClick}
-        />
-      </div>
 
       {/* Project Overview */}
-      <section id="overview" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="overview" className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
