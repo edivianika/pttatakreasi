@@ -321,9 +321,11 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={30}>30%</option>
                         <option value={40}>40%</option>
                         <option value={50}>50%</option>
+                        <option value={60}>60%</option>
+                        <option value={70}>70%</option>
+                        <option value={80}>80%</option>
                       </select>
                     </div>
                   </div>
