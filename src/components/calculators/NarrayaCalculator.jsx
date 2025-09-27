@@ -103,7 +103,7 @@ const NarrayaCalculator = () => {
   }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, kreditTerm, kreditDP]);
 
   const handleDiscountChange = (value) => {
-    const maxDiscount = 200000000;
+    const maxDiscount = 150000000;
     const actualValue = Math.min(parseInt(value) || 0, maxDiscount);
     setDiscount(actualValue);
   };
@@ -279,7 +279,7 @@ Mohon informasi lebih lanjut.`;
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
-                    max="60000000"
+                    max="150000000"
                     className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
                   <p className="text-xs font-bold text-slate-600 mt-1">
