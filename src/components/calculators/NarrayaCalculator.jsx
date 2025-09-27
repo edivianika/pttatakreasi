@@ -9,8 +9,8 @@ const NarrayaCalculator = () => {
   const [discount, setDiscount] = useState(150000000); // 60 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
-  const [kreditTerm, setKreditTerm] = useState(3); // 3 tahun default
-  const [kreditDP, setKreditDP] = useState(30); // 30% default
+  const [kreditTerm, setKreditTerm] = useState(5); // 5 tahun default
+  const [kreditDP, setKreditDP] = useState(25); // 25% default
 
   const [calculation, setCalculation] = useState({
     unitInfo: null,
@@ -357,9 +357,6 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={1}>1 Tahun</option>
-                        <option value={2}>2 Tahun</option>
-                        <option value={3}>3 Tahun</option>
                         <option value={4}>4 Tahun</option>
                         <option value={5}>5 Tahun</option>
                         <option value={6}>6 Tahun</option>
@@ -373,8 +370,8 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditDP(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
+                        <option value={25}>25%</option>
                         <option value={30}>30%</option>
-                        <option value={50}>50%</option>
                       </select>
                     </div>
                   </div>
