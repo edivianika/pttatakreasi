@@ -67,12 +67,12 @@ const NarrayaHero = () => {
         </svg>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(100vh-8rem)]">
           
           {/* Text Content */}
           <motion.div 
-            className="order-2 lg:order-1 text-center lg:text-left"
+            className="order-2 lg:order-1 text-center lg:text-left px-2 sm:px-0"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -82,7 +82,7 @@ const NarrayaHero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6 mx-2 sm:mx-0"
             >
               <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
               Narraya Green Residence
@@ -90,7 +90,7 @@ const NarrayaHero = () => {
 
             {/* Main Title */}
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight px-2 sm:px-0"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -105,7 +105,7 @@ const NarrayaHero = () => {
 
             {/* Subtitle */}
             <motion.h2 
-              className="text-xl md:text-2xl font-semibold text-green-700 mb-6"
+              className="text-xl md:text-2xl font-semibold text-green-700 mb-6 px-2 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -115,7 +115,7 @@ const NarrayaHero = () => {
 
             {/* Description */}
             <motion.p 
-              className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
+              className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 px-2 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
@@ -126,7 +126,7 @@ const NarrayaHero = () => {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-2 sm:px-0"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
@@ -148,7 +148,7 @@ const NarrayaHero = () => {
 
             {/* Stats */}
             <motion.div 
-              className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-slate-200"
+              className="grid grid-cols-3 gap-4 sm:gap-6 mt-12 pt-8 border-t border-slate-200 px-2 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
@@ -172,7 +172,7 @@ const NarrayaHero = () => {
 
           {/* Image Slideshow */}
           <motion.div 
-            className="order-1 lg:order-2 relative"
+            className="order-1 lg:order-2 relative px-2 sm:px-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
