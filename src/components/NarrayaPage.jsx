@@ -43,23 +43,38 @@ const NarrayaPage = () => {
   const features = [
     {
       icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />,
-      title: "Akad Syariah Murni",
-      description: "Tanpa riba, gharar, & maysir"
+      title: "100% Akad Syariah",
+      description: "Setiap transaksi menggunakan akad murni syariah tanpa riba, gharar, dan maysir"
     },
     {
       icon: <Home className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />,
       title: "Desain Modern",
-      description: "Kontemporer, fasilitas lengkap"
+      description: "Arsitektur kontemporer dengan fasilitas lengkap dan teknologi terdepan"
     },
     {
       icon: <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-red-600" />,
       title: "Lokasi Strategis",
-      description: "Di jantung Ponorogo, akses mudah"
+      description: "Berada di jantung Ponorogo dengan akses mudah ke berbagai fasilitas publik"
     },
     {
       icon: <Users className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />,
-      title: "Komunitas Nyaman",
-      description: "Aman & ramah keluarga"
+      title: "Komunitas Berkualitas",
+      description: "Hunian eksklusif untuk keluarga yang menghargai nilai-nilai syariah"
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600" />,
+      title: "Investasi Tinggi",
+      description: "Nilai properti yang terus meningkat dengan potensi keuntungan jangka panjang yang menguntungkan"
+    },
+    {
+      icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-600" />,
+      title: "Berkualitas Bergaransi",
+      description: "Kualitas konstruksi terjamin dengan garansi resmi dan standar bangunan terbaik"
+    },
+    {
+      icon: <CreditCard className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />,
+      title: "Pembayaran Fleksibel",
+      description: "Sistem pembayaran yang mudah dengan berbagai pilihan cicilan sesuai kemampuan finansial"
     }
   ];
 
@@ -247,7 +262,7 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {features.map((feature, index) => (
                 <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex justify-center mb-3 sm:mb-4">
