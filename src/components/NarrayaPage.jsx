@@ -133,18 +133,18 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2">
-                  <div className="flex justify-center mb-4 sm:mb-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
+                <div key={index} className="bg-white rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="flex justify-center mb-3 sm:mb-6">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center">
                       {feature.icon}
                     </div>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">
+                  <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3 lg:mb-4 text-center leading-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                  <p className="text-xs sm:text-sm lg:text-base text-gray-600 text-center leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
