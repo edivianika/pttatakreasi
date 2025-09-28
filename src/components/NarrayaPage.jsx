@@ -509,101 +509,78 @@ const NarrayaPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-emerald-600 to-emerald-800 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto text-center text-white">
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center text-white">
             
             {/* Limited Offer Badge */}
-            <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-              <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
-              PROMO TERBATAS - HANYA 2 UNIT PERTAMA!
+            <div className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+              Penawaran Terbatas - Hanya 2 Unit Pertama
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-2 leading-tight">
-              🔥 <span className="text-yellow-300">HEMAT 150 JUTA!</span> 🔥
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Hemat <span className="text-emerald-400">150 Juta</span>
             </h2>
             
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 sm:p-8 mb-8 border border-white/30">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                <div className="text-left md:text-right">
-                  <p className="text-lg sm:text-xl font-semibold text-white/90 mb-2">Harga Normal:</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-red-300 line-through">Rp 950 Juta</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-white/20">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="text-center md:text-right">
+                  <p className="text-base text-white/80 mb-2">Harga Normal</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-white/60 line-through">Rp 950 Juta</p>
                 </div>
-                <div className="text-left">
-                  <p className="text-lg sm:text-xl font-semibold text-yellow-200 mb-2">Harga Promo:</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-yellow-300">Rp 800 Juta</p>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-base sm:text-lg lg:text-xl mb-2 text-white/95 px-4 font-semibold">
-              ⚡ Kesempatan Emas Ini Tidak Akan Terulang! ⚡
-            </p>
-            <p className="text-sm sm:text-base lg:text-lg mb-8 text-white/90 px-4">
-              Jadilah salah satu dari 2 keluarga beruntung yang mendapatkan hunian syariah premium 
-              dengan <span className="font-bold text-yellow-300">DISKON FANTASTIS 150 JUTA!</span> 
-              Download brosur sekarang dan dapatkan penawaran eksklusif ini.
-            </p>
-
-            {/* Countdown Timer Effect */}
-            <div className="bg-red-600/80 backdrop-blur-sm rounded-xl p-4 mb-8 border border-red-400/50">
-              <p className="text-sm font-bold text-white mb-2">⏰ PROMO BERAKHIR DALAM:</p>
-              <div className="flex justify-center gap-4 text-white">
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold">7</div>
-                  <div className="text-xs">HARI</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold">23</div>
-                  <div className="text-xs">JAM</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold">59</div>
-                  <div className="text-xs">MENIT</div>
+                <div className="text-center md:text-left">
+                  <p className="text-base text-emerald-300 mb-2">Harga Promo</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-emerald-400">Rp 800 Juta</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+            <p className="text-lg sm:text-xl mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Dapatkan hunian syariah premium di lokasi strategis Ponorogo dengan 
+              <span className="font-semibold text-emerald-300"> diskon istimewa 150 juta</span> 
+              untuk 2 keluarga pertama yang bergabung dengan komunitas Narraya.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-yellow-400 text-gray-900 px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-xl transition-all duration-300 hover:bg-yellow-300 hover:scale-105 shadow-2xl flex items-center justify-center gap-3 w-full sm:w-auto animate-bounce"
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center gap-3"
               >
-                <MessageCircle size={24} className="sm:w-7 sm:h-7" />
-                <span>📋 DOWNLOAD BROSUR SEKARANG!</span>
+                <MessageCircle size={20} />
+                <span>Download Brosur</span>
               </button>
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-transparent border-3 border-white text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-white hover:text-emerald-600 flex items-center justify-center gap-3 w-full sm:w-auto"
+                className="bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
               >
-                <Phone size={20} className="sm:w-6 sm:h-6" />
-                <span>📞 HUBUNGI SALES SEKARANG</span>
+                <Phone size={20} />
+                <span>Hubungi Sales</span>
               </button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-lg font-bold">100%</div>
-                <div className="text-xs text-white/80">Syariah</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                <div className="text-xl font-bold text-emerald-400">100%</div>
+                <div className="text-sm text-white/70">Syariah</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-lg font-bold">0%</div>
-                <div className="text-xs text-white/80">Riba</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                <div className="text-xl font-bold text-emerald-400">0%</div>
+                <div className="text-sm text-white/70">Riba</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-lg font-bold">SHM</div>
-                <div className="text-xs text-white/80">Sertifikat</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                <div className="text-xl font-bold text-emerald-400">SHM</div>
+                <div className="text-sm text-white/70">Sertifikat</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-lg font-bold">IMB</div>
-                <div className="text-xs text-white/80">Lengkap</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                <div className="text-xl font-bold text-emerald-400">IMB</div>
+                <div className="text-sm text-white/70">Lengkap</div>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-white/70 mt-6 px-4">
-              *Promo terbatas untuk 2 pembeli pertama yang menandatangani booking fee. Syarat dan ketentuan berlaku.
+            <p className="text-sm text-white/60">
+              *Penawaran terbatas untuk 2 pembeli pertama yang menandatangani booking fee. Syarat dan ketentuan berlaku.
             </p>
           </div>
         </div>
