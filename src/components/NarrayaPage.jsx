@@ -461,30 +461,6 @@ const NarrayaPage = () => {
                 </div>
               </div>
 
-              {/* Tipe Info */}
-              <div className="mt-8 bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-2xl p-6 sm:p-8 text-white text-center">
-                <div className="max-w-2xl mx-auto">
-                  <h4 className="text-xl sm:text-2xl font-bold mb-4">Tipe 85 - Hunian 2 Lantai</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm sm:text-base">
-                    <div className="bg-white/20 rounded-lg p-3">
-                      <div className="font-bold text-lg">85 m²</div>
-                      <div className="text-white/90">Luas Bangunan</div>
-                    </div>
-                    <div className="bg-white/20 rounded-lg p-3">
-                      <div className="font-bold text-lg">96 m²</div>
-                      <div className="text-white/90">Luas Tanah</div>
-                    </div>
-                    <div className="bg-white/20 rounded-lg p-3">
-                      <div className="font-bold text-lg">3</div>
-                      <div className="text-white/90">Kamar Tidur</div>
-                    </div>
-                    <div className="bg-white/20 rounded-lg p-3">
-                      <div className="font-bold text-lg">2</div>
-                      <div className="text-white/90">Kamar Mandi</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
