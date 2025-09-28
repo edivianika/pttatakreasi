@@ -215,14 +215,7 @@ const NarrayaPage = () => {
       <section id="details" className="py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-                Detail Proyek Narraya
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                Lihat detail lengkap siteplan, spesifikasi bangunan, dan denah lantai hunian modern Narraya Green Residence
-              </p>
-            </div>
+            
 
             {/* Siteplan Section */}
             <div className="mb-16 sm:mb-20">
@@ -516,29 +509,102 @@ const NarrayaPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-emerald-600 to-emerald-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-2">
-              Siap Memulai Perjalanan Baru?
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-emerald-600 to-emerald-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto text-center text-white">
+            
+            {/* Limited Offer Badge */}
+            <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
+              <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
+              PROMO TERBATAS - HANYA 2 UNIT PERTAMA!
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-2 leading-tight">
+              🔥 <span className="text-yellow-300">HEMAT 150 JUTA!</span> 🔥
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 text-white/90 px-4">
-              Bergabunglah dengan komunitas Narraya dan rasakan berkah hunian syariah 
-              yang nyaman, aman, dan penuh kebahagiaan
+            
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 sm:p-8 mb-8 border border-white/30">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div className="text-left md:text-right">
+                  <p className="text-lg sm:text-xl font-semibold text-white/90 mb-2">Harga Normal:</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-red-300 line-through">Rp 950 Juta</p>
+                </div>
+                <div className="text-left">
+                  <p className="text-lg sm:text-xl font-semibold text-yellow-200 mb-2">Harga Promo:</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-yellow-300">Rp 800 Juta</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-base sm:text-lg lg:text-xl mb-2 text-white/95 px-4 font-semibold">
+              ⚡ Kesempatan Emas Ini Tidak Akan Terulang! ⚡
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <p className="text-sm sm:text-base lg:text-lg mb-8 text-white/90 px-4">
+              Jadilah salah satu dari 2 keluarga beruntung yang mendapatkan hunian syariah premium 
+              dengan <span className="font-bold text-yellow-300">DISKON FANTASTIS 150 JUTA!</span> 
+              Download brosur sekarang dan dapatkan penawaran eksklusif ini.
+            </p>
+
+            {/* Countdown Timer Effect */}
+            <div className="bg-red-600/80 backdrop-blur-sm rounded-xl p-4 mb-8 border border-red-400/50">
+              <p className="text-sm font-bold text-white mb-2">⏰ PROMO BERAKHIR DALAM:</p>
+              <div className="flex justify-center gap-4 text-white">
+                <div className="text-center">
+                  <div className="text-xl sm:text-2xl font-bold">7</div>
+                  <div className="text-xs">HARI</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xl sm:text-2xl font-bold">23</div>
+                  <div className="text-xs">JAM</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xl sm:text-2xl font-bold">59</div>
+                  <div className="text-xs">MENIT</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-white text-emerald-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-gray-100 hover:scale-105 shadow-2xl flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto"
+                className="bg-yellow-400 text-gray-900 px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-xl transition-all duration-300 hover:bg-yellow-300 hover:scale-105 shadow-2xl flex items-center justify-center gap-3 w-full sm:w-auto animate-bounce"
               >
-                <MessageCircle size={20} className="sm:w-6 sm:h-6" />
-                <span className="text-sm sm:text-base">Download Brosur</span>
+                <MessageCircle size={24} className="sm:w-7 sm:h-7" />
+                <span>📋 DOWNLOAD BROSUR SEKARANG!</span>
               </button>
-              <button className="bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-white hover:text-emerald-600 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
+              <button 
+                onClick={handleWhatsAppClick}
+                className="bg-transparent border-3 border-white text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-white hover:text-emerald-600 flex items-center justify-center gap-3 w-full sm:w-auto"
+              >
                 <Phone size={20} className="sm:w-6 sm:h-6" />
-                <span className="text-sm sm:text-base">Hubungi Sales</span>
+                <span>📞 HUBUNGI SALES SEKARANG</span>
               </button>
             </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                <div className="text-lg font-bold">100%</div>
+                <div className="text-xs text-white/80">Syariah</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                <div className="text-lg font-bold">0%</div>
+                <div className="text-xs text-white/80">Riba</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                <div className="text-lg font-bold">SHM</div>
+                <div className="text-xs text-white/80">Sertifikat</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                <div className="text-lg font-bold">IMB</div>
+                <div className="text-xs text-white/80">Lengkap</div>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-white/70 mt-6 px-4">
+              *Promo terbatas untuk 2 pembeli pertama yang menandatangani booking fee. Syarat dan ketentuan berlaku.
+            </p>
           </div>
         </div>
       </section>
