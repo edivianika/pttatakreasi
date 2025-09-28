@@ -133,9 +133,9 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 justify-items-center">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-6 lg:gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div key={index} className="bg-white rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-21.33px)] xl:w-[calc(25%-18px)] max-w-xs">
                   <div className="flex justify-center mb-3 sm:mb-6">
                     <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center">
                       {feature.icon}
