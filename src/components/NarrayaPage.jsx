@@ -262,20 +262,20 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            {/* Mobile 2x2 Grid Layout */}
+            {/* Mobile 3 Cards Per Row Layout */}
             <div className="block sm:hidden">
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-wrap justify-center gap-3">
                 {features.map((feature, index) => (
-                  <div key={index} className="bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-xs flex-shrink-0">
-                    <div className="flex justify-center mb-3">
-                      <div className="w-10 h-10 flex items-center justify-center">
+                  <div key={index} className="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-1/3 max-w-[110px] flex-shrink-0">
+                    <div className="flex justify-center mb-2">
+                      <div className="w-8 h-8 flex items-center justify-center">
                         {feature.icon}
                       </div>
                     </div>
-                    <h3 className="text-base font-bold text-gray-900 mb-2 text-center">
+                    <h3 className="text-xs font-bold text-gray-900 mb-1 text-center leading-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-xs text-gray-600 text-center leading-relaxed">
+                    <p className="text-[10px] text-gray-600 text-center leading-tight">
                       {feature.description}
                     </p>
                   </div>
@@ -283,10 +283,10 @@ const NarrayaPage = () => {
               </div>
             </div>
 
-            {/* Desktop Full Grid Layout */}
+            {/* Desktop 3 Cards Per Row Layout */}
             <div className="hidden sm:flex sm:flex-wrap sm:justify-center gap-4 sm:gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-sm flex-shrink-0">
+                <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-1/3 max-w-xs flex-shrink-0">
                   <div className="flex justify-center mb-4 sm:mb-6">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
                       {feature.icon}
