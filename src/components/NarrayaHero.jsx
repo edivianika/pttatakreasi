@@ -202,12 +202,6 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                 >
                   Download Brosur
                 </button>
-                <button 
-                  onClick={onContactClick}
-                  className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-3 text-lg rounded-full font-semibold transition-all duration-300"
-                >
-                  Konsultasi Gratis
-                </button>
               </motion.div>
 
               {/* Features */}
