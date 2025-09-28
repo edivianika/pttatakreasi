@@ -525,25 +525,6 @@ const NarrayaPage = () => {
               </button>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <div className="text-xl font-bold text-emerald-400">100%</div>
-                <div className="text-sm text-white/70">Syariah</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <div className="text-xl font-bold text-emerald-400">0%</div>
-                <div className="text-sm text-white/70">Riba</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <div className="text-xl font-bold text-emerald-400">SHM</div>
-                <div className="text-sm text-white/70">Sertifikat</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <div className="text-xl font-bold text-emerald-400">IMB</div>
-                <div className="text-sm text-white/70">Lengkap</div>
-              </div>
-            </div>
 
             <p className="text-sm text-white/60">
               *Penawaran terbatas untuk 2 pembeli pertama yang menandatangani booking fee. Syarat dan ketentuan berlaku.
