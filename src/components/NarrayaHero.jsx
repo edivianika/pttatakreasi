@@ -206,15 +206,15 @@ const NarrayaHero = () => {
               </button>
 
               {/* Slide Indicators */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5">
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
                 {images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-all duration-300 ${
+                    className={`w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-green-500 scale-125 shadow-sm' 
-                        : 'bg-white/50 hover:bg-white/70'
+                        ? 'bg-green-500 scale-150 shadow-sm' 
+                        : 'bg-white/40 hover:bg-white/60'
                     }`}
                   />
                 ))}
