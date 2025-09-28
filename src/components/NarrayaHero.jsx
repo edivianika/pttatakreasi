@@ -54,7 +54,7 @@ const NarrayaHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section className="relative min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 pt-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -82,9 +82,9 @@ const NarrayaHero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6"
             >
-              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
               Narraya Green Residence
             </motion.div>
 
@@ -95,7 +95,7 @@ const NarrayaHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600">
                 Narraya Green
               </span>
               <span className="block text-slate-800 mt-2">
@@ -105,7 +105,7 @@ const NarrayaHero = () => {
 
             {/* Subtitle */}
             <motion.h2 
-              className="text-xl md:text-2xl font-semibold text-blue-700 mb-6"
+              className="text-xl md:text-2xl font-semibold text-green-700 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -133,14 +133,14 @@ const NarrayaHero = () => {
             >
               <button
                 onClick={handleWhatsAppClick}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
               >
                 Konsultasi Gratis
                 <MoveRight className="w-5 h-5" />
               </button>
               <button
                 onClick={handleViewProjectsClick}
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg font-semibold rounded-xl transition-all duration-300"
+                className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-8 py-6 text-lg font-semibold rounded-xl transition-all duration-300"
               >
                 Lihat Detail
               </button>
@@ -159,7 +159,7 @@ const NarrayaHero = () => {
                 { number: "100%", label: "Syariah Compliant" }
               ].map((stat, index) => (
                 <div key={index} className="text-center lg:text-left">
-                  <div className="text-2xl md:text-3xl font-bold text-blue-600">
+                  <div className="text-2xl md:text-3xl font-bold text-green-600">
                     {stat.number}
                   </div>
                   <div className="text-sm text-slate-600 mt-1">
@@ -213,7 +213,7 @@ const NarrayaHero = () => {
                     onClick={() => goToSlide(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-blue-500 scale-125' 
+                        ? 'bg-green-500 scale-125' 
                         : 'bg-white/60 hover:bg-white/80'
                     }`}
                   />
@@ -226,7 +226,7 @@ const NarrayaHero = () => {
 
             {/* Floating Elements */}
             <motion.div
-              className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full opacity-20 blur-xl"
+              className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-20 blur-xl"
               animate={{
                 y: [0, -20, 0],
                 scale: [1, 1.1, 1],
@@ -238,7 +238,7 @@ const NarrayaHero = () => {
               }}
             />
             <motion.div
-              className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full opacity-15 blur-xl"
+              className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full opacity-15 blur-xl"
               animate={{
                 y: [0, 15, 0],
                 scale: [1, 0.9, 1],
