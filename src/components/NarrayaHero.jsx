@@ -211,7 +211,7 @@ const NarrayaHero = () => {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+                    className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-all duration-300 ${
                       index === currentSlide 
                         ? 'bg-green-500 scale-110' 
                         : 'bg-white/60 hover:bg-white/80'
