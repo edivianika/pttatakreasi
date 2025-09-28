@@ -165,7 +165,15 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
               {/* Main Heading */}
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-900 leading-tight">
-                  Wujudkan Hunian{" "}
+                Hunian Modern, Investasi <span className="text-emerald-600">
+                    <AnimatedTextCycle
+                      words={["Bernilai", "Berkah", "Halal"]}
+                      interval={3000}
+                      className="text-emerald-600"
+                    />
+                  </span>
+
+                  {/* Wujudkan Hunian{" "}
                   <span className="text-emerald-600">
                     <AnimatedTextCycle
                       words={["Impian", "Syariah", "Berkah", "Halal"]}
@@ -173,12 +181,11 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                       className="text-emerald-600"
                     />
                   </span>
-                  {" "}Keluarga
+                  {" "}Keluarga */}
                 </h1>
                 
                 <p className="text-lg md:text-xl text-emerald-700 max-w-2xl">
-                  Bergabunglah dengan Narraya Green Residence untuk memiliki properti syariah 
-                  yang berkualitas, halal, dan penuh berkah untuk masa depan keluarga Anda.
+                Narraya Residence menghadirkan hunian eksklusif dengan desain modern elegan dan kualitas bangunan terbaik. Setiap unit dirancang untuk memberikan kenyamanan maksimal bagi keluarga sekaligus menjadi pilihan investasi yang terus meningkat nilainya.
                 </p>
               </div>
 
@@ -312,19 +319,6 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2 }}
-                className="absolute -bottom-4 -left-4 hidden lg:block"
-              >
-                <div className="p-4 bg-white/90 backdrop-blur-sm shadow-lg border border-emerald-100 rounded-xl">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-emerald-600">24/7</div>
-                    <div className="text-xs text-emerald-700">Support</div>
-                  </div>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>
