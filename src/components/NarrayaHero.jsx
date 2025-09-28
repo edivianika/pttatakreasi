@@ -67,7 +67,7 @@ const NarrayaHero = () => {
         </svg>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 sm:px-4 py-8 lg:py-16">
+      <div className="relative z-10 container mx-auto px-8 sm:px-6 md:px-4 py-8 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(100vh-8rem)]">
           
           {/* Text Content */}
@@ -206,15 +206,15 @@ const NarrayaHero = () => {
               </button>
 
               {/* Slide Indicators */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5">
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
                 {images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`w-1 h-1 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-green-500 scale-110' 
-                        : 'bg-white/60 hover:bg-white/80'
+                        ? 'bg-green-500 scale-150' 
+                        : 'bg-white/40 hover:bg-white/60'
                     }`}
                   />
                 ))}
