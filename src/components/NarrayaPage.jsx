@@ -263,19 +263,19 @@ const NarrayaPage = () => {
             </div>
 
             {/* Mobile 3 Cards Per Row Layout */}
-            <div className="block sm:hidden">
-              <div className="flex flex-wrap justify-center gap-3">
+            <div className="block sm:hidden px-2">
+              <div className="flex flex-wrap justify-center gap-2">
                 {features.map((feature, index) => (
-                  <div key={index} className="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-1/3 max-w-[110px] flex-shrink-0">
-                    <div className="flex justify-center mb-2">
-                      <div className="w-8 h-8 flex items-center justify-center">
+                  <div key={index} className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-1/3 max-w-[100px] flex-shrink-0">
+                    <div className="flex justify-center mb-1">
+                      <div className="w-6 h-6 flex items-center justify-center">
                         {feature.icon}
                       </div>
                     </div>
-                    <h3 className="text-xs font-bold text-gray-900 mb-1 text-center leading-tight">
+                    <h3 className="text-[10px] font-bold text-gray-900 mb-1 text-center leading-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-[10px] text-gray-600 text-center leading-tight">
+                    <p className="text-[8px] text-gray-600 text-center leading-tight">
                       {feature.description}
                     </p>
                   </div>
