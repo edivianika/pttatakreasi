@@ -200,7 +200,7 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                   onClick={onWhatsAppClick}
                   className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
                 >
-                  Lihat Properti
+                  Download Brosur
                 </button>
                 <button 
                   onClick={onContactClick}

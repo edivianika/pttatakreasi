@@ -298,7 +298,7 @@ const NarrayaPage = () => {
                 className="bg-white text-emerald-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-gray-100 hover:scale-105 shadow-2xl flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto"
               >
                 <MessageCircle size={20} className="sm:w-6 sm:h-6" />
-                <span className="text-sm sm:text-base">Konsultasi Gratis</span>
+                <span className="text-sm sm:text-base">Download Brosur</span>
               </button>
               <button className="bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-white hover:text-emerald-600 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
                 <Phone size={20} className="sm:w-6 sm:h-6" />
