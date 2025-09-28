@@ -265,7 +265,7 @@ const NarrayaPage = () => {
             {/* Mobile 2x2 Grid Layout */}
             <div className="block sm:hidden">
               <div className="grid grid-cols-2 gap-4">
-                {features.slice(0, 4).map((feature, index) => (
+                {features.map((feature, index) => (
                   <div key={index} className="bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                     <div className="flex justify-center mb-3">
                       <div className="w-10 h-10 flex items-center justify-center">
