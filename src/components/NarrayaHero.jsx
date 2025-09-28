@@ -263,14 +263,14 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                 </AnimatePresence>
 
                 {/* Slide Indicators */}
-                <div className="absolute bottom-4 right-4 flex space-x-2">
+                <div className="absolute bottom-4 right-4 flex space-x-1.5">
                   {PROPERTY_SLIDES.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentSlide 
-                          ? 'bg-white scale-110' 
+                          ? 'bg-white scale-125' 
                           : 'bg-white/50 hover:bg-white/70'
                       }`}
                     />
