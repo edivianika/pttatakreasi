@@ -65,6 +65,7 @@ const PROPERTY_SLIDES = [
 function NarrayaHero({ onWhatsAppClick, onContactClick }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -75,8 +76,18 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    
+    // Set initial mobile state
+    handleResize();
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const slideVariants = {
@@ -263,17 +274,20 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                 </AnimatePresence>
 
                 {/* Slide Indicators */}
-                <div className="absolute bottom-1 right-1 md:bottom-4 md:right-4 flex gap-0.5 md:gap-1">
+                <div className={`absolute flex ${isMobile ? 'bottom-2 right-2 gap-1' : 'bottom-4 right-4 gap-2'}`}>
                   {PROPERTY_SLIDES.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
+                      style={{
+                        width: isMobile ? '3px' : '8px',
+                        height: isMobile ? '3px' : '8px',
+                      }}
                       className={`
-                        w-0.5 h-0.5 md:w-2 md:h-2 
                         rounded-full transition-all duration-300 
                         ${index === currentSlide 
-                          ? 'bg-white/70 scale-150 md:bg-white md:scale-125' 
-                          : 'bg-white/20 hover:bg-white/40 md:bg-white/50 md:hover:bg-white/70'
+                          ? `bg-white scale-125 ${isMobile ? 'opacity-70' : 'opacity-100'}` 
+                          : `bg-white hover:opacity-50 ${isMobile ? 'opacity-25' : 'opacity-60'}`
                         }
                       `}
                     />
