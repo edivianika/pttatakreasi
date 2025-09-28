@@ -173,6 +173,44 @@ const NarrayaPage = () => {
         </div>
       </section>
 
+      {/* Investment Call to Action with Video */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
+                <span className="text-emerald-600">INVESTASI</span> SEKARANG JUGA!
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto px-4 mb-4 sm:mb-6">
+                Kapan lagi bisa punya hunian eksklusif dan modern paling strategis di Ponorogo.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
+                Narraya Residence bukan sekadar tempat tinggal, tapi juga pilihan investasi cerdas dengan nilai yang terus meningkat dari tahun ke tahun.
+              </p>
+            </div>
+
+            {/* YouTube Video Embed */}
+            <div className="max-w-4xl mx-auto">
+              <div className="relative w-full h-0 pb-[56.25%] rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&showinfo=0"
+                  title="Narraya Residence - Video Investasi"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              
+              {/* Video Caption */}
+              <p className="text-center text-sm sm:text-base text-gray-500 mt-4 sm:mt-6">
+                Tonton video untuk melihat keunggulan dan potensi investasi Narraya Residence
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Project Details */}
       <section id="details" className="py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
