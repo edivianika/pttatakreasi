@@ -479,31 +479,6 @@ const NarrayaPage = () => {
         </div>
       </section>
 
-      {/* Amenities */}
-      <section id="amenities" className="py-12 sm:py-16 lg:py-20 bg-emerald-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-                Fasilitas Lengkap & Modern
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                Nikmati kenyamanan hidup terbaik dengan fasilitas yang dirancang 
-                khusus untuk memenuhi kebutuhan keluarga muslim modern
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
-              {amenities.map((amenity, index) => (
-                <div key={index} className="flex items-center gap-3 sm:gap-4 bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-gray-800 font-medium">{amenity}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials */}
       <section id="testimonials" className="py-12 sm:py-16 lg:py-20">
