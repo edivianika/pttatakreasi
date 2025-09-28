@@ -262,7 +262,29 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            {/* Mobile 2x2 Grid Layout */}
+            <div className="block sm:hidden">
+              <div className="grid grid-cols-2 gap-4">
+                {features.slice(0, 4).map((feature, index) => (
+                  <div key={index} className="bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex justify-center mb-3">
+                      <div className="w-10 h-10 flex items-center justify-center">
+                        {feature.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-base font-bold text-gray-900 mb-2 text-center">
+                      {feature.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 text-center leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Full Grid Layout */}
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {features.map((feature, index) => (
                 <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex justify-center mb-4 sm:mb-6">
