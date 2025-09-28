@@ -218,8 +218,8 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
                 className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8"
               >
                 <div className="text-center lg:text-left">
-                  <div className="text-2xl font-bold text-emerald-800">250+</div>
-                  <div className="text-sm text-emerald-600">Unit Hunian</div>
+                  <div className="text-2xl font-bold text-emerald-800">12</div>
+                  <div className="text-sm text-emerald-600">Unit - Limited</div>
                 </div>
                 <div className="text-center lg:text-left">
                   <div className="text-2xl font-bold text-emerald-800">100%</div>
