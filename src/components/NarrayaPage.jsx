@@ -42,37 +42,37 @@ const NarrayaPage = () => {
 
   const features = [
     {
-      icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />,
+      icon: <Shield className="w-8 h-8 text-green-600" />,
       title: "100% Akad Syariah",
       description: "Setiap transaksi menggunakan akad murni syariah tanpa riba, gharar, dan maysir"
     },
     {
-      icon: <Home className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />,
+      icon: <Home className="w-8 h-8 text-blue-600" />,
       title: "Desain Modern",
       description: "Arsitektur kontemporer dengan fasilitas lengkap dan teknologi terdepan"
     },
     {
-      icon: <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-red-600" />,
+      icon: <MapPin className="w-8 h-8 text-red-600" />,
       title: "Lokasi Strategis",
       description: "Berada di jantung Ponorogo dengan akses mudah ke berbagai fasilitas publik"
     },
     {
-      icon: <Users className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />,
+      icon: <Users className="w-8 h-8 text-purple-600" />,
       title: "Komunitas Berkualitas",
       description: "Hunian eksklusif untuk keluarga yang menghargai nilai-nilai syariah"
     },
     {
-      icon: <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600" />,
+      icon: <TrendingUp className="w-8 h-8 text-orange-600" />,
       title: "Investasi Tinggi",
       description: "Nilai properti yang terus meningkat dengan potensi keuntungan jangka panjang yang menguntungkan"
     },
     {
-      icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-600" />,
+      icon: <Award className="w-8 h-8 text-indigo-600" />,
       title: "Berkualitas Bergaransi",
       description: "Kualitas konstruksi terjamin dengan garansi resmi dan standar bangunan terbaik"
     },
     {
-      icon: <CreditCard className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />,
+      icon: <CreditCard className="w-8 h-8 text-teal-600" />,
       title: "Pembayaran Fleksibel",
       description: "Sistem pembayaran yang mudah dengan berbagai pilihan cicilan sesuai kemampuan finansial"
     }
@@ -262,31 +262,9 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            {/* Mobile 3 Cards Per Row Layout */}
-            <div className="block sm:hidden px-2">
-              <div className="flex flex-wrap justify-center gap-2">
-                {features.map((feature, index) => (
-                  <div key={index} className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-1/3 max-w-[100px] flex-shrink-0">
-                    <div className="flex justify-center mb-1">
-                      <div className="w-6 h-6 flex items-center justify-center">
-                        {feature.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-[10px] font-bold text-gray-900 mb-1 text-center leading-tight">
-                      {feature.title}
-                    </h3>
-                    <p className="text-[8px] text-gray-600 text-center leading-tight">
-                      {feature.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Desktop 3 Cards Per Row Layout */}
-            <div className="hidden sm:flex sm:flex-wrap sm:justify-center gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-1/3 max-w-xs flex-shrink-0">
+                <div key={index} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2">
                   <div className="flex justify-center mb-4 sm:mb-6">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
                       {feature.icon}
