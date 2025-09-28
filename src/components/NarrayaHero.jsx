@@ -133,14 +133,14 @@ const NarrayaHero = () => {
             >
               <button
                 onClick={handleWhatsAppClick}
-                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 py-4 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
               >
                 Konsultasi Gratis
-                <MoveRight className="w-5 h-5" />
+                <MoveRight className="w-4 h-4" />
               </button>
               <button
                 onClick={handleViewProjectsClick}
-                className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-8 py-6 text-lg font-semibold rounded-xl transition-all duration-300"
+                className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-6 py-4 text-base font-semibold rounded-lg transition-all duration-300"
               >
                 Lihat Detail
               </button>
@@ -194,15 +194,15 @@ const NarrayaHero = () => {
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-105"
               >
-                <ChevronLeft className="w-6 h-6 text-slate-700" />
+                <ChevronLeft className="w-5 h-5 text-slate-700" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-105"
               >
-                <ChevronRight className="w-6 h-6 text-slate-700" />
+                <ChevronRight className="w-5 h-5 text-slate-700" />
               </button>
 
               {/* Slide Indicators */}
@@ -211,9 +211,9 @@ const NarrayaHero = () => {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-green-500 scale-125' 
+                        ? 'bg-green-500 scale-110' 
                         : 'bg-white/60 hover:bg-white/80'
                     }`}
                   />
