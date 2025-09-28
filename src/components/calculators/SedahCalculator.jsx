@@ -9,8 +9,8 @@ const SedahCalculator = () => {
   const [discount, setDiscount] = useState(60000000); // 60 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
-  const [kreditTerm, setKreditTerm] = useState(5); // 5 tahun default
-  const [kreditDP, setKreditDP] = useState(25); // 25% default
+  const [kreditTerm, setKreditTerm] = useState(3); // 5 tahun default
+  const [kreditDP, setKreditDP] = useState(30); // 30% default
 
   const [calculation, setCalculation] = useState({
     unitInfo: null,
@@ -24,267 +24,64 @@ const SedahCalculator = () => {
   });
 
   // Unit data from the HTML
-  const unitData = 
-[
-  {
-    "unit": "A1",
-    "lb": 45,
-    "lt": 102,
-    "hargaCash": 268347302
-  },
-  {
-    "unit": "A2",
-    "lb": 45,
-    "lt": 123,
-    "hargaCash": 285602261
-  },
-  {
-    "unit": "A3",
-    "lb": 45,
-    "lt": 104,
-    "hargaCash": 269990631
-  },
-  {
-    "unit": "A4",
-    "lb": 45,
-    "lt": 106,
-    "hargaCash": 271633960
-  },
-  {
-    "unit": "A5",
-    "lb": 45,
-    "lt": 77,
-    "hargaCash": 247805684
-  },
-  {
-    "unit": "A6",
-    "lb": 45,
-    "lt": 77,
-    "hargaCash": 247805684
-  },
-  {
-    "unit": "A7",
-    "lb": 45,
-    "lt": 94,
-    "hargaCash": 261773984
-  },
-  {
-    "unit": "A8",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "A9",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "A10",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "A11",
-    "lb": 45,
-    "lt": 77,
-    "hargaCash": 247805684
-  },
-  {
-    "unit": "A12",
-    "lb": 45,
-    "lt": 115,
-    "hargaCash": 279028943
-  },
-  {
-    "unit": "B1",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "B2",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "B3",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "B4",
-    "lb": 45,
-    "lt": 77,
-    "hargaCash": 247805684
-  },
-  {
-    "unit": "B5",
-    "lb": 45,
-    "lt": 108,
-    "hargaCash": 273277290
-  },
-  {
-    "unit": "B6",
-    "lb": 45,
-    "lt": 120,
-    "hargaCash": 283137267
-  },
-  {
-    "unit": "B7",
-    "lb": 36,
-    "lt": 88,
-    "hargaCash": 231936496
-  },
-  {
-    "unit": "B8",
-    "lb": 36,
-    "lt": 83,
-    "hargaCash": 227828172
-  },
-  {
-    "unit": "B9",
-    "lb": 45,
-    "lt": 101,
-    "hargaCash": 267525637
-  },
-  {
-    "unit": "C1",
-    "lb": 45,
-    "lt": 78,
-    "hargaCash": 248627348
-  },
-  {
-    "unit": "C2",
-    "lb": 45,
-    "lt": 77,
-    "hargaCash": 247805684
-  },
-  {
-    "unit": "C3",
-    "lb": 45,
-    "lt": 110,
-    "hargaCash": 274920619
-  },
-  {
-    "unit": "C4",
-    "lb": 45,
-    "lt": 101,
-    "hargaCash": 267525637
-  },
-  {
-    "unit": "C5",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "C6",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "C7",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "C8",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "C9",
-    "lb": 45,
-    "lt": 110,
-    "hargaCash": 274920619
-  },
-  {
-    "unit": "C10",
-    "lb": 45,
-    "lt": 77,
-    "hargaCash": 247805684
-  },
-  {
-    "unit": "C11",
-    "lb": 45,
-    "lt": 78,
-    "hargaCash": 248627348
-  },
-  {
-    "unit": "D1",
-    "lb": 45,
-    "lt": 110,
-    "hargaCash": 274920619
-  },
-  {
-    "unit": "D2",
-    "lb": 45,
-    "lt": 70,
-    "hargaCash": 242054031
-  },
-  {
-    "unit": "D3",
-    "lb": 45,
-    "lt": 70,
-    "hargaCash": 242054031
-  },
-  {
-    "unit": "D4",
-    "lb": 45,
-    "lt": 70,
-    "hargaCash": 242054031
-  },
-  {
-    "unit": "D5",
-    "lb": 36,
-    "lt": 65,
-    "hargaCash": 213038207
-  },
-  {
-    "unit": "D6",
-    "lb": 45,
-    "lt": 91,
-    "hargaCash": 259308990
-  },
-  {
-    "unit": "D7",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "D8",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "D9",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "D10",
-    "lb": 36,
-    "lt": 66,
-    "hargaCash": 213859872
-  },
-  {
-    "unit": "D11",
-    "lb": 36,
-    "lt": 72,
-    "hargaCash": 218789860
-  }
-];
+  const unitData = [
+    { unit: "A1", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "A2", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "A3", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "A4", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "A5", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "A6", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "A7", lb: 36, lt: 66, hargaCash: 243859872 },
+    { unit: "B1", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "B2", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "B3", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "B4", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "B5", lb: 36, lt: 61, hargaCash: 229751548 },
+    { unit: "B6", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "B7", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "B8", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "C1", lb: 45, lt: 79, hargaCash: 269449013 },
+    { unit: "C2", lb: 45, lt: 72, hargaCash: 263697360 },
+    { unit: "C3", lb: 36, lt: 71, hargaCash: 237968195 },
+    { unit: "C4", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "D1", lb: 45, lt: 66, hargaCash: 258767372 },
+    { unit: "D2", lb: 45, lt: 66, hargaCash: 258767372 },
+    { unit: "D3", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "D4", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "D5", lb: 45, lt: 66, hargaCash: 258767372 },
+    { unit: "D6", lb: 45, lt: 66, hargaCash: 258767372 },
+    { unit: "D7", lb: 45, lt: 66, hargaCash: 258767372 },
+    { unit: "D8", lb: 45, lt: 68, hargaCash: 260410701 },
+    { unit: "E1", lb: 45, lt: 77, hargaCash: 267805684 },
+    { unit: "E2", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E3", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E4", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E5", lb: 36, lt: 70, hargaCash: 237146531 },
+    { unit: "E6", lb: 45, lt: 77, hargaCash: 267805684 },
+    { unit: "E7", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E8", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E9", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E10", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E11", lb: 36, lt: 65, hargaCash: 233038207 },
+    { unit: "E12", lb: 36, lt: 59, hargaCash: 228108219 },
+    { unit: "E13", lb: 36, lt: 62, hargaCash: 230573213 },
+    { unit: "E14", lb: 36, lt: 65, hargaCash: 233038207 },
+    { unit: "E15", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "E16", lb: 36, lt: 71, hargaCash: 237968195 },
+    { unit: "F1", lb: 36, lt: 94, hargaCash: 256866484 },
+    { unit: "F2", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F3", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F4", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F5", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F6", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F7", lb: 45, lt: 77, hargaCash: 267805684 },
+    { unit: "F8", lb: 45, lt: 77, hargaCash: 267805684 },
+    { unit: "F9", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F10", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F11", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F12", lb: 36, lt: 66, hargaCash: 233859872 },
+    { unit: "F13", lb: 36, lt: 64, hargaCash: 232216542 },
+  ];
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -548,11 +345,9 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
+                        <option value={30}>30%</option>
                         <option value={40}>40%</option>
                         <option value={50}>50%</option>
-                        <option value={60}>60%</option>
-                        <option value={70}>70%</option>
-                        <option value={80}>80%</option>
                       </select>
                     </div>
                   </div>
@@ -586,6 +381,9 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
+                        <option value={1}>1 Tahun</option>
+                        <option value={2}>2 Tahun</option>
+                        <option value={3}>3 Tahun</option>
                         <option value={4}>4 Tahun</option>
                         <option value={5}>5 Tahun</option>
                         <option value={6}>6 Tahun</option>
@@ -599,8 +397,8 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditDP(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={25}>25%</option>
                         <option value={30}>30%</option>
+                        <option value={50}>50%</option>
                       </select>
                     </div>
                   </div>

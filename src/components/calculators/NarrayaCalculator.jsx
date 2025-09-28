@@ -9,8 +9,8 @@ const NarrayaCalculator = () => {
   const [discount, setDiscount] = useState(150000000); // 60 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
-  const [kreditTerm, setKreditTerm] = useState(5); // 5 tahun default
-  const [kreditDP, setKreditDP] = useState(25); // 25% default
+  const [kreditTerm, setKreditTerm] = useState(3); // 3 tahun default
+  const [kreditDP, setKreditDP] = useState(30); // 30% default
 
   const [calculation, setCalculation] = useState({
     unitInfo: null,
@@ -103,7 +103,7 @@ const NarrayaCalculator = () => {
   }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, kreditTerm, kreditDP]);
 
   const handleDiscountChange = (value) => {
-    const maxDiscount = 150000000;
+    const maxDiscount = 200000000;
     const actualValue = Math.min(parseInt(value) || 0, maxDiscount);
     setDiscount(actualValue);
   };
@@ -279,7 +279,7 @@ Mohon informasi lebih lanjut.`;
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
-                    max="150000000"
+                    max="60000000"
                     className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
                   <p className="text-xs font-bold text-slate-600 mt-1">
@@ -321,11 +321,9 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
+                        <option value={30}>30%</option>
                         <option value={40}>40%</option>
                         <option value={50}>50%</option>
-                        <option value={60}>60%</option>
-                        <option value={70}>70%</option>
-                        <option value={80}>80%</option>
                       </select>
                     </div>
                   </div>
@@ -359,6 +357,9 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
+                        <option value={1}>1 Tahun</option>
+                        <option value={2}>2 Tahun</option>
+                        <option value={3}>3 Tahun</option>
                         <option value={4}>4 Tahun</option>
                         <option value={5}>5 Tahun</option>
                         <option value={6}>6 Tahun</option>
@@ -372,8 +373,8 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditDP(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={25}>25%</option>
                         <option value={30}>30%</option>
+                        <option value={50}>50%</option>
                       </select>
                     </div>
                   </div>
