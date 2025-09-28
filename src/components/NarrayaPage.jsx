@@ -3,11 +3,9 @@ import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, Messag
 import { Link } from 'react-router-dom';
 import { companyInfo } from './mockData';
 import Gallery from './Gallery';
+import NarrayaHero from './NarrayaHero';
 
 const NarrayaPage = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo({
@@ -15,28 +13,12 @@ const NarrayaPage = () => {
       left: 0,
       behavior: 'smooth'
     });
-    
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleWhatsAppClick = () => {
     const message = "Halo TKBM, saya tertarik dengan proyek Narraya. Mohon informasi lebih lanjut tentang hunian syariah ini.";
     const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
   };
 
   const features = [
@@ -130,123 +112,15 @@ const NarrayaPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <img 
-                src="/narraya-logo.jpeg" 
-                alt="Narraya Green Residence Logo" 
-                className="w-12 h-12 object-contain"
-              />
-              <div>
-                <h1 className="font-bold text-lg text-emerald-800">NARRAYA</h1>
-                <p className="text-xs text-gray-600">Green Residence</p>
-              </div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <button 
-                onClick={() => scrollToSection('overview')}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Tentang
-              </button>
-              <button 
-                onClick={() => scrollToSection('details')}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Detail Proyek
-              </button>
-              <button 
-                onClick={() => scrollToSection('gallery')}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Galeri
-              </button>
-              <button 
-                onClick={() => scrollToSection('amenities')}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Fasilitas
-              </button>
-              <button 
-                onClick={() => scrollToSection('testimonials')}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Testimoni
-              </button>
-              <button 
-                onClick={handleWhatsAppClick}
-                className="bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition-colors font-medium flex items-center gap-2"
-              >
-                <MessageCircle size={16} />
-                Konsultasi
-              </button>
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={toggleMenu}
-              className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-
-          {/* Mobile Navigation Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-white border-t border-gray-200 py-4">
-              <nav className="flex flex-col space-y-4">
-                <button 
-                  onClick={() => scrollToSection('overview')}
-                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
-                >
-                  Tentang
-                </button>
-                <button 
-                  onClick={() => scrollToSection('details')}
-                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
-                >
-                  Detail Proyek
-                </button>
-                <button 
-                  onClick={() => scrollToSection('gallery')}
-                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
-                >
-                  Galeri
-                </button>
-                <button 
-                  onClick={() => scrollToSection('amenities')}
-                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
-                >
-                  Fasilitas
-                </button>
-                <button 
-                  onClick={() => scrollToSection('testimonials')}
-                  className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left px-4 py-2"
-                >
-                  Testimoni
-                </button>
-                <button 
-                  onClick={handleWhatsAppClick}
-                  className="bg-emerald-600 text-white px-4 py-3 rounded-full hover:bg-emerald-700 transition-colors font-medium flex items-center gap-2 mx-4"
-                >
-                  <MessageCircle size={16} />
-                  Konsultasi Gratis
-                </button>
-              </nav>
-            </div>
-          )}
-        </div>
-      </header>
+      {/* Hero Section */}
+      <NarrayaHero 
+        onWhatsAppClick={handleWhatsAppClick}
+        onContactClick={handleWhatsAppClick}
+      />
 
 
       {/* Project Overview */}
-      <section id="overview" className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 bg-gray-50">
+      <section id="overview" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
