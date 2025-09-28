@@ -3,6 +3,7 @@ import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, Messag
 import { Link } from 'react-router-dom';
 import { companyInfo } from './mockData';
 import Gallery from './Gallery';
+import NarrayaHero from './NarrayaHero';
 
 const NarrayaPage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -244,9 +245,11 @@ const NarrayaPage = () => {
         </div>
       </header>
 
+      {/* Hero Section */}
+      <NarrayaHero />
 
       {/* Project Overview */}
-      <section id="overview" className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 bg-gray-50">
+      <section id="overview" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
