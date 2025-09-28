@@ -214,50 +214,276 @@ const NarrayaPage = () => {
       {/* Project Details */}
       <section id="details" className="py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div className="order-2 lg:order-1">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-                  Detail Proyek Narraya
-                </h2>
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 mt-1 flex-shrink-0" />
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
+                Detail Proyek Narraya
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                Lihat detail lengkap siteplan, spesifikasi bangunan, dan denah lantai hunian modern Narraya Green Residence
+              </p>
+            </div>
+
+            {/* Siteplan Section */}
+            <div className="mb-16 sm:mb-20">
+              <div className="text-center mb-8 sm:mb-12">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                  Siteplan Narraya Green Residence
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600">
+                  Layout cluster dengan 12 unit hunian tipe 85 yang strategis dan nyaman
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
+                <div className="aspect-[4/3] w-full bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-4xl sm:text-6xl mb-4">🗺️</div>
+                    <p className="text-lg sm:text-xl font-semibold text-gray-700">Siteplan Image</p>
+                    <p className="text-sm text-gray-500 mt-2">Upload gambar siteplan di sini</p>
+                  </div>
+                </div>
+                <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-sm">
+                  <div className="bg-emerald-50 p-3 rounded-lg text-center">
+                    <div className="font-semibold text-emerald-800">A. Gerbang Utama</div>
+                  </div>
+                  <div className="bg-blue-50 p-3 rounded-lg text-center">
+                    <div className="font-semibold text-blue-800">B. Pos Satpam</div>
+                  </div>
+                  <div className="bg-green-50 p-3 rounded-lg text-center">
+                    <div className="font-semibold text-green-800">C. Taman</div>
+                  </div>
+                  <div className="bg-purple-50 p-3 rounded-lg text-center">
+                    <div className="font-semibold text-purple-800">D. Area Putar Balik</div>
+                  </div>
+                  <div className="bg-red-50 p-3 rounded-lg text-center">
+                    <div className="font-semibold text-red-800">E. Jl. Noroyono</div>
+                  </div>
+                  <div className="bg-yellow-50 p-3 rounded-lg text-center">
+                    <div className="font-semibold text-yellow-800">F. Rumah Warga Sekitar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Spesifikasi & Fasilitas */}
+            <div className="mb-16 sm:mb-20">
+              <div className="text-center mb-8 sm:mb-12">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                  Spesifikasi & Fasilitas
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Spesifikasi Bangunan */}
+                <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-6 text-center bg-gradient-to-r from-emerald-600 to-emerald-800 text-white py-3 rounded-lg">
+                    Spesifikasi Bangunan
+                  </h4>
+                  <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">Lokasi</h3>
-                      <p className="text-sm sm:text-base text-gray-600">Jl. Raya Ponorogo - Madiun KM 5, Ponorogo, Jawa Timur</p>
+                      <h5 className="font-semibold text-gray-800 mb-2">Pondasi</h5>
+                      <p className="text-gray-600 text-sm">• Tiang Pancang Staruss</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Struktur</h5>
+                      <p className="text-gray-600 text-sm">• Beton Bertulang</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Dinding</h5>
+                      <p className="text-gray-600 text-sm">• Bata Ringan</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Atap</h5>
+                      <p className="text-gray-600 text-sm">• Penutup: Atap UPVC<br/>• Rangka: Baja Ringan</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Lantai</h5>
+                      <p className="text-gray-600 text-sm">• R. Utama: Granite Tile 60x60<br/>• KM: Dinding dan Lantai Keramik</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Plafond</h5>
+                      <p className="text-gray-600 text-sm">• Rangka: Baja Ringan</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Pintu dan Jendela</h5>
+                      <p className="text-gray-600 text-sm">• Kusen Jati<br/>• Daun Pintu dan Jendela Jati<br/>• Kaca Ketebalan 5 mm</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Sanitary</h5>
+                      <p className="text-gray-600 text-sm">• Ex Amstard</p>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800 mb-2">Utilitas</h5>
+                      <p className="text-gray-600 text-sm">• Air Bersih: PDAM<br/>• Listrik: 1300 Watt</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 mt-1 flex-shrink-0" />
+                </div>
+
+                {/* Fasilitas */}
+                <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-6 text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 rounded-lg">
+                    Fasilitas
+                  </h4>
+                  <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">Tahap Pembangunan</h3>
-                      <p className="text-sm sm:text-base text-gray-600">Tahap 1: 2024-2025 (100 unit) | Tahap 2: 2025-2026 (150 unit)</p>
+                      <h5 className="font-semibold text-gray-800 mb-3">Bangunan</h5>
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <p>🏠 Luas Tanah: 96 m²</p>
+                        <p>🏡 Luas Bangunan: 85 m²</p>
+                        <p>🏢 2 Lantai</p>
+                        <p>🛏️ 3 Kamar Tidur</p>
+                        <p>🛁 2 Kamar Mandi</p>
+                        <p>👥 Ruang Tamu</p>
+                        <p>👨‍👩‍👧‍👦 Ruang Keluarga</p>
+                        <p>🌿 Taman Belakang</p>
+                        <p>🚗 Carport Luas (2 mobil)</p>
+                        <p>🔧 Ruang Service Tertutup</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <Home className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">Tipe Hunian</h3>
-                      <p className="text-sm sm:text-base text-gray-600">2-3-4 Bedroom dengan luas 60-120 m², desain modern dan fungsional</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">Kapasitas</h3>
-                      <p className="text-sm sm:text-base text-gray-600">250 unit hunian dengan fasilitas lengkap untuk 1000+ penghuni</p>
+                      <h5 className="font-semibold text-gray-800 mb-3">Kawasan</h5>
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <p>🔒 Keamanan 24 Jam</p>
+                        <p>🛣️ Row Jalan 6 Meter</p>
+                        <p>🎮 Play Ground</p>
+                        <p>🌳 Taman Hijau</p>
+                        <p>📚 One Gate System</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="relative order-1 lg:order-2">
-                <img 
-                  src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop"
-                  alt="Narraya Development"
-                  className="rounded-xl sm:rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl sm:rounded-2xl" />
+            </div>
+
+            {/* Denah Lantai */}
+            <div className="mb-16 sm:mb-20">
+              <div className="text-center mb-8 sm:mb-12">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                  Denah Lantai Tipe 85
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600">
+                  Layout 2 lantai dengan desain modern dan fungsional (LB: 85 m² | LT: 96 m²)
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Lantai 1 */}
+                <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                  <h4 className="text-lg font-bold text-center mb-6 bg-emerald-600 text-white py-3 rounded-lg">
+                    Denah Lantai 1
+                  </h4>
+                  <div className="aspect-square w-full bg-gradient-to-br from-green-100 to-green-200 rounded-xl mb-6 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-4xl mb-4">🏠</div>
+                      <p className="text-lg font-semibold text-gray-700">Denah Lantai 1</p>
+                      <p className="text-sm text-gray-500 mt-2">Upload gambar denah lantai 1</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <h5 className="font-semibold text-gray-800 border-b pb-2">Keterangan Lantai 1</h5>
+                    <div className="grid grid-cols-1 gap-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Teras</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Ruang Tamu</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Kamar Mandi Bawah</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Kamar Tidur Utama</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Akses Tangga Naik</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Dapur</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Open Space</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span>Carport</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Lantai 2 */}
+                <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                  <h4 className="text-lg font-bold text-center mb-6 bg-blue-600 text-white py-3 rounded-lg">
+                    Denah Lantai 2
+                  </h4>
+                  <div className="aspect-square w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mb-6 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-4xl mb-4">🏠</div>
+                      <p className="text-lg font-semibold text-gray-700">Denah Lantai 2</p>
+                      <p className="text-sm text-gray-500 mt-2">Upload gambar denah lantai 2</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <h5 className="font-semibold text-gray-800 border-b pb-2">Keterangan Lantai 2</h5>
+                    <div className="grid grid-cols-1 gap-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span>Kamar Tidur</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span>Kamar Mandi</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span>Kamar Tidur</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span>Akses Tangga Turun</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span>Ruang Keluarga</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span>Balkon</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tipe Info */}
+              <div className="mt-8 bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-2xl p-6 sm:p-8 text-white text-center">
+                <div className="max-w-2xl mx-auto">
+                  <h4 className="text-xl sm:text-2xl font-bold mb-4">Tipe 85 - Hunian 2 Lantai</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm sm:text-base">
+                    <div className="bg-white/20 rounded-lg p-3">
+                      <div className="font-bold text-lg">85 m²</div>
+                      <div className="text-white/90">Luas Bangunan</div>
+                    </div>
+                    <div className="bg-white/20 rounded-lg p-3">
+                      <div className="font-bold text-lg">96 m²</div>
+                      <div className="text-white/90">Luas Tanah</div>
+                    </div>
+                    <div className="bg-white/20 rounded-lg p-3">
+                      <div className="font-bold text-lg">3</div>
+                      <div className="text-white/90">Kamar Tidur</div>
+                    </div>
+                    <div className="bg-white/20 rounded-lg p-3">
+                      <div className="font-bold text-lg">2</div>
+                      <div className="text-white/90">Kamar Mandi</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
