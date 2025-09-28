@@ -133,7 +133,7 @@ const NarrayaPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 justify-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 justify-items-center">
               {features.slice(0, 4).map((feature, index) => (
                 <div key={index} className="bg-white rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 w-full max-w-xs">
                   <div className="flex justify-center mb-3 sm:mb-6">
@@ -152,7 +152,7 @@ const NarrayaPage = () => {
             </div>
             
             {/* Second row with 3 items centered */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 justify-items-center mt-3 sm:mt-6 lg:mt-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 justify-items-center mt-3 sm:mt-6 lg:mt-8 max-w-4xl mx-auto">
               {features.slice(4, 7).map((feature, index) => (
                 <div key={index + 4} className="bg-white rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 w-full max-w-xs">
                   <div className="flex justify-center mb-3 sm:mb-6">
@@ -473,40 +473,6 @@ const NarrayaPage = () => {
       </section>
 
 
-      {/* Testimonials */}
-      <section id="testimonials" className="py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-                Kata Mereka Tentang Narraya
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 px-4">
-                Pengalaman nyata dari keluarga yang telah merasakan berkah tinggal di Narraya
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-center gap-1 mb-3 sm:mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed italic">
-                    "{testimonial.content}"
-                  </p>
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-sm sm:text-base">{testimonial.name}</h4>
-                    <p className="text-gray-500 text-xs sm:text-sm">{testimonial.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
