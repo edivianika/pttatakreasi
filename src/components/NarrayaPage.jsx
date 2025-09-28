@@ -264,9 +264,9 @@ const NarrayaPage = () => {
 
             {/* Mobile 2x2 Grid Layout */}
             <div className="block sm:hidden">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 justify-items-center">
                 {features.map((feature, index) => (
-                  <div key={index} className="bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div key={index} className="bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-xs">
                     <div className="flex justify-center mb-3">
                       <div className="w-10 h-10 flex items-center justify-center">
                         {feature.icon}
@@ -284,9 +284,9 @@ const NarrayaPage = () => {
             </div>
 
             {/* Desktop Full Grid Layout */}
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-sm">
                   <div className="flex justify-center mb-4 sm:mb-6">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
                       {feature.icon}
