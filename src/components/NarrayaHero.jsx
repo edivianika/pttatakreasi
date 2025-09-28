@@ -67,12 +67,12 @@ const NarrayaHero = () => {
         </svg>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+      <div className="relative z-10 container mx-auto px-6 sm:px-4 py-8 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(100vh-8rem)]">
           
           {/* Text Content */}
           <motion.div 
-            className="order-2 lg:order-1 text-center lg:text-left px-2 sm:px-0"
+            className="order-2 lg:order-1 text-center lg:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -82,7 +82,7 @@ const NarrayaHero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6 mx-2 sm:mx-0"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6"
             >
               <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
               Narraya Green Residence
@@ -90,7 +90,7 @@ const NarrayaHero = () => {
 
             {/* Main Title */}
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight px-2 sm:px-0"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -105,7 +105,7 @@ const NarrayaHero = () => {
 
             {/* Subtitle */}
             <motion.h2 
-              className="text-xl md:text-2xl font-semibold text-green-700 mb-6 px-2 sm:px-0"
+              className="text-xl md:text-2xl font-semibold text-green-700 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -115,7 +115,7 @@ const NarrayaHero = () => {
 
             {/* Description */}
             <motion.p 
-              className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 px-2 sm:px-0"
+              className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
@@ -126,21 +126,21 @@ const NarrayaHero = () => {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-2 sm:px-0"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               <button
                 onClick={handleWhatsAppClick}
-                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Konsultasi Gratis
-                <MoveRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                <MoveRight className="w-4 h-4" />
               </button>
               <button
                 onClick={handleViewProjectsClick}
-                className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300"
+                className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-6 py-3 text-base font-semibold rounded-lg transition-all duration-300"
               >
                 Lihat Detail
               </button>
@@ -148,7 +148,7 @@ const NarrayaHero = () => {
 
             {/* Stats */}
             <motion.div 
-              className="grid grid-cols-3 gap-4 sm:gap-6 mt-12 pt-8 border-t border-slate-200 px-2 sm:px-0"
+              className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-slate-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
@@ -172,7 +172,7 @@ const NarrayaHero = () => {
 
           {/* Image Slideshow */}
           <motion.div 
-            className="order-1 lg:order-2 relative px-2 sm:px-0"
+            className="order-1 lg:order-2 relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -194,27 +194,27 @@ const NarrayaHero = () => {
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-105"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
               >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700" />
+                <ChevronLeft className="w-6 h-6 text-slate-700" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-105"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
               >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700" />
+                <ChevronRight className="w-6 h-6 text-slate-700" />
               </button>
 
               {/* Slide Indicators */}
-              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex space-x-0.5">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5">
                 {images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-0.5 h-0.5 rounded-full transition-all duration-200 ${
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-white scale-100' 
-                        : 'bg-white/20 hover:bg-white/40'
+                        ? 'bg-green-500 scale-110' 
+                        : 'bg-white/60 hover:bg-white/80'
                     }`}
                   />
                 ))}
