@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from 'lucide-react';
-import { ElegantBackground } from './ui/elegant-background.tsx';
 
 function AnimatedTextCycle({ words, interval = 3000, className = "" }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -99,9 +98,6 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 relative overflow-hidden">
-      {/* Elegant Background */}
-      <ElegantBackground />
-      
       {/* Header */}
       <motion.header
         initial={{ backgroundColor: "rgba(255, 255, 255, 0.95)" }}
@@ -145,7 +141,7 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
       </motion.header>
 
       {/* Main Content */}
-      <div className="pt-16 min-h-screen flex items-center relative z-10">
+      <div className="pt-16 min-h-screen flex items-center">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             
