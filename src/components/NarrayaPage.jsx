@@ -95,18 +95,17 @@ const NarrayaPage = () => {
 
   // Gallery images
   const galleryImages = [
-    'https://images.unsplash.com/photo-1560448204-e4596d6bbf7a?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600566753086-5f52b8745d6b?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600585152915-d208bec867a1?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop'
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-1.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-2.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-3.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-4.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-5.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-6.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-7.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-8.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-9.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-10.png',
+    '/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-11.png'
   ];
 
 
