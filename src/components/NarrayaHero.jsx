@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from 'lucide-react';
-import { ElegantBackground } from './ui/elegant-background';
+import { ElegantBackground } from './ui/elegant-background.tsx';
 
 function AnimatedTextCycle({ words, interval = 3000, className = "" }) {
   const [currentIndex, setCurrentIndex] = useState(0);
