@@ -257,90 +257,76 @@ const NarrayaPage = () => {
               </div>
             </div>
 
-            {/* Spesifikasi & Fasilitas */}
+            {/* Hunian Nyaman dengan Garansi Nyata */}
             <div className="mb-16 sm:mb-20">
               <div className="text-center mb-8 sm:mb-12">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                  Spesifikasi & Fasilitas
+                  Hunian Nyaman dengan Garansi Nyata
                 </h3>
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Spesifikasi Bangunan */}
-                <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-6 text-center bg-gradient-to-r from-emerald-600 to-emerald-800 text-white py-3 rounded-lg">
-                    Spesifikasi Bangunan
-                  </h4>
-                  <div className="space-y-6">
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Pondasi</h5>
-                      <p className="text-gray-600 text-sm">• Tiang Pancang Staruss</p>
+              
+              <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12">
+                <div className="max-w-4xl mx-auto">
+                  <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed">
+                    Kami tidak hanya membangun rumah, tetapi juga memberikan jaminan ketenangan bagi Anda dan keluarga:
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div className="bg-emerald-50 rounded-xl p-6 border-l-4 border-emerald-500">
+                      <div className="flex items-start gap-4">
+                        <div className="text-3xl">🛠️</div>
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-2">Garansi Perawatan Rumah 1 Tahun</h4>
+                          <p className="text-gray-700">Setiap detail rumah tetap terjaga.</p>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Struktur</h5>
-                      <p className="text-gray-600 text-sm">• Beton Bertulang</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Dinding</h5>
-                      <p className="text-gray-600 text-sm">• Bata Ringan</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Atap</h5>
-                      <p className="text-gray-600 text-sm">• Penutup: Atap UPVC<br/>• Rangka: Baja Ringan</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Lantai</h5>
-                      <p className="text-gray-600 text-sm">• R. Utama: Granite Tile 60x60<br/>• KM: Dinding dan Lantai Keramik</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Plafond</h5>
-                      <p className="text-gray-600 text-sm">• Rangka: Baja Ringan</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Pintu dan Jendela</h5>
-                      <p className="text-gray-600 text-sm">• Kusen Jati<br/>• Daun Pintu dan Jendela Jati<br/>• Kaca Ketebalan 5 mm</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Sanitary</h5>
-                      <p className="text-gray-600 text-sm">• Ex Amstard</p>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Utilitas</h5>
-                      <p className="text-gray-600 text-sm">• Air Bersih: PDAM<br/>• Listrik: 1300 Watt</p>
+                    
+                    <div className="bg-blue-50 rounded-xl p-6 border-l-4 border-blue-500">
+                      <div className="flex items-start gap-4">
+                        <div className="text-3xl">🏗️</div>
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-2">Garansi Struktur Rumah 5 Tahun</h4>
+                          <p className="text-gray-700">Konstruksi kokoh dan tahan lama.</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Fasilitas */}
-                <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-6 text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 rounded-lg">
-                    Fasilitas
-                  </h4>
-                  <div className="space-y-6">
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-3">Bangunan</h5>
-                      <div className="space-y-2 text-sm text-gray-600">
-                        <p>🏠 Luas Tanah: 96 m²</p>
-                        <p>🏡 Luas Bangunan: 85 m²</p>
-                        <p>🏢 2 Lantai</p>
-                        <p>🛏️ 3 Kamar Tidur</p>
-                        <p>🛁 2 Kamar Mandi</p>
-                        <p>👥 Ruang Tamu</p>
-                        <p>👨‍👩‍👧‍👦 Ruang Keluarga</p>
-                        <p>🌿 Taman Belakang</p>
-                        <p>🚗 Carport Luas (2 mobil)</p>
-                        <p>🔧 Ruang Service Tertutup</p>
+                  
+                  <div className="mb-8">
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-6 text-center">
+                      Desain rumah kami dirancang dengan konsep hunian sehat:
+                    </h4>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                      <div className="text-center">
+                        <div className="text-4xl mb-3">🌞</div>
+                        <p className="text-gray-700 font-medium">Pencahayaan alami yang optimal</p>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="text-4xl mb-3">🌬️</div>
+                        <p className="text-gray-700 font-medium">Sirkulasi udara lancar</p>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="text-4xl mb-3">⚡</div>
+                        <p className="text-gray-700 font-medium">Efisiensi energi untuk kenyamanan jangka panjang</p>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="text-4xl mb-3">🌿</div>
+                        <p className="text-gray-700 font-medium">Lingkungan hijau dan sehat</p>
                       </div>
                     </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-3">Kawasan</h5>
-                      <div className="space-y-2 text-sm text-gray-600">
-                        <p>🔒 Keamanan 24 Jam</p>
-                        <p>🛣️ Row Jalan 6 Meter</p>
-                        <p>🎮 Play Ground</p>
-                        <p>🌳 Taman Hijau</p>
-                        <p>📚 One Gate System</p>
-                      </div>
-                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl p-8 text-center">
+                    <p className="text-lg sm:text-xl text-gray-800 leading-relaxed">
+                      <span className="font-bold text-emerald-700">Hasilnya, rumah Anda bukan hanya tempat tinggal,</span> 
+                      <br className="hidden sm:block" />
+                      <span className="text-gray-700">tapi investasi masa depan yang sehat, hemat, dan penuh ketenangan.</span>
+                    </p>
                   </div>
                 </div>
               </div>
