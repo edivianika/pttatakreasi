@@ -364,12 +364,12 @@ const NarrayaPage = () => {
                   <h4 className="text-lg font-bold text-center mb-6 bg-emerald-600 text-white py-3 rounded-lg">
                     Denah Lantai 1
                   </h4>
-                  <div className="w-full bg-gradient-to-br from-green-100 to-green-200 rounded-xl mb-6 flex items-center justify-center min-h-[300px]">
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">🏠</div>
-                      <p className="text-lg font-semibold text-gray-700">Denah Lantai 1</p>
-                      <p className="text-sm text-gray-500 mt-2">Upload gambar denah lantai 1</p>
-                    </div>
+                  <div className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-50 flex items-center justify-center min-h-[300px]">
+                    <img 
+                      src="/narraya/denah 1.png" 
+                      alt="Denah Lantai 1 Narraya Green Residence" 
+                      className="max-w-full max-h-[500px] object-contain"
+                    />
                   </div>
                   <div className="space-y-3">
                     <h5 className="font-semibold text-gray-800 border-b pb-2">Keterangan Lantai 1</h5>
@@ -415,12 +415,12 @@ const NarrayaPage = () => {
                   <h4 className="text-lg font-bold text-center mb-6 bg-blue-600 text-white py-3 rounded-lg">
                     Denah Lantai 2
                   </h4>
-                  <div className="w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mb-6 flex items-center justify-center min-h-[300px]">
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">🏠</div>
-                      <p className="text-lg font-semibold text-gray-700">Denah Lantai 2</p>
-                      <p className="text-sm text-gray-500 mt-2">Upload gambar denah lantai 2</p>
-                    </div>
+                  <div className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-50 flex items-center justify-center min-h-[300px]">
+                    <img 
+                      src="/narraya/denah 2.png" 
+                      alt="Denah Lantai 2 Narraya Green Residence" 
+                      className="max-w-full max-h-[500px] object-contain"
+                    />
                   </div>
                   <div className="space-y-3">
                     <h5 className="font-semibold text-gray-800 border-b pb-2">Keterangan Lantai 2</h5>
