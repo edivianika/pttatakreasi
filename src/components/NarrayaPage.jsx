@@ -474,53 +474,83 @@ const NarrayaPage = () => {
 
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center text-white">
+      <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+        {/* Luxury Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-900/20 via-transparent to-slate-900/30"></div>
+        
+        {/* Luxury Pattern Overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_50%)]"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-slate-400/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        {/* Luxury Border */}
+        <div className="absolute inset-0 border-t border-b border-gradient-to-r from-transparent via-emerald-400/20 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto text-center text-white">
             
-            {/* Limited Offer Badge */}
-            <div className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg">
-              <div className="w-2 h-2 bg-white rounded-full"></div>
-              Penawaran Terbatas - Hanya 2 Unit Pertama
+            {/* Luxury Badge */}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-8 py-4 rounded-full text-sm font-semibold mb-12 shadow-2xl border border-emerald-400/30 backdrop-blur-sm">
+              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+              <span className="tracking-wide">PENAWARAN EKSKLUSIF - HANYA 2 UNIT PERTAMA</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Hemat <span className="text-emerald-400">150 Juta</span>
+            {/* Main Headline */}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent">
+                HEMAT
+              </span>
+              <span className="text-emerald-400 ml-4">150 JUTA</span>
             </h2>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-white/20">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="text-center md:text-right">
-                  <p className="text-base text-white/80 mb-2">Harga Normal</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-white/60 line-through">Rp 950 Juta</p>
+            {/* Luxury Price Card */}
+            <div className="relative mb-16">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-slate-500/20 rounded-3xl blur-xl"></div>
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-white/20 shadow-2xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                  <div className="text-center md:text-right space-y-4">
+                    <p className="text-lg text-white/70 font-medium tracking-wide">HARGA NORMAL</p>
+                    <p className="text-3xl sm:text-4xl font-bold text-white/50 line-through">Rp 950 Juta</p>
+                    <p className="text-sm text-white/60">Sebelum Promo</p>
+                  </div>
+                  <div className="text-center md:text-left space-y-4">
+                    <p className="text-lg text-emerald-300 font-medium tracking-wide">HARGA PROMO</p>
+                    <p className="text-4xl sm:text-5xl font-bold text-emerald-400">Rp 800 Juta</p>
+                    <p className="text-sm text-emerald-200">Hemat 150 Juta</p>
+                  </div>
                 </div>
-                <div className="text-center md:text-left">
-                  <p className="text-base text-emerald-300 mb-2">Harga Promo</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-emerald-400">Rp 800 Juta</p>
-                </div>
+                
+                {/* Luxury Divider */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-px h-16 bg-gradient-to-b from-transparent via-emerald-400/50 to-transparent hidden md:block"></div>
               </div>
             </div>
 
-            <p className="text-lg sm:text-xl mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
+            {/* Luxury Description */}
+            <p className="text-xl sm:text-2xl mb-12 text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
               Dapatkan hunian syariah premium di lokasi strategis Ponorogo dengan 
-              <span className="font-semibold text-emerald-300"> diskon istimewa 150 juta</span> 
+              <span className="font-semibold text-emerald-300 bg-emerald-900/30 px-2 py-1 rounded"> diskon istimewa 150 juta</span> 
               untuk 2 keluarga pertama yang bergabung dengan komunitas Narraya.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            {/* Luxury CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center gap-3"
+                className="group relative bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white px-12 py-5 rounded-2xl font-semibold text-xl transition-all duration-300 hover:scale-105 shadow-2xl flex items-center justify-center gap-4 border border-emerald-400/30"
               >
-                <MessageCircle size={20} />
-                <span>Download Brosur</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-emerald-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <MessageCircle size={24} className="relative z-10" />
+                <span className="relative z-10 tracking-wide">DOWNLOAD BROSUR</span>
               </button>
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
+                className="group relative bg-transparent border-2 border-white/40 text-white hover:bg-white hover:text-slate-900 px-12 py-5 rounded-2xl font-semibold text-xl transition-all duration-300 hover:scale-105 shadow-xl flex items-center justify-center gap-4 backdrop-blur-sm"
               >
-                <Phone size={20} />
-                <span>Hubungi Sales</span>
+                <Phone size={24} />
+                <span className="tracking-wide">HUBUNGI SALES</span>
               </button>
             </div>
 
