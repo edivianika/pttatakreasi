@@ -38,27 +38,27 @@ function AnimatedTextCycle({ words, interval = 3000, className = "" }) {
 const PROPERTY_SLIDES = [
   {
     id: "slide-1",
-    title: "Hunian Syariah Premium",
-    description: "Rumah berkualitas dengan konsep syariah yang modern dan nyaman",
-    imageUrl: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    title: "Narraya Green Residence - Smart Investment",
+    description: "Hunian modern dengan konsep investasi cerdas menuju rumah impian",
+    imageUrl: "/narraya/slideshow/perumahan narraya green residence ponorogo 4.png"
   },
   {
     id: "slide-2", 
-    title: "Investasi Halal",
-    description: "Peluang investasi properti yang menguntungkan dan sesuai syariah",
-    imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    title: "Narraya Green Residence - Modern Design",
+    description: "Desain kontemporer dengan fasilitas lengkap dan lingkungan hijau",
+    imageUrl: "/narraya/slideshow/perumahan narraya green residence ponorogo.png"
   },
   {
     id: "slide-3",
-    title: "Lingkungan Islami",
-    description: "Komunitas yang mendukung nilai-nilai Islam dalam kehidupan sehari-hari",
-    imageUrl: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    title: "Narraya Green Residence - Premium Quality",
+    description: "Kualitas premium dengan arsitektur modern dan material terbaik",
+    imageUrl: "/narraya/slideshow/narraya green residence ponorogo 3.png"
   },
   {
     id: "slide-4",
-    title: "Fasilitas Lengkap",
-    description: "Dilengkapi dengan masjid, sekolah Islam, dan fasilitas keluarga",
-    imageUrl: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    title: "Narraya Green Residence - Exclusive Living",
+    description: "Hunian eksklusif dengan konsep green residence yang nyaman",
+    imageUrl: "/narraya/slideshow/narraya green residence ponorogo 2.png"
   }
 ];
 
