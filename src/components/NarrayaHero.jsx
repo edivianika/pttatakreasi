@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from 'lucide-react';
+import { HeroGeometric } from './ui/shape-landing-hero';
 
 function AnimatedTextCycle({ words, interval = 3000, className = "" }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -97,7 +98,16 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 relative overflow-hidden">
+    <div className="relative min-h-screen">
+      {/* HeroGeometric Background */}
+      <HeroGeometric 
+        badge="Narraya Green Residence"
+        title1="Hunian Modern"
+        title2="Investasi Halal"
+      />
+      
+      {/* Overlay Content */}
+      <div className="absolute inset-0 z-20">
       {/* Header */}
       <motion.header
         initial={{ backgroundColor: "rgba(255, 255, 255, 0.95)" }}
@@ -317,10 +327,7 @@ function NarrayaHero({ onWhatsAppClick, onContactClick }) {
           </div>
         </div>
       </div>
-
-      {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-100 to-transparent rounded-full blur-3xl opacity-50 -z-10" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-teal-100 to-transparent rounded-full blur-3xl opacity-50 -z-10" />
+      </div> {/* Close overlay content div */}
     </div>
   );
 }
