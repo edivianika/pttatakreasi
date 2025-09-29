@@ -364,7 +364,7 @@ const NarrayaPage = () => {
                   <h4 className="text-lg font-bold text-center mb-6 bg-emerald-600 text-white py-3 rounded-lg">
                     Denah Lantai 1
                   </h4>
-                  <div className="aspect-square w-full bg-gradient-to-br from-green-100 to-green-200 rounded-xl mb-6 flex items-center justify-center">
+                  <div className="w-full bg-gradient-to-br from-green-100 to-green-200 rounded-xl mb-6 flex items-center justify-center min-h-[300px]">
                     <div className="text-center">
                       <div className="text-4xl mb-4">🏠</div>
                       <p className="text-lg font-semibold text-gray-700">Denah Lantai 1</p>
@@ -415,7 +415,7 @@ const NarrayaPage = () => {
                   <h4 className="text-lg font-bold text-center mb-6 bg-blue-600 text-white py-3 rounded-lg">
                     Denah Lantai 2
                   </h4>
-                  <div className="aspect-square w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mb-6 flex items-center justify-center">
+                  <div className="w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mb-6 flex items-center justify-center min-h-[300px]">
                     <div className="text-center">
                       <div className="text-4xl mb-4">🏠</div>
                       <p className="text-lg font-semibold text-gray-700">Denah Lantai 2</p>
