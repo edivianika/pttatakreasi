@@ -228,11 +228,11 @@ const NarrayaPage = () => {
                 </p>
               </div>
               <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
-                <div className="aspect-[4/3] w-full rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-50 flex items-center justify-center">
                   <img 
                     src="/narraya/slideshow/siteplan narraya-2.png" 
                     alt="Siteplan Narraya Green Residence" 
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-[600px] object-contain"
                   />
                 </div>
                 <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-sm">
