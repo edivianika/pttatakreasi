@@ -70,8 +70,7 @@ const SedahCalculator = () => {
     { "unit": "D09", "lb": 36, "lt": 66, "hargaCash": 213859871 },
     { "unit": "D10", "lb": 36, "lt": 66, "hargaCash": 213859871 },
     { "unit": "D11", "lb": 36, "lt": 72, "hargaCash": 218789859 }
-  ]
-  ;
+  ];
 
   useEffect(() => {
     // Scroll to top when component mounts
