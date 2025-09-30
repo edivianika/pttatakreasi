@@ -24,7 +24,7 @@ const SedahCalculator = () => {
   });
 
   // Unit data from the HTML
-  [
+  const unitData = [
     { "unit": "A01", "lb": 45, "lt": 102, "hargaCash": 268347301 },
     { "unit": "A02", "lb": 45, "lt": 123, "hargaCash": 285602260 },
     { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 269990631 },
@@ -70,7 +70,8 @@ const SedahCalculator = () => {
     { "unit": "D09", "lb": 36, "lt": 66, "hargaCash": 213859871 },
     { "unit": "D10", "lb": 36, "lt": 66, "hargaCash": 213859871 },
     { "unit": "D11", "lb": 36, "lt": 72, "hargaCash": 218789859 }
-  ];
+  ]
+  ;
 
   useEffect(() => {
     // Scroll to top when component mounts
