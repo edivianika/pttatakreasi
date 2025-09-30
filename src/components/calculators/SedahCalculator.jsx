@@ -6,7 +6,7 @@ import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPi
 
 const SedahCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
-  const [discount, setDiscount] = useState(60000000); // 60 juta default
+  const [discount, setDiscount] = useState(40000000); // 40 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [kreditTerm, setKreditTerm] = useState(3); // 5 tahun default
