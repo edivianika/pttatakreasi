@@ -9,7 +9,7 @@ const NarrayaCalculator = () => {
   const [discount, setDiscount] = useState(100000000); // 100 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
-  const [kreditTerm, setKreditTerm] = useState(3); // 3 tahun default
+  const [kreditTerm, setKreditTerm] = useState(4); // 4 tahun default
   const [kreditDP, setKreditDP] = useState(30); // 30% default
 
   const [calculation, setCalculation] = useState({
@@ -73,9 +73,8 @@ const NarrayaCalculator = () => {
     const unit = unitData.find(item => item.unit === selectedUnit);
     if (!unit) return;
 
-    // Ensure discount doesn't exceed 60,000,000
-    const maxDiscount = 60000000;
-    const actualDiscount = Math.min(discount, maxDiscount);
+    // Use the full discount amount entered by user
+    const actualDiscount = discount;
     
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
@@ -279,7 +278,7 @@ Mohon informasi lebih lanjut.`;
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
-                    max="60000000"
+                    max="200000000"
                     className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
                   <p className="text-xs font-bold text-slate-600 mt-1">
@@ -357,9 +356,6 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={1}>1 Tahun</option>
-                        <option value={2}>2 Tahun</option>
-                        <option value={3}>3 Tahun</option>
                         <option value={4}>4 Tahun</option>
                         <option value={5}>5 Tahun</option>
                         <option value={6}>6 Tahun</option>
