@@ -256,6 +256,26 @@ Mohon informasi lebih lanjut.`;
             </select>
           </div>
 
+          {/* Site Plan Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-lg p-4 shadow-lg border border-slate-200 mb-6"
+          >
+            <h4 className="text-sm font-bold text-slate-800 mb-3 text-center flex items-center justify-center gap-2">
+              <span className="text-lg">📍</span>
+              Site Plan Sedah Green Residence
+            </h4>
+            <div className="relative">
+              <img 
+                src="/sedah/siteplan-sedah.png" 
+                alt="Site Plan Sedah Green Residence"
+                className="w-full h-auto rounded-lg border border-slate-200 shadow-sm"
+              />
+            </div>
+          </motion.div>
+
           {/* Results Container */}
           {selectedUnit && calculation.unitInfo && (
             <motion.div
