@@ -382,10 +382,22 @@ Dari sana, [Sapaan] akan lihat *_standar kualitas dan komitmen_* kami, bukan han
             <TabDemo
               defaultValue={currentProject}
               onValueChange={handleProjectChange}
-              tabs={Object.keys(projectData).map((projectName, index) => ({
-                value: projectName,
-                label: `Tab ${index + 1}`
-              }))}
+              tabs={Object.keys(projectData).map(projectName => {
+                let label;
+                if (projectName === 'Sedah Green Residence') {
+                  label = 'Sedah Green';
+                } else if (projectName === 'Narraya Green Residence') {
+                  label = 'Narraya';
+                } else if (projectName === 'Grand Sezha') {
+                  label = 'Grand Sezha';
+                } else {
+                  label = projectName;
+                }
+                return {
+                  value: projectName,
+                  label: label
+                };
+              })}
             >
               {Object.keys(projectData).map((projectName) => (
                 <TabsContent key={projectName} value={projectName}>
