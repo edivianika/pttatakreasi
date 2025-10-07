@@ -5,7 +5,7 @@ import {
   Calculator, 
   Users, 
   BookOpen, 
-  Tool, 
+  Wrench, 
   ArrowRight,
   Home,
   MessageCircle,
@@ -62,7 +62,7 @@ const FreelancePage = () => {
     {
       title: 'Tools Marketing',
       description: 'Brosur, flyer, dan tools marketing lainnya',
-      icon: <Tool className="h-8 w-8" />,
+      icon: <Wrench className="h-8 w-8" />,
       link: '/tools',
       color: 'orange',
       bgColor: 'bg-orange-50',
@@ -89,7 +89,7 @@ const FreelancePage = () => {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            <Tool size={24} className="text-blue-600" />
+            <Wrench size={24} className="text-blue-600" />
             <h1 className="text-xl font-bold text-slate-800">Freelance Tools</h1>
           </div>
         </div>

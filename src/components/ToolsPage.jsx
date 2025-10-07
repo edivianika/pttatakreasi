@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Tool, Construction } from 'lucide-react';
+import { ArrowLeft, Wrench, Construction } from 'lucide-react';
 
 const ToolsPage = () => {
   useEffect(() => {
@@ -33,7 +33,7 @@ const ToolsPage = () => {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            <Tool size={24} className="text-orange-600" />
+            <Wrench size={24} className="text-orange-600" />
             <h1 className="text-xl font-bold text-slate-800">Tools Marketing</h1>
           </div>
         </div>
