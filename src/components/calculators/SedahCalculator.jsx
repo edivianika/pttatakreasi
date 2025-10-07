@@ -103,6 +103,17 @@ const SedahCalculator = () => {
     // Track unit selection
     trackCalculatorUsage('Sedah', selectedUnit);
 
+    // Scroll to pricing section when unit is selected
+    setTimeout(() => {
+      const pricingSection = document.getElementById('pricing-section');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
+
     const unit = unitData.find(item => item.unit === selectedUnit);
     if (!unit) return;
 
@@ -279,6 +290,7 @@ Mohon informasi lebih lanjut.`;
           {/* Results Container */}
           {selectedUnit && calculation.unitInfo && (
             <motion.div
+              id="pricing-section"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
