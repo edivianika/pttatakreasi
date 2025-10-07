@@ -382,11 +382,9 @@ Dari sana, [Sapaan] akan lihat *_standar kualitas dan komitmen_* kami, bukan han
             <TabDemo
               defaultValue={currentProject}
               onValueChange={handleProjectChange}
-              tabs={Object.keys(projectData).map(projectName => ({
+              tabs={Object.keys(projectData).map((projectName, index) => ({
                 value: projectName,
-                label: projectName.split(' ').map(word => 
-                  word === 'Green' || word === 'Residence' ? word : word.charAt(0)
-                ).join(' ')
+                label: `Tab ${index + 1}`
               }))}
             >
               {Object.keys(projectData).map((projectName) => (
