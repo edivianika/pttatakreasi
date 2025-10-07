@@ -376,19 +376,25 @@ Dari sana, [Sapaan] akan lihat *_standar kualitas dan komitmen_* kami, bukan han
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex border-b border-gray-200 bg-gray-50"
+            className="flex overflow-x-auto border-b border-gray-200 bg-gray-50 scrollbar-hide"
           >
-            {Object.keys(projectData).map((projectName) => (
-              <button
-                key={projectName}
-                onClick={() => handleProjectChange(projectName)}
-                className={`tab-button text-gray-700 -mb-[3px] ${
-                  currentProject === projectName ? 'active' : ''
-                }`}
-              >
-                {projectName}
-              </button>
-            ))}
+            <div className="flex min-w-full sm:min-w-0 sm:justify-center">
+              {Object.keys(projectData).map((projectName) => (
+                <button
+                  key={projectName}
+                  onClick={() => handleProjectChange(projectName)}
+                  className={`tab-button text-gray-700 -mb-[3px] whitespace-nowrap ${
+                    currentProject === projectName ? 'active' : ''
+                  }`}
+                >
+                  <span className="text-xs sm:text-sm font-medium">
+                    {projectName.split(' ').map(word => 
+                      word === 'Green' || word === 'Residence' ? word : word.charAt(0)
+                    ).join(' ')}
+                  </span>
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           {/* Content Area */}
@@ -487,13 +493,14 @@ Dari sana, [Sapaan] akan lihat *_standar kualitas dan komitmen_* kami, bukan han
 
       <style jsx>{`
         .tab-button {
-          padding: 0.75rem 1.5rem;
+          padding: 0.75rem 1rem;
           cursor: pointer;
           font-weight: 600;
           border-bottom: 3px solid transparent;
           transition: all 0.2s;
-          flex-grow: 1;
+          flex-shrink: 0;
           text-align: center;
+          min-width: fit-content;
         }
         .tab-button.active {
           border-color: #10b981;
@@ -501,6 +508,13 @@ Dari sana, [Sapaan] akan lihat *_standar kualitas dan komitmen_* kami, bukan han
         }
         .tab-button:hover:not(.active) {
           color: #34d399;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </div>

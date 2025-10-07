@@ -119,7 +119,7 @@ const FreelancePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12"
           >
             {menuItems.map((item, index) => (
               <motion.div
@@ -132,24 +132,24 @@ const FreelancePage = () => {
               >
                 <Link
                   to={item.link}
-                  className={`block p-6 rounded-2xl ${item.bgColor} ${item.borderColor} border-2 hover:shadow-lg transition-all duration-300`}
+                  className={`block p-4 sm:p-6 rounded-xl sm:rounded-2xl ${item.bgColor} ${item.borderColor} border-2 hover:shadow-lg transition-all duration-300`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl ${item.bgColor} ${item.borderColor} border`}>
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl ${item.bgColor} ${item.borderColor} border flex-shrink-0`}>
                       <div className={item.iconColor}>
                         {item.icon}
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className={`text-xl font-bold ${item.textColor} mb-2 group-hover:underline`}>
+                    <div className="flex-1 min-w-0">
+                      <h3 className={`text-lg sm:text-xl font-bold ${item.textColor} mb-2 group-hover:underline leading-tight`}>
                         {item.title}
                       </h3>
-                      <p className="text-slate-600 mb-4">
+                      <p className="text-slate-600 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">
                         {item.description}
                       </p>
-                      <div className="flex items-center gap-2 text-sm font-medium text-slate-500 group-hover:text-slate-700 transition-colors">
+                      <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 group-hover:text-slate-700 transition-colors">
                         <span>Akses Tool</span>
-                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                   </div>
@@ -163,27 +163,27 @@ const FreelancePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200"
+            className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-200"
           >
-            <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-6 text-center">
               Tools Overview
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">4</div>
-                <div className="text-sm text-slate-600">Tools Available</div>
+                <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">4</div>
+                <div className="text-xs sm:text-sm text-slate-600">Tools Available</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
-                <div className="text-sm text-slate-600">Access</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">24/7</div>
+                <div className="text-xs sm:text-sm text-slate-600">Access</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">Free</div>
-                <div className="text-sm text-slate-600">Usage</div>
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1 sm:mb-2">Free</div>
+                <div className="text-xs sm:text-sm text-slate-600">Usage</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600 mb-2">Easy</div>
-                <div className="text-sm text-slate-600">Interface</div>
+                <div className="text-2xl sm:text-3xl font-bold text-orange-600 mb-1 sm:mb-2">Easy</div>
+                <div className="text-xs sm:text-sm text-slate-600">Interface</div>
               </div>
             </div>
           </motion.div>
@@ -193,30 +193,30 @@ const FreelancePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center"
+            className="mt-8 sm:mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white text-center"
           >
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
               Butuh Bantuan?
             </h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base">
               Jika Anda mengalami kesulitan menggunakan tools atau membutuhkan bantuan teknis, 
               jangan ragu untuk menghubungi tim support kami.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
                 href="https://wa.me/628133138887"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base"
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={16} className="sm:w-5 sm:h-5" />
                 WhatsApp Support
               </a>
               <a
                 href="tel:+628133138887"
-                className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base"
               >
-                <Phone size={20} />
+                <Phone size={16} className="sm:w-5 sm:h-5" />
                 Call Support
               </a>
             </div>

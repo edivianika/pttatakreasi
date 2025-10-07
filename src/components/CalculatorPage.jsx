@@ -105,7 +105,7 @@ const CalculatorPage = () => {
       >
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Link to="/freelance" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <ArrowLeft size={24} className="text-slate-600" />
               <span className="font-semibold text-slate-800">Kembali</span>
             </Link>
