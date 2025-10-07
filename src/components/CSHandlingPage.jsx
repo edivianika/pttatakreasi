@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Users, ChevronDown, Copy, Check } from 'lucide-react';
+import { TabDemo } from './ui/tabs-like-bookmark';
+import { TabsContent } from './ui/tabs';
 
 const CSHandlingPage = () => {
   const [currentProject, setCurrentProject] = useState('Sedah Green Residence');
@@ -371,152 +373,111 @@ Dari sana, [Sapaan] akan lihat *_standar kualitas dan komitmen_* kami, bukan han
             <p className="text-gray-600 text-sm">Pilih proyek di bawah ini untuk menampilkan panduan respons yang sesuai.</p>
           </motion.div>
 
-          {/* Tabs Navigation */}
+          {/* Bookmark-style Tabs Navigation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex overflow-x-auto border-b border-gray-200 bg-gray-50 scrollbar-hide"
           >
-            <div className="flex min-w-full sm:min-w-0 sm:justify-center">
+            <TabDemo
+              defaultValue={currentProject}
+              onValueChange={handleProjectChange}
+              tabs={Object.keys(projectData).map(projectName => ({
+                value: projectName,
+                label: projectName.split(' ').map(word => 
+                  word === 'Green' || word === 'Residence' ? word : word.charAt(0)
+                ).join(' ')
+              }))}
+            >
               {Object.keys(projectData).map((projectName) => (
-                <button
-                  key={projectName}
-                  onClick={() => handleProjectChange(projectName)}
-                  className={`tab-button text-gray-700 -mb-[3px] whitespace-nowrap ${
-                    currentProject === projectName ? 'active' : ''
-                  }`}
-                >
-                  <span className="text-xs sm:text-sm font-medium">
-                    {projectName.split(' ').map(word => 
-                      word === 'Green' || word === 'Residence' ? word : word.charAt(0)
-                    ).join(' ')}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Content Area */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white p-6 rounded-b-xl shadow-lg mt-0"
-          >
-            {/* Input Sapaan */}
-            <div className="mb-6 border-b pb-4">
-              <p className="text-gray-600 mb-4">Gunakan panduan di bawah untuk merespon keberatan pelanggan. Klik pada keberatan untuk melihat dan menyalin jawabannya. **Jangan lupa isi Sapaan Kustom di bawah.**</p>
-              <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
-                <label htmlFor="sapaanInput" className="text-lg font-medium text-gray-700 whitespace-nowrap">Sapaan Kustom:</label>
-                <input
-                  type="text"
-                  id="sapaanInput"
-                  value={sapaan}
-                  onChange={handleSapaanChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-800 shadow-sm"
-                  placeholder="Contoh: Bapak/Ibu, Kak, Mas, Mbak"
-                />
-              </div>
-              <p className="mt-3 text-sm text-gray-500">Pratinjau Sapaan: *{sapaan}*</p>
-            </div>
-
-            {/* Daftar Accordion Keberatan */}
-            <div className="space-y-4">
-              {currentData.map((data, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-                >
-                  {/* Header */}
-                  <div
-                    className="flex justify-between items-center p-4 sm:p-6 bg-white hover:bg-green-50 cursor-pointer"
-                    onClick={() => toggleAccordion(index)}
-                  >
-                    <span className="text-base sm:text-lg font-semibold text-gray-800">{data.objection}</span>
-                    <ChevronDown
-                      size={20}
-                      className={`text-green-600 transform transition-transform duration-300 ${
-                        openAccordion === index ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </div>
-
-                  {/* Content */}
-                  {openAccordion === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="border-t border-gray-200 bg-white"
-                    >
-                      <div className="p-4 sm:p-6 space-y-4">
-                        {/* Judul Keberatan Pelanggan */}
-                        <h3 className="text-gray-500 font-medium italic">Pertanyaan Pelanggan: "{data.title}"</h3>
-
-                        {/* Jawaban Utama */}
-                        <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                          <p className="text-sm font-semibold text-green-700 mb-2">JAWABAN SIAP COPY (Konversional)</p>
-                          <div className="text-gray-800 whitespace-pre-line mb-3">
-                            {formatAnswer(data.answer)}
-                          </div>
-                          <button
-                            onClick={() => copyToClipboard(formatAnswer(data.answer), index)}
-                            className="copy-button px-3 py-1 bg-green-600 text-white text-xs rounded-lg flex items-center hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
-                          >
-                            {copiedIndex === index ? (
-                              <>
-                                <Check size={16} className="mr-1" />
-                                <span>Berhasil Disalin!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy size={16} className="mr-1" />
-                                <span>Salin Jawaban</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
+                <TabsContent key={projectName} value={projectName}>
+                  <div className="bg-white p-6 rounded-b-xl shadow-lg">
+                    {/* Input Sapaan */}
+                    <div className="mb-6 border-b pb-4">
+                      <p className="text-gray-600 mb-4">Gunakan panduan di bawah untuk merespon keberatan pelanggan. Klik pada keberatan untuk melihat dan menyalin jawabannya. **Jangan lupa isi Sapaan Kustom di bawah.**</p>
+                      <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                        <label htmlFor="sapaanInput" className="text-lg font-medium text-gray-700 whitespace-nowrap">Sapaan Kustom:</label>
+                        <input
+                          type="text"
+                          id="sapaanInput"
+                          value={sapaan}
+                          onChange={handleSapaanChange}
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-800 shadow-sm"
+                          placeholder="Contoh: Bapak/Ibu, Kak, Mas, Mbak"
+                        />
                       </div>
-                    </motion.div>
-                  )}
-                </motion.div>
+                      <p className="mt-3 text-sm text-gray-500">Pratinjau Sapaan: *{sapaan}*</p>
+                    </div>
+
+                    {/* Accordion Content */}
+                    <div className="space-y-4">
+                      {projectData[projectName].map((data, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.05 }}
+                          className="border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                        >
+                          <div
+                            className="accordion-header flex justify-between items-center p-4 sm:p-6 bg-white hover:bg-green-50 cursor-pointer"
+                            onClick={() => toggleAccordion(index)}
+                          >
+                            <span className="text-base sm:text-lg font-semibold text-gray-800">{data.objection}</span>
+                            <ChevronDown
+                              size={20}
+                              className={`text-green-600 transform transition-transform duration-300 ${
+                                openAccordion === index ? 'rotate-180' : ''
+                              }`}
+                            />
+                          </div>
+                          {openAccordion === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="border-t border-gray-200 bg-white"
+                            >
+                              <div className="p-4 sm:p-6 space-y-4">
+                                <h3 className="text-gray-500 font-medium italic">Pertanyaan Pelanggan: "{data.title}"</h3>
+                                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                                  <p className="text-sm font-semibold text-green-700 mb-2">JAWABAN SIAP COPY (Konversional)</p>
+                                  <div className="text-gray-800 whitespace-pre-line mb-3">
+                                    {formatAnswer(data.answer)}
+                                  </div>
+                                  <button
+                                    onClick={() => copyToClipboard(formatAnswer(data.answer), index)}
+                                    className="copy-button px-3 py-1 bg-green-600 text-white text-xs rounded-lg flex items-center hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                                  >
+                                    {copiedIndex === index ? (
+                                      <>
+                                        <Check size={16} className="mr-1" />
+                                        Berhasil Disalin!
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Copy size={16} className="mr-1" />
+                                        Salin Jawaban
+                                      </>
+                                    )}
+                                  </button>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
               ))}
-            </div>
+            </TabDemo>
           </motion.div>
+
         </div>
       </div>
 
-      <style jsx>{`
-        .tab-button {
-          padding: 0.75rem 1rem;
-          cursor: pointer;
-          font-weight: 600;
-          border-bottom: 3px solid transparent;
-          transition: all 0.2s;
-          flex-shrink: 0;
-          text-align: center;
-          min-width: fit-content;
-        }
-        .tab-button.active {
-          border-color: #10b981;
-          color: #059669;
-        }
-        .tab-button:hover:not(.active) {
-          color: #34d399;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   );
 };
