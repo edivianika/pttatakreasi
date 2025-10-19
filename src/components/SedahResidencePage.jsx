@@ -463,7 +463,7 @@ function SedahGreenResidence() {
                     transition={{ duration: 0.7, delay: 0.4 }}
                     className="text-xl text-slate-600 font-medium"
                   >
-                    57 Unit Rumah – Harga Promo 177 Juta dari 233 Juta
+                    57 Unit Rumah – Harga Promo 173 Juta dari 213 Juta
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -472,7 +472,7 @@ function SedahGreenResidence() {
                     className="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-200 rounded-xl p-4"
                   >
                     <p className="text-amber-800 font-semibold text-lg">
-                      🔥 Diskon hingga 60 Juta untuk 10 unit pertama!
+                      🔥 Diskon hingga 40 Juta untuk 10 unit pertama!
                     </p>
                   </motion.div>
                 </div>
@@ -692,9 +692,9 @@ function SedahGreenResidence() {
                     <h3 className="text-3xl font-bold text-slate-800 mb-4">Rumah Type 36/66</h3>
                     <div className="space-y-4">
                       <div>
-                        <p className="text-slate-600 line-through text-xl">Harga Normal: Rp 233.000.000</p>
+                        <p className="text-slate-600 line-through text-xl">Harga Normal: Rp 213.000.000</p>
                         <p className="text-4xl font-bold text-emerald-600">Rp 173.000.000</p>
-                        <p className="text-amber-600 font-semibold">Hemat Rp 60.000.000!</p>
+                        <p className="text-amber-600 font-semibold">Hemat Rp 40.000.000!</p>
                       </div>
                       <div className="space-y-2">
                         <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Tanah: 66 m²</p>

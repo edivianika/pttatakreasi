@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, MessageCircle, Menu, X, TrendingUp, Award, CreditCard } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { companyInfo } from './mockData';
-import Gallery from './Gallery';
+import { companyInfo } from '../mockData';
+import Gallery from '../Gallery';
 import NarrayaHero from './NarrayaHero';
 
 const NarrayaPage = () => {
