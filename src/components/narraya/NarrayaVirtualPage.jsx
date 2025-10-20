@@ -261,7 +261,7 @@ const NarrayaVirtualPage = () => {
                   className="bg-emerald-800 text-white hover:bg-emerald-900 px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105 flex items-center gap-3"
                 >
                   <Phone className="w-6 h-6" />
-                  {companyInfo.whatsapp}
+                  {whatsappNumber}
                 </button>
               </div>
 
