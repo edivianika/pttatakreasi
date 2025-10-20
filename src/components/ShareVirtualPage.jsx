@@ -254,13 +254,16 @@ const ShareVirtualPage = () => {
                     </div>
                     
                     <div className="space-y-3">
-                      <div className="flex gap-2">
-                        <div className="flex-1 p-3 bg-white border border-emerald-200 rounded-lg font-mono text-xs break-all shadow-sm">
-                          {narrayaUrl}
-                        </div>
+                      {/* URL Display */}
+                      <div className="p-3 bg-white border border-emerald-200 rounded-lg font-mono text-xs break-all shadow-sm">
+                        {narrayaUrl}
+                      </div>
+                      
+                      {/* Action Buttons - Mobile Optimized */}
+                      <div className="flex gap-2 justify-center">
                         <button
                           onClick={() => handleCopyUrl(narrayaUrl, 'narraya')}
-                          className={`px-3 py-3 rounded-lg font-semibold transition-all flex items-center gap-1 shadow-md ${
+                          className={`flex-1 sm:flex-none px-4 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-md ${
                             isCopied.narraya
                               ? 'bg-green-600 text-white'
                               : 'bg-emerald-600 text-white hover:bg-emerald-700'
@@ -269,27 +272,25 @@ const ShareVirtualPage = () => {
                           {isCopied.narraya ? (
                             <>
                               <Check className="w-4 h-4" />
-                              <span className="hidden sm:inline">Copied!</span>
+                              <span>Copied!</span>
                             </>
                           ) : (
                             <>
                               <Copy className="w-4 h-4" />
-                              <span className="hidden sm:inline">Copy</span>
+                              <span>Copy</span>
                             </>
                           )}
                         </button>
-                      </div>
-                      
-                      {/* Open in New Tab Button */}
-                      <div className="flex justify-center">
+                        
                         <a
                           href={narrayaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white w-10 h-10 rounded-lg transition-all transform hover:scale-105 shadow-md"
+                          className="flex-1 sm:flex-none inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white px-4 py-3 rounded-lg transition-all transform hover:scale-105 shadow-md gap-2"
                           title="Buka di Tab Baru"
                         >
-                          <ExternalLink className="w-5 h-5" />
+                          <ExternalLink className="w-4 h-4" />
+                          <span className="sm:hidden">Buka</span>
                         </a>
                       </div>
                     </div>
@@ -315,13 +316,16 @@ const ShareVirtualPage = () => {
                     </div>
                     
                     <div className="space-y-3">
-                      <div className="flex gap-2">
-                        <div className="flex-1 p-3 bg-white border border-blue-200 rounded-lg font-mono text-xs break-all shadow-sm">
-                          {grandSezhaUrl}
-                        </div>
+                      {/* URL Display */}
+                      <div className="p-3 bg-white border border-blue-200 rounded-lg font-mono text-xs break-all shadow-sm">
+                        {grandSezhaUrl}
+                      </div>
+                      
+                      {/* Action Buttons - Mobile Optimized */}
+                      <div className="flex gap-2 justify-center">
                         <button
                           onClick={() => handleCopyUrl(grandSezhaUrl, 'grandsezha')}
-                          className={`px-3 py-3 rounded-lg font-semibold transition-all flex items-center gap-1 shadow-md ${
+                          className={`flex-1 sm:flex-none px-4 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-md ${
                             isCopied.grandsezha
                               ? 'bg-green-600 text-white'
                               : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -330,27 +334,25 @@ const ShareVirtualPage = () => {
                           {isCopied.grandsezha ? (
                             <>
                               <Check className="w-4 h-4" />
-                              <span className="hidden sm:inline">Copied!</span>
+                              <span>Copied!</span>
                             </>
                           ) : (
                             <>
                               <Copy className="w-4 h-4" />
-                              <span className="hidden sm:inline">Copy</span>
+                              <span>Copy</span>
                             </>
                           )}
                         </button>
-                      </div>
-                      
-                      {/* Open in New Tab Button */}
-                      <div className="flex justify-center">
+                        
                         <a
                           href={grandSezhaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white w-10 h-10 rounded-lg transition-all transform hover:scale-105 shadow-md"
+                          className="flex-1 sm:flex-none inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white px-4 py-3 rounded-lg transition-all transform hover:scale-105 shadow-md gap-2"
                           title="Buka di Tab Baru"
                         >
-                          <ExternalLink className="w-5 h-5" />
+                          <ExternalLink className="w-4 h-4" />
+                          <span className="sm:hidden">Buka</span>
                         </a>
                       </div>
                     </div>
