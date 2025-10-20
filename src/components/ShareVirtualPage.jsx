@@ -211,15 +211,6 @@ const ShareVirtualPage = () => {
                   </div>
                 )}
                 
-                <div className="mt-4 text-xs text-slate-500">
-                  <p>Contoh format yang benar:</p>
-                  <ul className="list-disc list-inside mt-1 space-y-1">
-                    <li>6281234567890 (format internasional)</li>
-                    <li>081234567890 (akan dikonversi ke 6281234567890)</li>
-                    <li>6289679249759</li>
-                    <li>089679249759 (akan dikonversi ke 6289679249759)</li>
-                  </ul>
-                </div>
               </div>
 
               {/* Generated URL Section */}
