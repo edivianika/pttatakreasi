@@ -20,7 +20,7 @@ export const getKeypanoUrl = () => {
     // Use Vercel API route in production
     const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 
                    (typeof window !== 'undefined' ? window.location.origin : '');
-    return `${baseUrl}/api/keypano/${keypanoPath}`;
+    return `${baseUrl}/api/keypano?path=${encodeURIComponent(keypanoPath)}`;
   }
 };
 

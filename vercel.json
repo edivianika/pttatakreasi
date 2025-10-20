@@ -1,12 +1,12 @@
 {
   "functions": {
-    "api/keypano/[...path].js": {
+    "api/keypano.js": {
       "maxDuration": 30
     }
   },
   "headers": [
     {
-      "source": "/api/keypano/(.*)",
+      "source": "/api/keypano",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -25,12 +25,6 @@
           "value": "frame-ancestors *"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/keypano/(.*)",
-      "destination": "/api/keypano/$1"
     }
   ]
 }
