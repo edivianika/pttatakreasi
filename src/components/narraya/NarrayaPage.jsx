@@ -117,6 +117,41 @@ const NarrayaPage = () => {
         onContactClick={handleWhatsAppClick}
       />
 
+      {/* Virtual Tour Section */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Virtual Tour 360°
+              </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Jelajahi Narraya Green Residence secara virtual dan rasakan pengalaman hunian premium
+              </p>
+            </div>
+            
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <iframe
+                src="http://localhost:3001/keypano/v/3fc8am5j63d7y8-1759128200.html"
+                title="Narraya Green Residence Virtual Tour"
+                className="w-full h-full rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg"
+                loading="lazy"
+                allowFullScreen
+                style={{
+                  border: 'none',
+                  minHeight: '400px'
+                }}
+              />
+            </div>
+            
+            <div className="text-center mt-6 sm:mt-8">
+              <p className="text-sm text-gray-500">
+                💡 Gunakan mouse atau sentuh layar untuk menjelajahi lingkungan Narraya
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Project Overview */}
       <section id="overview" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
