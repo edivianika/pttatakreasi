@@ -286,10 +286,10 @@ const ShareVirtualPage = () => {
                           href={narrayaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all transform hover:scale-105 shadow-md"
+                          className="inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white w-10 h-10 rounded-lg transition-all transform hover:scale-105 shadow-md"
+                          title="Buka di Tab Baru"
                         >
-                          <ExternalLink className="w-4 h-4" />
-                          <span>Buka di Tab Baru</span>
+                          <ExternalLink className="w-5 h-5" />
                         </a>
                       </div>
                     </div>
@@ -347,10 +347,10 @@ const ShareVirtualPage = () => {
                           href={grandSezhaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all transform hover:scale-105 shadow-md"
+                          className="inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white w-10 h-10 rounded-lg transition-all transform hover:scale-105 shadow-md"
+                          title="Buka di Tab Baru"
                         >
-                          <ExternalLink className="w-4 h-4" />
-                          <span>Buka di Tab Baru</span>
+                          <ExternalLink className="w-5 h-5" />
                         </a>
                       </div>
                     </div>
