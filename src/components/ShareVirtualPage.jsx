@@ -223,19 +223,32 @@ const ShareVirtualPage = () => {
                   </label>
                   
                   {/* Narraya Link Card */}
-                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-2xl p-6 mb-6 shadow-lg">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-4 h-4 bg-emerald-500 rounded-full shadow-sm"></div>
-                      <h3 className="text-xl font-bold text-emerald-800">Narraya Green Residence</h3>
+                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-2xl p-4 mb-6 shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-3 h-3 bg-emerald-500 rounded-full shadow-sm"></div>
+                      <h3 className="text-lg font-bold text-emerald-800">Narraya Green Residence</h3>
                     </div>
+                    
+                    {/* Project Image */}
+                    <div className="mb-4">
+                      <img
+                        src="/images/narraya-hero.jpg"
+                        alt="Narraya Green Residence"
+                        className="w-full h-32 object-cover rounded-xl shadow-sm"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                    
                     <div className="space-y-3">
                       <div className="flex gap-2">
-                        <div className="flex-1 p-4 bg-white border border-emerald-200 rounded-xl font-mono text-sm break-all shadow-sm">
+                        <div className="flex-1 p-3 bg-white border border-emerald-200 rounded-lg font-mono text-xs break-all shadow-sm">
                           {narrayaUrl}
                         </div>
                         <button
                           onClick={() => handleCopyUrl(narrayaUrl, 'narraya')}
-                          className={`px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center gap-2 shadow-lg ${
+                          className={`px-3 py-3 rounded-lg font-semibold transition-all flex items-center gap-1 shadow-md ${
                             isCopied.narraya
                               ? 'bg-green-600 text-white'
                               : 'bg-emerald-600 text-white hover:bg-emerald-700'
@@ -243,52 +256,47 @@ const ShareVirtualPage = () => {
                         >
                           {isCopied.narraya ? (
                             <>
-                              <Check className="w-5 h-5" />
-                              Copied!
+                              <Check className="w-4 h-4" />
+                              <span className="hidden sm:inline">Copied!</span>
                             </>
                           ) : (
                             <>
-                              <Copy className="w-5 h-5" />
-                              Copy
+                              <Copy className="w-4 h-4" />
+                              <span className="hidden sm:inline">Copy</span>
                             </>
                           )}
                         </button>
-                      </div>
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => handleTestUrl(narrayaUrl)}
-                          className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
-                        >
-                          <LinkIcon className="w-5 h-5" />
-                          Test Link
-                        </button>
-                        <a
-                          href={narrayaUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
-                        >
-                          <Smartphone className="w-5 h-5" />
-                          Buka di Tab Baru
-                        </a>
                       </div>
                     </div>
                   </div>
 
                   {/* Grand Sezha Link Card */}
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-lg">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-4 h-4 bg-blue-500 rounded-full shadow-sm"></div>
-                      <h3 className="text-xl font-bold text-blue-800">Grand Sezha</h3>
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full shadow-sm"></div>
+                      <h3 className="text-lg font-bold text-blue-800">Grand Sezha</h3>
                     </div>
+                    
+                    {/* Project Image */}
+                    <div className="mb-4">
+                      <img
+                        src="/images/grandsezha-hero.jpg"
+                        alt="Grand Sezha"
+                        className="w-full h-32 object-cover rounded-xl shadow-sm"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                    
                     <div className="space-y-3">
                       <div className="flex gap-2">
-                        <div className="flex-1 p-4 bg-white border border-blue-200 rounded-xl font-mono text-sm break-all shadow-sm">
+                        <div className="flex-1 p-3 bg-white border border-blue-200 rounded-lg font-mono text-xs break-all shadow-sm">
                           {grandSezhaUrl}
                         </div>
                         <button
                           onClick={() => handleCopyUrl(grandSezhaUrl, 'grandsezha')}
-                          className={`px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center gap-2 shadow-lg ${
+                          className={`px-3 py-3 rounded-lg font-semibold transition-all flex items-center gap-1 shadow-md ${
                             isCopied.grandsezha
                               ? 'bg-green-600 text-white'
                               : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -296,34 +304,16 @@ const ShareVirtualPage = () => {
                         >
                           {isCopied.grandsezha ? (
                             <>
-                              <Check className="w-5 h-5" />
-                              Copied!
+                              <Check className="w-4 h-4" />
+                              <span className="hidden sm:inline">Copied!</span>
                             </>
                           ) : (
                             <>
-                              <Copy className="w-5 h-5" />
-                              Copy
+                              <Copy className="w-4 h-4" />
+                              <span className="hidden sm:inline">Copy</span>
                             </>
                           )}
                         </button>
-                      </div>
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => handleTestUrl(grandSezhaUrl)}
-                          className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
-                        >
-                          <LinkIcon className="w-5 h-5" />
-                          Test Link
-                        </button>
-                        <a
-                          href={grandSezhaUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
-                        >
-                          <Smartphone className="w-5 h-5" />
-                          Buka di Tab Baru
-                        </a>
                       </div>
                     </div>
                   </div>
