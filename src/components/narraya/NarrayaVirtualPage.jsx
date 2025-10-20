@@ -12,7 +12,7 @@ import {
   Users,
   Gift
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getKeypanoUrl, checkKeypanoAvailability } from '../../utils/keypanoUrl';
 import { companyInfo } from '../mockData';
 
@@ -20,6 +20,10 @@ const NarrayaVirtualPage = () => {
   const [keypanoUrl, setKeypanoUrl] = useState('');
   const [isKeypanoAvailable, setIsKeypanoAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams] = useSearchParams();
+  
+  // Get WhatsApp number from query string, default to company WhatsApp
+  const whatsappNumber = searchParams.get('wa') || companyInfo.whatsapp;
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -50,57 +54,28 @@ const NarrayaVirtualPage = () => {
 
   const handleWhatsAppClick = () => {
     const message = "Halo TKBM, saya tertarik dengan Narraya Green Residence setelah melihat virtual tour. Mohon informasi tentang diskon 100 juta untuk 2 pembeli pertama.";
-    const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handlePhoneClick = () => {
-    window.open(`tel:${companyInfo.whatsapp}`, '_self');
+    window.open(`tel:${whatsappNumber}`, '_self');
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-slate-100">
-      {/* Header */}
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-md"
-      >
-        <div className="container flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <img
-                src="/logo.png"
-                alt="TKBM Logo"
-                className="w-10 h-10 rounded-lg"
-              />
-              <span className="font-bold text-xl text-slate-800">TKBM</span>
-            </Link>
-            <div className="hidden md:block w-px h-6 bg-slate-300"></div>
-            <span className="hidden md:block text-sm text-slate-600">Virtual Tour</span>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <Link
-              to="/narraya"
-              className="flex items-center gap-2 text-sm text-slate-600 hover:text-emerald-600 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Kembali ke Halaman Narraya
-            </Link>
-            <div className="hidden md:flex items-center gap-3">
-              <button
-                onClick={handleWhatsAppClick}
-                className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition-colors text-sm"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp
-              </button>
-            </div>
+      {/* Simple Header */}
+      <div className="bg-white shadow-sm">
+        <div className="container flex h-12 items-center justify-between px-4">
+          <Link to="/narraya" className="flex items-center gap-2 text-sm text-slate-600 hover:text-emerald-600 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Kembali ke Narraya
+          </Link>
+          <div className="text-sm text-slate-500">
+            Virtual Tour Narraya
           </div>
         </div>
-      </motion.header>
+      </div>
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -236,6 +211,15 @@ const NarrayaVirtualPage = () => {
                 Promo terbatas hanya untuk 2 pembeli pertama dengan diskon 100 juta
               </p>
               
+              {/* Debug info for WhatsApp number */}
+              {searchParams.get('wa') && (
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
+                  <p className="text-emerald-100 text-sm">
+                    📱 Kontak: {whatsappNumber}
+                  </p>
+                </div>
+              )}
+              
               {/* Special Offer Details */}
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
                 <div className="grid md:grid-cols-3 gap-6 text-center">
@@ -293,83 +277,40 @@ const NarrayaVirtualPage = () => {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-16 bg-white">
+        {/* Simple Info Section */}
+        <section className="py-12 bg-white">
           <div className="container px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto"
-            >
-              <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
-                Mengapa Memilih Narraya Green Residence?
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-2xl font-bold text-slate-800 mb-4">
+                Narraya Green Residence
               </h2>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  {
-                    icon: <CheckCircle className="w-8 h-8 text-emerald-600" />,
-                    title: "100% Syariah",
-                    description: "Akad jual beli sesuai syariah Islam, tanpa riba dan denda"
-                  },
-                  {
-                    icon: <MapPin className="w-8 h-8 text-emerald-600" />,
-                    title: "Lokasi Strategis",
-                    description: "5 langkah ke Alun-alun Ponorogo, akses mudah ke fasilitas umum"
-                  },
-                  {
-                    icon: <Home className="w-8 h-8 text-emerald-600" />,
-                    title: "Kualitas Premium",
-                    description: "Bangunan berkualitas tinggi dengan desain modern tropis"
-                  },
-                  {
-                    icon: <Star className="w-8 h-8 text-emerald-600" />,
-                    title: "Fasilitas Lengkap",
-                    description: "Mushola, taman, area bermain anak, dan keamanan 24 jam"
-                  },
-                  {
-                    icon: <Users className="w-8 h-8 text-emerald-600" />,
-                    title: "Komunitas Islami",
-                    description: "Lingkungan yang nyaman untuk keluarga muslim"
-                  },
-                  {
-                    icon: <Gift className="w-8 h-8 text-emerald-600" />,
-                    title: "Promo Terbatas",
-                    description: "Diskon 100 juta untuk 2 pembeli pertama"
-                  }
-                ].map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="text-center p-6 rounded-2xl bg-slate-50 hover:bg-emerald-50 transition-colors"
-                  >
-                    <div className="flex justify-center mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">{feature.title}</h3>
-                    <p className="text-slate-600">{feature.description}</p>
-                  </motion.div>
-                ))}
+              <p className="text-slate-600 mb-6">
+                Hunian premium syariah dengan lokasi strategis di jantung Ponorogo
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
+                <span className="flex items-center gap-1">
+                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  100% Syariah
+                </span>
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-4 h-4 text-emerald-600" />
+                  5 Langkah ke Alun-alun
+                </span>
+                <span className="flex items-center gap-1">
+                  <Home className="w-4 h-4 text-emerald-600" />
+                  Kualitas Premium
+                </span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-800 text-white py-12">
+      {/* Simple Footer */}
+      <footer className="bg-slate-800 text-white py-8">
         <div className="container px-4">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <img
-                src="/logo.png"
-                alt="TKBM Logo"
-                className="w-10 h-10 rounded-lg"
-              />
-              <span className="font-bold text-xl">TKBM</span>
-            </div>
-            <p className="text-slate-300 mb-6">
+            <p className="text-slate-300 mb-4">
               Developer Properti Syariah Terpercaya di Ponorogo
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -380,12 +321,9 @@ const NarrayaVirtualPage = () => {
                 <MessageCircle className="w-5 h-5" />
                 Hubungi WhatsApp
               </button>
-              <Link
-                to="/narraya"
-                className="text-slate-300 hover:text-white transition-colors"
-              >
-                Lihat Halaman Narraya
-              </Link>
+              <span className="text-slate-400 text-sm">
+                {whatsappNumber}
+              </span>
             </div>
           </div>
         </div>
