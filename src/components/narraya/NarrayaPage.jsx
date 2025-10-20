@@ -190,9 +190,16 @@ const NarrayaPage = () => {
             </div>
             
             <div className="text-center mt-6 sm:mt-8">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 mb-4">
                 💡 Gunakan mouse atau sentuh layar untuk menjelajahi lingkungan Narraya
               </p>
+              <Link
+                to="/narraya-virtual"
+                className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full hover:bg-emerald-700 transition-colors font-semibold"
+              >
+                <span>🎥</span>
+                Jelajahi Virtual Tour Penuh
+              </Link>
             </div>
           </div>
         </div>

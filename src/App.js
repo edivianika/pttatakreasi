@@ -11,6 +11,7 @@ import TrustBadges from "./components/TrustBadges";
 import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/narraya/NarrayaPage";
+import NarrayaVirtualPage from "./components/narraya/NarrayaVirtualPage";
 import SedahPage from "./components/sedah/SedahPage";
 import SedahResidencePage from "./components/SedahResidencePage";
 import CalculatorPage from "./components/CalculatorPage";
@@ -84,6 +85,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/narraya" element={<NarrayaPage />} />
+          <Route path="/narraya-virtual" element={<NarrayaVirtualPage />} />
           <Route path="/sedah" element={<SedahPage />} />
           <Route path="/sedahresidence" element={<SedahResidencePage />} />
           <Route path="/kalkulator" element={<CalculatorPage />} />
