@@ -13,8 +13,8 @@ import {
   Gift
 } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { getKeypanoUrl, checkKeypanoAvailability } from '../../utils/keypanoUrl';
-import { companyInfo } from '../mockData';
+import { getKeypanoUrl, checkKeypanoAvailability } from '../utils/keypanoUrl';
+import { companyInfo } from './mockData';
 
 const GrandSezhaVirtualPage = () => {
   const [keypanoUrl, setKeypanoUrl] = useState('');
