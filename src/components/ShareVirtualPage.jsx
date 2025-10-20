@@ -117,11 +117,11 @@ const ShareVirtualPage = () => {
           </Link>
           <div className="flex items-center gap-4">
             <Link
-              to="/narraya"
+              to="/freelance"
               className="flex items-center gap-2 text-sm text-slate-600 hover:text-emerald-600 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Kembali ke Narraya
+              Kembali ke Freelance
             </Link>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { 
   Calculator, 
   Users, 
-  BookOpen, 
+  Share2, 
   Wrench, 
   ArrowRight,
   Home,
@@ -49,10 +49,10 @@ const FreelancePage = () => {
       iconColor: 'text-green-600'
     },
     {
-      title: 'Tutorial',
-      description: 'Panduan dan tutorial untuk tim sales',
-      icon: <BookOpen className="h-8 w-8" />,
-      link: '/tutorial',
+      title: 'Virtual Tool Share',
+      description: 'Buat link virtual tour dengan nomor WhatsApp khusus',
+      icon: <Share2 className="h-8 w-8" />,
+      link: '/sharevirtual',
       color: 'purple',
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200',
