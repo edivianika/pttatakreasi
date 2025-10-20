@@ -119,14 +119,6 @@ const ShareVirtualPage = () => {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="container flex h-16 items-center justify-between px-4">
-          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img
-              src="/logo.png"
-              alt="TKBM Logo"
-              className="w-10 h-10 rounded-lg"
-            />
-            <span className="font-bold text-xl text-slate-800">TKBM</span>
-          </Link>
           <div className="flex items-center gap-4">
             <Link
               to="/freelance"
@@ -136,6 +128,14 @@ const ShareVirtualPage = () => {
               Kembali ke Freelance
             </Link>
           </div>
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img
+              src="/logo.png"
+              alt="TKBM Logo"
+              className="w-10 h-10 rounded-lg"
+            />
+            <span className="font-bold text-xl text-slate-800">TKBM</span>
+          </Link>
         </div>
       </div>
 
