@@ -1,0 +1,36 @@
+{
+  "functions": {
+    "api/keypano/[...path].js": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/keypano/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, X-Requested-With"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors *"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/keypano/(.*)",
+      "destination": "/api/keypano/$1"
+    }
+  ]
+}

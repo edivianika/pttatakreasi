@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import { companyInfo } from '../mockData';
 import Gallery from '../Gallery';
 import NarrayaHero from './NarrayaHero';
+import { getKeypanoUrl, checkKeypanoAvailability } from '../../utils/keypanoUrl';
 
 const NarrayaPage = () => {
+  const [keypanoUrl, setKeypanoUrl] = useState('');
+  const [isKeypanoAvailable, setIsKeypanoAvailable] = useState(false);
+
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo({
@@ -13,6 +17,13 @@ const NarrayaPage = () => {
       left: 0,
       behavior: 'smooth'
     });
+
+    // Set Keypano URL based on environment
+    const url = getKeypanoUrl();
+    setKeypanoUrl(url);
+
+    // Check if Keypano is available
+    checkKeypanoAvailability().then(setIsKeypanoAvailable);
   }, []);
 
   const handleWhatsAppClick = () => {
@@ -131,17 +142,51 @@ const NarrayaPage = () => {
             </div>
             
             <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-              <iframe
-                src="http://localhost:3001/keypano/v/3fc8am5j63d7y8-1759128200.html"
-                title="Narraya Green Residence Virtual Tour"
-                className="w-full h-full rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg"
-                loading="lazy"
-                allowFullScreen
-                style={{
-                  border: 'none',
-                  minHeight: '400px'
-                }}
-              />
+              {keypanoUrl ? (
+                <iframe
+                  src={keypanoUrl}
+                  title="Narraya Green Residence Virtual Tour"
+                  className="w-full h-full rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg"
+                  loading="lazy"
+                  allowFullScreen
+                  style={{
+                    border: 'none',
+                    minHeight: '400px'
+                  }}
+                  onError={() => {
+                    console.warn('Keypano iframe failed to load');
+                    setIsKeypanoAvailable(false);
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg bg-gray-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+                    <p className="text-gray-600">Memuat Virtual Tour...</p>
+                  </div>
+                </div>
+              )}
+              
+              {!isKeypanoAvailable && keypanoUrl && (
+                <div className="absolute inset-0 bg-white bg-opacity-90 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center">
+                  <div className="text-center p-6">
+                    <div className="text-6xl mb-4">🏠</div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      Virtual Tour Sementara Tidak Tersedia
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Silakan hubungi kami untuk informasi lebih lanjut tentang Narraya Green Residence
+                    </p>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition-colors"
+                    >
+                      <MessageCircle className="inline w-4 h-4 mr-2" />
+                      Hubungi WhatsApp
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
             
             <div className="text-center mt-6 sm:mt-8">
