@@ -139,13 +139,13 @@ const ShareVirtualPage = () => {
         </div>
       </div>
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8">
         <div className="container px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
             {/* Header Section */}
             <div className="text-center mb-12">
@@ -227,8 +227,10 @@ const ShareVirtualPage = () => {
                     Link Virtual Tour
                   </label>
                   
-                  {/* Narraya Link Card */}
-                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-2xl p-4 mb-6 shadow-lg">
+                  {/* Cards Grid */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* Narraya Link Card */}
+                    <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-2xl p-6 shadow-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-3 h-3 bg-emerald-500 rounded-full shadow-sm"></div>
                       <h3 className="text-lg font-bold text-emerald-800">Narraya Green Residence</h3>
@@ -287,10 +289,10 @@ const ShareVirtualPage = () => {
                         </a>
                       </div>
                     </div>
-                  </div>
+                    </div>
 
-                  {/* Grand Sezha Link Card */}
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 shadow-lg">
+                    {/* Grand Sezha Link Card */}
+                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-3 h-3 bg-blue-500 rounded-full shadow-sm"></div>
                       <h3 className="text-lg font-bold text-blue-800">Grand Sezha</h3>
@@ -348,6 +350,7 @@ const ShareVirtualPage = () => {
                           <span className="sm:hidden">Buka</span>
                         </a>
                       </div>
+                    </div>
                     </div>
                   </div>
                 </motion.div>
