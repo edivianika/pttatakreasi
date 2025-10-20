@@ -352,63 +352,6 @@ const ShareVirtualPage = () => {
               </ol>
             </div>
 
-            {/* Example URLs */}
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold text-slate-800 mb-4">
-                Contoh Link yang Dihasilkan
-              </h3>
-              <div className="space-y-4 text-sm">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                    <span className="font-medium text-slate-700">Narraya Green Residence</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                      <div className="font-mono break-all">
-                        {window.location.origin}/narraya-virtual?wa=6289679249759
-                      </div>
-                      <div className="text-xs text-slate-500 mt-1">
-                        Input: 089679249759 → Output: 6289679249759
-                      </div>
-                    </div>
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                      <div className="font-mono break-all">
-                        {window.location.origin}/narraya-virtual?wa=6282131813698
-                      </div>
-                      <div className="text-xs text-slate-500 mt-1">
-                        Input: 6282131813698 → Output: 6282131813698 (tidak berubah)
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="font-medium text-slate-700">Grand Sezha</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                      <div className="font-mono break-all">
-                        {window.location.origin}/gs-virtual?wa=6289679249759
-                      </div>
-                      <div className="text-xs text-slate-500 mt-1">
-                        Input: 089679249759 → Output: 6289679249759
-                      </div>
-                    </div>
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                      <div className="font-mono break-all">
-                        {window.location.origin}/gs-virtual?wa=6282131813698
-                      </div>
-                      <div className="text-xs text-slate-500 mt-1">
-                        Input: 6282131813698 → Output: 6282131813698 (tidak berubah)
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </main>
