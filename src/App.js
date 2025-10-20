@@ -12,6 +12,7 @@ import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/narraya/NarrayaPage";
 import NarrayaVirtualPage from "./components/narraya/NarrayaVirtualPage";
+import ShareVirtualPage from "./components/ShareVirtualPage";
 import SedahPage from "./components/sedah/SedahPage";
 import SedahResidencePage from "./components/SedahResidencePage";
 import CalculatorPage from "./components/CalculatorPage";
@@ -86,6 +87,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/narraya" element={<NarrayaPage />} />
           <Route path="/narraya-virtual" element={<NarrayaVirtualPage />} />
+          <Route path="/sharevirtual" element={<ShareVirtualPage />} />
           <Route path="/sedah" element={<SedahPage />} />
           <Route path="/sedahresidence" element={<SedahResidencePage />} />
           <Route path="/kalkulator" element={<CalculatorPage />} />
