@@ -19,6 +19,13 @@ const ShareVirtualPage = () => {
   const [isCopied, setIsCopied] = useState({ narraya: false, grandsezha: false });
   const [isValid, setIsValid] = useState(false);
 
+  // Initialize default URLs on component mount
+  useEffect(() => {
+    const baseUrl = window.location.origin;
+    setNarrayaUrl(`${baseUrl}/narraya-virtual`);
+    setGrandSezhaUrl(`${baseUrl}/gs-virtual`);
+  }, []);
+
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo({
@@ -65,16 +72,20 @@ const ShareVirtualPage = () => {
     const validation = formatAndValidatePhoneNumber(input);
     setIsValid(validation.isValid);
     
+    const baseUrl = window.location.origin;
+    
     if (validation.isValid) {
-      const baseUrl = window.location.origin;
+      // If phone number is valid, add wa parameter
       const narrayaUrl = `${baseUrl}/narraya-virtual?wa=${validation.cleanNumber}`;
       const grandSezhaUrl = `${baseUrl}/gs-virtual?wa=${validation.cleanNumber}`;
       setNarrayaUrl(narrayaUrl);
       setGrandSezhaUrl(grandSezhaUrl);
-    } else {
-      setNarrayaUrl('');
-      setGrandSezhaUrl('');
+    } else if (input === '') {
+      // If input is empty, show default URLs without wa parameter
+      setNarrayaUrl(`${baseUrl}/narraya-virtual`);
+      setGrandSezhaUrl(`${baseUrl}/gs-virtual`);
     }
+    // If input is invalid but not empty, keep current URLs (don't clear them)
   };
 
   // Copy URL to clipboard
@@ -144,10 +155,10 @@ const ShareVirtualPage = () => {
                 Share Virtual Tour
               </h1>
               <p className="text-lg text-slate-600 mb-2">
-                Buat link virtual tour Narraya & Grand Sezha dengan nomor WhatsApp khusus
+                Link virtual tour Narraya & Grand Sezha tersedia di bawah
               </p>
               <p className="text-sm text-slate-500">
-                Masukkan nomor WhatsApp untuk membuat link yang akan mengarah ke nomor tersebut
+                Masukkan nomor WhatsApp untuk menambahkan parameter wa ke link, atau gunakan link default
               </p>
             </div>
 
@@ -211,7 +222,7 @@ const ShareVirtualPage = () => {
               </div>
 
               {/* Generated URL Section */}
-              {isValid && (narrayaUrl || grandSezhaUrl) && (
+              {(narrayaUrl || grandSezhaUrl) && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
