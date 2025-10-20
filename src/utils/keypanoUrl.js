@@ -1,9 +1,16 @@
 /**
  * Get the appropriate Keypano URL based on environment
+ * @param {string} project - Project type ('narraya' or 'grandsezha')
  * @returns {string} The Keypano URL for iframe src
  */
-export const getKeypanoUrl = () => {
-  const keypanoPath = 'v/3fc8am5j63d7y8-1759128200.html';
+export const getKeypanoUrl = (project = 'narraya') => {
+  // Define Keypano paths for different projects
+  const keypanoPaths = {
+    narraya: 'v/3fc8am5j63d7y8-1759128200.html',
+    grandsezha: 'v/4l2764dd2vc4b3-1735052461.html'
+  };
+  
+  const keypanoPath = keypanoPaths[project] || keypanoPaths.narraya;
   
   // Check if we're in development mode
   const isDevelopment = process.env.NODE_ENV === 'development';
