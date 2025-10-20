@@ -35,10 +35,15 @@ const ShareVirtualPage = () => {
     };
   }, []);
 
-  // Validate phone number
-  const validatePhoneNumber = (number) => {
+  // Format and validate phone number
+  const formatAndValidatePhoneNumber = (number) => {
     // Remove all non-digit characters
-    const cleanNumber = number.replace(/\D/g, '');
+    let cleanNumber = number.replace(/\D/g, '');
+    
+    // Auto-format: if starts with 08, convert to 62
+    if (cleanNumber.startsWith('08')) {
+      cleanNumber = '62' + cleanNumber.substring(2);
+    }
     
     // Check if it's a valid Indonesian phone number
     // Should start with 62 and be 10-13 digits total
@@ -46,7 +51,8 @@ const ShareVirtualPage = () => {
     
     return {
       isValid: isValidFormat,
-      cleanNumber: cleanNumber
+      cleanNumber: cleanNumber,
+      originalNumber: number
     };
   };
 
@@ -55,7 +61,7 @@ const ShareVirtualPage = () => {
     const input = e.target.value;
     setPhoneNumber(input);
     
-    const validation = validatePhoneNumber(input);
+    const validation = formatAndValidatePhoneNumber(input);
     setIsValid(validation.isValid);
     
     if (validation.isValid) {
@@ -175,21 +181,27 @@ const ShareVirtualPage = () => {
                 {/* Validation Messages */}
                 {phoneNumber && !isValid && (
                   <p className="mt-2 text-sm text-red-600">
-                    Format nomor tidak valid. Gunakan format: 6281234567890
+                    Format nomor tidak valid. Gunakan format: 6281234567890 atau 081234567890
                   </p>
                 )}
                 {phoneNumber && isValid && (
-                  <p className="mt-2 text-sm text-green-600">
-                    ✓ Nomor WhatsApp valid
-                  </p>
+                  <div className="mt-2 text-sm text-green-600">
+                    <p>✓ Nomor WhatsApp valid</p>
+                    {formatAndValidatePhoneNumber(phoneNumber).originalNumber !== formatAndValidatePhoneNumber(phoneNumber).cleanNumber && (
+                      <p className="text-xs text-slate-500 mt-1">
+                        Dikonversi dari {formatAndValidatePhoneNumber(phoneNumber).originalNumber} ke {formatAndValidatePhoneNumber(phoneNumber).cleanNumber}
+                      </p>
+                    )}
+                  </div>
                 )}
                 
                 <div className="mt-4 text-xs text-slate-500">
                   <p>Contoh format yang benar:</p>
                   <ul className="list-disc list-inside mt-1 space-y-1">
-                    <li>6281234567890</li>
+                    <li>6281234567890 (format internasional)</li>
+                    <li>081234567890 (akan dikonversi ke 6281234567890)</li>
                     <li>6289679249759</li>
-                    <li>6282131813698</li>
+                    <li>089679249759 (akan dikonversi ke 6289679249759)</li>
                   </ul>
                 </div>
               </div>
@@ -284,15 +296,30 @@ const ShareVirtualPage = () => {
               <h3 className="text-lg font-semibold text-slate-800 mb-4">
                 Contoh Link yang Dihasilkan
               </h3>
-              <div className="space-y-2 text-sm">
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono break-all">
-                  {window.location.origin}/narraya-virtual?wa=6289679249759
+              <div className="space-y-3 text-sm">
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                  <div className="font-mono break-all">
+                    {window.location.origin}/narraya-virtual?wa=6289679249759
+                  </div>
+                  <div className="text-xs text-slate-500 mt-1">
+                    Input: 089679249759 → Output: 6289679249759
+                  </div>
                 </div>
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono break-all">
-                  {window.location.origin}/narraya-virtual?wa=6282131813698
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                  <div className="font-mono break-all">
+                    {window.location.origin}/narraya-virtual?wa=6282131813698
+                  </div>
+                  <div className="text-xs text-slate-500 mt-1">
+                    Input: 6282131813698 → Output: 6282131813698 (tidak berubah)
+                  </div>
                 </div>
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono break-all">
-                  {window.location.origin}/narraya-virtual?wa=6281234567890
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                  <div className="font-mono break-all">
+                    {window.location.origin}/narraya-virtual?wa=6281234567890
+                  </div>
+                  <div className="text-xs text-slate-500 mt-1">
+                    Input: 081234567890 → Output: 6281234567890
+                  </div>
                 </div>
               </div>
             </div>
