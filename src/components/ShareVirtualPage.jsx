@@ -159,7 +159,9 @@ const ShareVirtualPage = () => {
                 Link virtual tour Narraya & Grand Sezha tersedia di bawah
               </p>
               <p className="text-sm text-slate-500">
-                Masukkan nomor WhatsApp untuk menambahkan parameter wa ke link, atau gunakan link default
+                Cukup masukkan nomor WA Anda 👇 <br />
+                Copy link-nya dan share ke media sosial Anda! <br />
+                Setiap calon pembeli yang klik link akan langsung chat ke WA Anda 🚀
               </p>
             </div>
 
