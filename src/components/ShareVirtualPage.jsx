@@ -222,105 +222,109 @@ const ShareVirtualPage = () => {
                     Link Virtual Tour
                   </label>
                   
-                  {/* Narraya Link */}
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                      <span className="text-sm font-medium text-slate-700">Narraya Green Residence</span>
+                  {/* Narraya Link Card */}
+                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-2xl p-6 mb-6 shadow-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-4 h-4 bg-emerald-500 rounded-full shadow-sm"></div>
+                      <h3 className="text-xl font-bold text-emerald-800">Narraya Green Residence</h3>
                     </div>
-                    <div className="flex gap-2">
-                      <div className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono text-sm break-all">
-                        {narrayaUrl}
+                    <div className="space-y-3">
+                      <div className="flex gap-2">
+                        <div className="flex-1 p-4 bg-white border border-emerald-200 rounded-xl font-mono text-sm break-all shadow-sm">
+                          {narrayaUrl}
+                        </div>
+                        <button
+                          onClick={() => handleCopyUrl(narrayaUrl, 'narraya')}
+                          className={`px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center gap-2 shadow-lg ${
+                            isCopied.narraya
+                              ? 'bg-green-600 text-white'
+                              : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                          }`}
+                        >
+                          {isCopied.narraya ? (
+                            <>
+                              <Check className="w-5 h-5" />
+                              Copied!
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-5 h-5" />
+                              Copy
+                            </>
+                          )}
+                        </button>
                       </div>
-                      <button
-                        onClick={() => handleCopyUrl(narrayaUrl, 'narraya')}
-                        className={`px-4 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
-                          isCopied.narraya
-                            ? 'bg-green-600 text-white'
-                            : 'bg-emerald-600 text-white hover:bg-emerald-700'
-                        }`}
-                      >
-                        {isCopied.narraya ? (
-                          <>
-                            <Check className="w-4 h-4" />
-                            Copied!
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-4 h-4" />
-                            Copy
-                          </>
-                        )}
-                      </button>
-                    </div>
-                    <div className="flex gap-2 mt-2">
-                      <button
-                        onClick={() => handleTestUrl(narrayaUrl)}
-                        className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-                      >
-                        <LinkIcon className="w-4 h-4" />
-                        Test Link
-                      </button>
-                      <a
-                        href={narrayaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-                      >
-                        <Smartphone className="w-4 h-4" />
-                        Buka di Tab Baru
-                      </a>
+                      <div className="flex gap-3">
+                        <button
+                          onClick={() => handleTestUrl(narrayaUrl)}
+                          className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                        >
+                          <LinkIcon className="w-5 h-5" />
+                          Test Link
+                        </button>
+                        <a
+                          href={narrayaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                        >
+                          <Smartphone className="w-5 h-5" />
+                          Buka di Tab Baru
+                        </a>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Grand Sezha Link */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm font-medium text-slate-700">Grand Sezha</span>
+                  {/* Grand Sezha Link Card */}
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-4 h-4 bg-blue-500 rounded-full shadow-sm"></div>
+                      <h3 className="text-xl font-bold text-blue-800">Grand Sezha</h3>
                     </div>
-                    <div className="flex gap-2">
-                      <div className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono text-sm break-all">
-                        {grandSezhaUrl}
+                    <div className="space-y-3">
+                      <div className="flex gap-2">
+                        <div className="flex-1 p-4 bg-white border border-blue-200 rounded-xl font-mono text-sm break-all shadow-sm">
+                          {grandSezhaUrl}
+                        </div>
+                        <button
+                          onClick={() => handleCopyUrl(grandSezhaUrl, 'grandsezha')}
+                          className={`px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center gap-2 shadow-lg ${
+                            isCopied.grandsezha
+                              ? 'bg-green-600 text-white'
+                              : 'bg-blue-600 text-white hover:bg-blue-700'
+                          }`}
+                        >
+                          {isCopied.grandsezha ? (
+                            <>
+                              <Check className="w-5 h-5" />
+                              Copied!
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-5 h-5" />
+                              Copy
+                            </>
+                          )}
+                        </button>
                       </div>
-                      <button
-                        onClick={() => handleCopyUrl(grandSezhaUrl, 'grandsezha')}
-                        className={`px-4 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
-                          isCopied.grandsezha
-                            ? 'bg-green-600 text-white'
-                            : 'bg-blue-600 text-white hover:bg-blue-700'
-                        }`}
-                      >
-                        {isCopied.grandsezha ? (
-                          <>
-                            <Check className="w-4 h-4" />
-                            Copied!
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-4 h-4" />
-                            Copy
-                          </>
-                        )}
-                      </button>
-                    </div>
-                    <div className="flex gap-2 mt-2">
-                      <button
-                        onClick={() => handleTestUrl(grandSezhaUrl)}
-                        className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-                      >
-                        <LinkIcon className="w-4 h-4" />
-                        Test Link
-                      </button>
-                      <a
-                        href={grandSezhaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-                      >
-                        <Smartphone className="w-4 h-4" />
-                        Buka di Tab Baru
-                      </a>
+                      <div className="flex gap-3">
+                        <button
+                          onClick={() => handleTestUrl(grandSezhaUrl)}
+                          className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                        >
+                          <LinkIcon className="w-5 h-5" />
+                          Test Link
+                        </button>
+                        <a
+                          href={grandSezhaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                        >
+                          <Smartphone className="w-5 h-5" />
+                          Buka di Tab Baru
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
