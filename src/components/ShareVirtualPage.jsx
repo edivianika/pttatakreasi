@@ -14,8 +14,9 @@ import { Link } from 'react-router-dom';
 
 const ShareVirtualPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [generatedUrl, setGeneratedUrl] = useState('');
-  const [isCopied, setIsCopied] = useState(false);
+  const [narrayaUrl, setNarrayaUrl] = useState('');
+  const [grandSezhaUrl, setGrandSezhaUrl] = useState('');
+  const [isCopied, setIsCopied] = useState({ narraya: false, grandsezha: false });
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
@@ -66,36 +67,39 @@ const ShareVirtualPage = () => {
     
     if (validation.isValid) {
       const baseUrl = window.location.origin;
-      const url = `${baseUrl}/narraya-virtual?wa=${validation.cleanNumber}`;
-      setGeneratedUrl(url);
+      const narrayaUrl = `${baseUrl}/narraya-virtual?wa=${validation.cleanNumber}`;
+      const grandSezhaUrl = `${baseUrl}/gs-virtual?wa=${validation.cleanNumber}`;
+      setNarrayaUrl(narrayaUrl);
+      setGrandSezhaUrl(grandSezhaUrl);
     } else {
-      setGeneratedUrl('');
+      setNarrayaUrl('');
+      setGrandSezhaUrl('');
     }
   };
 
   // Copy URL to clipboard
-  const handleCopyUrl = async () => {
+  const handleCopyUrl = async (url, type) => {
     try {
-      await navigator.clipboard.writeText(generatedUrl);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+      await navigator.clipboard.writeText(url);
+      setIsCopied(prev => ({ ...prev, [type]: true }));
+      setTimeout(() => setIsCopied(prev => ({ ...prev, [type]: false })), 2000);
     } catch (err) {
       console.error('Failed to copy URL:', err);
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
-      textArea.value = generatedUrl;
+      textArea.value = url;
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+      setIsCopied(prev => ({ ...prev, [type]: true }));
+      setTimeout(() => setIsCopied(prev => ({ ...prev, [type]: false })), 2000);
     }
   };
 
   // Test the generated URL
-  const handleTestUrl = () => {
-    window.open(generatedUrl, '_blank');
+  const handleTestUrl = (url) => {
+    window.open(url, '_blank');
   };
 
   return (
@@ -140,7 +144,7 @@ const ShareVirtualPage = () => {
                 Share Virtual Tour
               </h1>
               <p className="text-lg text-slate-600 mb-2">
-                Buat link virtual tour dengan nomor WhatsApp khusus
+                Buat link virtual tour Narraya & Grand Sezha dengan nomor WhatsApp khusus
               </p>
               <p className="text-sm text-slate-500">
                 Masukkan nomor WhatsApp untuk membuat link yang akan mengarah ke nomor tersebut
@@ -207,60 +211,117 @@ const ShareVirtualPage = () => {
               </div>
 
               {/* Generated URL Section */}
-              {isValid && generatedUrl && (
+              {isValid && (narrayaUrl || grandSezhaUrl) && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                   className="border-t pt-6"
                 >
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-4">
                     Link Virtual Tour
                   </label>
-                  <div className="flex gap-2">
-                    <div className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono text-sm break-all">
-                      {generatedUrl}
-                    </div>
-                    <button
-                      onClick={handleCopyUrl}
-                      className={`px-4 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
-                        isCopied
-                          ? 'bg-green-600 text-white'
-                          : 'bg-emerald-600 text-white hover:bg-emerald-700'
-                      }`}
-                    >
-                      {isCopied ? (
-                        <>
-                          <Check className="w-4 h-4" />
-                          Copied!
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-4 h-4" />
-                          Copy
-                        </>
-                      )}
-                    </button>
-                  </div>
                   
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
-                    <button
-                      onClick={handleTestUrl}
-                      className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
-                    >
-                      <LinkIcon className="w-4 h-4" />
-                      Test Link
-                    </button>
-                    <a
-                      href={generatedUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
-                    >
-                      <Smartphone className="w-4 h-4" />
-                      Buka di Tab Baru
-                    </a>
+                  {/* Narraya Link */}
+                  <div className="mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                      <span className="text-sm font-medium text-slate-700">Narraya Green Residence</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono text-sm break-all">
+                        {narrayaUrl}
+                      </div>
+                      <button
+                        onClick={() => handleCopyUrl(narrayaUrl, 'narraya')}
+                        className={`px-4 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
+                          isCopied.narraya
+                            ? 'bg-green-600 text-white'
+                            : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                        }`}
+                      >
+                        {isCopied.narraya ? (
+                          <>
+                            <Check className="w-4 h-4" />
+                            Copied!
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-4 h-4" />
+                            Copy
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        onClick={() => handleTestUrl(narrayaUrl)}
+                        className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                      >
+                        <LinkIcon className="w-4 h-4" />
+                        Test Link
+                      </button>
+                      <a
+                        href={narrayaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Smartphone className="w-4 h-4" />
+                        Buka di Tab Baru
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Grand Sezha Link */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                      <span className="text-sm font-medium text-slate-700">Grand Sezha</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-lg font-mono text-sm break-all">
+                        {grandSezhaUrl}
+                      </div>
+                      <button
+                        onClick={() => handleCopyUrl(grandSezhaUrl, 'grandsezha')}
+                        className={`px-4 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 ${
+                          isCopied.grandsezha
+                            ? 'bg-green-600 text-white'
+                            : 'bg-blue-600 text-white hover:bg-blue-700'
+                        }`}
+                      >
+                        {isCopied.grandsezha ? (
+                          <>
+                            <Check className="w-4 h-4" />
+                            Copied!
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-4 h-4" />
+                            Copy
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        onClick={() => handleTestUrl(grandSezhaUrl)}
+                        className="flex-1 bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                      >
+                        <LinkIcon className="w-4 h-4" />
+                        Test Link
+                      </button>
+                      <a
+                        href={grandSezhaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-slate-600 text-white hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Smartphone className="w-4 h-4" />
+                        Buka di Tab Baru
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -296,29 +357,54 @@ const ShareVirtualPage = () => {
               <h3 className="text-lg font-semibold text-slate-800 mb-4">
                 Contoh Link yang Dihasilkan
               </h3>
-              <div className="space-y-3 text-sm">
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <div className="font-mono break-all">
-                    {window.location.origin}/narraya-virtual?wa=6289679249759
+              <div className="space-y-4 text-sm">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                    <span className="font-medium text-slate-700">Narraya Green Residence</span>
                   </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Input: 089679249759 → Output: 6289679249759
+                  <div className="space-y-2">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <div className="font-mono break-all">
+                        {window.location.origin}/narraya-virtual?wa=6289679249759
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1">
+                        Input: 089679249759 → Output: 6289679249759
+                      </div>
+                    </div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <div className="font-mono break-all">
+                        {window.location.origin}/narraya-virtual?wa=6282131813698
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1">
+                        Input: 6282131813698 → Output: 6282131813698 (tidak berubah)
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <div className="font-mono break-all">
-                    {window.location.origin}/narraya-virtual?wa=6282131813698
+                
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <span className="font-medium text-slate-700">Grand Sezha</span>
                   </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Input: 6282131813698 → Output: 6282131813698 (tidak berubah)
-                  </div>
-                </div>
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <div className="font-mono break-all">
-                    {window.location.origin}/narraya-virtual?wa=6281234567890
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Input: 081234567890 → Output: 6281234567890
+                  <div className="space-y-2">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <div className="font-mono break-all">
+                        {window.location.origin}/gs-virtual?wa=6289679249759
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1">
+                        Input: 089679249759 → Output: 6289679249759
+                      </div>
+                    </div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <div className="font-mono break-all">
+                        {window.location.origin}/gs-virtual?wa=6282131813698
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1">
+                        Input: 6282131813698 → Output: 6282131813698 (tidak berubah)
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -340,6 +426,13 @@ const ShareVirtualPage = () => {
                 className="text-slate-300 hover:text-white transition-colors"
               >
                 Virtual Tour Narraya
+              </Link>
+              <span className="text-slate-500">•</span>
+              <Link
+                to="/gs-virtual"
+                className="text-slate-300 hover:text-white transition-colors"
+              >
+                Virtual Tour Grand Sezha
               </Link>
               <span className="text-slate-500">•</span>
               <Link
