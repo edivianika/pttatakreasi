@@ -8,7 +8,8 @@ import {
   ArrowLeft,
   Share2,
   Link as LinkIcon,
-  Smartphone
+  Smartphone,
+  ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -278,6 +279,19 @@ const ShareVirtualPage = () => {
                           )}
                         </button>
                       </div>
+                      
+                      {/* Open in New Tab Button */}
+                      <div className="flex justify-center">
+                        <a
+                          href={narrayaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all transform hover:scale-105 shadow-md"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span>Buka di Tab Baru</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
 
@@ -325,6 +339,19 @@ const ShareVirtualPage = () => {
                             </>
                           )}
                         </button>
+                      </div>
+                      
+                      {/* Open in New Tab Button */}
+                      <div className="flex justify-center">
+                        <a
+                          href={grandSezhaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all transform hover:scale-105 shadow-md"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span>Buka di Tab Baru</span>
+                        </a>
                       </div>
                     </div>
                   </div>
