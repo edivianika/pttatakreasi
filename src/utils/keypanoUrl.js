@@ -7,7 +7,8 @@ export const getKeypanoUrl = (project = 'narraya') => {
   // Define Keypano paths for different projects
   const keypanoPaths = {
     narraya: 'v/3fc8am5j63d7y8-1759128200.html',
-    grandsezha: 'v/4l2764dd2vc4b3-1735052461.html'
+    grandsezha: 'v/4l2764dd2vc4b3-1735052461.html',
+    sedah: 'v/823e632el9r7t6-1761019544.html'
   };
   
   const keypanoPath = keypanoPaths[project] || keypanoPaths.narraya;

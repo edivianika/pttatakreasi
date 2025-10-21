@@ -17,7 +17,8 @@ const ShareVirtualPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [narrayaUrl, setNarrayaUrl] = useState('');
   const [grandSezhaUrl, setGrandSezhaUrl] = useState('');
-  const [isCopied, setIsCopied] = useState({ narraya: false, grandsezha: false });
+  const [sedahUrl, setSedahUrl] = useState('');
+  const [isCopied, setIsCopied] = useState({ narraya: false, grandsezha: false, sedah: false });
   const [isValid, setIsValid] = useState(false);
 
   // Initialize default URLs on component mount
@@ -25,6 +26,7 @@ const ShareVirtualPage = () => {
     const baseUrl = window.location.origin;
     setNarrayaUrl(`${baseUrl}/narraya-virtual`);
     setGrandSezhaUrl(`${baseUrl}/gs-virtual`);
+    setSedahUrl(`${baseUrl}/sedah-virtual`);
   }, []);
 
   useEffect(() => {
@@ -79,12 +81,15 @@ const ShareVirtualPage = () => {
       // If phone number is valid, add wa parameter
       const narrayaUrl = `${baseUrl}/narraya-virtual?wa=${validation.cleanNumber}`;
       const grandSezhaUrl = `${baseUrl}/gs-virtual?wa=${validation.cleanNumber}`;
+      const sedahUrl = `${baseUrl}/sedah-virtual?wa=${validation.cleanNumber}`;
       setNarrayaUrl(narrayaUrl);
       setGrandSezhaUrl(grandSezhaUrl);
+      setSedahUrl(sedahUrl);
     } else if (input === '') {
       // If input is empty, show default URLs without wa parameter
       setNarrayaUrl(`${baseUrl}/narraya-virtual`);
       setGrandSezhaUrl(`${baseUrl}/gs-virtual`);
+      setSedahUrl(`${baseUrl}/sedah-virtual`);
     }
     // If input is invalid but not empty, keep current URLs (don't clear them)
   };
@@ -228,7 +233,7 @@ const ShareVirtualPage = () => {
                   </label>
                   
                   {/* Cards Grid */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {/* Narraya Link Card */}
                     <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-2xl p-6 shadow-lg">
                     <div className="flex items-center gap-3 mb-3">
@@ -352,6 +357,68 @@ const ShareVirtualPage = () => {
                       </div>
                     </div>
                     </div>
+
+                    {/* Sedah Link Card */}
+                    <div className="bg-gradient-to-br from-green-50 to-lime-50 border border-green-200 rounded-2xl p-6 shadow-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
+                      <h3 className="text-lg font-bold text-green-800">Sedah Green Residence</h3>
+                    </div>
+                    
+                    {/* Project Image */}
+                    <div className="mb-4">
+                      <img
+                        src="/images/sedah-hero.jpg"
+                        alt="Sedah Green Residence"
+                        className="w-full h-32 object-cover rounded-xl shadow-sm"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {/* URL Display */}
+                      <div className="p-3 bg-white border border-green-200 rounded-lg font-mono text-xs break-all shadow-sm">
+                        {sedahUrl}
+                      </div>
+                      
+                      {/* Action Buttons - Mobile Optimized */}
+                      <div className="flex gap-2 justify-center">
+                        <button
+                          onClick={() => handleCopyUrl(sedahUrl, 'sedah')}
+                          className={`flex-1 sm:flex-none px-4 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-md ${
+                            isCopied.sedah
+                              ? 'bg-green-600 text-white'
+                              : 'bg-green-600 text-white hover:bg-green-700'
+                          }`}
+                        >
+                          {isCopied.sedah ? (
+                            <>
+                              <Check className="w-4 h-4" />
+                              <span>Copied!</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-4 h-4" />
+                              <span>Copy</span>
+                            </>
+                          )}
+                        </button>
+                        
+                        <a
+                          href={sedahUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 sm:flex-none inline-flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white px-4 py-3 rounded-lg transition-all transform hover:scale-105 shadow-md gap-2"
+                          title="Buka di Tab Baru"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span className="sm:hidden">Buka</span>
+                        </a>
+                      </div>
+                    </div>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -406,6 +473,13 @@ const ShareVirtualPage = () => {
                 className="text-slate-300 hover:text-white transition-colors"
               >
                 Virtual Tour Grand Sezha
+              </Link>
+              <span className="text-slate-500">•</span>
+              <Link
+                to="/sedah-virtual"
+                className="text-slate-300 hover:text-white transition-colors"
+              >
+                Virtual Tour Sedah
               </Link>
               <span className="text-slate-500">•</span>
               <Link

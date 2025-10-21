@@ -16,6 +16,7 @@ import ShareVirtualPage from "./components/ShareVirtualPage";
 import GrandSezhaVirtualPage from "./components/GrandSezhaVirtualPage";
 import SedahPage from "./components/sedah/SedahPage";
 import SedahResidencePage from "./components/SedahResidencePage";
+import SedahVirtualPage from "./components/SedahVirtualPage";
 import CalculatorPage from "./components/CalculatorPage";
 import NarrayaCalculator from "./components/narraya/NarrayaCalculator";
 import SedahCalculator from "./components/calculators/SedahCalculator";
@@ -90,6 +91,7 @@ function App() {
           <Route path="/narraya-virtual" element={<NarrayaVirtualPage />} />
           <Route path="/sharevirtual" element={<ShareVirtualPage />} />
           <Route path="/gs-virtual" element={<GrandSezhaVirtualPage />} />
+          <Route path="/sedah-virtual" element={<SedahVirtualPage />} />
           <Route path="/sedah" element={<SedahPage />} />
           <Route path="/sedahresidence" element={<SedahResidencePage />} />
           <Route path="/kalkulator" element={<CalculatorPage />} />
