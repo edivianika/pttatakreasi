@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Calculator, 
-  Users, 
-  Share2, 
-  Wrench, 
+import {
+  Calculator,
+  Users,
+  Share2,
+  Wrench,
   ArrowRight,
   Home,
   MessageCircle,
-  Phone
+  Phone,
+  Database
 } from 'lucide-react';
 
 const FreelancePage = () => {
@@ -69,6 +70,17 @@ const FreelancePage = () => {
       borderColor: 'border-orange-200',
       textColor: 'text-orange-800',
       iconColor: 'text-orange-600'
+    },
+    {
+      title: 'Project Knowledge Base',
+      description: 'Data JSON lengkap untuk AI agent learning',
+      icon: <Database className="h-8 w-8" />,
+      link: '/jsonproject',
+      color: 'indigo',
+      bgColor: 'bg-indigo-50',
+      borderColor: 'border-indigo-200',
+      textColor: 'text-indigo-800',
+      iconColor: 'text-indigo-600'
     }
   ];
 
