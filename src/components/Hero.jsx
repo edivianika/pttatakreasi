@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MessageCircle, Shield, DollarSign, TrendingUp } from 'lucide-react';
+import { MessageCircle, Shield, DollarSign, TrendingUp, Home, Users, Award } from 'lucide-react';
 import { companyInfo } from './mockData';
 import { HeroAnimatedText, SubtitleAnimatedText } from './AnimatedText';
 import AnimatedText from './AnimatedText';
@@ -38,6 +38,14 @@ const Hero = () => {
       
       <div className="container relative z-10">
         <div className="hero-content fade-in-up">
+          {/* Brand Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-emerald-200 shadow-sm">
+              <Shield size={16} className="text-emerald-600" />
+              <span className="text-sm font-semibold text-emerald-700">Developer Properti Syariah Terpercaya</span>
+            </div>
+          </div>
+
           {/* Main Headlines with Animation */}
           <div className="mb-6">
             <h1 className="heading-1 mb-4">
@@ -76,6 +84,26 @@ const Hero = () => {
             harga transparan, dan angsuran yang tidak memberatkan
           </p>
 
+          {/* Brand Stats - Quick Stats for Brand Awareness */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-3xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
+              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">{companyInfo.clients}</div>
+              <div className="text-xs md:text-sm text-gray-600">Keluarga Bahagia</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
+              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">{companyInfo.projects}</div>
+              <div className="text-xs md:text-sm text-gray-600">Proyek Sukses</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
+              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">3</div>
+              <div className="text-xs md:text-sm text-gray-600">Proyek Premium</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
+              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">100%</div>
+              <div className="text-xs md:text-sm text-gray-600">Akad Syariah</div>
+            </div>
+          </div>
+
           {/* Trust Indicators with Animation */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="trust-badge">
@@ -108,17 +136,17 @@ const Hero = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <button 
               onClick={handleWhatsAppClick}
-              className="btn-primary text-lg px-8 py-4 w-full sm:w-auto"
+              className="btn-primary text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 w-full sm:w-auto"
             >
-              <MessageCircle size={20} />
+              <MessageCircle size={18} className="sm:w-5 sm:h-5" />
               Konsultasi via WhatsApp
             </button>
             <button 
               onClick={handleViewProjectsClick}
-              className="btn-secondary w-full sm:w-auto"
+              className="btn-secondary text-sm sm:text-base px-4 py-2.5 sm:px-6 sm:py-3 w-full sm:w-auto"
             >
               Lihat Proyek Kami
             </button>

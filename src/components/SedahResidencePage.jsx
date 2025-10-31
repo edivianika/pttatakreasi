@@ -14,12 +14,17 @@ import {
   MessageCircle,
   ChevronDown,
   Menu,
-  X
+  X,
+  ArrowLeft,
+  ExternalLink
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
 import { trackProjectView, trackWhatsAppClick } from "../utils/facebookPixel";
+import { updatePageSEO, getProjectStructuredData } from "../utils/seoUtils";
+import { projectsData, companyInfo as companyInfoData } from "./mockData";
+import { Link } from "react-router-dom";
 
 // Logo Component
 function SedahGreenLogo({ size = 40, className = "" }) {
@@ -149,79 +154,26 @@ function SedahGreenResidence() {
       document.getElementsByTagName('head')[0].appendChild(link);
     };
 
-    // Update meta tags for Sedah Green Residence
-    const updateMetaTags = () => {
-      // Update title
-      document.title = 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM';
-      
-      // Update URL for Open Graph
-      const ogUrl = document.querySelector('meta[property="og:url"]');
-      if (ogUrl) {
-        ogUrl.setAttribute('content', window.location.href);
-      }
-      
-      // Update description
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🌿 Konsep Green Living dengan Fasilitas Lengkap. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
-      }
-
-      // Update Open Graph tags
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle) {
-        ogTitle.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM');
-      }
-
-      const ogDescription = document.querySelector('meta[property="og:description"]');
-      if (ogDescription) {
-        ogDescription.setAttribute('content', '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🌿 Konsep Green Living dengan Fasilitas Lengkap. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
-      }
-
-      const ogImage = document.querySelector('meta[property="og:image"]');
-      if (ogImage) {
-        ogImage.setAttribute('content', window.location.origin + '/sedah/sedah%20green%20residence-perumahan%20syariah%20ponorogo.png');
-      }
-
-      // Add additional Open Graph image properties
-      const ogImageWidth = document.querySelector('meta[property="og:image:width"]');
-      if (ogImageWidth) {
-        ogImageWidth.setAttribute('content', '1200');
-      }
-
-      const ogImageHeight = document.querySelector('meta[property="og:image:height"]');
-      if (ogImageHeight) {
-        ogImageHeight.setAttribute('content', '630');
-      }
-
-      const ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
-      if (ogImageAlt) {
-        ogImageAlt.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo');
-      }
-
-      // Update Twitter tags
-      const twitterTitle = document.querySelector('meta[property="twitter:title"]');
-      if (twitterTitle) {
-        twitterTitle.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo | TKBM');
-      }
-
-      const twitterDescription = document.querySelector('meta[property="twitter:description"]');
-      if (twitterDescription) {
-        twitterDescription.setAttribute('content', '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🌿 Konsep Green Living dengan Fasilitas Lengkap. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
-      }
-
-      const twitterImage = document.querySelector('meta[property="twitter:image"]');
-      if (twitterImage) {
-        twitterImage.setAttribute('content', window.location.origin + '/sedah/sedah%20green%20residence-perumahan%20syariah%20ponorogo.png');
-      }
-
-      const twitterImageAlt = document.querySelector('meta[property="twitter:image:alt"]');
-      if (twitterImageAlt) {
-        twitterImageAlt.setAttribute('content', 'Sedah Green Residence - Perumahan Syariah di Ponorogo');
-      }
+    // Update SEO meta tags using utility
+    const seoConfig = {
+      title: 'Sedah Green Residence - Perumahan Syariah Premium di Ponorogo | TKBM',
+      description: '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Mulai 180 Jutaan, Angsuran Ringan. 🌿 Cluster Islami dengan Mushola Terintegrasi. 💚 Wujudkan Rumah Impian Keluarga Muslim!',
+      keywords: ['sedah green residence', 'perumahan syariah ponorogo', 'cluster islami ponorogo', 'rumah terjangkau ponorogo', 'hunian syariah ponorogo'],
+      image: '/sedah/sedah green residence-perumahan syariah ponorogo.png',
+      url: '/sedahresidence',
+      structuredData: getProjectStructuredData({
+        name: 'Sedah Green Residence',
+        description: 'Cluster islami yang nyaman dengan fasilitas lengkap untuk keluarga',
+        price: 'Mulai 180 Jutaan',
+        location: 'Desa Sedah, Jenangan, Ponorogo',
+        image: '/sedah/sedah green residence-perumahan syariah ponorogo.png',
+        url: '/sedahresidence',
+        type: 'Cluster Islami'
+      })
     };
 
     changeFavicon();
-    updateMetaTags();
+    updatePageSEO(seoConfig);
     
     // Track project page view
     trackProjectView('Sedah Green Residence');
@@ -484,23 +436,23 @@ function SedahGreenResidence() {
                 >
                   <Button 
                     size="lg" 
-                    className="rounded-full group bg-emerald-600 hover:bg-emerald-700 text-lg px-8 py-6"
+                    className="rounded-full group bg-emerald-600 hover:bg-emerald-700 text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6"
                     onClick={handleWhatsAppClick}
                   >
-                    <MessageCircle className="mr-2 h-5 w-5" />
+                    <MessageCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     Amankan Unit Sekarang
                     <motion.span
                       initial={{ x: 0 }}
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
                     </motion.span>
                   </Button>
                   <Button 
                     variant="outline" 
                     size="lg" 
-                    className="rounded-full text-lg px-8 py-6 border-emerald-200 hover:bg-emerald-50"
+                    className="rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 border-emerald-200 hover:bg-emerald-50"
                   >
                     Lihat Galeri
                   </Button>
@@ -1007,7 +959,7 @@ function SedahGreenResidence() {
               >
                 <Button 
                   size="lg" 
-                  className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-lg px-8 py-6 font-semibold w-auto max-w-xs"
+                  className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 font-semibold w-auto max-w-xs"
                   onClick={handleWhatsAppClick}
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
@@ -1097,6 +1049,113 @@ function SedahGreenResidence() {
           </div>
         </motion.div>
       </footer>
+
+      {/* Other Projects Section - For Equal Exposure */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Link 
+                to="/"
+                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 mb-6 text-sm font-medium"
+              >
+                <ArrowLeft size={16} />
+                Kembali ke Halaman Utama
+              </Link>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Jelajahi Proyek Lainnya
+              </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Kami memiliki pilihan hunian syariah lainnya yang mungkin sesuai dengan kebutuhan Anda
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {projectsData
+                .filter(project => project.name !== "Sedah Green Residence")
+                .map((project) => {
+                  const route = project.name === "Narraya Green Residence" 
+                    ? "/narraya" 
+                    : project.name === "Grand Sezha" 
+                    ? "https://grandsezha.com" 
+                    : null;
+                  
+                  const handleProjectClick = () => {
+                    const message = `Halo TKBM, saya tertarik dengan proyek ${project.name}. Mohon informasi detail tentang harga, cicilan, dan cara pembelian.`;
+                    const whatsappUrl = `https://wa.me/${companyInfoData.whatsapp}?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                  };
+                  
+                  return (
+                    <motion.div 
+                      key={project.id} 
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      variants={itemFadeIn}
+                      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                    >
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={project.image}
+                          alt={project.name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            {project.type}
+                          </span>
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-white/90 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-sm font-bold">
+                            {project.price}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{project.name}</h3>
+                        <div className="flex items-center gap-2 text-gray-600 mb-3">
+                          <MapPin size={16} />
+                          <span className="text-sm">{project.location}</span>
+                        </div>
+                        <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
+                        {route ? (
+                          route.startsWith('http') ? (
+                            <a 
+                              href={route}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
+                            >
+                              <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                              Info Detail
+                            </a>
+                          ) : (
+                            <Link 
+                              to={route}
+                              className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
+                            >
+                              <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                              Info Detail
+                            </Link>
+                          )
+                        ) : (
+                          <button 
+                            onClick={handleProjectClick}
+                            className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
+                          >
+                            <MessageCircle size={14} className="sm:w-4 sm:h-4" />
+                            Konsultasi
+                          </button>
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Floating WhatsApp Button - Mobile Only */}
       <motion.div

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, MessageCircle, Menu, X, TrendingUp, Award, CreditCard } from 'lucide-react';
+import { MapPin, Calendar, Users, Home, Shield, Star, CheckCircle, Phone, MessageCircle, Menu, X, TrendingUp, Award, CreditCard, ArrowLeft, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { companyInfo } from '../mockData';
+import { companyInfo, projectsData } from '../mockData';
 import Gallery from '../Gallery';
 import NarrayaHero from './NarrayaHero';
 import { getKeypanoUrl, checkKeypanoAvailability } from '../../utils/keypanoUrl';
+import { updatePageSEO, getProjectStructuredData } from '../../utils/seoUtils';
 
 const NarrayaPage = () => {
   const [keypanoUrl, setKeypanoUrl] = useState('');
@@ -24,6 +25,36 @@ const NarrayaPage = () => {
 
     // Check if Keypano is available
     checkKeypanoAvailability().then(setIsKeypanoAvailable);
+
+    // Update SEO meta tags
+    const seoConfig = {
+      title: 'Narraya Green Residence - Perumahan Premium Syariah di Ponorogo | TKBM',
+      description: '🏘️ Narraya Green Residence - Perumahan Premium Syariah di Jantung Ponorogo! ✨ 5 Langkah ke Alun-alun, Akad 100% Halal, Harga Mulai 800 Jutaan. 💚 Hunian Modern Tropis dengan Fasilitas Lengkap.',
+      keywords: ['narraya green residence', 'perumahan premium ponorogo', 'rumah syariah ponorogo', 'hunian strategis ponorogo', 'perumahan dekat alun-alun ponorogo'],
+      image: '/tatakreasi/perumahan-ponorogo-narraya-green-residence.png',
+      url: '/narraya',
+      structuredData: getProjectStructuredData({
+        name: 'Narraya Green Residence',
+        description: 'Hunian premium dengan lokasi strategis di jantung kota Ponorogo',
+        price: 'Mulai 800 Jutaan',
+        location: 'Jl. Noroyono Brotonegaran, Ponorogo',
+        image: '/tatakreasi/perumahan-ponorogo-narraya-green-residence.png',
+        url: '/narraya',
+        type: 'Perumahan Premium'
+      })
+    };
+
+    updatePageSEO(seoConfig);
+
+    // Cleanup function
+    return () => {
+      // Reset to default on unmount if needed
+      updatePageSEO({
+        title: 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo',
+        description: 'Tata Kreasi Bumi Madani (TKBM) adalah developer properti syariah terpercaya di Ponorogo. Hunian halal tanpa riba dengan fasilitas lengkap.',
+        url: '/'
+      });
+    };
   }, []);
 
   const handleWhatsAppClick = () => {
@@ -589,19 +620,19 @@ const NarrayaPage = () => {
               untuk 2 keluarga pertama yang bergabung dengan komunitas Narraya.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-10">
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center gap-3"
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center gap-2 sm:gap-3"
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={16} className="sm:w-5 sm:h-5" />
                 <span>Download Brosur</span>
               </button>
               <button 
                 onClick={handleWhatsAppClick}
-                className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
+                className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3"
               >
-                <Phone size={20} />
+                <Phone size={16} className="sm:w-5 sm:h-5" />
                 <span>Hubungi Sales</span>
               </button>
             </div>
@@ -610,6 +641,100 @@ const NarrayaPage = () => {
             <p className="text-sm text-slate-500">
               *Penawaran terbatas untuk 2 pembeli pertama yang menandatangani booking fee. Syarat dan ketentuan berlaku.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Other Projects Section - For Equal Exposure */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Link 
+                to="/"
+                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 mb-6 text-sm font-medium"
+              >
+                <ArrowLeft size={16} />
+                Kembali ke Halaman Utama
+              </Link>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Jelajahi Proyek Lainnya
+              </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Kami memiliki pilihan hunian syariah lainnya yang mungkin sesuai dengan kebutuhan Anda
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {projectsData
+                .filter(project => project.name !== "Narraya Green Residence")
+                .map((project) => {
+                  const route = project.name === "Sedah Green Residence" 
+                    ? "/sedahresidence" 
+                    : project.name === "Grand Sezha" 
+                    ? "https://grandsezha.com" 
+                    : null;
+                  
+                  return (
+                    <div key={project.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={project.image}
+                          alt={project.name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            {project.type}
+                          </span>
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-white/90 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-sm font-bold">
+                            {project.price}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{project.name}</h3>
+                        <div className="flex items-center gap-2 text-gray-600 mb-3">
+                          <MapPin size={16} />
+                          <span className="text-sm">{project.location}</span>
+                        </div>
+                        <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
+                        {route ? (
+                          route.startsWith('http') ? (
+                            <a 
+                              href={route}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
+                            >
+                              <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                              Info Detail
+                            </a>
+                          ) : (
+                            <Link 
+                              to={route}
+                              className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
+                            >
+                              <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                              Info Detail
+                            </Link>
+                          )
+                        ) : (
+                          <button 
+                            onClick={handleWhatsAppClick}
+                            className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
+                          >
+                            <MessageCircle size={14} className="sm:w-4 sm:h-4" />
+                            Konsultasi
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </section>
