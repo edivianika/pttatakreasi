@@ -282,7 +282,7 @@ Mohon informasi lebih lanjut.`;
             </h4>
             <div className="relative">
               <img 
-                src="/sedah/siteplan-sedah.png" 
+                src="/sedah/siteplan-sedah.jpeg" 
                 alt="Site Plan Sedah Green Residence"
                 className="w-full h-auto rounded-lg border border-slate-200 shadow-sm"
               />

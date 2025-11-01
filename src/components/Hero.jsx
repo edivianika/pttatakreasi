@@ -84,26 +84,6 @@ const Hero = () => {
             harga transparan, dan angsuran yang tidak memberatkan
           </p>
 
-          {/* Brand Stats - Quick Stats for Brand Awareness */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-3xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">{companyInfo.clients}</div>
-              <div className="text-xs md:text-sm text-gray-600">Keluarga Bahagia</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">{companyInfo.projects}</div>
-              <div className="text-xs md:text-sm text-gray-600">Proyek Sukses</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">3</div>
-              <div className="text-xs md:text-sm text-gray-600">Proyek Premium</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center border border-emerald-100">
-              <div className="text-2xl md:text-3xl font-bold text-emerald-600 mb-1">100%</div>
-              <div className="text-xs md:text-sm text-gray-600">Akad Syariah</div>
-            </div>
-          </div>
-
           {/* Trust Indicators with Animation */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="trust-badge">
