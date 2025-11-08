@@ -21,8 +21,8 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
-import { trackProjectView, trackWhatsAppClick, trackLead } from "../utils/facebookPixel";
-import { trackTikTokProjectView, trackTikTokWhatsAppClick, trackTikTokLead } from "../utils/tiktokPixel";
+import { trackPageView, trackLead, trackContact } from "../utils/facebookPixel";
+import { trackTikTokPageView, trackTikTokLead, trackTikTokContact } from "../utils/tiktokPixel";
 import { updatePageSEO, getProjectStructuredData } from "../utils/seoUtils";
 import { getKeypanoUrl, checkKeypanoAvailability } from "../utils/keypanoUrl";
 
@@ -178,9 +178,9 @@ function SedahGreenResidence() {
     changeFavicon();
     updatePageSEO(seoConfig);
     
-    // Track project page view
-    trackProjectView('Sedah Green Residence');
-    trackTikTokProjectView('Sedah Green Residence');
+    // Track page view
+    trackPageView();
+    trackTikTokPageView();
 
     // Set Keypano URL for virtual tour
     const url = getKeypanoUrl('sedah');
@@ -258,23 +258,29 @@ function SedahGreenResidence() {
 
   // Handle WhatsApp click with tracking
   const handleWhatsAppClick = () => {
-    // Facebook Pixel
-    trackWhatsAppClick('Sedah Green Residence', 'Sedah Green Residence');
+    // Facebook Pixel - Lead event
     trackLead('WhatsApp Click - Sedah Green Residence', 'WhatsApp Inquiry');
-    // TikTok Pixel
-    trackTikTokWhatsAppClick('Sedah Green Residence', 'Sedah Green Residence');
-    trackTikTokLead('WhatsApp Click - Sedah Green Residence', 'WhatsApp Inquiry');
+    // TikTok Pixel - Lead event with custom event
+    trackTikTokLead('WhatsApp Click - Sedah Green Residence', 'WhatsApp Inquiry', {
+      propertyName: 'Sedah Green Residence',
+      formSource: 'LandingPage',
+      phone: '+628133138887',
+      priceInterest: '173JT'
+    });
     window.open(whatsappUrl, '_blank');
   };
 
   // Handle Download Brosur
   const handleDownloadBrosur = () => {
-    // Facebook Pixel
-    trackWhatsAppClick('Sedah Green Residence', 'Download Brosur');
-    trackLead('Download Brosur - Sedah Green Residence', 'Brochure Download');
-    // TikTok Pixel
-    trackTikTokWhatsAppClick('Sedah Green Residence', 'Download Brosur');
-    trackTikTokLead('Download Brosur - Sedah Green Residence', 'Brochure Download');
+    // Facebook Pixel - Contact event
+    trackContact('Download Brosur - Sedah Green Residence', 'Brochure Download');
+    // TikTok Pixel - Contact event with custom event
+    trackTikTokContact('Download Brosur - Sedah Green Residence', 'Brochure Download', {
+      propertyName: 'Sedah Green Residence',
+      formSource: 'BrochureDownload',
+      phone: '+628133138887',
+      priceInterest: '173JT'
+    });
     const message = "Halo TKBM, saya ingin download brosur Sedah Green Residence. Mohon kirimkan brosur lengkapnya.";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -282,12 +288,15 @@ function SedahGreenResidence() {
 
   // Handle Floating WhatsApp Button
   const handleFloatingWhatsAppClick = () => {
-    // Facebook Pixel
-    trackWhatsAppClick('Sedah Green Residence', 'Floating WhatsApp Button');
+    // Facebook Pixel - Lead event
     trackLead('Floating WhatsApp - Sedah Green Residence', 'WhatsApp Inquiry');
-    // TikTok Pixel
-    trackTikTokWhatsAppClick('Sedah Green Residence', 'Floating WhatsApp Button');
-    trackTikTokLead('Floating WhatsApp - Sedah Green Residence', 'WhatsApp Inquiry');
+    // TikTok Pixel - Lead event with custom event
+    trackTikTokLead('Floating WhatsApp - Sedah Green Residence', 'WhatsApp Inquiry', {
+      propertyName: 'Sedah Green Residence',
+      formSource: 'FloatingButton',
+      phone: '+628133138887',
+      priceInterest: '173JT'
+    });
     window.open(whatsappUrl, '_blank');
   };
 

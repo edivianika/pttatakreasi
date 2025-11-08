@@ -21,10 +21,17 @@ export const trackTikTokViewContent = (contentName = 'Homepage', contentType = '
   }
 };
 
-// Track lead generation - TikTok Pixel Lead event
-export const trackTikTokLead = (leadSource = 'WhatsApp', leadType = 'Property Inquiry') => {
+// Track lead generation - TikTok Pixel Lead event with custom event
+export const trackTikTokLead = (leadSource = 'WhatsApp', leadType = 'Property Inquiry', options = {}) => {
   if (typeof window !== 'undefined' && window.ttq) {
-    // TikTok Pixel Lead event - CompleteRegistration is the standard event for leads
+    // TikTok Pixel custom event LeadSubmit
+    ttq.track('LeadSubmit', {
+      property_name: options.propertyName || 'Sedah Green Residence',
+      form_source: options.formSource || 'LandingPage',
+      phone: options.phone || '+628133138887',
+      price_interest: options.priceInterest || '173JT'
+    });
+    // Also track standard CompleteRegistration for compatibility
     ttq.track('CompleteRegistration', {
       content_name: leadSource,
       content_type: leadType,
@@ -35,15 +42,21 @@ export const trackTikTokLead = (leadSource = 'WhatsApp', leadType = 'Property In
   }
 };
 
-// Track WhatsApp button click - TikTok Pixel Lead event
-export const trackTikTokWhatsAppClick = (pageName = 'Homepage', projectName = 'General') => {
+// Track contact (for brochure download) - TikTok Pixel Contact event with custom event
+export const trackTikTokContact = (contactSource = 'Brochure Download', contactType = 'Brochure', options = {}) => {
   if (typeof window !== 'undefined' && window.ttq) {
-    // TikTok Pixel Lead event - CompleteRegistration is the standard event for leads
-    ttq.track('CompleteRegistration', {
-      content_name: `WhatsApp Click - ${pageName}`,
-      content_type: 'WhatsApp Inquiry',
+    // TikTok Pixel custom event LeadSubmit for contact
+    ttq.track('LeadSubmit', {
+      property_name: options.propertyName || 'Sedah Green Residence',
+      form_source: options.formSource || 'BrochureDownload',
+      phone: options.phone || '+628133138887',
+      price_interest: options.priceInterest || '173JT'
+    });
+    // Also track standard SubmitForm for compatibility
+    ttq.track('SubmitForm', {
+      content_name: contactSource,
+      content_type: contactType,
       content_category: 'Real Estate',
-      project_name: projectName,
       value: 0.00,
       currency: 'IDR'
     });

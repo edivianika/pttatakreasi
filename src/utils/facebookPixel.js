@@ -34,14 +34,18 @@ export const trackLead = (leadSource = 'WhatsApp', leadType = 'Property Inquiry'
   }
 };
 
-// Track WhatsApp button click
+// Track WhatsApp button click (alias for trackLead for backward compatibility)
 export const trackWhatsAppClick = (pageName = 'Homepage', projectName = 'General') => {
+  trackLead(`WhatsApp Click - ${pageName}`, 'WhatsApp Inquiry');
+};
+
+// Track contact (for brochure download)
+export const trackContact = (contactSource = 'Brochure Download', contactType = 'Brochure') => {
   if (typeof window !== 'undefined' && window.fbq) {
-    fbq('track', 'Lead', {
-      content_name: `WhatsApp Click - ${pageName}`,
-      content_type: 'WhatsApp Inquiry',
+    fbq('track', 'Contact', {
+      content_name: contactSource,
+      content_type: contactType,
       content_category: 'Real Estate',
-      project_name: projectName,
       value: 0.00,
       currency: 'IDR'
     });
