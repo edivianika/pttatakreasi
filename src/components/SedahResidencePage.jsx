@@ -15,16 +15,15 @@ import {
   ChevronDown,
   Menu,
   X,
-  ArrowLeft,
-  ExternalLink
+  Download,
+  FileText
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
 import { trackProjectView, trackWhatsAppClick } from "../utils/facebookPixel";
 import { updatePageSEO, getProjectStructuredData } from "../utils/seoUtils";
-import { projectsData, companyInfo as companyInfoData } from "./mockData";
-import { Link } from "react-router-dom";
+import { getKeypanoUrl, checkKeypanoAvailability } from "../utils/keypanoUrl";
 
 // Logo Component
 function SedahGreenLogo({ size = 40, className = "" }) {
@@ -136,6 +135,9 @@ const itemFadeIn = {
 function SedahGreenResidence() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [keypanoUrl, setKeypanoUrl] = useState('');
+  const [isKeypanoAvailable, setIsKeypanoAvailable] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -156,9 +158,9 @@ function SedahGreenResidence() {
 
     // Update SEO meta tags using utility
     const seoConfig = {
-      title: 'Sedah Green Residence - Perumahan Syariah Premium di Ponorogo | TKBM',
-      description: '🏘️ Sedah Green Residence - Perumahan Syariah Premium di Ponorogo! ✨ Akad 100% Halal, Harga Mulai 180 Jutaan, Angsuran Ringan. 🌿 Cluster Islami dengan Mushola Terintegrasi. 💚 Wujudkan Rumah Impian Keluarga Muslim!',
-      keywords: ['sedah green residence', 'perumahan syariah ponorogo', 'cluster islami ponorogo', 'rumah terjangkau ponorogo', 'hunian syariah ponorogo'],
+      title: 'Rumah Syariah Ponorogo - Perumahan Syariah & Cluster Syariah Ponorogo | KPR Syariah | TKBM',
+      description: '🏘️ Rumah Syariah Ponorogo Terbaik! Perumahan Syariah Ponorogo dengan KPR Syariah Ponorogo. Cluster Syariah Ponorogo mulai 173 Juta. Properti Syariah Ponorogo 100% Halal, Akad Syariah, Tanpa Riba. 💚 Wujudkan Rumah Impian Keluarga Muslim di Ponorogo!',
+      keywords: ['rumah syariah ponorogo', 'perumahan syariah ponorogo', 'properti syariah ponorogo', 'cluster syariah ponorogo', 'kpr syariah ponorogo', 'sedah green residence', 'rumah syariah ponorogo terbaik', 'perumahan syariah ponorogo murah', 'cluster syariah ponorogo strategis'],
       image: '/sedah/sedah green residence-perumahan syariah ponorogo.png',
       url: '/sedahresidence',
       structuredData: getProjectStructuredData({
@@ -177,6 +179,16 @@ function SedahGreenResidence() {
     
     // Track project page view
     trackProjectView('Sedah Green Residence');
+
+    // Set Keypano URL for virtual tour
+    const url = getKeypanoUrl('sedah');
+    setKeypanoUrl(url);
+
+    // Check if Keypano is available
+    checkKeypanoAvailability().then((available) => {
+      setIsKeypanoAvailable(available);
+      setIsLoading(false);
+    });
 
     // Cleanup function to restore original favicon and meta tags when component unmounts
     return () => {
@@ -245,6 +257,14 @@ function SedahGreenResidence() {
   // Handle WhatsApp click with tracking
   const handleWhatsAppClick = () => {
     trackWhatsAppClick('Sedah Green Residence', 'Sedah Green Residence');
+    window.open(whatsappUrl, '_blank');
+  };
+
+  // Handle Download Brosur
+  const handleDownloadBrosur = () => {
+    trackWhatsAppClick('Sedah Green Residence', 'Download Brosur');
+    const message = "Halo TKBM, saya ingin download brosur Sedah Green Residence. Mohon kirimkan brosur lengkapnya.";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -404,9 +424,9 @@ function SedahGreenResidence() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none text-slate-800"
                   >
-                    Hunian Syariah Idaman di{" "}
+                    Wujudkan Rumah Impian{" "}
                     <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">
-                      Ponorogo
+                      Keluarga Muslim
                     </span>
                   </motion.h1>
                   <motion.p
@@ -415,7 +435,7 @@ function SedahGreenResidence() {
                     transition={{ duration: 0.7, delay: 0.4 }}
                     className="text-xl text-slate-600 font-medium"
                   >
-                    57 Unit Rumah – Harga Promo 173 Juta dari 213 Juta
+                    Hunian syariah berkualitas di Ponorogo dengan KPR syariah - 45 unit tersedia mulai 173 juta
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -424,7 +444,7 @@ function SedahGreenResidence() {
                     className="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-200 rounded-xl p-4"
                   >
                     <p className="text-amber-800 font-semibold text-lg">
-                      🔥 Diskon hingga 40 Juta untuk 10 unit pertama!
+                      🔥 PROMO TERBATAS! Diskon 40 Juta untuk 10 Unit Pertama - Jangan Sampai Kehabisan!
                     </p>
                   </motion.div>
                 </div>
@@ -436,11 +456,11 @@ function SedahGreenResidence() {
                 >
                   <Button 
                     size="lg" 
-                    className="rounded-full group bg-emerald-600 hover:bg-emerald-700 text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6"
+                    className="rounded-full group bg-emerald-600 hover:bg-emerald-700 text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 shadow-lg hover:shadow-xl transition-all"
                     onClick={handleWhatsAppClick}
                   >
                     <MessageCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    Amankan Unit Sekarang
+                    Konsultasi via WhatsApp
                     <motion.span
                       initial={{ x: 0 }}
                       whileHover={{ x: 5 }}
@@ -452,9 +472,11 @@ function SedahGreenResidence() {
                   <Button 
                     variant="outline" 
                     size="lg" 
-                    className="rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 border-emerald-200 hover:bg-emerald-50"
+                    className="rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 border-emerald-200 hover:bg-emerald-50 shadow-md hover:shadow-lg transition-all"
+                    onClick={handleDownloadBrosur}
                   >
-                    Lihat Galeri
+                    <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    Download Brosur
                   </Button>
                 </motion.div>
               </motion.div>
@@ -467,7 +489,7 @@ function SedahGreenResidence() {
                 <div className="relative h-[350px] w-full md:h-[450px] lg:h-[500px] xl:h-[550px] overflow-hidden rounded-3xl shadow-2xl">
                   <img
                     src="/hero-sedah.png"
-                    alt="Sedah Green Residence - Modern Minimalist Houses"
+                    alt="Sedah Green Residence - Hunian Syariah Berkualitas di Ponorogo"
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent" />
@@ -475,6 +497,129 @@ function SedahGreenResidence() {
               </motion.div>
             </div>
           </div>
+        </section>
+
+        {/* Virtual Tour Section - Below Hero */}
+        <section className="w-full py-8 md:py-12 bg-white">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-2">
+                  Virtual Tour Sedah Green Residence
+                </h2>
+                <p className="text-slate-600 text-sm sm:text-base">
+                  Jelajahi hunian secara virtual dari kenyamanan rumah Anda - Lihat detail lengkap sebelum kunjungan
+                </p>
+              </div>
+              <div className="relative w-full" style={{ aspectRatio: '16/9', minHeight: '400px' }}>
+                {isLoading ? (
+                  <div className="w-full h-full rounded-2xl shadow-2xl bg-gray-100 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-green-600 mx-auto mb-4"></div>
+                      <p className="text-gray-600 text-lg">Memuat Virtual Tour...</p>
+                      <p className="text-gray-500 text-sm mt-2">Mohon tunggu sebentar</p>
+                    </div>
+                  </div>
+                ) : keypanoUrl ? (
+                  <iframe
+                    src={keypanoUrl}
+                    title="Sedah Green Residence Virtual Tour"
+                    className="w-full h-full rounded-2xl shadow-2xl"
+                    loading="lazy"
+                    allowFullScreen
+                    style={{
+                      border: 'none',
+                      minHeight: '400px'
+                    }}
+                    onError={() => {
+                      console.warn('Keypano iframe failed to load');
+                      setIsKeypanoAvailable(false);
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full rounded-2xl shadow-2xl bg-gray-100 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-gray-600 text-lg">Virtual Tour tidak tersedia saat ini</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Siteplan Section */}
+        <section className="w-full py-12 md:py-16 lg:py-20 bg-slate-50">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="container px-4 md:px-6"
+          >
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-8 md:mb-12">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-block rounded-full bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-700 mb-4"
+                >
+                  Siteplan
+                </motion.div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+                  Siteplan Sedah Green Residence
+                </h2>
+                <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+                  Lihat layout lengkap cluster syariah dengan 57 unit hunian yang strategis dan nyaman
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
+                <div className="w-full rounded-xl overflow-hidden shadow-lg bg-gray-50 flex items-center justify-center">
+                  <img 
+                    src="/sedah/siteplan-sedah.jpeg" 
+                    alt="Siteplan Sedah Green Residence" 
+                    className="max-w-full h-auto rounded-lg object-contain"
+                  />
+                </div>
+                <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-sm">
+                  <div className="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-200">
+                    <div className="font-semibold text-emerald-800">A. Gerbang Utama</div>
+                  </div>
+                  <div className="bg-blue-50 p-3 rounded-lg text-center border border-blue-200">
+                    <div className="font-semibold text-blue-800">B. Pos Satpam</div>
+                  </div>
+                  <div className="bg-green-50 p-3 rounded-lg text-center border border-green-200">
+                    <div className="font-semibold text-green-800">C. Taman RTH</div>
+                  </div>
+                  <div className="bg-amber-50 p-3 rounded-lg text-center border border-amber-200">
+                    <div className="font-semibold text-amber-800">D. Area Putar Balik</div>
+                  </div>
+                  <div className="bg-slate-50 p-3 rounded-lg text-center border border-slate-200">
+                    <div className="font-semibold text-slate-800">E. Dsn. Gundi, Sedah, Jenangan</div>
+                  </div>
+                </div>
+                <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                  <div className="bg-blue-100 p-3 rounded-lg text-center border border-blue-300">
+                    <div className="font-semibold text-blue-800">Blok A</div>
+                    <div className="text-xs text-blue-600 mt-1">Light Blue</div>
+                  </div>
+                  <div className="bg-orange-100 p-3 rounded-lg text-center border border-orange-300">
+                    <div className="font-semibold text-orange-800">Blok B</div>
+                    <div className="text-xs text-orange-600 mt-1">Orange</div>
+                  </div>
+                  <div className="bg-pink-100 p-3 rounded-lg text-center border border-pink-300">
+                    <div className="font-semibold text-pink-800">Blok C</div>
+                    <div className="text-xs text-pink-600 mt-1">Pink/Magenta</div>
+                  </div>
+                  <div className="bg-gray-100 p-3 rounded-lg text-center border border-gray-300">
+                    <div className="font-semibold text-gray-800">Blok D</div>
+                    <div className="text-xs text-gray-600 mt-1">Grey</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </section>
 
         {/* Proof Section */}
@@ -509,18 +654,18 @@ function SedahGreenResidence() {
               {[
                 {
                   icon: <Shield className="h-8 w-8 text-emerald-600" />,
-                  title: "100% Syariah",
-                  description: "Tanpa riba, tanpa denda, tanpa sita. Sesuai prinsip syariah Islam."
+                  title: "100% Syariah & Halal",
+                  description: "Tanpa riba, tanpa denda, tanpa sita. KPR syariah dengan akad yang sesuai prinsip Islam. Transaksi aman dan berkah untuk keluarga muslim."
                 },
                 {
                   icon: <MapPin className="h-8 w-8 text-emerald-600" />,
-                  title: "Lokasi Strategis",
-                  description: "Terletak di Sedah, Jenangan, Ponorogo dengan akses mudah ke fasilitas umum."
+                  title: "Lokasi Strategis di Kawasan yang Terus Berkembang",
+                  description: "Berlokasi di Sedah, Jenangan – Ponorogo, area yang kini tumbuh pesat dengan akses mudah ke masjid, pesantren, sekolah, dan fasilitas umum. Lingkungan yang tenang, aman, dan cocok untuk membangun keluarga islami."
                 },
                 {
                   icon: <Home className="h-8 w-8 text-emerald-600" />,
                   title: "Kualitas Premium",
-                  description: "Bangunan berkualitas tinggi dengan harga tetap terjangkau untuk keluarga."
+                  description: "Bangunan berkualitas tinggi dengan harga terjangkau. Cicilan ringan mulai 2 juta per bulan. Investasi terbaik untuk masa depan keluarga."
                 }
               ].map((item, index) => (
                 <motion.div
@@ -557,10 +702,10 @@ function SedahGreenResidence() {
                 Kemudahan Pembayaran
               </motion.div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-slate-800">
-                Cara Bayar yang Mudah & Fleksibel
+                Kemudahan Pembayaran & KPR Syariah
               </h2>
               <p className="mx-auto max-w-3xl text-slate-600 md:text-xl mt-4">
-                Kami menyediakan berbagai opsi pembayaran yang sesuai dengan kemampuan Anda
+                Pilih metode pembayaran yang sesuai kebutuhan Anda. KPR syariah atau cash lunak dengan cicilan ringan. Proses cepat dan mudah tanpa riba.
               </p>
             </div>
             <motion.div
@@ -572,18 +717,18 @@ function SedahGreenResidence() {
             >
               {[
                 {
-                  title: "DP Fleksibel",
-                  description: "DP bisa diangsur 3x",
-                  features: ["DP Flexsibel", "Tanpa bunga"]
+                  title: "KPR Syariah",
+                  description: "DP fleksibel bisa diangsur 3x tanpa bunga. Akad syariah yang jelas dan transparan.",
+                  features: ["DP Fleksibel", "Tanpa bunga", "Akad syariah"]
                 },
                 {
                   title: "Cicilan Ringan",
-                  description: "Cicilan bulanan yang terjangkau sesuai kemampuan",
-                  features: ["Mulai 2 jutaan/bulan", "Tenor hingga 7 tahun", "Fixed rate"]
+                  description: "Cicilan mulai 2 juta per bulan, tenor hingga 7 tahun. Fixed rate tanpa riba, tanpa denda.",
+                  features: ["Mulai 2 jutaan/bulan", "Tenor hingga 7 tahun", "Fixed rate tanpa riba"]
                 },
                 {
-                  title: "Tanpa Bank",
-                  description: "Proses mudah tanpa melalui bank konvensional",
+                  title: "Proses Mudah",
+                  description: "Tanpa BI checking, proses cepat, dan syarat mudah. Dapatkan rumah impian tanpa ribet.",
                   features: ["Tanpa BI checking", "Proses cepat", "Syarat mudah"]
                 }
               ].map((item, index) => (
@@ -628,69 +773,91 @@ function SedahGreenResidence() {
                 Harga Spesial
               </motion.div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-slate-800">
-                Hunian Terbaik untuk Keluarga
+                Harga Spesial untuk Keluarga Muslim
               </h2>
             </div>
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
+              {/* Free Items Banner */}
               <motion.div
                 variants={itemFadeIn}
-                className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 md:p-12 rounded-3xl border-2 border-emerald-200 relative overflow-hidden"
+                className="mb-8 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white p-6 rounded-2xl shadow-lg"
               >
-                <div className="absolute top-0 right-0 bg-amber-400 text-amber-900 px-6 py-2 rounded-bl-2xl font-bold">
-                  PROMO TERBATAS!
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold mb-4">🎁 Semua Pembelian Sudah FREE!</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="flex items-center justify-center gap-2">
+                      <Check className="h-5 w-5" />
+                      <span className="font-semibold">Canopy</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Check className="h-5 w-5" />
+                      <span className="font-semibold">Tandon Air</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Check className="h-5 w-5" />
+                      <span className="font-semibold">Listrik 1300 Watt</span>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-lg font-bold">🏠 Rumah Siap Huni, Bukan Siap Bongkar</p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-8 items-center">
+              </motion.div>
+
+              {/* Pricing Cards Grid */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Type 36/66 */}
+                <motion.div
+                  variants={itemFadeIn}
+                  className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 md:p-8 rounded-3xl border-2 border-emerald-200 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 bg-amber-400 text-amber-900 px-4 py-2 rounded-bl-2xl font-bold text-sm">
+                    PROMO TERBATAS!
+                  </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-slate-800 mb-4">Rumah Type 36/66</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rumah Type 36/66</h3>
                     <div className="space-y-4">
                       <div>
-                        <p className="text-slate-600 line-through text-xl">Harga Normal: Rp 213.000.000</p>
-                        <p className="text-4xl font-bold text-emerald-600">Rp 173.000.000</p>
-                        <p className="text-amber-600 font-semibold">Hemat Rp 40.000.000!</p>
+                        <p className="text-slate-600 line-through text-lg">Harga Normal: Rp 213.000.000</p>
+                        <p className="text-3xl md:text-4xl font-bold text-emerald-600">Rp 173.000.000</p>
+                        <p className="text-amber-600 font-semibold text-sm md:text-base">Hemat Rp 40.000.000!</p>
                       </div>
                       <div className="space-y-2">
-                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Tanah: 66 m²</p>
-                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Luas Bangunan: 36 m²</p>
-                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />2 Kamar Tidur</p>
-                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />1 Kamar Mandi</p>
-                        <p className="flex items-center"><Check className="h-5 w-5 text-emerald-600 mr-2" />Ruang Tamu & Dapur</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Luas Tanah: 66 m²</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Luas Bangunan: 36 m²</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />2 Kamar Tidur</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />1 Kamar Mandi</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Ruang Tamu & Dapur</p>
                       </div>
                     </div>
                   </div>
-{/*                   
-                  <div className="bg-white p-6 rounded-2xl shadow-lg">
-                    <h4 className="text-xl font-bold text-slate-800 mb-4">Simulasi Pembayaran</h4>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span>DP Minimal:</span>
-                        <span className="font-semibold">Rp 5.000.000</span>
+                </motion.div>
+
+                {/* Type 45/77 */}
+                <motion.div
+                  variants={itemFadeIn}
+                  className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 md:p-8 rounded-3xl border-2 border-emerald-200 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 bg-amber-400 text-amber-900 px-4 py-2 rounded-bl-2xl font-bold text-sm">
+                    PROMO TERBATAS!
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rumah Type 45/77</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-slate-600 line-through text-lg">Harga Normal: Rp 247.000.000</p>
+                        <p className="text-3xl md:text-4xl font-bold text-emerald-600">Rp 207.000.000</p>
+                        <p className="text-amber-600 font-semibold text-sm md:text-base">Hemat Rp 40.000.000!</p>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Cicilan/Bulan:</span>
-                        <span className="font-semibold">Rp 1.500.000</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Tenor:</span>
-                        <span className="font-semibold">15 Tahun</span>
-                      </div>
-                      <hr />
-                      <div className="flex justify-between text-lg font-bold text-emerald-600">
-                        <span>Total Investasi:</span>
-                        <span>Rp 177 Juta</span>
+                      <div className="space-y-2">
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Luas Tanah: 77 m²</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Luas Bangunan: 45 m²</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />2-3 Kamar Tidur</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />1-2 Kamar Mandi</p>
+                        <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Ruang Tamu & Dapur</p>
                       </div>
                     </div>
-                    <Button 
-                      className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 rounded-full"
-                      onClick={handleWhatsAppClick}
-                    >
-                      <MessageCircle className="h-4 w-4 mr-2" />
-                      Konsultasi Sekarang
-                    </Button>
-                  </div> */}
-
-
-                </div>
-              </motion.div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </section>
@@ -894,22 +1061,22 @@ function SedahGreenResidence() {
                 className="space-y-4"
               >
                 {[
-                  {
-                    question: "Apakah benar 100% syariah?",
-                    answer: "Ya, Sedah Green Residence menerapkan sistem jual beli syariah tanpa riba, tanpa denda keterlambatan, dan tanpa sita. Semua sesuai dengan prinsip syariah Islam."
-                  },
-                  {
-                    question: "Apakah ada fasilitas umum?",
-                    answer: "Ya, tersedia mushola, taman keluarga, area bermain anak, security 24 jam, dan akses jalan yang lebar serta terawat."
-                  },
-                  {
-                    question: "Bagaimana dengan legalitas tanah?",
-                    answer: "Anda akan mendapatkan sertifikat SHM (Sertifikat Hak Milik)"
-                  },
-                  {
-                    question: "Apakah bisa survey lokasi dulu?",
-                    answer: "Tentu saja! Kami menyediakan layanan antar jemput gratis untuk survey lokasi. Hubungi kami untuk jadwal kunjungan."
-                  }
+                {
+                  question: "Apakah benar 100% syariah?",
+                  answer: "Ya, Sedah Green Residence menerapkan sistem jual beli syariah tanpa riba, tanpa denda keterlambatan, dan tanpa sita. KPR syariah dengan akad yang sesuai prinsip Islam. Semua transaksi 100% halal dan berkah."
+                },
+                {
+                  question: "Apakah ada fasilitas umum?",
+                  answer: "Ya, tersedia mushola, taman keluarga, area bermain anak, security 24 jam, dan akses jalan yang lebar serta terawat. Lingkungan yang nyaman dan aman untuk keluarga."
+                },
+                {
+                  question: "Bagaimana dengan legalitas tanah?",
+                  answer: "Anda akan mendapatkan sertifikat SHM (Sertifikat Hak Milik) dengan legalitas jelas dan aman. Proses pengurusan sertifikat dibantu oleh tim kami."
+                },
+                {
+                  question: "Apakah bisa survey lokasi dulu?",
+                  answer: "Tentu saja! Kami menyediakan layanan antar jemput gratis untuk survey lokasi. Hubungi kami via WhatsApp untuk jadwal kunjungan. Kami siap membantu Anda melihat langsung hunian impian."
+                }
                 ].map((faq, index) => (
                   <motion.div
                     key={index}
@@ -941,7 +1108,7 @@ function SedahGreenResidence() {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6"
               >
-                Jangan Sampai Kehabisan!
+                Jangan Sampai Kehabisan Unit!
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -949,22 +1116,33 @@ function SedahGreenResidence() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-xl mb-8 max-w-2xl mx-auto"
               >
-                Promo hanya 10 unit pertama. Amankan hunian syariah impian keluarga Anda sekarang juga!
+                Promo diskon 40 juta hanya untuk 10 unit pertama! Hubungi kami sekarang untuk konsultasi gratis dan dapatkan informasi lengkap tentang KPR syariah atau cash lunak. Wujudkan rumah impian keluarga muslim Anda!
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0"
+                className="flex flex-col gap-4 justify-center items-center px-4 sm:px-0"
               >
-                <Button 
-                  size="lg" 
-                  className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 font-semibold w-auto max-w-xs"
-                  onClick={handleWhatsAppClick}
-                >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Hubungi Sekarang via WhatsApp
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 font-semibold shadow-lg hover:shadow-xl transition-all"
+                    onClick={handleWhatsAppClick}
+                  >
+                    <MessageCircle className="h-5 w-5 mr-2" />
+                    Konsultasi Gratis via WhatsApp
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="bg-emerald-50 border-2 border-white text-white hover:bg-emerald-100 hover:text-emerald-700 rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 font-semibold shadow-lg hover:shadow-xl transition-all"
+                    onClick={handleDownloadBrosur}
+                  >
+                    <Download className="h-5 w-5 mr-2" />
+                    Download Brosur
+                  </Button>
+                </div>
                 <div className="flex items-center text-white/90">
                   <Phone className="h-5 w-5 mr-2" />
                   <span>0813-3138-887</span>
@@ -1013,7 +1191,7 @@ function SedahGreenResidence() {
                 <span className="font-bold text-xl">Sedah Green Residence</span>
               </div>
               <p className="text-slate-300">
-                Hunian syariah berkualitas dengan lingkungan asri dan fasilitas lengkap di Ponorogo.
+                Hunian syariah berkualitas dengan lingkungan asri dan fasilitas lengkap di Ponorogo. Wujudkan rumah impian keluarga muslim dengan KPR syariah atau cash lunak.
               </p>
             </div>
             <div>
@@ -1049,113 +1227,6 @@ function SedahGreenResidence() {
           </div>
         </motion.div>
       </footer>
-
-      {/* Other Projects Section - For Equal Exposure */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-emerald-50 via-white to-amber-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Link 
-                to="/"
-                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 mb-6 text-sm font-medium"
-              >
-                <ArrowLeft size={16} />
-                Kembali ke Halaman Utama
-              </Link>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Jelajahi Proyek Lainnya
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-                Kami memiliki pilihan hunian syariah lainnya yang mungkin sesuai dengan kebutuhan Anda
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {projectsData
-                .filter(project => project.name !== "Sedah Green Residence")
-                .map((project) => {
-                  const route = project.name === "Narraya Green Residence" 
-                    ? "/narraya" 
-                    : project.name === "Grand Sezha" 
-                    ? "https://grandsezha.com" 
-                    : null;
-                  
-                  const handleProjectClick = () => {
-                    const message = `Halo TKBM, saya tertarik dengan proyek ${project.name}. Mohon informasi detail tentang harga, cicilan, dan cara pembelian.`;
-                    const whatsappUrl = `https://wa.me/${companyInfoData.whatsapp}?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
-                  };
-                  
-                  return (
-                    <motion.div 
-                      key={project.id} 
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      variants={itemFadeIn}
-                      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                    >
-                      <div className="relative h-48 overflow-hidden">
-                        <img 
-                          src={project.image}
-                          alt={project.name}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute top-4 left-4">
-                          <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            {project.type}
-                          </span>
-                        </div>
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-white/90 backdrop-blur-sm text-emerald-700 px-3 py-1 rounded-full text-sm font-bold">
-                            {project.price}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{project.name}</h3>
-                        <div className="flex items-center gap-2 text-gray-600 mb-3">
-                          <MapPin size={16} />
-                          <span className="text-sm">{project.location}</span>
-                        </div>
-                        <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
-                        {route ? (
-                          route.startsWith('http') ? (
-                            <a 
-                              href={route}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
-                            >
-                              <ExternalLink size={14} className="sm:w-4 sm:h-4" />
-                              Info Detail
-                            </a>
-                          ) : (
-                            <Link 
-                              to={route}
-                              className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
-                            >
-                              <ExternalLink size={14} className="sm:w-4 sm:h-4" />
-                              Info Detail
-                            </Link>
-                          )
-                        ) : (
-                          <button 
-                            onClick={handleProjectClick}
-                            className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 min-h-[42px] sm:min-h-[48px]"
-                          >
-                            <MessageCircle size={14} className="sm:w-4 sm:h-4" />
-                            Konsultasi
-                          </button>
-                        )}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Floating WhatsApp Button - Mobile Only */}
       <motion.div
@@ -1202,3 +1273,4 @@ function SedahGreenResidence() {
 }
 
 export default SedahGreenResidence;
+
