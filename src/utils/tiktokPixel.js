@@ -21,9 +21,10 @@ export const trackTikTokViewContent = (contentName = 'Homepage', contentType = '
   }
 };
 
-// Track lead generation
+// Track lead generation - TikTok Pixel Lead event
 export const trackTikTokLead = (leadSource = 'WhatsApp', leadType = 'Property Inquiry') => {
   if (typeof window !== 'undefined' && window.ttq) {
+    // TikTok Pixel Lead event - CompleteRegistration is the standard event for leads
     ttq.track('CompleteRegistration', {
       content_name: leadSource,
       content_type: leadType,
@@ -34,9 +35,10 @@ export const trackTikTokLead = (leadSource = 'WhatsApp', leadType = 'Property In
   }
 };
 
-// Track WhatsApp button click
+// Track WhatsApp button click - TikTok Pixel Lead event
 export const trackTikTokWhatsAppClick = (pageName = 'Homepage', projectName = 'General') => {
   if (typeof window !== 'undefined' && window.ttq) {
+    // TikTok Pixel Lead event - CompleteRegistration is the standard event for leads
     ttq.track('CompleteRegistration', {
       content_name: `WhatsApp Click - ${pageName}`,
       content_type: 'WhatsApp Inquiry',
