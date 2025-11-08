@@ -571,7 +571,7 @@ function SedahGreenResidence() {
                   Siteplan Sedah Green Residence
                 </h2>
                 <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
-                  Lihat layout lengkap cluster syariah dengan 57 unit hunian yang strategis dan nyaman
+                  Lihat layout lengkap cluster syariah dengan 45 unit hunian yang strategis dan nyaman
                 </p>
               </div>
               <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
@@ -1135,8 +1135,7 @@ function SedahGreenResidence() {
                   </Button>
                   <Button 
                     size="lg" 
-                    variant="outline"
-                    className="bg-emerald-50 border-2 border-white text-white hover:bg-emerald-100 hover:text-emerald-700 rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 font-semibold shadow-lg hover:shadow-xl transition-all"
+                    className="bg-white text-emerald-600 hover:bg-slate-100 rounded-full text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-6 font-semibold shadow-lg hover:shadow-xl transition-all border-2 border-white"
                     onClick={handleDownloadBrosur}
                   >
                     <Download className="h-5 w-5 mr-2" />
@@ -1167,7 +1166,9 @@ function SedahGreenResidence() {
                 <div>
                   <Home className="h-8 w-8 mx-auto mb-4 text-emerald-200" />
                   <h3 className="font-semibold mb-2">Marketing Office</h3>
-                  <p className="text-emerald-100">Buka Setiap Hari 08:00 - 17:00</p>
+                  <p className="text-emerald-100 text-sm">Perumahan Grand Sezha - No B10</p>
+                  <p className="text-emerald-100 text-sm">Jalan Arif Rahman Hakim, Kniten Ponorogo</p>
+                  <p className="text-emerald-100 text-sm mt-2">Buka Setiap Hari 08:00 - 17:00</p>
                 </div>
               </motion.div>
             </div>
