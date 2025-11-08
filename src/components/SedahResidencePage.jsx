@@ -21,7 +21,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
-import { trackProjectView, trackWhatsAppClick } from "../utils/facebookPixel";
+import { trackProjectView, trackWhatsAppClick, trackLead } from "../utils/facebookPixel";
 import { updatePageSEO, getProjectStructuredData } from "../utils/seoUtils";
 import { getKeypanoUrl, checkKeypanoAvailability } from "../utils/keypanoUrl";
 
@@ -257,14 +257,23 @@ function SedahGreenResidence() {
   // Handle WhatsApp click with tracking
   const handleWhatsAppClick = () => {
     trackWhatsAppClick('Sedah Green Residence', 'Sedah Green Residence');
+    trackLead('WhatsApp Click - Sedah Green Residence', 'WhatsApp Inquiry');
     window.open(whatsappUrl, '_blank');
   };
 
   // Handle Download Brosur
   const handleDownloadBrosur = () => {
     trackWhatsAppClick('Sedah Green Residence', 'Download Brosur');
+    trackLead('Download Brosur - Sedah Green Residence', 'Brochure Download');
     const message = "Halo TKBM, saya ingin download brosur Sedah Green Residence. Mohon kirimkan brosur lengkapnya.";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  // Handle Floating WhatsApp Button
+  const handleFloatingWhatsAppClick = () => {
+    trackWhatsAppClick('Sedah Green Residence', 'Floating WhatsApp Button');
+    trackLead('Floating WhatsApp - Sedah Green Residence', 'WhatsApp Inquiry');
     window.open(whatsappUrl, '_blank');
   };
 
@@ -1239,7 +1248,7 @@ function SedahGreenResidence() {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => window.open(whatsappUrl, '_blank')}
+          onClick={handleFloatingWhatsAppClick}
           className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
           style={{
             width: '60px',
