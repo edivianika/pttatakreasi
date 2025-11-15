@@ -451,18 +451,6 @@ Mohon informasi lebih lanjut.`;
                 </div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-2">
-                <button
-                  onClick={handleWhatsAppClick}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  <MessageCircle size={16} />
-                  Konsultasi via WhatsApp
-                </button>
-                
-              </div>
-
               {/* Terms and Conditions */}
               <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
                 <h4 className="text-sm font-bold text-slate-800 mb-3 text-center">⚠️ Syarat dan Ketentuan</h4>
