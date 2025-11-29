@@ -6,7 +6,7 @@ import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPi
 
 const NarrayaCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
-  const [discount, setDiscount] = useState(100000000); // 100 juta default
+  const [discount, setDiscount] = useState(75000000); // 100 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [kreditTerm, setKreditTerm] = useState(4); // 4 tahun default
@@ -25,18 +25,20 @@ const NarrayaCalculator = () => {
 
   // Unit data for Narraya Green Residence
   const unitData = [
-    { unit: "A01", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A02", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A03", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A04", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A05", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A06", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A07", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A08", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A09", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A10", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A11", lb: 85, lt: 96, hargaCash: 954884250 },
-    { unit: "A12", lb: 85, lt: 96, hargaCash: 954884250 },
+    { unit: "A01", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A02", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A03", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A04", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A05", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A06", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A07", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A08", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A09", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A10", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A11", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A12", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A13", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A14", lb: 65, lt: 84, hargaCash: 785628562 },
   ];
 
   useEffect(() => {
@@ -414,9 +416,9 @@ Mohon informasi lebih lanjut.`;
                 <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-4 border-2 border-slate-200">
                   {/* Site Plan Grid */}
                   <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
-                    {/* Left Column - A01, A03, A05, A07, A09, A11 */}
+                    {/* Left Column - A01, A03, A05, A07, A09, A11, A13 */}
                     <div className="space-y-2">
-                      {['A11', 'A09', 'A07', 'A05', 'A03', 'A01'].map((unit, index) => (
+                      {['A13', 'A11', 'A09', 'A07', 'A05', 'A03', 'A01'].map((unit, index) => (
                         <motion.div
                           key={unit}
                           initial={{ opacity: 0, x: -20 }}
@@ -462,9 +464,9 @@ Mohon informasi lebih lanjut.`;
                       ))}
                     </div>
                     
-                    {/* Right Column - A02, A04, A06, A08, A10, A12 */}
+                    {/* Right Column - A02, A04, A06, A08, A10, A12, A14 */}
                     <div className="space-y-2">
-                      {['A12', 'A10', 'A08', 'A06', 'A04', 'A02'].map((unit, index) => (
+                      {['A14', 'A12', 'A10', 'A08', 'A06', 'A04', 'A02'].map((unit, index) => (
                         <motion.div
                           key={unit}
                           initial={{ opacity: 0, x: 20 }}
