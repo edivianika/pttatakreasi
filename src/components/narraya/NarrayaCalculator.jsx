@@ -25,8 +25,8 @@ const NarrayaCalculator = () => {
 
   // Unit data for Narraya Green Residence
   const unitData = [
-    { unit: "A01", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A02", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A01", lb: 65, lt: 84, hargaCash: 799628562 },
+    { unit: "A02", lb: 65, lt: 84, hargaCash: 799628562 },
     { unit: "A03", lb: 65, lt: 84, hargaCash: 785628562 },
     { unit: "A04", lb: 65, lt: 84, hargaCash: 785628562 },
     { unit: "A05", lb: 65, lt: 84, hargaCash: 785628562 },
