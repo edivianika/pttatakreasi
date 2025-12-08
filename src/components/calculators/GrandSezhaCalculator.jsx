@@ -62,7 +62,10 @@ const GrandSezhaCalculator = () => {
     { "unit": "D-01", "lb": 50, "lt": 69, "hargaCash": 541185000 },
     { "unit": "D-02", "lb": 50, "lt": 68, "hargaCash": 530730000 },
     { "unit": "D-03", "lb": 50, "lt": 68, "hargaCash": 530730000 },
-    { "unit": "D-04", "lb": 50, "lt": 68, "hargaCash": 530730000 }
+    { "unit": "D-04", "lb": 50, "lt": 68, "hargaCash": 530730000 },
+  
+    // Aulia Type 45 Satu Lantai
+    { "unit": "AULIA 1 LANTAI", "lb": 45, "lt": 60, "hargaCash": 480000000 }
   ]
   ;
 
