@@ -38,8 +38,8 @@ export const projectKnowledge = {
         paymentOptions: ["KPR Syariah", "Cash", "Angsuran Syariah"],
         promo: {
           available: true,
-          description: "Diskon 100 juta untuk 2 pembeli pertama",
-          discount: "100000000",
+          description: "Diskon 75 juta untuk 2 pembeli pertama",
+          discount: "75000000",
           currency: "IDR"
         }
       },

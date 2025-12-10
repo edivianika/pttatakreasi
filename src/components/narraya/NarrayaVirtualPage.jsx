@@ -53,7 +53,7 @@ const NarrayaVirtualPage = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    const message = "Halo TKBM, saya tertarik dengan Narraya Green Residence setelah melihat virtual tour. Mohon informasi tentang diskon 100 juta untuk 2 pembeli pertama.";
+    const message = "Halo TKBM, saya tertarik dengan Narraya Green Residence setelah melihat virtual tour. Mohon informasi tentang diskon 75 juta untuk 2 pembeli pertama.";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -106,7 +106,7 @@ const NarrayaVirtualPage = () => {
               >
                 <Gift className="w-5 h-5 text-amber-600" />
                 <span className="text-amber-800 font-bold text-lg">
-                  🎉 DISKON 100 JUTA untuk 2 Pembeli Pertama!
+                  🎉 DISKON 75 JUTA untuk 2 Pembeli Pertama!
                 </span>
               </motion.div>
             </motion.div>
@@ -208,7 +208,7 @@ const NarrayaVirtualPage = () => {
                 Jangan Sampai Kehabisan!
               </h2>
               <p className="text-xl mb-8 text-emerald-100">
-                Promo terbatas hanya untuk 2 pembeli pertama dengan diskon 100 juta
+                Promo terbatas hanya untuk 2 pembeli pertama dengan diskon 75 juta
               </p>
               
               {/* Debug info for WhatsApp number */}
@@ -234,8 +234,8 @@ const NarrayaVirtualPage = () => {
                     <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
                       <Gift className="w-8 h-8" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Diskon 100 Juta</h3>
-                    <p className="text-emerald-100">Hemat hingga 100 juta rupiah</p>
+                    <h3 className="text-xl font-bold mb-2">Diskon 75 Juta</h3>
+                    <p className="text-emerald-100">Hemat hingga 75 juta rupiah</p>
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
