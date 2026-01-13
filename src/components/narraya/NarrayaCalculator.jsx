@@ -84,11 +84,13 @@ const NarrayaCalculator = () => {
     const dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
     const angsuranCashLunakAmount = (hargaSetelahDiskon - dpCashLunakAmount) / (cashLunakTerm * 12);
 
-    // Kredit calculation (8% interest rate)
+    // Kredit calculation (8% interest rate per year)
     const dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
+    // Calculate total interest: 8% per year on remaining loan
     const totalBunga = sisaPinjaman * 0.08 * kreditTerm;
     const hargaKredit = hargaSetelahDiskon + totalBunga;
+    // Monthly installment = (remaining loan + total interest) / number of months
     const angsuranKreditAmount = (sisaPinjaman + totalBunga) / (kreditTerm * 12);
 
     setCalculation({

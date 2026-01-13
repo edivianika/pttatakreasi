@@ -29,14 +29,14 @@ const NarrayaPage = () => {
     // Update SEO meta tags
     const seoConfig = {
       title: 'Narraya Green Residence - Perumahan Premium Syariah di Ponorogo | TKBM',
-      description: '🏘️ Narraya Green Residence - Perumahan Premium Syariah di Jantung Ponorogo! ✨ 5 Langkah ke Alun-alun, Akad 100% Halal, Harga Mulai 800 Jutaan. 💚 Hunian Modern Tropis dengan Fasilitas Lengkap.',
+      description: '🏘️ Narraya Green Residence - Perumahan Premium Syariah di Jantung Ponorogo! ✨ 5 Langkah ke Alun-alun, Akad 100% Halal, Harga Mulai 710 Jutaan. 💚 Hunian Modern Tropis dengan Fasilitas Lengkap.',
       keywords: ['narraya green residence', 'perumahan premium ponorogo', 'rumah syariah ponorogo', 'hunian strategis ponorogo', 'perumahan dekat alun-alun ponorogo'],
       image: '/tatakreasi/perumahan-ponorogo-narraya-green-residence.png',
       url: '/narraya',
       structuredData: getProjectStructuredData({
         name: 'Narraya Green Residence',
         description: 'Hunian premium dengan lokasi strategis di jantung kota Ponorogo',
-        price: 'Mulai 800 Jutaan',
+        price: 'Mulai 710 Jutaan',
         location: 'Jl. Noroyono Brotonegaran, Ponorogo',
         image: '/tatakreasi/perumahan-ponorogo-narraya-green-residence.png',
         url: '/narraya',
@@ -445,7 +445,7 @@ const NarrayaPage = () => {
                   Denah Lantai Tipe 85
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600">
-                  Layout 2 lantai dengan desain modern dan fungsional (LB: 85 m² | LT: 96 m²)
+                  Layout 2 lantai dengan desain modern dan fungsional (LB: 65 m² | LT: 84 m²)
                 </p>
               </div>
               
@@ -577,25 +577,25 @@ const NarrayaPage = () => {
             </div>
 
              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-slate-800">
-               Hemat <span className="text-emerald-600">150 Juta</span>
+               Hemat <span className="text-emerald-600">75 Juta</span>
              </h2>
             
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-slate-200 shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="text-center md:text-right">
                   <p className="text-base text-slate-600 mb-2">Harga Normal</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-slate-400 line-through">Rp 950 Juta</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-slate-400 line-through">Rp 785 Juta</p>
                 </div>
                 <div className="text-center md:text-left">
                   <p className="text-base text-emerald-600 mb-2">Harga Promo</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-emerald-700">Rp 800 Juta</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-emerald-700">Rp 710 Juta</p>
                 </div>
               </div>
             </div>
 
             <p className="text-lg sm:text-xl mb-8 text-slate-700 max-w-3xl mx-auto leading-relaxed">
               Dapatkan hunian syariah premium di lokasi strategis Ponorogo dengan 
-              <span className="font-semibold text-emerald-600"> diskon istimewa 150 juta</span> 
+              <span className="font-semibold text-emerald-600"> diskon istimewa 75 juta</span> 
               untuk 2 keluarga pertama yang bergabung dengan komunitas Narraya.
             </p>
 
