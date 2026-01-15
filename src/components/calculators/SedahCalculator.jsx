@@ -9,8 +9,12 @@ const SedahCalculator = () => {
   const [discount, setDiscount] = useState(40000000); // 40 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
+  const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
+  const [cashLunakDPManual, setCashLunakDPManual] = useState(0); // DP manual in rupiah
   const [kreditTerm, setKreditTerm] = useState(3); // 5 tahun default
   const [kreditDP, setKreditDP] = useState(30); // 30% default
+  const [kreditDPMode, setKreditDPMode] = useState('persen'); // 'persen' or 'manual'
+  const [kreditDPManual, setKreditDPManual] = useState(0); // DP manual in rupiah
 
   const [calculation, setCalculation] = useState({
     unitInfo: null,
@@ -26,49 +30,54 @@ const SedahCalculator = () => {
   // Unit data from the HTML
   const unitData = [
     { "unit": "A01", "lb": 45, "lt": 83, "hargaCash": 261137319, "sold": true },
-    { "unit": "A02", "lb": 45, "lt": 125, "hargaCash": 355457304 },
+    { "unit": "A02", "lb": 45, "lt": 123, "hargaCash": 350965876 },
     { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 308297311 },
-    { "unit": "A04", "lb": 45, "lt": 108, "hargaCash": 317280167 },
+    { "unit": "A04", "lb": 45, "lt": 106, "hargaCash": 312788739 },
     { "unit": "A05", "lb": 45, "lt": 77, "hargaCash": 247663035 },
     { "unit": "A06", "lb": 45, "lt": 77, "hargaCash": 247663035 },
     { "unit": "A07", "lb": 45, "lt": 85, "hargaCash": 265628747 },
-    { "unit": "A08", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "A08", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
     { "unit": "A09", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
     { "unit": "A10", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "A11", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "A12", "lb": 45, "lt": 101, "hargaCash": 301560170 },
+    { "unit": "A11", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "A12", "lb": 36, "lt": 68, "hargaCash": 218229029 },
+  
     { "unit": "B01", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
     { "unit": "B02", "lb": 36, "lt": 66, "hargaCash": 213737602 },
     { "unit": "B03", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "B04", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "B05", "lb": 45, "lt": 97, "hargaCash": 292577314 },
-    { "unit": "B06", "lb": 45, "lt": 86, "hargaCash": 267874461 },
-    { "unit": "B07", "lb": 36, "lt": 87, "hargaCash": 245212674 },
-    { "unit": "B08", "lb": 36, "lt": 87, "hargaCash": 245212674 },
-    { "unit": "B09", "lb": 45, "lt": 108, "hargaCash": 317280167 },
-    { "unit": "C01", "lb": 45, "lt": 78, "hargaCash": 249908749 },
+    { "unit": "B04", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "B05", "lb": 36, "lt": 86, "hargaCash": 258651880, "sold": true },
+    { "unit": "B06", "lb": 36, "lt": 87, "hargaCash": 260897594 },
+    { "unit": "B07", "lb": 36, "lt": 87, "hargaCash": 260897594 },
+    { "unit": "B08", "lb": 36, "lt": 83, "hargaCash": 251914738 },
+    { "unit": "B09", "lb": 36, "lt": 89, "hargaCash": 265389022 },
+  
+    { "unit": "C01", "lb": 45, "lt": 78, "hargaCash": 265593669 },
     { "unit": "C02", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "C03", "lb": 45, "lt": 97, "hargaCash": 292577314 },
-    { "unit": "C04", "lb": 45, "lt": 78, "hargaCash": 249908749 },
-    { "unit": "C05", "lb": 36, "lt": 95, "hargaCash": 278863306 },
-    { "unit": "C06", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "C07", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "C08", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "C09", "lb": 36, "lt": 66, "hargaCash": 214552682 },
-    { "unit": "C10", "lb": 36, "lt": 66, "hargaCash": 214552682, "sold": true },
-    { "unit": "C11", "lb": 45, "lt": 97, "hargaCash": 292577314 },
-    { "unit": "C12", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "C13", "lb": 45, "lt": 78, "hargaCash": 249908749 },
-    { "unit": "D01", "lb": 45, "lt": 67, "hargaCash": 240205896 },
-    { "unit": "D02", "lb": 45, "lt": 68, "hargaCash": 240951610 },
-    { "unit": "D03", "lb": 45, "lt": 68, "hargaCash": 243136529 },
-    { "unit": "D04", "lb": 45, "lt": 69, "hargaCash": 241697324 },
-    { "unit": "D05", "lb": 36, "lt": 65, "hargaCash": 212991888 },
-    { "unit": "D06", "lb": 45, "lt": 87, "hargaCash": 285805094 },
-    { "unit": "D07", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "C03", "lb": 45, "lt": 77, "hargaCash": 247663035 },
+    { "unit": "C04", "lb": 45, "lt": 97, "hargaCash": 292577314 },
+    { "unit": "C05", "lb": 45, "lt": 97, "hargaCash": 292577314 },
+    { "unit": "C06", "lb": 45, "lt": 77, "hargaCash": 247663035 },
+    { "unit": "C07", "lb": 45, "lt": 78, "hargaCash": 249908749 },
+    { "unit": "C08", "lb": 45, "lt": 67, "hargaCash": 239464914 },
+    { "unit": "C09", "lb": 45, "lt": 68, "hargaCash": 240284726 },
+    { "unit": "C10", "lb": 45, "lt": 68, "hargaCash": 240284726 },
+    { "unit": "C11", "lb": 45, "lt": 69, "hargaCash": 242530440 },
+    { "unit": "C12", "lb": 45, "lt": 65, "hargaCash": 237825289 },
+  
+    { "unit": "D01", "lb": 36, "lt": 95, "hargaCash": 278863306 },
+    { "unit": "D02", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
+    { "unit": "D03", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D04", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D05", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D06", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D07", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
     { "unit": "D08", "lb": 36, "lt": 66, "hargaCash": 213737602 },
     { "unit": "D09", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D10", "lb": 36, "lt": 72, "hargaCash": 227211885 }
+    { "unit": "D10", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D11", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D12", "lb": 36, "lt": 66, "hargaCash": 213737602 },
+    { "unit": "D13", "lb": 36, "lt": 72, "hargaCash": 227211885 }
   ]
   
   
@@ -85,6 +94,7 @@ const SedahCalculator = () => {
     // Track calculator usage
     trackCalculatorUsage('Sedah', '');
   }, []);
+
 
   // Calculate based on selected unit and options
   useEffect(() => {
@@ -126,11 +136,25 @@ const SedahCalculator = () => {
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
     // Cash Lunak calculation
-    const dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
+    let dpCashLunakAmount;
+    if (cashLunakDPMode === 'manual') {
+      // Use manual DP, but ensure it doesn't exceed hargaSetelahDiskon
+      dpCashLunakAmount = Math.min(cashLunakDPManual, hargaSetelahDiskon);
+    } else {
+      // Use percentage DP
+      dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
+    }
     const angsuranCashLunakAmount = (hargaSetelahDiskon - dpCashLunakAmount) / (cashLunakTerm * 12);
 
     // Kredit calculation (8% interest rate)
-    const dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
+    let dpKreditAmount;
+    if (kreditDPMode === 'manual') {
+      // Use manual DP, but ensure it doesn't exceed hargaSetelahDiskon
+      dpKreditAmount = Math.min(kreditDPManual, hargaSetelahDiskon);
+    } else {
+      // Use percentage DP
+      dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
+    }
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
     const totalBunga = sisaPinjaman * 0.08 * kreditTerm;
     const hargaKredit = hargaSetelahDiskon + totalBunga;
@@ -146,7 +170,7 @@ const SedahCalculator = () => {
       dpKredit: dpKreditAmount,
       angsuranKredit: angsuranKreditAmount
     });
-  }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, kreditTerm, kreditDP]);
+  }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, cashLunakDPMode, cashLunakDPManual, kreditTerm, kreditDP, kreditDPMode, kreditDPManual]);
 
   const handleDiscountChange = (value) => {
     const maxDiscount = 60000000;
@@ -176,11 +200,11 @@ Harga Normal: ${formatCurrency(calculation.hargaNormal)}
 Diskon: ${formatCurrency(discount)}
 Harga Setelah Diskon: ${formatCurrency(calculation.hargaSetelahDiskon)}
 
-Cash Lunak (${cashLunakTerm} tahun, DP ${cashLunakDP}%):
+Cash Lunak (${cashLunakTerm} tahun, DP ${cashLunakDPMode === 'persen' ? cashLunakDP + '%' : formatCurrency(cashLunakDPManual)}):
 - DP: ${formatCurrency(calculation.dpCashLunak)}
 - Angsuran: ${formatCurrency(calculation.angsuranCashLunak)}
 
-Kredit (${kreditTerm} tahun, DP ${kreditDP}%):
+Kredit (${kreditTerm} tahun, DP ${kreditDPMode === 'persen' ? kreditDP + '%' : formatCurrency(kreditDPManual)}):
 - DP: ${formatCurrency(calculation.dpKredit)}
 - Angsuran: ${formatCurrency(calculation.angsuranKredit)}
 
@@ -366,17 +390,67 @@ Mohon informasi lebih lanjut.`;
                         <option value={3}>3 Tahun</option>
                       </select>
                     </div>
-                    <div className="flex items-center justify-between gap-1">
-                      <label className="text-xs text-slate-600">DP Awal (%):</label>
-                      <select
-                        value={cashLunakDP}
-                        onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
-                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
-                      >
-                        <option value={30}>30%</option>
-                        <option value={40}>40%</option>
-                        <option value={50}>50%</option>
-                      </select>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-1">
+                        <label className="text-xs text-slate-600">DP Awal:</label>
+                        <div className="flex gap-1">
+                          <button
+                            type="button"
+                            onClick={() => setCashLunakDPMode('persen')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              cashLunakDPMode === 'persen'
+                                ? 'bg-blue-600 text-white border-blue-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            %
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setCashLunakDPMode('manual')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              cashLunakDPMode === 'manual'
+                                ? 'bg-blue-600 text-white border-blue-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            Rp
+                          </button>
+                        </div>
+                      </div>
+                      {cashLunakDPMode === 'persen' ? (
+                        <div className="flex items-center justify-between gap-1">
+                          <label className="text-xs text-slate-600">DP (%):</label>
+                          <select
+                            value={cashLunakDP}
+                            onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
+                            className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
+                          >
+                            <option value={30}>30%</option>
+                            <option value={40}>40%</option>
+                            <option value={50}>50%</option>
+                          </select>
+                        </div>
+                      ) : (
+                        <div className="space-y-1">
+                          <label className="text-xs text-slate-600">DP (Rupiah):</label>
+                          <input
+                            type="number"
+                            value={cashLunakDPManual || ''}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value) || 0;
+                              setCashLunakDPManual(value);
+                            }}
+                            placeholder="Masukkan DP"
+                            className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          />
+                          {calculation.hargaSetelahDiskon > 0 && (
+                            <p className="text-xs text-slate-500 text-center">
+                              Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="mt-3 space-y-2">
@@ -418,16 +492,66 @@ Mohon informasi lebih lanjut.`;
                         <option value={7}>7 Tahun</option>
                       </select>
                     </div>
-                    <div className="flex items-center justify-between gap-1">
-                      <label className="text-xs text-slate-600">DP Awal (%):</label>
-                      <select
-                        value={kreditDP}
-                        onChange={(e) => setKreditDP(parseInt(e.target.value))}
-                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
-                      >
-                        <option value={30}>30%</option>
-                        <option value={50}>50%</option>
-                      </select>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-1">
+                        <label className="text-xs text-slate-600">DP Awal:</label>
+                        <div className="flex gap-1">
+                          <button
+                            type="button"
+                            onClick={() => setKreditDPMode('persen')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              kreditDPMode === 'persen'
+                                ? 'bg-rose-600 text-white border-rose-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            %
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setKreditDPMode('manual')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              kreditDPMode === 'manual'
+                                ? 'bg-rose-600 text-white border-rose-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            Rp
+                          </button>
+                        </div>
+                      </div>
+                      {kreditDPMode === 'persen' ? (
+                        <div className="flex items-center justify-between gap-1">
+                          <label className="text-xs text-slate-600">DP (%):</label>
+                          <select
+                            value={kreditDP}
+                            onChange={(e) => setKreditDP(parseInt(e.target.value))}
+                            className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
+                          >
+                            <option value={30}>30%</option>
+                            <option value={50}>50%</option>
+                          </select>
+                        </div>
+                      ) : (
+                        <div className="space-y-1">
+                          <label className="text-xs text-slate-600">DP (Rupiah):</label>
+                          <input
+                            type="number"
+                            value={kreditDPManual || ''}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value) || 0;
+                              setKreditDPManual(value);
+                            }}
+                            placeholder="Masukkan DP"
+                            className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-rose-500"
+                          />
+                          {calculation.hargaSetelahDiskon > 0 && (
+                            <p className="text-xs text-slate-500 text-center">
+                              Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="mt-3 space-y-2">
