@@ -6,7 +6,7 @@ import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPi
 
 const SedahCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
-  const [discount, setDiscount] = useState(40000000); // 40 juta default
+  const [discount, setDiscount] = useState(20000000); // 20 juta default (maksimal)
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
@@ -129,17 +129,18 @@ const SedahCalculator = () => {
     const unit = unitData.find(item => item.unit === selectedUnit);
     if (!unit) return;
 
-    // Ensure discount doesn't exceed 60,000,000
-    const maxDiscount = 60000000;
+    // Ensure discount doesn't exceed 20,000,000
+    const maxDiscount = 20000000;
     const actualDiscount = Math.min(discount, maxDiscount);
     
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
     // Cash Lunak calculation
+    const minDPCashLunak = hargaSetelahDiskon * 0.3; // minimal 30% dari harga rumah
     let dpCashLunakAmount;
     if (cashLunakDPMode === 'manual') {
-      // Use manual DP, but ensure it doesn't exceed hargaSetelahDiskon
-      dpCashLunakAmount = Math.min(cashLunakDPManual, hargaSetelahDiskon);
+      // Use manual DP: minimal 30%, maksimal 100% dari harga setelah diskon
+      dpCashLunakAmount = Math.max(minDPCashLunak, Math.min(cashLunakDPManual, hargaSetelahDiskon));
     } else {
       // Use percentage DP
       dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
@@ -147,10 +148,11 @@ const SedahCalculator = () => {
     const angsuranCashLunakAmount = (hargaSetelahDiskon - dpCashLunakAmount) / (cashLunakTerm * 12);
 
     // Kredit calculation (8% interest rate)
+    const minDPKredit = hargaSetelahDiskon * 0.3; // minimal 30% dari harga rumah
     let dpKreditAmount;
     if (kreditDPMode === 'manual') {
-      // Use manual DP, but ensure it doesn't exceed hargaSetelahDiskon
-      dpKreditAmount = Math.min(kreditDPManual, hargaSetelahDiskon);
+      // Use manual DP: minimal 30%, maksimal 100% dari harga setelah diskon
+      dpKreditAmount = Math.max(minDPKredit, Math.min(kreditDPManual, hargaSetelahDiskon));
     } else {
       // Use percentage DP
       dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
@@ -173,7 +175,7 @@ const SedahCalculator = () => {
   }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, cashLunakDPMode, cashLunakDPManual, kreditTerm, kreditDP, kreditDPMode, kreditDPManual]);
 
   const handleDiscountChange = (value) => {
-    const maxDiscount = 60000000;
+    const maxDiscount = 20000000;
     const actualValue = Math.min(parseInt(value) || 0, maxDiscount);
     setDiscount(actualValue);
   };
@@ -355,9 +357,10 @@ Mohon informasi lebih lanjut.`;
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
-                    max="60000000"
+                    max="20000000"
                     className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
+                  <p className="text-xs text-slate-500 mt-0.5">Maks: Rp 20.000.000</p>
                   <p className="text-xs font-bold text-slate-600 mt-1">
                     {formatCurrency(discount)}
                   </p>
@@ -441,12 +444,14 @@ Mohon informasi lebih lanjut.`;
                               const value = parseInt(e.target.value) || 0;
                               setCashLunakDPManual(value);
                             }}
-                            placeholder="Masukkan DP"
+                            placeholder="Min 30% dari harga"
+                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.3) : 0}
+                            max={calculation.hargaSetelahDiskon}
                             className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                           />
                           {calculation.hargaSetelahDiskon > 0 && (
                             <p className="text-xs text-slate-500 text-center">
-                              Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                              Min 30%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.3))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
                             </p>
                           )}
                         </div>
@@ -542,12 +547,14 @@ Mohon informasi lebih lanjut.`;
                               const value = parseInt(e.target.value) || 0;
                               setKreditDPManual(value);
                             }}
-                            placeholder="Masukkan DP"
+                            placeholder="Min 30% dari harga"
+                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.3) : 0}
+                            max={calculation.hargaSetelahDiskon}
                             className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-rose-500"
                           />
                           {calculation.hargaSetelahDiskon > 0 && (
                             <p className="text-xs text-slate-500 text-center">
-                              Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                              Min 30%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.3))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
                             </p>
                           )}
                         </div>
