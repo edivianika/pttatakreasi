@@ -160,14 +160,14 @@ function SedahGreenResidence() {
     // Update SEO meta tags using utility
     const seoConfig = {
       title: 'Rumah Syariah Ponorogo - Perumahan Syariah & Cluster Syariah Ponorogo | KPR Syariah | TKBM',
-      description: '🏘️ Rumah Syariah Ponorogo Terbaik! Perumahan Syariah Ponorogo dengan KPR Syariah Ponorogo. Cluster Syariah Ponorogo mulai 173 Juta. Properti Syariah Ponorogo 100% Halal, Akad Syariah, Tanpa Riba. 💚 Wujudkan Rumah Impian Keluarga Muslim di Ponorogo!',
+      description: '🏘️ Rumah Syariah Ponorogo Terbaik! Perumahan Syariah Ponorogo dengan KPR Syariah Ponorogo. Cluster Syariah Ponorogo mulai 204 Juta. Properti Syariah Ponorogo 100% Halal, Akad Syariah, Tanpa Riba. 💚 Wujudkan Rumah Impian Keluarga Muslim di Ponorogo!',
       keywords: ['rumah syariah ponorogo', 'perumahan syariah ponorogo', 'properti syariah ponorogo', 'cluster syariah ponorogo', 'kpr syariah ponorogo', 'sedah green residence', 'rumah syariah ponorogo terbaik', 'perumahan syariah ponorogo murah', 'cluster syariah ponorogo strategis'],
       image: '/sedah/sedah green residence-perumahan syariah ponorogo.png',
       url: '/sedahresidence',
       structuredData: getProjectStructuredData({
         name: 'Sedah Green Residence',
         description: 'Cluster islami yang nyaman dengan fasilitas lengkap untuk keluarga',
-        price: 'Mulai 180 Jutaan',
+        price: 'Mulai 204 Jutaan',
         location: 'Desa Sedah, Jenangan, Ponorogo',
         image: '/sedah/sedah green residence-perumahan syariah ponorogo.png',
         url: '/sedahresidence',
@@ -265,7 +265,7 @@ function SedahGreenResidence() {
       propertyName: 'Sedah Green Residence',
       formSource: 'LandingPage',
       phone: '+628133138887',
-      priceInterest: '173JT'
+      priceInterest: '204JT'
     });
     window.open(whatsappUrl, '_blank');
   };
@@ -279,7 +279,7 @@ function SedahGreenResidence() {
       propertyName: 'Sedah Green Residence',
       formSource: 'BrochureDownload',
       phone: '+628133138887',
-      priceInterest: '173JT'
+      priceInterest: '204JT'
     });
     const message = "Halo TKBM, saya ingin download brosur Sedah Green Residence. Mohon kirimkan brosur lengkapnya.";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -295,7 +295,7 @@ function SedahGreenResidence() {
       propertyName: 'Sedah Green Residence',
       formSource: 'FloatingButton',
       phone: '+628133138887',
-      priceInterest: '173JT'
+      priceInterest: '204JT'
     });
     window.open(whatsappUrl, '_blank');
   };
@@ -467,7 +467,7 @@ function SedahGreenResidence() {
                     transition={{ duration: 0.7, delay: 0.4 }}
                     className="text-xl text-slate-600 font-medium"
                   >
-                    Hunian syariah berkualitas di Ponorogo dengan KPR syariah - 45 unit tersedia mulai 173 juta
+                    Hunian syariah berkualitas di Ponorogo dengan KPR syariah - 45 unit tersedia mulai 204 juta
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -476,7 +476,7 @@ function SedahGreenResidence() {
                     className="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-200 rounded-xl p-4"
                   >
                     <p className="text-amber-800 font-semibold text-lg">
-                      🔥 PROMO TERBATAS! Diskon 40 Juta untuk 10 Unit Pertama - Jangan Sampai Kehabisan!
+                      🔥 PROMO TERBATAS! Diskon 15 Juta - Jangan Sampai Kehabisan!
                     </p>
                   </motion.div>
                 </div>
@@ -848,9 +848,9 @@ function SedahGreenResidence() {
                     <h3 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rumah Type 36/66</h3>
                     <div className="space-y-4">
                       <div>
-                        <p className="text-slate-600 line-through text-lg">Harga Normal: Rp 213.000.000</p>
-                        <p className="text-3xl md:text-4xl font-bold text-emerald-600">Rp 173.000.000</p>
-                        <p className="text-amber-600 font-semibold text-sm md:text-base">Hemat Rp 40.000.000!</p>
+                        <p className="text-slate-600 line-through text-lg">Harga Normal: Rp 219.674.887</p>
+                        <p className="text-3xl md:text-4xl font-bold text-emerald-600">Rp 204.674.887</p>
+                        <p className="text-amber-600 font-semibold text-sm md:text-base">Hemat Rp 15.000.000!</p>
                       </div>
                       <div className="space-y-2">
                         <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Luas Tanah: 66 m²</p>
@@ -875,9 +875,9 @@ function SedahGreenResidence() {
                     <h3 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">Rumah Type 45/77</h3>
                     <div className="space-y-4">
                       <div>
-                        <p className="text-slate-600 line-through text-lg">Harga Normal: Rp 247.000.000</p>
-                        <p className="text-3xl md:text-4xl font-bold text-emerald-600">Rp 207.000.000</p>
-                        <p className="text-amber-600 font-semibold text-sm md:text-base">Hemat Rp 40.000.000!</p>
+                        <p className="text-slate-600 line-through text-lg">Harga Normal: Rp 246.401.929</p>
+                        <p className="text-3xl md:text-4xl font-bold text-emerald-600">Rp 231.401.929</p>
+                        <p className="text-amber-600 font-semibold text-sm md:text-base">Hemat Rp 15.000.000!</p>
                       </div>
                       <div className="space-y-2">
                         <p className="flex items-center text-sm md:text-base"><Check className="h-4 w-4 md:h-5 md:w-5 text-emerald-600 mr-2 flex-shrink-0" />Luas Tanah: 77 m²</p>
@@ -1148,7 +1148,7 @@ function SedahGreenResidence() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-xl mb-8 max-w-2xl mx-auto"
               >
-                Promo diskon 40 juta hanya untuk 10 unit pertama! Hubungi kami sekarang untuk konsultasi gratis dan dapatkan informasi lengkap tentang KPR syariah atau cash lunak. Wujudkan rumah impian keluarga muslim Anda!
+                Promo diskon 15 juta! Hubungi kami sekarang untuk konsultasi gratis dan dapatkan informasi lengkap tentang KPR syariah atau cash lunak. Wujudkan rumah impian keluarga muslim Anda!
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -6,7 +6,7 @@ import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPi
 
 const SedahCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
-  const [discount, setDiscount] = useState(20000000); // 20 juta default (maksimal)
+  const [discount, setDiscount] = useState(15000000); // 15 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
@@ -29,55 +29,55 @@ const SedahCalculator = () => {
 
   // Unit data from the HTML
   const unitData = [
-    { "unit": "A01", "lb": 45, "lt": 83, "hargaCash": 261137319, "sold": true },
-    { "unit": "A02", "lb": 45, "lt": 123, "hargaCash": 350965876 },
-    { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 308297311 },
-    { "unit": "A04", "lb": 45, "lt": 106, "hargaCash": 312788739 },
-    { "unit": "A05", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "A06", "lb": 45, "lt": 77, "hargaCash": 247663035, "sold": true },
-    { "unit": "A07", "lb": 45, "lt": 85, "hargaCash": 265628747 },
-    { "unit": "A08", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "A09", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "A10", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "A11", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "A12", "lb": 36, "lt": 68, "hargaCash": 218229029, "sold": true },
-  
-    { "unit": "B01", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "B02", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "B03", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "B04", "lb": 36, "lt": 66, "hargaCash": 213737602, "sold": true },
-    { "unit": "B05", "lb": 36, "lt": 86, "hargaCash": 258651880, "sold": true },
-    { "unit": "B06", "lb": 36, "lt": 87, "hargaCash": 260897594 },
-    { "unit": "B07", "lb": 36, "lt": 87, "hargaCash": 260897594 },
-    { "unit": "B08", "lb": 36, "lt": 83, "hargaCash": 251914738 },
-    { "unit": "B09", "lb": 36, "lt": 89, "hargaCash": 265389022 },
-  
-    { "unit": "C01", "lb": 45, "lt": 78, "hargaCash": 265593669 },
-    { "unit": "C02", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "C03", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "C04", "lb": 45, "lt": 97, "hargaCash": 292577314 },
-    { "unit": "C05", "lb": 45, "lt": 97, "hargaCash": 292577314 },
-    { "unit": "C06", "lb": 45, "lt": 77, "hargaCash": 247663035 },
-    { "unit": "C07", "lb": 45, "lt": 78, "hargaCash": 249908749 },
-    { "unit": "C08", "lb": 45, "lt": 67, "hargaCash": 239464914 },
-    { "unit": "C09", "lb": 45, "lt": 68, "hargaCash": 240284726 },
-    { "unit": "C10", "lb": 45, "lt": 68, "hargaCash": 240284726 },
-    { "unit": "C11", "lb": 45, "lt": 69, "hargaCash": 242530440 },
-    { "unit": "C12", "lb": 45, "lt": 65, "hargaCash": 237825289 },
-  
-    { "unit": "D01", "lb": 36, "lt": 95, "hargaCash": 278863306 },
-    { "unit": "D02", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D03", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D04", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D05", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D06", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D07", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D08", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D09", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D10", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D11", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D12", "lb": 36, "lt": 66, "hargaCash": 213737602 },
-    { "unit": "D13", "lb": 36, "lt": 72, "hargaCash": 227211885 }
+    { "unit": "A01", "lb": 45, "lt": 83, "hargaCash": 269048494, "sold": true },
+    { "unit": "A02", "lb": 45, "lt": 123, "hargaCash": 365439334 },
+    { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 319653685 },
+    { "unit": "A04", "lb": 45, "lt": 106, "hargaCash": 324473227 },
+    { "unit": "A05", "lb": 45, "lt": 77, "hargaCash": 254589868 },
+    { "unit": "A06", "lb": 45, "lt": 77, "hargaCash": 254589868, "sold": true },
+    { "unit": "A07", "lb": 45, "lt": 85, "hargaCash": 273868036 },
+    { "unit": "A08", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
+    { "unit": "A09", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
+    { "unit": "A10", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
+    { "unit": "A11", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
+    { "unit": "A12", "lb": 36, "lt": 68, "hargaCash": 224494429, "sold": true },
+
+    { "unit": "B01", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
+    { "unit": "B02", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "B03", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "B04", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
+    { "unit": "B05", "lb": 36, "lt": 86, "hargaCash": 267870307, "sold": true },
+    { "unit": "B06", "lb": 36, "lt": 87, "hargaCash": 270280078 },
+    { "unit": "B07", "lb": 36, "lt": 87, "hargaCash": 270280078 },
+    { "unit": "B08", "lb": 36, "lt": 83, "hargaCash": 260640994 },
+    { "unit": "B09", "lb": 36, "lt": 89, "hargaCash": 275099620 },
+
+    { "unit": "C01", "lb": 45, "lt": 78, "hargaCash": 273499639 },
+    { "unit": "C02", "lb": 45, "lt": 77, "hargaCash": 254589868 },
+    { "unit": "C03", "lb": 45, "lt": 77, "hargaCash": 254589868 },
+    { "unit": "C04", "lb": 45, "lt": 97, "hargaCash": 302785288 },
+    { "unit": "C05", "lb": 45, "lt": 97, "hargaCash": 302785288 },
+    { "unit": "C06", "lb": 45, "lt": 77, "hargaCash": 254589868 },
+    { "unit": "C07", "lb": 45, "lt": 78, "hargaCash": 256999639 },
+    { "unit": "C08", "lb": 45, "lt": 67, "hargaCash": 245492158 },
+    { "unit": "C09", "lb": 45, "lt": 68, "hargaCash": 246401929 },
+    { "unit": "C10", "lb": 45, "lt": 68, "hargaCash": 246401929 },
+    { "unit": "C11", "lb": 45, "lt": 69, "hargaCash": 248811700 },
+    { "unit": "C12", "lb": 45, "lt": 65, "hargaCash": 243672616 },
+
+    { "unit": "D01", "lb": 36, "lt": 95, "hargaCash": 289558246 },
+    { "unit": "D02", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D03", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D04", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D05", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D06", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D07", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D08", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D09", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D10", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D11", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D12", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "D13", "lb": 36, "lt": 72, "hargaCash": 234133513 }
   ]
   
   
