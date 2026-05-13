@@ -26,6 +26,7 @@ import CSHandlingPage from "./components/CSHandlingPage";
 import TutorialPage from "./components/TutorialPage";
 import ToolsPage from "./components/ToolsPage";
 import JSONProjectPage from "./components/JSONProjectPage";
+import Lp2026Page from "./components/lp2026/Lp2026Page";
 import ScrollToTop from "./components/ScrollToTop";
 import { MessageCircle } from "lucide-react";
 import { companyInfo } from "./components/mockData";
@@ -104,6 +105,7 @@ function App() {
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/jsonproject" element={<JSONProjectPage />} />
+          <Route path="/lp2026" element={<Lp2026Page />} />
         </Routes>
       </BrowserRouter>
     </div>
