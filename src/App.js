@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Import Components
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import TrustBadges from "./components/TrustBadges";
-import Testimonials from "./components/Testimonials";
-import FinalCTA from "./components/FinalCTA";
 import NarrayaPage from "./components/narraya/NarrayaPage";
 import NarrayaVirtualPage from "./components/narraya/NarrayaVirtualPage";
 import ShareVirtualPage from "./components/ShareVirtualPage";
@@ -27,60 +19,8 @@ import TutorialPage from "./components/TutorialPage";
 import ToolsPage from "./components/ToolsPage";
 import JSONProjectPage from "./components/JSONProjectPage";
 import Lp2026Page from "./components/lp2026/Lp2026Page";
+import LegacyHomePage from "./components/LegacyHomePage";
 import ScrollToTop from "./components/ScrollToTop";
-import { MessageCircle } from "lucide-react";
-import { companyInfo } from "./components/mockData";
-
-// Sticky Mobile CTA Component
-const StickyCTA = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      setIsVisible(scrollPosition > windowHeight * 0.5);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleWhatsAppClick = () => {
-    const message = "Halo TKBM, saya tertarik dengan hunian syariah Anda. Mohon informasi lebih lanjut.";
-    const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="sticky-cta block md:hidden">
-      <button 
-        onClick={handleWhatsAppClick}
-        className="btn-primary w-full"
-      >
-        <MessageCircle size={16} />
-        Konsultasi via WhatsApp
-      </button>
-    </div>
-  );
-};
-
-const LandingPage = () => {
-  return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <TrustBadges />
-      <Testimonials />
-      <FinalCTA />
-      <StickyCTA />
-    </div>
-  );
-};
 
 function App() {
   return (
@@ -88,7 +28,9 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<Lp2026Page />} />
+          <Route path="/lp2026" element={<Lp2026Page />} />
+          <Route path="/home-classic" element={<LegacyHomePage />} />
           <Route path="/narraya" element={<NarrayaPage />} />
           <Route path="/narraya-virtual" element={<NarrayaVirtualPage />} />
           <Route path="/sharevirtual" element={<ShareVirtualPage />} />
@@ -105,7 +47,6 @@ function App() {
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/jsonproject" element={<JSONProjectPage />} />
-          <Route path="/lp2026" element={<Lp2026Page />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import { SITE_CONTACT } from "../../constants/siteLp2026";
+import { trackLp2026Lead } from "./pixelLead";
 
 const iconStroke = 1.75;
 
@@ -83,6 +84,8 @@ function CtaTrailingIcon({ variant }) {
   return <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={iconStroke} aria-hidden />;
 }
 
+const PROJECTS_HERO_IMAGE = `${process.env.PUBLIC_URL || ""}/grandsezha/projects-hero-bernuansa-islami.png`;
+
 export function ProjectsSection() {
   return (
     <section
@@ -127,8 +130,8 @@ export function ProjectsSection() {
         </div>
         <div className="group relative aspect-video w-full overflow-hidden rounded-[2rem] md:w-2/3">
           <img
-            alt="Cuplikan proyek unggulan Tata Kreasi"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3XulmX5E1F2nDtvAi58GeWTVnAWethT4ayKEFNOTrzIqR5saNl53IEG_jE1Zlsi4v9BgWiRfU-MjOAa8MuQLJUbaVQXNfE4N_hWOFF3hj1GU9mG9uNcG7RJSbf53vc5ZfhQsDHVJ-sDfmrC7Ul6o1TUTi61V6gTNaNh38Kfn7eWbExAK7kl8C6Ow31B-FBtvCof3o-6b973deXyNtDOIjwW6iidYNXzm2Cs2j6gtOIeovL6av_OwKO2QroYOVIsW-aPiTq0jHAIE"
+            alt="Desain modern bernuansa Islami — cuplikan proyek hunian Tata Kreasi"
+            src={PROJECTS_HERO_IMAGE}
             className="absolute inset-0 h-full w-full object-cover shadow-2xl transition-transform duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-12">
@@ -203,6 +206,9 @@ export function ProjectsSection() {
                 href={project.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackLp2026Lead(`Proyek — ${project.name} (${project.cta})`)
+                }
                 className={`font-tk-body text-tk-label-md flex w-full items-center justify-center gap-2 rounded-xl py-4 text-center transition-all ${project.ctaClass}`}
               >
                 {project.cta}

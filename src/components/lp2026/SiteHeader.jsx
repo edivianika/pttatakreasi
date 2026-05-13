@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
+import { trackLp2026Lead } from "./pixelLead";
 
 export function SiteHeader() {
   return (
@@ -54,6 +55,7 @@ export function SiteHeader() {
           href={SITE_CONTACT.waConsultation}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackLp2026Lead("Header — Konsultasi WA")}
           className="shrink-0 rounded-full bg-tk-primary-fixed px-5 py-2.5 font-tk-body text-tk-label-md text-tk-primary shadow-sm transition-all duration-150 ease-in-out hover:bg-tk-primary-fixed-dim hover:shadow-md active:scale-95 md:px-6"
         >
           Konsultasi WA

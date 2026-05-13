@@ -1,31 +1,139 @@
 import { ArrowRight } from "lucide-react";
+import { useMemo } from "react";
 
 import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
+import { trackLp2026Lead } from "./pixelLead";
 
-const galleryImages = [
+/**
+ * Tiga proyek — bergiliran per slot (0: Sedah, 1: Narraya, 2: Grand Sezha, 3: Sedah lagi, …).
+ * Setiap gambar dipakai paling banyak sekali per render (tidak duplikat file).
+ */
+const GALLERY_PROJECTS = [
   {
-    alt: "Hunian modern luas dengan integrasi indoor-outdoor",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAto7PhMuolTzv5sbDfjrp9G6QGISnqaSvs5dbSDdDd4dKAyTozGYCjSGXoGQD7VJRSUj75061q-SOCZ2y23RrJrP5WaQ3KE-10y1yraBHRSPXLIyS0pdSkfokE-aJTTa6M5g0iA1rjJelHY6dV4hT0gt1BnDZ7obT_B3SDJROhScBTSlVqQ-gpzc8Y1K20EoHkbnMiuRGcVN6VX25yPk3IQXoR-Ptd9v9eUHzLM0J-nyfgndYyIF9MjyYKrE7qzg7PbDS81sRUy6M",
-    className: "row-span-2 col-span-2 overflow-hidden rounded-2xl group",
+    id: "sedah",
+    images: [
+      {
+        path: "/sedah/sedah green residence-perumahan syariah ponorogo3.png",
+        alt: "Sedah Green Residence — hunian syariah Ponorogo",
+      },
+      {
+        path: "/sedah/sedah green residence-perumahan syariah ponorogo2.png",
+        alt: "Sedah Green Residence — tampak hunian",
+      },
+      {
+        path: "/sedah/sedah green residence-perumahan syariah ponorogo.png",
+        alt: "Sedah Green Residence — kawasan perumahan",
+      },
+      {
+        path: "/sedah/sedah green residence-perumahan syariah ponorogo4.png",
+        alt: "Sedah Green Residence — inspirasi hunian",
+      },
+    ],
   },
   {
-    alt: "Kamar tidur minimalis dengan jendela lebar",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDymMx7uVJumeBTPCXe_UHjivP9mgriUkB5JR2eDnMZPtJzeO_y81MH-1v1b-OsXMA1SHwIloukGLvvmurEZipq1qtcUBGat-EEQRwwlIWa0SSZ2Tf6CZtmhcx3LCZSKR19UwGRbupVziOHK1hK3dAo3oKs4PncTut3W0DaVRpZ4mE6YqG2NO6NOQdF-RefG_vZE6l-8JWi3a8Tqld3JpUOfQwncBUHsLFYnUl5clB8NvSqyAHhPDtezNdFe1cb_WMG206HN5SW8Dw",
-    className: "overflow-hidden rounded-2xl group",
+    id: "narraya",
+    images: [
+      {
+        path: "/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-6.png",
+        alt: "Narraya Green Residence — hunian syariah Ponorogo",
+      },
+      {
+        path: "/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-1.png",
+        alt: "Narraya Green Residence — desain modern",
+      },
+      {
+        path: "/narraya/gallery/perumahan-syariah-ponorogo-narraya-green-residence-11.png",
+        alt: "Narraya Green Residence — inspirasi madani",
+      },
+    ],
   },
   {
-    alt: "Dapur modern dengan island marmer",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAy7EoNP3VrC4gbKLCO7dS5b3H08O0i5JeruzjKlys4lG1ytPAZfmHjSQHEKAPsj_PRh96bKoIahYn2CrQCaAb7647ECrPJhjnQtswDAMqLFOQYf3yUfG5_yCezOVQhsOiQezyW3nY0zLbh0TApxk16s0SZ1UwbEx1UzsPJljbx9NcIYzUjQ0OOmxZoOL-KR_H60bw7wVL3Md9VjZLIeHdlRzx_98QmuVZPMaDhx-ct2STIz0sPacKQDXGFOYsxq75m_bfuczkt0kE",
-    className: "overflow-hidden rounded-2xl group",
-  },
-  {
-    alt: "Area patio dengan furnitur outdoor pada golden hour",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzpXPQMdYcpBlmbjjfuKj0UHaPiTWFFseaZNqWcsy0oG7H-LYmO5RI2GfA_9_8D4NQ5xLAGmqs39uptuYXRROjFe_OVbH1GrpxyOqtRCop4UHiIF33AOf82Ts_yYFVTdOcF6bhliruJjsCMB6eWrWJYZQxSbi1rg1E82uLr5HLIzz8hrKWk8d8xToy3kJpRRkbbKId6735dtqEVQn_SaN08N1W3XvMogdMFwpFN5FyhKdY1Mx9pgoo262qE4J6njKaC75Eeb13SVY",
-    className: "col-span-2 overflow-hidden rounded-2xl group",
+    id: "grandsezha",
+    images: [
+      {
+        path: "/grandsezha/grand-sezha-1.png",
+        alt: "Grand Sezha — hunian modern syariah Ponorogo",
+      },
+      {
+        path: "/grandsezha/grand-sezha-2.png",
+        alt: "Grand Sezha — cluster hunian kontemporer",
+      },
+      {
+        path: "/grandsezha/grand-sezha-3.png",
+        alt: "Grand Sezha — kawasan hunian eksklusif",
+      },
+    ],
   },
 ];
 
+function shuffleArray(items) {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+function publicSrc(relativePath) {
+  const base = process.env.PUBLIC_URL || "";
+  return `${base}${encodeURI(relativePath)}`;
+}
+
+/** Empat sel: bergantian 3 proyek, tanpa path gambar yang sama. */
+function buildUniqueRotatingCells(slotCount) {
+  const usedPaths = new Set();
+  const projects = GALLERY_PROJECTS.map((p) => ({
+    id: p.id,
+    queue: shuffleArray(p.images),
+  }));
+
+  const picks = [];
+  for (let slot = 0; slot < slotCount; slot++) {
+    const project = projects[slot % projects.length];
+    let chosen = null;
+    while (project.queue.length > 0 && !chosen) {
+      const next = project.queue.shift();
+      if (!usedPaths.has(next.path)) {
+        chosen = next;
+        usedPaths.add(next.path);
+      }
+    }
+    if (!chosen) {
+      const flat = shuffleArray(
+        GALLERY_PROJECTS.flatMap((p) => p.images).filter((img) => !usedPaths.has(img.path))
+      );
+      chosen = flat[0];
+      if (chosen) usedPaths.add(chosen.path);
+    }
+    if (chosen) {
+      picks.push({ slot, projectId: project.id, path: chosen.path, alt: chosen.alt });
+    }
+  }
+  return picks;
+}
+
+const CELL_LAYOUT = [
+  { className: "row-span-2 col-span-2 overflow-hidden rounded-2xl group" },
+  { className: "overflow-hidden rounded-2xl group" },
+  { className: "overflow-hidden rounded-2xl group" },
+  { className: "col-span-2 overflow-hidden rounded-2xl group" },
+];
+
 export function GallerySection() {
+  const cells = useMemo(() => {
+    const picks = buildUniqueRotatingCells(CELL_LAYOUT.length);
+    return CELL_LAYOUT.map((cell, index) => {
+      const pick = picks[index];
+      return {
+        key: `gallery-madani-${index}-${pick?.path ?? index}`,
+        className: cell.className,
+        src: pick ? publicSrc(pick.path) : "",
+        alt: pick?.alt ?? "",
+      };
+    });
+  }, []);
+
   return (
     <section id="gallery" className="bg-tk-surface py-section-gap">
       <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
@@ -38,13 +146,15 @@ export function GallerySection() {
           </p>
         </div>
         <div className="auto-rows-[250px] grid grid-cols-2 gap-4 md:grid-cols-4">
-          {galleryImages.map((item) => (
-            <div key={item.src} className={`relative ${item.className}`}>
-              <img
-                alt={item.alt}
-                src={item.src}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+          {cells.map((item) => (
+            <div key={item.key} className={`relative ${item.className}`}>
+              {item.src ? (
+                <img
+                  alt={item.alt}
+                  src={item.src}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : null}
             </div>
           ))}
         </div>
@@ -54,6 +164,7 @@ export function GallerySection() {
             href={SITE_CONTACT.waDetailUnit}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackLp2026Lead("Gallery — Tanya detail unit & akad (WhatsApp)")}
             className="font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-xl bg-tk-primary px-6 py-3.5 text-white shadow-md transition-all hover:bg-tk-primary/90"
           >
             Tanya detail unit &amp; akad via WhatsApp

@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
+import { trackLp2026Lead } from "./pixelLead";
 
 /** https://www.youtube.com/watch?v=KRElbl1vzqE */
 const HERO_VIDEO_ID = "KRElbl1vzqE";
@@ -161,6 +162,7 @@ export function HeroSection() {
                 href={SITE_CONTACT.waHero}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackLp2026Lead("Hero — Amankan unit (WhatsApp)")}
                 className="font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-lg bg-tk-primary px-8 py-4 text-white shadow-lg shadow-black/25 transition-all hover:bg-tk-primary/90"
               >
                 Amankan Unit Sekarang
@@ -168,6 +170,7 @@ export function HeroSection() {
               </a>
               <a
                 href={SITE_ANCHORS.projects}
+                onClick={() => trackLp2026Lead("Hero — Lihat katalog proyek", "Engagement")}
                 className="font-tk-body text-tk-label-md inline-flex items-center justify-center rounded-lg border border-white/40 bg-white/10 px-8 py-4 text-white shadow-lg shadow-black/20 backdrop-blur-sm transition-all hover:bg-white/20"
               >
                 Lihat Katalog Project
@@ -177,6 +180,7 @@ export function HeroSection() {
               href={SITE_CONTACT.waFooter}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackLp2026Lead("Hero — Chat WhatsApp tim")}
               className="font-tk-body text-tk-body-md text-sm text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               Atau chat WhatsApp tim kami — respon lebih cepat

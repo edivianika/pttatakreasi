@@ -21,17 +21,16 @@ export const trackViewContent = (contentName = 'Homepage', contentType = 'websit
   }
 };
 
-// Track lead generation
+// Track lead generation (pakai `fbq` export agar event tetap masuk antrean jika pixel belum siap)
 export const trackLead = (leadSource = 'WhatsApp', leadType = 'Property Inquiry') => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    fbq('track', 'Lead', {
-      content_name: leadSource,
-      content_type: leadType,
-      content_category: 'Real Estate',
-      value: 0.00,
-      currency: 'IDR'
-    });
-  }
+  if (typeof window === 'undefined') return;
+  fbq('track', 'Lead', {
+    content_name: leadSource,
+    content_type: leadType,
+    content_category: 'Real Estate',
+    value: 0.0,
+    currency: 'IDR',
+  });
 };
 
 // Track WhatsApp button click (alias for trackLead for backward compatibility)

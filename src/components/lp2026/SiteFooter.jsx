@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 
 import { SITE_ANCHORS, SITE_CONTACT, SITE_WHATSAPP } from "../../constants/siteLp2026";
+import { trackLp2026Lead } from "./pixelLead";
 
 export function SiteFooter() {
   return (
@@ -61,6 +62,7 @@ export function SiteFooter() {
                 href={SITE_CONTACT.waFooter}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackLp2026Lead("Footer — WhatsApp")}
                 className="transition-colors hover:text-tk-primary-fixed hover:underline"
               >
                 WhatsApp {SITE_WHATSAPP.replace(/^62/, "0")}
@@ -74,6 +76,7 @@ export function SiteFooter() {
               />
               <a
                 href={`mailto:${SITE_CONTACT.email}`}
+                onClick={() => trackLp2026Lead("Footer — Email", "Email Inquiry")}
                 className="transition-colors hover:text-tk-primary-fixed hover:underline"
               >
                 {SITE_CONTACT.email}

@@ -1,6 +1,7 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 
 import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
+import { trackLp2026Lead } from "./pixelLead";
 
 const stroke = 1.75;
 
@@ -67,6 +68,11 @@ export function CtaBand({
               href={primaryHref}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackLp2026Lead(
+                  id === "cta-closing" ? "CTA penutup — WhatsApp utama" : "CTA tengah — WhatsApp tim"
+                )
+              }
               className={`font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 transition-all active:scale-[0.98] ${
                 isDark
                   ? "bg-tk-primary-fixed text-tk-primary shadow-lg shadow-black/25 hover:bg-tk-primary-fixed-dim"
@@ -91,6 +97,7 @@ export function CtaBand({
                 href={secondWhatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackLp2026Lead("CTA penutup — WhatsApp pertanyaan singkat")}
                 className={`font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 transition-colors ${
                   isDark
                     ? "text-tk-primary-fixed hover:text-white"

@@ -9,6 +9,7 @@ import {
 
 import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
 import { Reveal } from "./Reveal";
+import { trackLp2026Lead } from "./pixelLead";
 
 const iconStroke = 1.75;
 
@@ -191,6 +192,7 @@ export function AdvantagesSection() {
                     href={SITE_CONTACT.waTimDeveloper}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackLp2026Lead("Keunggulan — Konsultasi tim developer (WhatsApp)")}
                     className={`${ctaLinkClass} text-tk-primary hover:text-tk-primary-container`}
                   >
                     Konsultasi dengan tim kami
