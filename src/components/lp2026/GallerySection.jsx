@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useMemo } from "react";
 
@@ -114,13 +115,32 @@ function buildUniqueRotatingCells(slotCount) {
 }
 
 const CELL_LAYOUT = [
-  { className: "row-span-2 col-span-2 overflow-hidden rounded-2xl group" },
-  { className: "overflow-hidden rounded-2xl group" },
-  { className: "overflow-hidden rounded-2xl group" },
-  { className: "col-span-2 overflow-hidden rounded-2xl group" },
+  { className: "row-span-2 col-span-2 overflow-hidden rounded-2xl ring-1 ring-black/[0.04] group" },
+  { className: "overflow-hidden rounded-2xl ring-1 ring-black/[0.04] group" },
+  { className: "overflow-hidden rounded-2xl ring-1 ring-black/[0.04] group" },
+  { className: "col-span-2 overflow-hidden rounded-2xl ring-1 ring-black/[0.04] group" },
 ];
 
+const gridEase = [0.22, 1, 0.36, 1];
+
 export function GallerySection() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const cellVariants = prefersReducedMotion
+    ? {
+        hidden: { opacity: 1, y: 0, scale: 1 },
+        show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0 } },
+      }
+    : {
+        hidden: { opacity: 0, y: 22, scale: 0.97 },
+        show: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 0.58, ease: gridEase },
+        },
+      };
+
   const cells = useMemo(() => {
     const picks = buildUniqueRotatingCells(CELL_LAYOUT.length);
     return CELL_LAYOUT.map((cell, index) => {
@@ -137,29 +157,77 @@ export function GallerySection() {
   return (
     <section id="gallery" className="bg-tk-surface py-section-gap">
       <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-        <div className="mb-16 text-center">
+        <motion.div
+          className="mb-10 text-center md:mb-16"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0, y: 16 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, amount: 0.35 },
+                transition: { duration: 0.5, ease: gridEase },
+              })}
+        >
           <h2 className="font-tk-headline text-tk-headline-lg text-tk-primary">
             Gallery Inspirasi Madani
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-tk-on-surface-variant">
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-tk-on-surface-variant md:mt-4 md:text-base">
             Setiap sudut didesain untuk kenyamanan ibadah dan harmoni keluarga Anda.
           </p>
-        </div>
-        <div className="auto-rows-[250px] grid grid-cols-2 gap-4 md:grid-cols-4">
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-2 gap-2.5 auto-rows-[clamp(7.25rem,20vw,10.5rem)] sm:gap-3 sm:auto-rows-[clamp(7.75rem,16vw,12rem)] md:grid-cols-4 md:gap-4 md:auto-rows-[clamp(8.25rem,10.5vw,14rem)]"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.12, margin: "0px 0px -8% 0px" }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: prefersReducedMotion ? 0 : 0.09,
+                delayChildren: prefersReducedMotion ? 0 : 0.05,
+              },
+            },
+          }}
+        >
           {cells.map((item) => (
-            <div key={item.key} className={`relative ${item.className}`}>
+            <motion.div
+              key={item.key}
+              className={`relative min-h-0 min-w-0 ${item.className}`}
+              variants={cellVariants}
+            >
               {item.src ? (
-                <img
+                <motion.img
                   alt={item.alt}
                   src={item.src}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  initial={false}
+                  whileHover={
+                    prefersReducedMotion
+                      ? undefined
+                      : { scale: 1.04, transition: { duration: 0.55, ease: gridEase } }
+                  }
+                  transition={{ duration: 0.55, ease: gridEase }}
                 />
               ) : null}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-12 flex flex-col items-stretch justify-center gap-3 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center">
+        <motion.div
+          className="mt-12 flex flex-col items-stretch justify-center gap-3 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0, y: 12 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, amount: 0.4 },
+                transition: { duration: 0.45, ease: gridEase, delay: 0.12 },
+              })}
+        >
           <a
             href={SITE_CONTACT.waDetailUnit}
             target="_blank"
@@ -182,7 +250,7 @@ export function GallerySection() {
           >
             Baca FAQ
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

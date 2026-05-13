@@ -5,10 +5,10 @@ import { trackLp2026Lead } from "./pixelLead";
 
 export function SiteFooter() {
   return (
-    <footer id="kontak" className="bg-tk-primary-container py-16 text-white">
-      <div className="mx-auto flex max-w-container-max flex-col items-start justify-between gap-12 px-margin-mobile md:flex-row md:px-margin-desktop">
+    <footer id="kontak" className="w-full min-w-0 overflow-x-clip bg-tk-primary-container py-12 text-white md:py-16">
+      <div className="mx-auto flex w-full min-w-0 max-w-container-max flex-col items-start justify-between gap-10 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:flex-row md:gap-12 md:px-margin-desktop">
         <div className="max-w-xs">
-          <h2 className="font-tk-headline mb-4 text-3xl font-bold text-tk-primary-fixed">
+          <h2 className="font-tk-headline mb-3 text-2xl font-bold text-tk-primary-fixed sm:mb-4 sm:text-3xl">
             Tata Kreasi
           </h2>
           <p className="font-tk-body text-tk-body-md mb-6 text-white/80">
@@ -110,7 +110,7 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto mt-12 max-w-container-max border-t border-white/20 px-margin-mobile pt-8 text-center font-tk-body text-tk-body-md text-white/60 md:px-margin-desktop">
+      <div className="mx-auto mt-12 w-full min-w-0 max-w-container-max border-t border-white/20 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-8 text-center font-tk-body text-tk-body-md text-white/60 md:px-margin-desktop">
         <p>© {new Date().getFullYear()} Tata Kreasi. All rights reserved.</p>
       </div>
     </footer>

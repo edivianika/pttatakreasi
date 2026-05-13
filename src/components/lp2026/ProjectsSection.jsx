@@ -90,9 +90,9 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="mx-auto max-w-container-max px-margin-mobile py-20 md:px-margin-desktop"
+      className="mx-auto max-w-container-max px-margin-mobile py-14 md:px-margin-desktop md:py-20"
     >
-      <div className="mb-16 flex flex-col items-start gap-12 md:flex-row">
+      <div className="mb-12 flex flex-col items-start gap-8 md:mb-16 md:flex-row md:gap-12">
         <div className="md:w-1/3">
           <div className="mb-6 flex items-center gap-2">
             <Sprout
@@ -104,7 +104,7 @@ export function ProjectsSection() {
               PROYEK EKSKLUSIF
             </span>
           </div>
-          <h2 className="font-tk-headline mb-8 text-5xl leading-tight text-tk-primary md:text-6xl">
+          <h2 className="font-tk-headline mb-6 text-3xl leading-tight text-tk-primary sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
             Proyek Eksklusif di Ponorogo
           </h2>
           <p className="font-tk-body text-tk-body-lg mb-10 text-tk-on-surface-variant">
@@ -134,8 +134,8 @@ export function ProjectsSection() {
             src={PROJECTS_HERO_IMAGE}
             className="absolute inset-0 h-full w-full object-cover shadow-2xl transition-transform duration-1000 group-hover:scale-105"
           />
-          <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8 md:p-12">
-            <div className="max-w-sm rounded-2xl border border-tk-primary-fixed/20 bg-tk-primary-container/90 p-8 backdrop-blur-md">
+          <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 md:p-12">
+            <div className="max-w-sm rounded-2xl border border-tk-primary-fixed/20 bg-tk-primary-container/90 p-4 backdrop-blur-md sm:p-6 md:p-8">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-tk-primary-fixed/20">
                 <Building2
                   className="h-5 w-5 text-tk-primary-fixed"
@@ -156,27 +156,27 @@ export function ProjectsSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
         {projects.map((project) => (
           <article
             key={project.name}
             className="group flex h-full flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm transition-all duration-500 hover:shadow-2xl"
           >
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-48 overflow-hidden sm:h-56 md:h-64">
               <img
                 alt={project.name}
                 src={project.image}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div
-                className={`absolute left-6 top-6 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm ${project.badgeClass}`}
+                className={`absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-sm sm:left-6 sm:top-6 sm:px-4 sm:py-1.5 sm:text-xs ${project.badgeClass}`}
               >
                 {project.badge}
               </div>
             </div>
-            <div className="flex grow flex-col bg-white p-8">
+            <div className="flex grow flex-col bg-white p-5 sm:p-6 md:p-8">
               <div className="mb-6">
-                <h3 className="font-tk-headline mb-2 text-2xl text-tk-primary">{project.name}</h3>
+                <h3 className="font-tk-headline mb-2 text-xl text-tk-primary sm:text-2xl">{project.name}</h3>
                 <div className="mb-2 flex items-center gap-2 text-tk-on-surface-variant">
                   <MapPin
                     className="h-4 w-4 shrink-0 text-tk-secondary"
@@ -188,7 +188,7 @@ export function ProjectsSection() {
                 <div className="font-tk-body text-tk-label-md mb-1 text-xs uppercase tracking-tighter text-tk-on-surface-variant/60">
                   Harga Investasi
                 </div>
-                <p className="text-xl font-bold text-tk-primary">{project.price}</p>
+                <p className="text-lg font-bold text-tk-primary sm:text-xl">{project.price}</p>
               </div>
               <div className="mb-8 grow space-y-3">
                 {project.features.map((f) => (

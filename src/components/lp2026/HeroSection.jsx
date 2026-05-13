@@ -111,7 +111,7 @@ export function HeroSection() {
       ref={sectionRef}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="relative flex min-h-[85svh] items-center overflow-hidden py-14 pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-[max(3.5rem,env(safe-area-inset-top))] md:min-h-[700px] md:py-0 lg:h-[921px]"
+      className="relative flex min-h-[85svh] items-center overflow-hidden bg-tk-primary py-14 pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-[max(3.5rem,env(safe-area-inset-top))] md:min-h-[700px] md:py-0 lg:h-[921px]"
     >
       <div
         className="hero-video-wrap z-0 will-change-transform"
@@ -149,10 +149,10 @@ export function HeroSection() {
         style={contentTransform ? { transform: contentTransform } : undefined}
       >
         <div className="max-w-3xl">
-          <h1 className="font-tk-headline text-tk-display-lg mb-6 leading-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] md:text-balance">
+          <h1 className="font-tk-headline text-tk-display-lg mb-4 leading-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] md:mb-6 md:text-balance">
             Bangun Masa Depan Berkah Tanpa Riba
           </h1>
-          <p className="font-tk-body text-tk-body-lg mb-10 leading-relaxed text-white [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">
+          <p className="font-tk-body text-tk-body-lg mb-8 leading-relaxed text-white [text-shadow:0_1px_18px_rgba(0,0,0,0.45)] md:mb-10">
             Wujudkan hunian impian keluarga madani Anda dengan kepastian hukum syariah 100%. Tanpa
             Riba, Tanpa Denda, dan Tanpa Sita. Keberkahan dimulai dari akad yang halal.
           </p>
@@ -163,7 +163,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackLp2026Lead("Hero — Amankan unit (WhatsApp)")}
-                className="font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-lg bg-tk-primary px-8 py-4 text-white shadow-lg shadow-black/25 transition-all hover:bg-tk-primary/90"
+                className="font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-lg bg-tk-primary px-6 py-3.5 text-white shadow-lg shadow-black/25 transition-all hover:bg-tk-primary/90 md:px-8 md:py-4"
               >
                 Amankan Unit Sekarang
                 <ArrowRight className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
@@ -171,20 +171,11 @@ export function HeroSection() {
               <a
                 href={SITE_ANCHORS.projects}
                 onClick={() => trackLp2026Lead("Hero — Lihat katalog proyek", "Engagement")}
-                className="font-tk-body text-tk-label-md inline-flex items-center justify-center rounded-lg border border-white/40 bg-white/10 px-8 py-4 text-white shadow-lg shadow-black/20 backdrop-blur-sm transition-all hover:bg-white/20"
+                className="font-tk-body text-tk-label-md inline-flex items-center justify-center rounded-lg border border-white/40 bg-white/10 px-6 py-3.5 text-white shadow-lg shadow-black/20 backdrop-blur-sm transition-all hover:bg-white/20 md:px-8 md:py-4"
               >
                 Lihat Katalog Project
               </a>
             </div>
-            <a
-              href={SITE_CONTACT.waFooter}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackLp2026Lead("Hero — Chat WhatsApp tim")}
-              className="font-tk-body text-tk-body-md text-sm text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline"
-            >
-              Atau chat WhatsApp tim kami — respon lebih cepat
-            </a>
           </div>
         </div>
       </div>

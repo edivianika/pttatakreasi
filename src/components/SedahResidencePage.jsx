@@ -23,6 +23,7 @@ import { Input } from "./ui/input";
 import { cn } from "../lib/utils";
 import { trackPageView, trackLead, trackContact } from "../utils/facebookPixel";
 import { trackTikTokPageView, trackTikTokLead, trackTikTokContact } from "../utils/tiktokPixel";
+import { LP2026_SEO } from "../constants/siteLp2026";
 import { updatePageSEO, getProjectStructuredData } from "../utils/seoUtils";
 import { getKeypanoUrl, checkKeypanoAvailability } from "../utils/keypanoUrl";
 
@@ -201,42 +202,49 @@ function SedahGreenResidence() {
       link.href = '/logo.png';
       document.getElementsByTagName('head')[0].appendChild(link);
 
-      // Restore original meta tags
-      document.title = 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo';
-      
+      // Restore default homepage meta (LP2026)
+      document.title = LP2026_SEO.title;
+
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', '🏠 TKBM - Developer Properti Syariah Terpercaya di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🏘️ Proyek: Sedah Green Residence, Narraya Green Residence, Grand Sezha. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+        metaDescription.setAttribute('content', LP2026_SEO.description);
       }
 
       const ogTitle = document.querySelector('meta[property="og:title"]');
       if (ogTitle) {
-        ogTitle.setAttribute('content', 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo');
+        ogTitle.setAttribute('content', LP2026_SEO.title);
       }
 
       const ogDescription = document.querySelector('meta[property="og:description"]');
       if (ogDescription) {
-        ogDescription.setAttribute('content', '🏠 TKBM - Developer Properti Syariah Terpercaya di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🏘️ Proyek: Sedah Green Residence, Narraya Green Residence, Grand Sezha. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+        ogDescription.setAttribute('content', LP2026_SEO.description);
       }
 
+      const defaultOgImage = `${window.location.origin}${LP2026_SEO.ogImagePath}`;
       const ogImage = document.querySelector('meta[property="og:image"]');
       if (ogImage) {
-        ogImage.setAttribute('content', window.location.origin + '/tatakreasi/perumahan-ponorogo-sedah-green-residence.png');
+        ogImage.setAttribute('content', defaultOgImage);
       }
 
-      const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+      const twitterTitle =
+        document.querySelector('meta[name="twitter:title"]') ||
+        document.querySelector('meta[property="twitter:title"]');
       if (twitterTitle) {
-        twitterTitle.setAttribute('content', 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo');
+        twitterTitle.setAttribute('content', LP2026_SEO.title);
       }
 
-      const twitterDescription = document.querySelector('meta[property="twitter:description"]');
+      const twitterDescription =
+        document.querySelector('meta[name="twitter:description"]') ||
+        document.querySelector('meta[property="twitter:description"]');
       if (twitterDescription) {
-        twitterDescription.setAttribute('content', '🏠 TKBM - Developer Properti Syariah Terpercaya di Ponorogo! ✨ Akad 100% Halal, Harga Transparan, Angsuran Ringan. 🏘️ Proyek: Sedah Green Residence, Narraya Green Residence, Grand Sezha. 💚 Wujudkan Rumah Impian Keluarga Muslim!');
+        twitterDescription.setAttribute('content', LP2026_SEO.description);
       }
 
-      const twitterImage = document.querySelector('meta[property="twitter:image"]');
+      const twitterImage =
+        document.querySelector('meta[name="twitter:image"]') ||
+        document.querySelector('meta[property="twitter:image"]');
       if (twitterImage) {
-        twitterImage.setAttribute('content', window.location.origin + '/tatakreasi/perumahan-ponorogo-sedah-green-residence.png');
+        twitterImage.setAttribute('content', defaultOgImage);
       }
     };
     

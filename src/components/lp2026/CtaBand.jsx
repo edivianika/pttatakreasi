@@ -25,16 +25,16 @@ export function CtaBand({
       id={id}
       className={
         isDark
-          ? "border-y border-tk-primary-fixed/20 bg-tk-primary-container py-14 md:py-16"
-          : "py-14 md:py-16"
+          ? "w-full min-w-0 overflow-x-clip border-y border-tk-primary-fixed/20 bg-tk-primary-container py-14 md:py-16"
+          : "w-full min-w-0 overflow-x-clip py-14 md:py-16"
       }
     >
-      <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <div className="mx-auto box-border w-full min-w-0 max-w-container-max px-margin-mobile md:px-margin-desktop">
         <div
           className={
             isDark
-              ? "rounded-3xl border border-tk-primary-fixed/25 bg-tk-primary/40 px-6 py-10 shadow-inner shadow-black/10 backdrop-blur-sm md:px-12 md:py-12"
-              : "rounded-3xl border border-tk-outline-variant/60 bg-tk-surface-container-high px-6 py-10 shadow-sm md:px-10 md:py-12"
+              ? "box-border min-w-0 w-full rounded-3xl border border-tk-primary-fixed/25 bg-tk-primary/40 px-6 py-9 shadow-inner shadow-black/10 backdrop-blur-sm sm:px-9 sm:py-11 md:px-14 md:py-14"
+              : "box-border min-w-0 w-full rounded-3xl border border-tk-outline-variant/60 bg-tk-surface-container-high px-6 py-9 shadow-sm sm:px-9 sm:py-11 md:px-12 md:py-14"
           }
         >
           {eyebrow ? (

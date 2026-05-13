@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 
-import { SITE_CONTACT } from "../../constants/siteLp2026";
+import { LP2026_SEO, SITE_CONTACT } from "../../constants/siteLp2026";
+import {
+  updateCanonical,
+  updateMetaTag,
+  updateOGTags,
+  updateTitle,
+  updateTwitterTags,
+} from "../../utils/seoUtils";
 import "../../styles/lp2026.css";
 import { AdvantagesSection } from "./AdvantagesSection";
 import { CtaBand } from "./CtaBand";
@@ -11,6 +18,7 @@ import { PrinciplesSection } from "./PrinciplesSection";
 import { ProjectsSection } from "./ProjectsSection";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { TestimonialsSection } from "./TestimonialsSection";
 
 export default function Lp2026Page() {
   useEffect(() => {
@@ -20,10 +28,36 @@ export default function Lp2026Page() {
     };
   }, []);
 
+  useEffect(() => {
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://www.tatakreasi.com";
+    const canonicalUrl = `${origin}/`;
+    const imageUrl = `${origin}${LP2026_SEO.ogImagePath}`;
+
+    updateTitle(LP2026_SEO.title);
+    updateMetaTag("title", LP2026_SEO.title);
+    updateMetaTag("description", LP2026_SEO.description);
+    updateMetaTag("keywords", LP2026_SEO.keywords);
+
+    updateOGTags({
+      title: LP2026_SEO.title,
+      description: LP2026_SEO.description,
+      image: imageUrl,
+      url: canonicalUrl,
+      siteName: "Tata Kreasi",
+      locale: "id_ID",
+    });
+    updateTwitterTags({
+      title: LP2026_SEO.title,
+      description: LP2026_SEO.description,
+      image: imageUrl,
+    });
+    updateCanonical(canonicalUrl);
+  }, []);
+
   return (
-    <div className="lp2026-root min-h-screen bg-tk-background text-tk-on-background selection:bg-tk-primary-fixed selection:text-tk-primary">
+    <div className="lp2026-root min-h-screen w-full min-w-0 overflow-x-clip bg-tk-background text-tk-on-background selection:bg-tk-primary-fixed selection:text-tk-primary">
       <SiteHeader />
-      <main className="lp2026-main">
+      <main className="lp2026-main min-w-0">
         <HeroSection />
         <AdvantagesSection />
         <PrinciplesSection />
@@ -38,6 +72,7 @@ export default function Lp2026Page() {
         />
         <ProjectsSection />
         <GallerySection />
+        <TestimonialsSection />
         <FaqSection />
         <CtaBand
           id="cta-closing"

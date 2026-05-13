@@ -18,7 +18,8 @@ module.exports = {
   		spacing: {
   			"margin-mobile": "20px",
   			"margin-desktop": "80px",
-  			"section-gap": "120px",
+  			/** Vertikal antar-section LP2026: lebih ringkas di HP, tetap lapang di desktop */
+  			"section-gap": "clamp(3.25rem, 9vw + 1rem, 7.5rem)",
   		},
   		fontFamily: {
   			"tk-headline": ['"Noto Serif"', "ui-serif", "Georgia", "serif"],
@@ -26,16 +27,31 @@ module.exports = {
   		},
   		fontSize: {
   			"tk-display-lg": [
-  				"64px",
+  				"clamp(2rem, 6.5vw + 0.5rem, 4rem)",
   				{ lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
   			],
-  			"tk-headline-lg": ["48px", { lineHeight: "1.2", fontWeight: "600" }],
-  			"tk-headline-md": ["32px", { lineHeight: "1.3", fontWeight: "500" }],
-  			"tk-headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "500" }],
-  			"tk-body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
-  			"tk-body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+  			"tk-headline-lg": [
+  				"clamp(1.75rem, 4.2vw + 0.35rem, 3rem)",
+  				{ lineHeight: "1.2", fontWeight: "600" },
+  			],
+  			"tk-headline-md": [
+  				"clamp(1.3125rem, 2.4vw + 0.55rem, 2rem)",
+  				{ lineHeight: "1.3", fontWeight: "500" },
+  			],
+  			"tk-headline-sm": [
+  				"clamp(1.125rem, 1.4vw + 0.75rem, 1.5rem)",
+  				{ lineHeight: "1.4", fontWeight: "500" },
+  			],
+  			"tk-body-md": [
+  				"clamp(0.9375rem, 0.35vw + 0.9rem, 1rem)",
+  				{ lineHeight: "1.6", fontWeight: "400" },
+  			],
+  			"tk-body-lg": [
+  				"clamp(1rem, 0.9vw + 0.82rem, 1.125rem)",
+  				{ lineHeight: "1.6", fontWeight: "400" },
+  			],
   			"tk-label-md": [
-  				"14px",
+  				"clamp(0.75rem, 0.45vw + 0.62rem, 0.875rem)",
   				{ lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" },
   			],
   		},

@@ -37,10 +37,11 @@ export function AdvantagesSection() {
           </p>
           <h2 className="text-balance">
             <span className="font-tk-headline block text-2xl font-semibold leading-[1.2] tracking-tight text-tk-primary sm:text-[1.65rem] md:text-3xl lg:text-[2.125rem]">
-              Komitmen TataKreasi Group
+              Hunian syariah dengan standar yang kami pegang teguh
             </span>
             <span className="font-tk-body text-tk-body-lg mt-2 block max-w-2xl text-base font-normal leading-relaxed text-tk-on-surface-variant md:mt-3 md:text-lg">
-              Kami menghadirkan hunian yang:
+              Transparansi akad, jaminan kualitas bangunan, dan pendampingan tim—agar Anda memilih
+              dengan yakin dan tinggal dengan tenang.
             </span>
           </h2>
         </header>
@@ -67,7 +68,7 @@ export function AdvantagesSection() {
                   <span className="block text-base font-medium leading-snug text-white/95 md:text-lg">
                     Berlandaskan
                   </span>
-                  <span className="mt-1.5 block text-2xl font-semibold leading-[1.15] tracking-tight text-amber-100 drop-shadow-[0_2px_16px_rgba(0,0,0,0.85)] md:mt-2 md:text-4xl md:leading-[1.12] lg:text-[2.5rem]">
+                  <span className="mt-1.5 block text-xl font-semibold leading-[1.15] tracking-tight text-amber-100 drop-shadow-[0_2px_16px_rgba(0,0,0,0.85)] sm:text-2xl md:mt-2 md:text-4xl md:leading-[1.12] lg:text-[2.5rem]">
                     Prinsip Syariah
                   </span>
                 </h3>

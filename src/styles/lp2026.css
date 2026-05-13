@@ -31,9 +31,13 @@ body.lp2026-scroll main.lp2026-main > section {
   scrollbar-width: none;
 }
 
+/* Lebih tinggi dari viewport hero supaya translate parallax tidak memperlihatkan bg halaman di tepi atas/bawah */
 .lp2026-root .hero-video-wrap {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: -14%;
+  bottom: -14%;
   overflow: hidden;
   pointer-events: none;
 }

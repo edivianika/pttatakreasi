@@ -1,7 +1,7 @@
 {
-  "short_name": "TKBM",
-  "name": "TKBM - Developer Properti Syariah Terpercaya",
-  "description": "Wujudkan impian rumah idaman dengan akad 100% syariah di Ponorogo. Harga transparan, angsuran ringan, tanpa riba.",
+  "short_name": "Tata Kreasi",
+  "name": "Tata Kreasi — Rumah & Properti Syariah Ponorogo",
+  "description": "Property syariah dan rumah di Ponorogo tanpa riba: Grand Sezha, Grand City Sedah, Grand Naraya. Konsultasi unit dan akad halal.",
   "icons": [
     {
       "src": "logo.png",
@@ -16,7 +16,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#059669",
+  "theme_color": "#012d1d",
   "background_color": "#ffffff",
   "orientation": "portrait-primary",
   "categories": ["business", "lifestyle", "shopping"],

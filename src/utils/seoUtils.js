@@ -64,10 +64,10 @@ export const updateTwitterTags = (data) => {
     card = 'summary_large_image'
   } = data;
 
-  updateMetaTag('twitter:card', card, true);
-  if (title) updateMetaTag('twitter:title', title, true);
-  if (description) updateMetaTag('twitter:description', description, true);
-  if (image) updateMetaTag('twitter:image', image, true);
+  updateMetaTag('twitter:card', card, false);
+  if (title) updateMetaTag('twitter:title', title, false);
+  if (description) updateMetaTag('twitter:description', description, false);
+  if (image) updateMetaTag('twitter:image', image, false);
 };
 
 /**
@@ -205,18 +205,21 @@ export const getProjectStructuredData = (projectData) => {
  * Default SEO config for TKBM
  */
 export const defaultSEOConfig = {
-  siteName: 'TKBM - Tata Kreasi Bangun Mandiri',
+  siteName: 'Tata Kreasi',
   baseUrl: 'https://www.tatakreasi.com',
-  defaultImage: '/logo.png',
-  defaultTitle: 'TKBM - Developer Properti Syariah Terpercaya | Hunian Halal di Ponorogo',
-  defaultDescription: 'Tata Kreasi Bumi Madani (TKBM) adalah developer properti syariah terpercaya di Ponorogo. Hunian halal tanpa riba dengan fasilitas lengkap.',
+  defaultImage: '/images/projects-grand-sezha.png',
+  defaultTitle: 'Rumah Syariah Ponorogo & Properti Tanpa Riba | Tata Kreasi',
+  defaultDescription:
+    'Cari rumah di Ponorogo atau property syariah? Tata Kreasi: hunian tanpa riba, akad halal, Grand Sezha, Grand City Sedah & Grand Naraya.',
   defaultKeywords: [
-    'developer properti syariah',
-    'hunian halal ponorogo',
-    'rumah syariah',
-    'kpr syariah',
-    'tanpa riba',
-    'developer ponorogo'
+    'property syariah',
+    'properti syariah',
+    'rumah ponorogo',
+    'rumah di ponorogo',
+    'perumahan syariah ponorogo',
+    'developer ponorogo',
+    'hunian tanpa riba',
+    'tata kreasi',
   ]
 };
 
