@@ -60,6 +60,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "postbuild": "node scripts/prerender-sedah-green-residence.js",
     "test": "craco test",
     "proxy": "node proxy-server.js",
     "dev": "concurrently \"npm run proxy\" \"npm start\""

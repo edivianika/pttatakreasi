@@ -26,5 +26,15 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/sedah-green-residence",
+      "destination": "/sedah-green-residence/index.html"
+    },
+    {
+      "source": "/sedah-green-residence/",
+      "destination": "/sedah-green-residence/index.html"
+    }
   ]
 }
