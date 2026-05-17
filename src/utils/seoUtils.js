@@ -88,6 +88,27 @@ export const updateCanonical = (url) => {
 };
 
 /**
+ * Inject or replace a JSON-LD script by id (tidak menimpa graph utama di index.html).
+ */
+export const setJsonLdScript = (id, data) => {
+  if (typeof document === 'undefined' || !id) return;
+
+  let script = document.getElementById(id);
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = id;
+    document.head.appendChild(script);
+  }
+  script.textContent = JSON.stringify(data);
+};
+
+export const removeJsonLdScript = (id) => {
+  if (typeof document === 'undefined') return;
+  document.getElementById(id)?.remove();
+};
+
+/**
  * Update all SEO meta tags for a page
  */
 export const updatePageSEO = (config) => {

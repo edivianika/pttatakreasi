@@ -16,81 +16,24 @@ import {
   Wallet,
 } from "lucide-react";
 
+import { LP2026_EXCLUSIVE_PROJECTS } from "../../constants/lp2026Projects";
 import { SITE_CONTACT } from "../../constants/siteLp2026";
+import { ProjectPoster } from "./ProjectPoster";
 import { trackLp2026Lead } from "./pixelLead";
 
 const iconStroke = 1.75;
 
-const publicImage = (path) => `${process.env.PUBLIC_URL || ""}${path}`;
-
-/** Poster vertikal per proyek — proporsi asli dipakai di kartu (object-contain) */
-const projects = [
-  {
-    name: "Grand Sezha",
-    badge: "Ready Stock",
-    badgeClass: "bg-tk-secondary/90",
-    location: "Jl. Arif Rahman Hakim, Keniten.",
-    price: "Rp 530jt - 640jt",
-    image: publicImage("/images/gs-web-compressed.jpg"),
-    imageWidth: 1086,
-    imageHeight: 1448,
-    imageAlt:
-      "Grand Sezha Ponorogo — hunian Islami modern, akad syariah, free kanopi dan taman",
-    features: [
-      { Icon: Landmark, label: "Desain Modern Kontemporer" },
-      { Icon: ShieldCheck, label: "Keamanan One Gate System" },
-      { Icon: TrendingUp, label: "Nilai Investasi Sangat Tinggi" },
-    ],
-    cta: "Detail Unit & Denah",
-    ctaClass: "bg-tk-primary text-white hover:bg-tk-primary/90",
-    ctaIcon: "arrow",
-    whatsappHref: SITE_CONTACT.waProyekGrandSezha,
-  },
-  {
-    name: "Narraya Green Residence",
-    badge: "Unit Terbatas",
-    badgeClass: "bg-tk-tertiary/90",
-    location: "Jl. Noroyono, Area Alun-Alun.",
-    price: "Rp 785jt",
-    image: publicImage("/images/narraya-web-compressed.jpg"),
-    imageWidth: 941,
-    imageHeight: 1672,
-    imageAlt:
-      "Narraya Green Residence Ponorogo — hunian premium syariah di pusat kota, diskon dan akad syar'i",
-    features: [
-      { Icon: Gem, label: "Spesifikasi Material Premium" },
-      { Icon: Star, label: "Kawasan Elit Pusat Kota" },
-      { Icon: House, label: "Ready Smart Home System" },
-    ],
-    cta: "Ambil Promo Spesial",
-    ctaClass:
-      "bg-tk-primary-container text-tk-on-primary-container hover:bg-tk-primary-container/90",
-    ctaIcon: "sparkle",
-    whatsappHref: SITE_CONTACT.waProyekGrandNaraya,
-  },
-  {
-    name: "Sedah Green Residence",
-    badge: "Promo Akhir Tahun",
-    badgeClass: "bg-tk-primary/90",
-    location: "Desa Sedah, Jenangan. Area asri.",
-    price: "Rp 230jt - 270jt",
-    image: publicImage("/images/sgr-website-compressed.jpg"),
-    imageWidth: 1122,
-    imageHeight: 1402,
-    imageAlt:
-      "Sedah Green Residence Ponorogo — hunian idaman keluarga Muslim, akad syariah dan cicilan ringan",
-    features: [
-      { Icon: Trees, label: "Lingkungan Asri & Tenang" },
-      { Icon: Wallet, label: "DP Ringan & Cicilan Flat" },
-      { Icon: GraduationCap, label: "Dekat Sarana Pendidikan" },
-    ],
-    cta: "Cek Ketersediaan Unit",
-    ctaClass:
-      "bg-tk-surface-container text-tk-primary hover:bg-tk-surface-container-high",
-    ctaIcon: "arrow",
-    whatsappHref: SITE_CONTACT.waProyekGrandCitySedah,
-  },
-];
+const FEATURE_ICONS = {
+  landmark: Landmark,
+  shield: ShieldCheck,
+  trending: TrendingUp,
+  gem: Gem,
+  star: Star,
+  house: House,
+  trees: Trees,
+  wallet: Wallet,
+  graduation: GraduationCap,
+};
 
 function CtaTrailingIcon({ variant }) {
   if (variant === "sparkle") {
@@ -105,6 +48,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
+      aria-labelledby="projects-heading"
       className="mx-auto max-w-container-max px-margin-mobile py-14 md:px-margin-desktop md:py-20"
     >
       <div className="mb-12 flex flex-col items-start gap-8 md:mb-16 md:flex-row md:gap-12">
@@ -119,7 +63,10 @@ export function ProjectsSection() {
               PROYEK EKSKLUSIF
             </span>
           </div>
-          <h2 className="font-tk-headline mb-6 text-3xl leading-tight text-tk-primary sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
+          <h2
+            id="projects-heading"
+            className="font-tk-headline mb-6 text-3xl leading-tight text-tk-primary sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl"
+          >
             Proyek Eksklusif di Ponorogo
           </h2>
           <p className="font-tk-body text-tk-body-lg mb-10 text-tk-on-surface-variant">
@@ -147,6 +94,10 @@ export function ProjectsSection() {
           <img
             alt="Desain modern bernuansa Islami — cuplikan proyek hunian Tata Kreasi"
             src={PROJECTS_HERO_IMAGE}
+            width={1280}
+            height={720}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover shadow-2xl transition-transform duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 md:p-12">
@@ -171,72 +122,86 @@ export function ProjectsSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-        {projects.map((project) => (
-          <article
-            key={project.name}
-            className="group flex h-full flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm transition-all duration-500 hover:shadow-2xl"
-          >
-            <div className="relative w-full overflow-hidden bg-tk-surface-container-low">
-              <img
-                alt={project.imageAlt}
-                src={project.image}
-                width={project.imageWidth}
-                height={project.imageHeight}
-                loading="lazy"
-                decoding="async"
-                className="block h-auto max-h-[min(72svh,520px)] w-full object-contain object-center transition-transform duration-700 ease-out group-hover:scale-[1.02] md:max-h-[min(58vw,640px)]"
-              />
-              <div
-                className={`absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm backdrop-blur-sm sm:left-6 sm:top-6 sm:px-4 sm:py-1.5 sm:text-xs ${project.badgeClass}`}
+      <ul className="grid list-none grid-cols-1 justify-items-center gap-8 p-0 md:grid-cols-3 md:justify-items-stretch md:gap-8">
+        {LP2026_EXCLUSIVE_PROJECTS.map((project) => {
+          const whatsappHref = SITE_CONTACT[project.whatsappKey];
+          return (
+            <li key={project.id} className="w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-none">
+              <article
+                className="group flex h-full flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm ring-1 ring-tk-outline-variant/30 transition-all duration-500 hover:shadow-2xl"
+                itemScope
+                itemType="https://schema.org/Product"
               >
-                {project.badge}
-              </div>
-            </div>
-            <div className="flex grow flex-col bg-white p-5 sm:p-6 md:p-8">
-              <div className="mb-6">
-                <h3 className="font-tk-headline mb-2 text-xl text-tk-primary sm:text-2xl">{project.name}</h3>
-                <div className="mb-2 flex items-center gap-2 text-tk-on-surface-variant">
-                  <MapPin
-                    className="h-4 w-4 shrink-0 text-tk-secondary"
-                    strokeWidth={iconStroke}
-                    aria-hidden
-                  />
-                  <span className="text-sm">{project.location}</span>
-                </div>
-                <div className="font-tk-body text-tk-label-md mb-1 text-xs uppercase tracking-tighter text-tk-on-surface-variant/60">
-                  Harga Investasi
-                </div>
-                <p className="text-lg font-bold text-tk-primary sm:text-xl">{project.price}</p>
-              </div>
-              <div className="mb-8 grow space-y-3">
-                {project.features.map((f) => (
-                  <div key={f.label} className="flex items-center gap-3">
-                    <f.Icon
-                      className="h-5 w-5 shrink-0 text-tk-secondary"
-                      strokeWidth={iconStroke}
-                      aria-hidden
-                    />
-                    <span className="text-sm font-medium text-tk-on-surface-variant">{f.label}</span>
+                <ProjectPoster
+                  imageBase={project.imageBase}
+                  alt={project.imageAlt}
+                  width={project.imageWidth}
+                  height={project.imageHeight}
+                  badge={project.badge}
+                  badgeClass={project.badgeClass}
+                />
+                <div className="flex grow flex-col bg-white p-5 sm:p-6 md:p-8">
+                  <div className="mb-6">
+                    <h3
+                      className="font-tk-headline mb-2 text-xl text-tk-primary sm:text-2xl"
+                      itemProp="name"
+                    >
+                      {project.name}
+                    </h3>
+                    <meta itemProp="description" content={project.seoDescription} />
+                    <div className="mb-2 flex items-center gap-2 text-tk-on-surface-variant">
+                      <MapPin
+                        className="h-4 w-4 shrink-0 text-tk-secondary"
+                        strokeWidth={iconStroke}
+                        aria-hidden
+                      />
+                      <span className="text-sm" itemProp="areaServed">
+                        {project.location}
+                      </span>
+                    </div>
+                    <div className="font-tk-body text-tk-label-md mb-1 text-xs uppercase tracking-tighter text-tk-on-surface-variant/60">
+                      Harga Investasi
+                    </div>
+                    <p className="text-lg font-bold text-tk-primary sm:text-xl" itemProp="offers">
+                      {project.price}
+                    </p>
                   </div>
-                ))}
-              </div>
-              <a
-                href={project.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  trackLp2026Lead(`Proyek — ${project.name} (${project.cta})`)
-                }
-                className={`font-tk-body text-tk-label-md flex w-full items-center justify-center gap-2 rounded-xl py-4 text-center transition-all ${project.ctaClass}`}
-              >
-                {project.cta}
-                <CtaTrailingIcon variant={project.ctaIcon} />
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
+                  <ul className="mb-8 grow list-none space-y-3 p-0">
+                    {project.features.map((f) => {
+                      const Icon = FEATURE_ICONS[f.icon];
+                      return (
+                        <li key={f.label} className="flex items-center gap-3">
+                          <Icon
+                            className="h-5 w-5 shrink-0 text-tk-secondary"
+                            strokeWidth={iconStroke}
+                            aria-hidden
+                          />
+                          <span className="text-sm font-medium text-tk-on-surface-variant">
+                            {f.label}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackLp2026Lead(`Proyek — ${project.name} (${project.cta})`)
+                    }
+                    className={`font-tk-body text-tk-label-md flex w-full items-center justify-center gap-2 rounded-xl py-4 text-center transition-all ${project.ctaClass}`}
+                    aria-label={`${project.cta} — ${project.name} via WhatsApp`}
+                  >
+                    {project.cta}
+                    <CtaTrailingIcon variant={project.ctaIcon} />
+                  </a>
+                </div>
+              </article>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

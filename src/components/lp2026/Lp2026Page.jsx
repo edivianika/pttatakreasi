@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 
+import {
+  LP2026_EXCLUSIVE_PROJECTS,
+  projectPosterUrl,
+} from "../../constants/lp2026Projects";
 import { LP2026_SEO, SITE_CONTACT } from "../../constants/siteLp2026";
 import {
+  removeJsonLdScript,
+  setJsonLdScript,
   updateCanonical,
   updateMetaTag,
   updateOGTags,
@@ -52,6 +58,36 @@ export default function Lp2026Page() {
       image: imageUrl,
     });
     updateCanonical(canonicalUrl);
+
+    const projectsListSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Proyek hunian syariah Ponorogo — Tata Kreasi",
+      description: LP2026_SEO.description,
+      url: canonicalUrl,
+      numberOfItems: LP2026_EXCLUSIVE_PROJECTS.length,
+      itemListElement: LP2026_EXCLUSIVE_PROJECTS.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: project.name,
+          description: project.seoDescription,
+          image: projectPosterUrl(origin, project.imageBase),
+          brand: {
+            "@type": "Organization",
+            name: "Tata Kreasi",
+          },
+          category: "Residential Real Estate",
+        },
+      })),
+    };
+
+    setJsonLdScript("lp2026-projects-itemlist", projectsListSchema);
+
+    return () => {
+      removeJsonLdScript("lp2026-projects-itemlist");
+    };
   }, []);
 
   return (

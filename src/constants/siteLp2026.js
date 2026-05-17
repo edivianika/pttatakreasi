@@ -73,9 +73,9 @@ export const SITE_ANCHORS = {
 export const LP2026_SEO = {
   title: "Rumah Syariah Ponorogo & Properti Tanpa Riba | Tata Kreasi",
   description:
-    "Cari rumah di Ponorogo atau property syariah? Tata Kreasi: hunian tanpa riba, akad halal, Grand Sezha, Grand City Sedah & Grand Naraya. Konsultasi unit, harga, dan legalitas.",
+    "Cari rumah di Ponorogo atau property syariah? Tata Kreasi: hunian tanpa riba, akad halal — Grand Sezha, Narraya Green Residence & Sedah Green Residence. Konsultasi unit, harga, dan legalitas.",
   keywords:
-    "property syariah, properti syariah, rumah ponorogo, rumah di ponorogo, perumahan syariah ponorogo, developer ponorogo, hunian tanpa riba, jual beli rumah syariah, grand sezha, grand naraya, grand city sedah, tata kreasi, rumah halal jawa timur",
+    "property syariah, properti syariah, rumah ponorogo, perumahan syariah ponorogo, developer ponorogo, hunian tanpa riba, grand sezha, narraya green residence, sedah green residence, tata kreasi, rumah halal jawa timur",
   /** Gambar OG pasti ada di repo `public/images/` */
   ogImagePath: "/images/projects-grand-sezha.png",
 };
