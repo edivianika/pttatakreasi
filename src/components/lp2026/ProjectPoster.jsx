@@ -69,11 +69,13 @@ export function ProjectPoster({ imageBase, alt, width, height, badge, badgeClass
         </picture>
       ) : null}
 
-      <div
-        className={`pointer-events-none absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm backdrop-blur-sm sm:left-5 sm:top-5 sm:px-4 sm:py-1.5 sm:text-xs ${badgeClass}`}
-      >
-        {badge}
-      </div>
+      {badge ? (
+        <div
+          className={`pointer-events-none absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm backdrop-blur-sm sm:left-5 sm:top-5 sm:px-4 sm:py-1.5 sm:text-xs ${badgeClass ?? ""}`}
+        >
+          {badge}
+        </div>
+      ) : null}
     </div>
   );
 }

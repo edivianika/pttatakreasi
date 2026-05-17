@@ -5,8 +5,6 @@ export const LP2026_EXCLUSIVE_PROJECTS = [
   {
     id: "grand-sezha",
     name: "Grand Sezha",
-    badge: "Ready Stock",
-    badgeClass: "bg-tk-secondary/90",
     location: "Jl. Arif Rahman Hakim, Keniten.",
     price: "Rp 530jt - 640jt",
     imageBase: "grand-sezha",
@@ -15,7 +13,7 @@ export const LP2026_EXCLUSIVE_PROJECTS = [
     imageAlt:
       "Grand Sezha Ponorogo — hunian Islami modern, akad syariah, free kanopi dan taman",
     seoDescription:
-      "Cluster rumah syariah modern di Ponorogo, ready stock, akad 100% syariah tanpa riba.",
+      "Cluster rumah syariah modern di Ponorogo, akad 100% syariah tanpa riba.",
     features: [
       { icon: "landmark", label: "Desain Modern Kontemporer" },
       { icon: "shield", label: "Keamanan One Gate System" },
@@ -54,17 +52,17 @@ export const LP2026_EXCLUSIVE_PROJECTS = [
   {
     id: "sedah-green",
     name: "Sedah Green Residence",
-    badge: "Promo Akhir Tahun",
+    badge: "Diskon 20 Juta",
     badgeClass: "bg-tk-primary/90",
     location: "Desa Sedah, Jenangan. Area asri.",
-    price: "Rp 230jt - 270jt",
+    price: "Mulai Rp 224jt",
     imageBase: "sedah-green",
     imageWidth: 1122,
     imageHeight: 1402,
     imageAlt:
       "Sedah Green Residence Ponorogo — hunian idaman keluarga Muslim, akad syariah dan cicilan ringan",
     seoDescription:
-      "Perumahan syariah kawasan asri Sedah Jenangan, DP ringan dan cicilan flat tanpa riba.",
+      "Perumahan syariah kawasan asri Sedah Jenangan, mulai Rp 224jt dengan diskon 20 juta, cicilan flat tanpa riba.",
     features: [
       { icon: "trees", label: "Lingkungan Asri & Tenang" },
       { icon: "wallet", label: "DP Ringan & Cicilan Flat" },
