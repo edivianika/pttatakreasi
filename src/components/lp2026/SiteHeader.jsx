@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
-import { trackLp2026Lead } from "./pixelLead";
+import { SITE_ANCHORS } from "../../constants/siteLp2026";
 
 const SCROLL_PARALLAX_X = 0.06;
 const SCROLL_PARALLAX_Y = 0.035;
@@ -145,28 +144,16 @@ export function SiteHeader() {
           ))}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3 min-[1100px]:gap-4">
-          <button
-            type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/25 text-white transition-colors hover:border-tk-primary-fixed hover:bg-white/10 hover:text-tk-primary-fixed min-[1100px]:hidden"
-            aria-expanded={menuOpen}
-            aria-controls="lp2026-nav-drawer"
-            aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
-            onClick={() => setMenuOpen((o) => !o)}
-          >
-            {menuOpen ? <X className="h-5 w-5" strokeWidth={2} /> : <Menu className="h-5 w-5" strokeWidth={2} />}
-          </button>
-          <a
-            href={SITE_CONTACT.waConsultation}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackLp2026Lead("Header — Konsultasi WA")}
-            className="rounded-full bg-tk-primary-fixed px-3.5 py-2 font-tk-body text-tk-label-md text-tk-primary shadow-sm transition-all duration-150 ease-in-out hover:bg-tk-primary-fixed-dim hover:shadow-md active:scale-95 sm:px-5 sm:py-2.5 md:px-6"
-          >
-            <span className="hidden sm:inline">Konsultasi WA</span>
-            <span className="sm:hidden">WA</span>
-          </a>
-        </div>
+        <button
+          type="button"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/25 text-white transition-colors hover:border-tk-primary-fixed hover:bg-white/10 hover:text-tk-primary-fixed min-[1100px]:hidden"
+          aria-expanded={menuOpen}
+          aria-controls="lp2026-nav-drawer"
+          aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+          onClick={() => setMenuOpen((o) => !o)}
+        >
+          {menuOpen ? <X className="h-5 w-5" strokeWidth={2} /> : <Menu className="h-5 w-5" strokeWidth={2} />}
+        </button>
       </nav>
 
       {menuOpen ? (

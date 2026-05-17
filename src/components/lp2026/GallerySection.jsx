@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useMemo } from "react";
 
 import { SITE_ANCHORS, SITE_CONTACT } from "../../constants/siteLp2026";
-import { trackLp2026Lead } from "./pixelLead";
+import { trackLp2026Engagement, trackLp2026WhatsAppLead } from "./pixelLead";
 
 /**
  * Tiga proyek — bergiliran per slot (0: Sedah, 1: Narraya, 2: Grand Sezha, 3: Sedah lagi, …).
@@ -232,7 +232,7 @@ export function GallerySection() {
             href={SITE_CONTACT.waDetailUnit}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackLp2026Lead("Gallery — Tanya detail unit & akad (WhatsApp)")}
+            onClick={() => trackLp2026WhatsAppLead("Gallery — Tanya detail unit & akad")}
             className="font-tk-body text-tk-label-md inline-flex items-center justify-center gap-2 rounded-xl bg-tk-primary px-6 py-3.5 text-white shadow-md transition-all hover:bg-tk-primary/90"
           >
             Tanya detail unit &amp; akad via WhatsApp
@@ -240,12 +240,14 @@ export function GallerySection() {
           </a>
           <a
             href={SITE_ANCHORS.projects}
+            onClick={() => trackLp2026Engagement("Gallery — Lihat proyek & harga")}
             className="font-tk-body text-tk-label-md inline-flex items-center justify-center rounded-xl border border-tk-outline-variant bg-white px-6 py-3.5 text-tk-primary transition-colors hover:bg-tk-surface-container"
           >
             Lihat proyek &amp; harga
           </a>
           <a
             href={SITE_ANCHORS.faq}
+            onClick={() => trackLp2026Engagement("Gallery — Baca FAQ")}
             className="font-tk-body text-tk-label-md inline-flex items-center justify-center px-4 py-3.5 text-tk-secondary underline-offset-4 transition-colors hover:text-tk-primary hover:underline"
           >
             Baca FAQ

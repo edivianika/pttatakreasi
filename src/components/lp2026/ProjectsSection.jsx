@@ -19,7 +19,7 @@ import {
 import { LP2026_EXCLUSIVE_PROJECTS } from "../../constants/lp2026Projects";
 import { SITE_CONTACT } from "../../constants/siteLp2026";
 import { ProjectPoster } from "./ProjectPoster";
-import { trackLp2026Lead } from "./pixelLead";
+import { trackLp2026WhatsAppLead } from "./pixelLead";
 
 const iconStroke = 1.75;
 
@@ -188,7 +188,7 @@ export function ProjectsSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() =>
-                      trackLp2026Lead(`Proyek — ${project.name} (${project.cta})`)
+                      trackLp2026WhatsAppLead(`Proyek — ${project.name} (${project.cta})`)
                     }
                     className={`font-tk-body text-tk-label-md flex w-full items-center justify-center gap-2 rounded-xl py-4 text-center transition-all ${project.ctaClass}`}
                     aria-label={`${project.cta} — ${project.name} via WhatsApp`}
