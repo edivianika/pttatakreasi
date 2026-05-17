@@ -21,6 +21,9 @@ import { trackLp2026Lead } from "./pixelLead";
 
 const iconStroke = 1.75;
 
+const publicImage = (path) => `${process.env.PUBLIC_URL || ""}${path}`;
+
+/** Poster vertikal per proyek — proporsi asli dipakai di kartu (object-contain) */
 const projects = [
   {
     name: "Grand Sezha",
@@ -28,7 +31,11 @@ const projects = [
     badgeClass: "bg-tk-secondary/90",
     location: "Jl. Arif Rahman Hakim, Keniten.",
     price: "Rp 530jt - 640jt",
-    image: `${process.env.PUBLIC_URL || ""}/images/projects-grand-sezha.png`,
+    image: publicImage("/images/gs-web-compressed.jpg"),
+    imageWidth: 1086,
+    imageHeight: 1448,
+    imageAlt:
+      "Grand Sezha Ponorogo — hunian Islami modern, akad syariah, free kanopi dan taman",
     features: [
       { Icon: Landmark, label: "Desain Modern Kontemporer" },
       { Icon: ShieldCheck, label: "Keamanan One Gate System" },
@@ -40,30 +47,16 @@ const projects = [
     whatsappHref: SITE_CONTACT.waProyekGrandSezha,
   },
   {
-    name: "Grand City Sedah",
-    badge: "Promo Akhir Tahun",
-    badgeClass: "bg-tk-primary/90",
-    location: "Desa Sedah, Jenangan. Area asri.",
-    price: "Rp 230jt - 270jt",
-    image: `${process.env.PUBLIC_URL || ""}/images/projects-grand-city-sedah.png`,
-    features: [
-      { Icon: Trees, label: "Lingkungan Asri & Tenang" },
-      { Icon: Wallet, label: "DP Ringan & Cicilan Flat" },
-      { Icon: GraduationCap, label: "Dekat Sarana Pendidikan" },
-    ],
-    cta: "Cek Ketersediaan Unit",
-    ctaClass:
-      "bg-tk-surface-container text-tk-primary hover:bg-tk-surface-container-high",
-    ctaIcon: "arrow",
-    whatsappHref: SITE_CONTACT.waProyekGrandCitySedah,
-  },
-  {
-    name: "Grand Naraya",
+    name: "Narraya Green Residence",
     badge: "Unit Terbatas",
     badgeClass: "bg-tk-tertiary/90",
     location: "Jl. Noroyono, Area Alun-Alun.",
     price: "Rp 785jt",
-    image: `${process.env.PUBLIC_URL || ""}/images/projects-grand-naraya.png`,
+    image: publicImage("/images/narraya-web-compressed.jpg"),
+    imageWidth: 941,
+    imageHeight: 1672,
+    imageAlt:
+      "Narraya Green Residence Ponorogo — hunian premium syariah di pusat kota, diskon dan akad syar'i",
     features: [
       { Icon: Gem, label: "Spesifikasi Material Premium" },
       { Icon: Star, label: "Kawasan Elit Pusat Kota" },
@@ -74,6 +67,28 @@ const projects = [
       "bg-tk-primary-container text-tk-on-primary-container hover:bg-tk-primary-container/90",
     ctaIcon: "sparkle",
     whatsappHref: SITE_CONTACT.waProyekGrandNaraya,
+  },
+  {
+    name: "Sedah Green Residence",
+    badge: "Promo Akhir Tahun",
+    badgeClass: "bg-tk-primary/90",
+    location: "Desa Sedah, Jenangan. Area asri.",
+    price: "Rp 230jt - 270jt",
+    image: publicImage("/images/sgr-website-compressed.jpg"),
+    imageWidth: 1122,
+    imageHeight: 1402,
+    imageAlt:
+      "Sedah Green Residence Ponorogo — hunian idaman keluarga Muslim, akad syariah dan cicilan ringan",
+    features: [
+      { Icon: Trees, label: "Lingkungan Asri & Tenang" },
+      { Icon: Wallet, label: "DP Ringan & Cicilan Flat" },
+      { Icon: GraduationCap, label: "Dekat Sarana Pendidikan" },
+    ],
+    cta: "Cek Ketersediaan Unit",
+    ctaClass:
+      "bg-tk-surface-container text-tk-primary hover:bg-tk-surface-container-high",
+    ctaIcon: "arrow",
+    whatsappHref: SITE_CONTACT.waProyekGrandCitySedah,
   },
 ];
 
@@ -162,14 +177,18 @@ export function ProjectsSection() {
             key={project.name}
             className="group flex h-full flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm transition-all duration-500 hover:shadow-2xl"
           >
-            <div className="relative h-48 overflow-hidden sm:h-56 md:h-64">
+            <div className="relative w-full overflow-hidden bg-tk-surface-container-low">
               <img
-                alt={project.name}
+                alt={project.imageAlt}
                 src={project.image}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                width={project.imageWidth}
+                height={project.imageHeight}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto max-h-[min(72svh,520px)] w-full object-contain object-center transition-transform duration-700 ease-out group-hover:scale-[1.02] md:max-h-[min(58vw,640px)]"
               />
               <div
-                className={`absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-sm sm:left-6 sm:top-6 sm:px-4 sm:py-1.5 sm:text-xs ${project.badgeClass}`}
+                className={`absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm backdrop-blur-sm sm:left-6 sm:top-6 sm:px-4 sm:py-1.5 sm:text-xs ${project.badgeClass}`}
               >
                 {project.badge}
               </div>

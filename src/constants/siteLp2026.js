@@ -65,6 +65,7 @@ export const SITE_ANCHORS = {
   prinsip: "#prinsip",
   faq: "#faq",
   gallery: "#gallery",
+  testimoni: "#testimoni",
   kontak: "#kontak",
 };
 
