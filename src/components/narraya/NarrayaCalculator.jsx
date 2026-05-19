@@ -9,8 +9,12 @@ const NarrayaCalculator = () => {
   const [discount, setDiscount] = useState(75000000); // 75 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
+  const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
+  const [cashLunakDPManual, setCashLunakDPManual] = useState(0); // DP manual in rupiah
   const [kreditTerm, setKreditTerm] = useState(4); // 4 tahun default
   const [kreditDP, setKreditDP] = useState(30); // 30% default
+  const [kreditDPMode, setKreditDPMode] = useState('persen'); // 'persen' or 'manual'
+  const [kreditDPManual, setKreditDPManual] = useState(0); // DP manual in rupiah
 
   const [calculation, setCalculation] = useState({
     unitInfo: null,
@@ -81,11 +85,23 @@ const NarrayaCalculator = () => {
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
     // Cash Lunak calculation
-    const dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
+    const minDPCashLunak = hargaSetelahDiskon * 0.3; // minimal 30% dari harga rumah
+    let dpCashLunakAmount;
+    if (cashLunakDPMode === 'manual') {
+      dpCashLunakAmount = Math.max(minDPCashLunak, Math.min(cashLunakDPManual, hargaSetelahDiskon));
+    } else {
+      dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
+    }
     const angsuranCashLunakAmount = (hargaSetelahDiskon - dpCashLunakAmount) / (cashLunakTerm * 12);
 
     // Kredit calculation (8% interest rate per year)
-    const dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
+    const minDPKredit = hargaSetelahDiskon * 0.3; // minimal 30% dari harga rumah
+    let dpKreditAmount;
+    if (kreditDPMode === 'manual') {
+      dpKreditAmount = Math.max(minDPKredit, Math.min(kreditDPManual, hargaSetelahDiskon));
+    } else {
+      dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
+    }
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
     // Calculate total interest: 8% per year on remaining loan
     const totalBunga = sisaPinjaman * 0.08 * kreditTerm;
@@ -103,7 +119,7 @@ const NarrayaCalculator = () => {
       dpKredit: dpKreditAmount,
       angsuranKredit: angsuranKreditAmount
     });
-  }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, kreditTerm, kreditDP]);
+  }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, cashLunakDPMode, cashLunakDPManual, kreditTerm, kreditDP, kreditDPMode, kreditDPManual]);
 
   const handleDiscountChange = (value) => {
     const maxDiscount = 200000000;
@@ -133,11 +149,11 @@ Harga Normal: ${formatCurrency(calculation.hargaNormal)}
 Diskon: ${formatCurrency(discount)}
 Harga Setelah Diskon: ${formatCurrency(calculation.hargaSetelahDiskon)}
 
-Cash Lunak (${cashLunakTerm} tahun, DP ${cashLunakDP}%):
+Cash Lunak (${cashLunakTerm} tahun, DP ${cashLunakDPMode === 'persen' ? cashLunakDP + '%' : formatCurrency(cashLunakDPManual)}):
 - DP: ${formatCurrency(calculation.dpCashLunak)}
 - Angsuran: ${formatCurrency(calculation.angsuranCashLunak)}
 
-Kredit (${kreditTerm} tahun, DP ${kreditDP}%):
+Kredit (${kreditTerm} tahun, DP ${kreditDPMode === 'persen' ? kreditDP + '%' : formatCurrency(kreditDPManual)}):
 - DP: ${formatCurrency(calculation.dpKredit)}
 - Angsuran: ${formatCurrency(calculation.angsuranKredit)}
 
@@ -317,17 +333,69 @@ Mohon informasi lebih lanjut.`;
                         <option value={3}>3 Tahun</option>
                       </select>
                     </div>
-                    <div className="flex items-center justify-between gap-1">
-                      <label className="text-xs text-slate-600">DP Awal (%):</label>
-                      <select
-                        value={cashLunakDP}
-                        onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
-                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
-                      >
-                        <option value={30}>30%</option>
-                        <option value={40}>40%</option>
-                        <option value={50}>50%</option>
-                      </select>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-1">
+                        <label className="text-xs text-slate-600">DP Awal:</label>
+                        <div className="flex gap-1">
+                          <button
+                            type="button"
+                            onClick={() => setCashLunakDPMode('persen')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              cashLunakDPMode === 'persen'
+                                ? 'bg-blue-600 text-white border-blue-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            %
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setCashLunakDPMode('manual')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              cashLunakDPMode === 'manual'
+                                ? 'bg-blue-600 text-white border-blue-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            Rp
+                          </button>
+                        </div>
+                      </div>
+                      {cashLunakDPMode === 'persen' ? (
+                        <div className="flex items-center justify-between gap-1">
+                          <label className="text-xs text-slate-600">DP (%):</label>
+                          <select
+                            value={cashLunakDP}
+                            onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
+                            className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
+                          >
+                            <option value={30}>30%</option>
+                            <option value={40}>40%</option>
+                            <option value={50}>50%</option>
+                          </select>
+                        </div>
+                      ) : (
+                        <div className="space-y-1">
+                          <label className="text-xs text-slate-600">DP (Rupiah):</label>
+                          <input
+                            type="number"
+                            value={cashLunakDPManual || ''}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value) || 0;
+                              setCashLunakDPManual(value);
+                            }}
+                            placeholder="Min 30% dari harga"
+                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.3) : 0}
+                            max={calculation.hargaSetelahDiskon}
+                            className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          />
+                          {calculation.hargaSetelahDiskon > 0 && (
+                            <p className="text-xs text-slate-500 text-center">
+                              Min 30%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.3))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="mt-3 space-y-2">
@@ -366,16 +434,68 @@ Mohon informasi lebih lanjut.`;
                         <option value={7}>7 Tahun</option>
                       </select>
                     </div>
-                    <div className="flex items-center justify-between gap-1">
-                      <label className="text-xs text-slate-600">DP Awal (%):</label>
-                      <select
-                        value={kreditDP}
-                        onChange={(e) => setKreditDP(parseInt(e.target.value))}
-                        className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
-                      >
-                        <option value={30}>30%</option>
-                        <option value={50}>50%</option>
-                      </select>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-1">
+                        <label className="text-xs text-slate-600">DP Awal:</label>
+                        <div className="flex gap-1">
+                          <button
+                            type="button"
+                            onClick={() => setKreditDPMode('persen')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              kreditDPMode === 'persen'
+                                ? 'bg-rose-600 text-white border-rose-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            %
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setKreditDPMode('manual')}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              kreditDPMode === 'manual'
+                                ? 'bg-rose-600 text-white border-rose-600'
+                                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                            }`}
+                          >
+                            Rp
+                          </button>
+                        </div>
+                      </div>
+                      {kreditDPMode === 'persen' ? (
+                        <div className="flex items-center justify-between gap-1">
+                          <label className="text-xs text-slate-600">DP (%):</label>
+                          <select
+                            value={kreditDP}
+                            onChange={(e) => setKreditDP(parseInt(e.target.value))}
+                            className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
+                          >
+                            <option value={30}>30%</option>
+                            <option value={50}>50%</option>
+                          </select>
+                        </div>
+                      ) : (
+                        <div className="space-y-1">
+                          <label className="text-xs text-slate-600">DP (Rupiah):</label>
+                          <input
+                            type="number"
+                            value={kreditDPManual || ''}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value) || 0;
+                              setKreditDPManual(value);
+                            }}
+                            placeholder="Min 30% dari harga"
+                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.3) : 0}
+                            max={calculation.hargaSetelahDiskon}
+                            className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-rose-500"
+                          />
+                          {calculation.hargaSetelahDiskon > 0 && (
+                            <p className="text-xs text-slate-500 text-center">
+                              Min 30%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.3))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="mt-3 space-y-2">
