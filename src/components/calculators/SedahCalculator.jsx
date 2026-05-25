@@ -136,13 +136,13 @@ const SedahCalculator = () => {
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
     // Cash Lunak calculation (1-3 tahun, tanpa bunga)
-    const minDPCashLunak = hargaSetelahDiskon * 0.2; // minimal 20% dari harga rumah
+    // Note: 20% adalah panduan minimum, user bebas memasukkan nilai berapa pun.
     let dpCashLunakAmount;
     if (cashLunakDPMode === 'manual') {
-      // Use manual DP: minimal 20%, maksimal 100% dari harga setelah diskon
-      dpCashLunakAmount = Math.max(minDPCashLunak, Math.min(cashLunakDPManual, hargaSetelahDiskon));
+      // Manual mode: gunakan nilai input user apa adanya (clamp hanya pada 0 dan harga maksimal)
+      dpCashLunakAmount = Math.max(0, Math.min(cashLunakDPManual, hargaSetelahDiskon));
     } else {
-      // Use percentage DP
+      // Percentage mode
       dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
     }
     // Cash lunak: tanpa bunga, sisa harga dibagi rata ke total bulan
@@ -150,13 +150,13 @@ const SedahCalculator = () => {
     const angsuranCashLunakAmount = sisaCashLunak / (cashLunakTerm * 12);
 
     // Kredit calculation (> 3 tahun, bunga flat 8% per tahun)
-    const minDPKredit = hargaSetelahDiskon * 0.2; // minimal 20% dari harga rumah
+    // Note: 20% adalah panduan minimum, user bebas memasukkan nilai berapa pun.
     let dpKreditAmount;
     if (kreditDPMode === 'manual') {
-      // Use manual DP: minimal 20%, maksimal 100% dari harga setelah diskon
-      dpKreditAmount = Math.max(minDPKredit, Math.min(kreditDPManual, hargaSetelahDiskon));
+      // Manual mode: gunakan nilai input user apa adanya (clamp hanya pada 0 dan harga maksimal)
+      dpKreditAmount = Math.max(0, Math.min(kreditDPManual, hargaSetelahDiskon));
     } else {
-      // Use percentage DP
+      // Percentage mode
       dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
     }
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
@@ -449,15 +449,22 @@ Mohon informasi lebih lanjut.`;
                               const value = parseInt(e.target.value) || 0;
                               setCashLunakDPManual(value);
                             }}
-                            placeholder="Min 20% dari harga"
-                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.2) : 0}
+                            placeholder="Masukkan DP (Rp)"
+                            min={0}
                             max={calculation.hargaSetelahDiskon}
                             className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                           />
                           {calculation.hargaSetelahDiskon > 0 && (
-                            <p className="text-xs text-slate-500 text-center">
-                              Min 20%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.2))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
-                            </p>
+                            <>
+                              <p className="text-xs text-slate-500 text-center">
+                                Saran min 20%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.2))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                              </p>
+                              {cashLunakDPManual > 0 && cashLunakDPManual < Math.round(calculation.hargaSetelahDiskon * 0.2) && (
+                                <p className="text-[10px] text-amber-600 text-center font-semibold">
+                                  ⚠️ DP di bawah saran minimum 20%
+                                </p>
+                              )}
+                            </>
                           )}
                         </div>
                       )}
@@ -552,15 +559,22 @@ Mohon informasi lebih lanjut.`;
                               const value = parseInt(e.target.value) || 0;
                               setKreditDPManual(value);
                             }}
-                            placeholder="Min 20% dari harga"
-                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.2) : 0}
+                            placeholder="Masukkan DP (Rp)"
+                            min={0}
                             max={calculation.hargaSetelahDiskon}
                             className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-rose-500"
                           />
                           {calculation.hargaSetelahDiskon > 0 && (
-                            <p className="text-xs text-slate-500 text-center">
-                              Min 20%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.2))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
-                            </p>
+                            <>
+                              <p className="text-xs text-slate-500 text-center">
+                                Saran min 20%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.2))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                              </p>
+                              {kreditDPManual > 0 && kreditDPManual < Math.round(calculation.hargaSetelahDiskon * 0.2) && (
+                                <p className="text-[10px] text-amber-600 text-center font-semibold">
+                                  ⚠️ DP di bawah saran minimum 20%
+                                </p>
+                              )}
+                            </>
                           )}
                         </div>
                       )}
