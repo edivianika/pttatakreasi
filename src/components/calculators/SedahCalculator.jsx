@@ -11,7 +11,7 @@ const SedahCalculator = () => {
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
   const [cashLunakDPManual, setCashLunakDPManual] = useState(0); // DP manual in rupiah
-  const [kreditTerm, setKreditTerm] = useState(3); // 5 tahun default
+  const [kreditTerm, setKreditTerm] = useState(4); // 4 tahun default (kredit dimulai > 3 tahun)
   const [kreditDP, setKreditDP] = useState(30); // 30% default
   const [kreditDPMode, setKreditDPMode] = useState('persen'); // 'persen' or 'manual'
   const [kreditDPManual, setKreditDPManual] = useState(0); // DP manual in rupiah
@@ -135,29 +135,32 @@ const SedahCalculator = () => {
     
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
-    // Cash Lunak calculation
-    const minDPCashLunak = hargaSetelahDiskon * 0.3; // minimal 30% dari harga rumah
+    // Cash Lunak calculation (1-3 tahun, tanpa bunga)
+    const minDPCashLunak = hargaSetelahDiskon * 0.2; // minimal 20% dari harga rumah
     let dpCashLunakAmount;
     if (cashLunakDPMode === 'manual') {
-      // Use manual DP: minimal 30%, maksimal 100% dari harga setelah diskon
+      // Use manual DP: minimal 20%, maksimal 100% dari harga setelah diskon
       dpCashLunakAmount = Math.max(minDPCashLunak, Math.min(cashLunakDPManual, hargaSetelahDiskon));
     } else {
       // Use percentage DP
       dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
     }
-    const angsuranCashLunakAmount = (hargaSetelahDiskon - dpCashLunakAmount) / (cashLunakTerm * 12);
+    // Cash lunak: tanpa bunga, sisa harga dibagi rata ke total bulan
+    const sisaCashLunak = hargaSetelahDiskon - dpCashLunakAmount;
+    const angsuranCashLunakAmount = sisaCashLunak / (cashLunakTerm * 12);
 
-    // Kredit calculation (8% interest rate)
-    const minDPKredit = hargaSetelahDiskon * 0.3; // minimal 30% dari harga rumah
+    // Kredit calculation (> 3 tahun, bunga flat 8% per tahun)
+    const minDPKredit = hargaSetelahDiskon * 0.2; // minimal 20% dari harga rumah
     let dpKreditAmount;
     if (kreditDPMode === 'manual') {
-      // Use manual DP: minimal 30%, maksimal 100% dari harga setelah diskon
+      // Use manual DP: minimal 20%, maksimal 100% dari harga setelah diskon
       dpKreditAmount = Math.max(minDPKredit, Math.min(kreditDPManual, hargaSetelahDiskon));
     } else {
       // Use percentage DP
       dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
     }
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
+    // Flat interest: total bunga = pokok pinjaman × 8% × jumlah tahun
     const totalBunga = sisaPinjaman * 0.08 * kreditTerm;
     const hargaKredit = hargaSetelahDiskon + totalBunga;
     const angsuranKreditAmount = (sisaPinjaman + totalBunga) / (kreditTerm * 12);
@@ -379,7 +382,8 @@ Mohon informasi lebih lanjut.`;
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {/* Cash Lunak */}
                 <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-blue-600">
-                  <h3 className="text-sm font-bold text-blue-800 mb-2 text-center">Harga Cash Lunak</h3>
+                  <h3 className="text-sm font-bold text-blue-800 mb-1 text-center">Harga Cash Lunak</h3>
+                  <p className="text-[10px] text-slate-500 text-center mb-2">1 – 3 tahun, tanpa bunga</p>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-1">
                       <label className="text-xs text-slate-600">Jangka Waktu:</label>
@@ -429,6 +433,7 @@ Mohon informasi lebih lanjut.`;
                             onChange={(e) => setCashLunakDP(parseInt(e.target.value))}
                             className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                           >
+                            <option value={20}>20%</option>
                             <option value={30}>30%</option>
                             <option value={40}>40%</option>
                             <option value={50}>50%</option>
@@ -444,14 +449,14 @@ Mohon informasi lebih lanjut.`;
                               const value = parseInt(e.target.value) || 0;
                               setCashLunakDPManual(value);
                             }}
-                            placeholder="Min 30% dari harga"
-                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.3) : 0}
+                            placeholder="Min 20% dari harga"
+                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.2) : 0}
                             max={calculation.hargaSetelahDiskon}
                             className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                           />
                           {calculation.hargaSetelahDiskon > 0 && (
                             <p className="text-xs text-slate-500 text-center">
-                              Min 30%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.3))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                              Min 20%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.2))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
                             </p>
                           )}
                         </div>
@@ -479,7 +484,8 @@ Mohon informasi lebih lanjut.`;
 
                 {/* Kredit */}
                 <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-rose-600">
-                  <h3 className="text-sm font-bold text-rose-800 mb-2 text-center">Harga Kredit</h3>
+                  <h3 className="text-sm font-bold text-rose-800 mb-1 text-center">Harga Kredit</h3>
+                  <p className="text-[10px] text-slate-500 text-center mb-2">4 – 7 tahun, margin 8% / tahun (flat)</p>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-1">
                       <label className="text-xs text-slate-600">Jangka Waktu:</label>
@@ -488,9 +494,6 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={1}>1 Tahun</option>
-                        <option value={2}>2 Tahun</option>
-                        <option value={3}>3 Tahun</option>
                         <option value={4}>4 Tahun</option>
                         <option value={5}>5 Tahun</option>
                         <option value={6}>6 Tahun</option>
@@ -533,7 +536,9 @@ Mohon informasi lebih lanjut.`;
                             onChange={(e) => setKreditDP(parseInt(e.target.value))}
                             className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                           >
+                            <option value={20}>20%</option>
                             <option value={30}>30%</option>
+                            <option value={40}>40%</option>
                             <option value={50}>50%</option>
                           </select>
                         </div>
@@ -547,14 +552,14 @@ Mohon informasi lebih lanjut.`;
                               const value = parseInt(e.target.value) || 0;
                               setKreditDPManual(value);
                             }}
-                            placeholder="Min 30% dari harga"
-                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.3) : 0}
+                            placeholder="Min 20% dari harga"
+                            min={calculation.hargaSetelahDiskon > 0 ? Math.round(calculation.hargaSetelahDiskon * 0.2) : 0}
                             max={calculation.hargaSetelahDiskon}
                             className="w-full px-2 py-1 border rounded text-xs text-center font-medium bg-white focus:outline-none focus:ring-1 focus:ring-rose-500"
                           />
                           {calculation.hargaSetelahDiskon > 0 && (
                             <p className="text-xs text-slate-500 text-center">
-                              Min 30%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.3))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
+                              Min 20%: {formatCurrency(Math.round(calculation.hargaSetelahDiskon * 0.2))} — Maks: {formatCurrency(calculation.hargaSetelahDiskon)}
                             </p>
                           )}
                         </div>
