@@ -1,0 +1,850 @@
+<!DOCTYPE html><html class="light" lang="id"><head></head><body class="min-h-screen flex flex-col overflow-visible">
+
+
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Klinik Mazaya Ponorogo | Bidan Umi Pulung</title>
+<meta content="Klinik Mazaya Ponorogo mendampingi ibu dan keluarga dalam pemeriksaan kehamilan, persalinan, nifas, ASI, MPASI, dan konsultasi bersama Bidan Umi." name="description">
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#d6008d",
+            "on-primary": "#ffffff",
+            "primary-container": "#ffd9e2",
+            "on-primary-container": "#3e0021",
+            "secondary": "#74565f",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#ffd9e2",
+            "on-secondary-container": "#2b151c",
+            "tertiary": "#7c5635",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#ffddc2",
+            "on-tertiary-container": "#2d1600",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-error-container": "#410002",
+            "background": "#fff7fa",
+            "on-background": "#201a1b",
+            "surface": "#fff7fa",
+            "on-surface": "#201a1b",
+            "surface-variant": "#f2dde1",
+            "on-surface-variant": "#514347",
+            "outline": "#837377",
+            "outline-variant": "#d5c2c6",
+            "inverse-surface": "#352f30",
+            "inverse-on-surface": "#faeeee",
+            "inverse-primary": "#ffb1c8",
+            "surface-dim": "#e1d8dc",
+            "surface-bright": "#fff7fa",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#fbf1f5",
+            "surface-container": "#f5ebef",
+            "surface-container-high": "#f0e5e9",
+            "surface-container-highest": "#eae0e4"
+          },
+          "borderRadius": {
+            "DEFAULT": "8px",
+            "lg": "12px",
+            "xl": "16px",
+            "2xl": "24px",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-max": "1200px",
+            "base": "8px",
+            "section-padding-desktop": "100px",
+            "section-padding-mobile": "60px",
+            "gutter": "32px"
+          },
+          "fontFamily": {
+            "body": ["Plus Jakarta Sans", "sans-serif"],
+            "headline": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #fff7fa;
+      color: #201a1b;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      overflow-y: visible;
+    }
+    .main-container {
+      overflow-visible: visible;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .fill-1 {
+        font-variation-settings: 'FILL' 1;
+    }
+    .natural-shadow {
+      box-shadow: 0 10px 40px -10px rgba(214, 0, 141, 0.08);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 34px, 0) scale(0.985);
+      filter: blur(8px);
+      transition:
+        opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform, filter;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+    .delay-100 { --reveal-delay: 100ms; }
+    .delay-200 { --reveal-delay: 200ms; }
+    .delay-300 { --reveal-delay: 300ms; }
+    .delay-400 { --reveal-delay: 400ms; }
+    .soft-float {
+      animation: softFloat 7s ease-in-out infinite;
+    }
+    .service-mobile-slider {
+      scroll-behavior: smooth;
+      scroll-padding-inline: 24px;
+      overscroll-behavior-x: contain;
+      touch-action: pan-x;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+    }
+    .service-mobile-slider.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+      scroll-behavior: auto;
+    }
+    .service-card-mobile {
+      transform: translateZ(0);
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms ease;
+    }
+    .service-card-mobile:active {
+      transform: scale(0.985);
+    }
+    .swipe-hint {
+      background: linear-gradient(90deg, transparent, rgba(214, 0, 141, 0.14), transparent);
+      background-size: 220% 100%;
+      animation: shimmerHint 2.8s ease-in-out infinite;
+    }
+    @keyframes softFloat {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -8px, 0); }
+    }
+    @keyframes shimmerHint {
+      0% { background-position: 120% 0; opacity: 0.45; }
+      50% { opacity: 1; }
+      100% { background-position: -120% 0; opacity: 0.45; }
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .hero-parallax {
+      transition: transform 0.1s ease-out;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal,
+      .soft-float,
+      .swipe-hint {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+      .service-mobile-slider {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+<!-- 1. TopNavBar -->
+<header class="bg-surface/90 backdrop-blur-lg sticky top-0 z-50 border-b border-primary-container/30">
+<nav class="flex justify-between items-center w-full px-6 py-4 md:px-8 lg:px-section-padding-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<img alt="Griya Mazaya Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCWOKvmw8KEv-NrLWZht4zu0GIUdT_W_vhsyYLKVR_zPq6bHHh04-lcMnGKZYXAEnoBUx7tAmMpKFdVes4f7TT2g8pncnP4hd91Ae8m5ZSu1nYK27BiOdaZhSJWI_i6r8gBnbjPAjBvvpk2uDzLEJuhVhAbDjaGAF4d-_FUhJKWsSWxfIStOUNcQlVD6O0Qxk3CKiQdm2esNFBqv1m2yTRd7JbnCI5SzfPA7Hcc8zxHBEAMgt8Km_Zl_fNO0vAPPBasXPQ00-k4J-i">
+
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-sm" href="#layanan">Layanan</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-sm" href="#tentang">Tentang</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-sm" href="#artikel">Artikel</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-sm" href="#faq">FAQ</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-sm" href="#galeri">Galeri</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all hidden md:flex" href="https://wa.me/6282245746496">
+          Hubungi Bidan Umi
+        </a>
+<button class="md:hidden flex items-center justify-center p-1 text-on-surface" id="mobile-menu-btn">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Mobile Drawer -->
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300" id="mobile-menu-overlay"></div>
+<div class="fixed top-0 right-0 h-full w-[280px] bg-surface z-[70] shadow-2xl translate-x-full transition-transform duration-300 flex flex-col" id="mobile-menu-drawer">
+<div class="px-6 py-5 flex justify-between items-center border-b border-primary-container">
+<img alt="Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCWOKvmw8KEv-NrLWZht4zu0GIUdT_W_vhsyYLKVR_zPq6bHHh04-lcMnGKZYXAEnoBUx7tAmMpKFdVes4f7TT2g8pncnP4hd91Ae8m5ZSu1nYK27BiOdaZhSJWI_i6r8gBnbjPAjBvvpk2uDzLEJuhVhAbDjaGAF4d-_FUhJKWsSWxfIStOUNcQlVD6O0Qxk3CKiQdm2esNFBqv1m2yTRd7JbnCI5SzfPA7Hcc8zxHBEAMgt8Km_Zl_fNO0vAPPBasXPQ00-k4J-i">
+<button class="p-1 text-on-surface-variant" id="mobile-menu-close">
+<span class="material-symbols-outlined text-[28px]">close</span>
+</button>
+</div>
+<div class="flex-1 py-8 px-6 flex flex-col gap-6">
+<a class="text-on-surface-variant hover:text-primary font-bold text-lg" href="#layanan">Layanan</a>
+<a class="text-on-surface-variant hover:text-primary text-lg" href="#tentang">Tentang</a>
+<a class="text-on-surface-variant hover:text-primary text-lg" href="#artikel">Artikel</a>
+<a class="text-on-surface-variant hover:text-primary text-lg" href="#faq">FAQ</a>
+<a class="text-on-surface-variant hover:text-primary text-lg" href="#galeri">Galeri</a>
+</div>
+</div>
+<main class="flex-grow overflow-visible">
+<!-- 2. Hero Section -->
+<section class="relative pt-12 md:pt-24 pb-section-padding-mobile md:pb-section-padding-desktop overflow-hidden">
+<div class="max-w-container-max mx-auto px-6 md:px-8 lg:px-section-padding-desktop grid lg:grid-cols-2 gap-12 items-center">
+<div class="z-10 reveal">
+<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full mb-6">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-xs font-bold uppercase tracking-widest">Pulung, Ponorogo</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-bold text-on-surface mb-6 leading-[1.1] tracking-tight">
+            Pendampingan Ibu &amp; Keluarga di Ponorogo
+          </h1>
+<p class="text-lg text-on-surface-variant mb-10 max-w-lg leading-relaxed">
+            Bersama Bidan Umi, kami menghadirkan layanan kesehatan yang aman, komunikatif, dan penuh kehangatan untuk setiap fase perjalanan kehamilan Anda.
+          </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2" href="https://wa.me/6282245746496">
+<span class="material-symbols-outlined">chat</span>Konsultasi WhatsApp
+            </a>
+<a class="border border-outline text-on-surface px-8 py-4 rounded-xl font-bold hover:bg-white transition-all flex items-center justify-center" href="#layanan">Lihat Layanan</a>
+</div>
+</div>
+<div class="relative reveal delay-200">
+<div class="absolute -z-10 -top-20 -right-20 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl"></div>
+<div class="rounded-3xl overflow-hidden natural-shadow aspect-[4/3] lg:aspect-square relative hero-parallax" id="hero-img-container">
+<img alt="Konsultasi Bidan Umi" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhRJKzrHfF7GDpknHwIw2XgSUBv_SspRKi07UIsogZDQJ6DpkhxOmB1XvFWKeYliWRmXsmAdH5yJFHJLpdIzDukd9y22xn8fW06na41H1C4PDYI4qEFK22Kb-tgs6jj5iitDkAhMN5EXGAFLNo9kD17iRUUGPGD2uo6rSzIeG5vPuJ9dWGZGFTa7yc4dS4uRiXwERIhT4-BnpHMO0Q9yNkmtaIyYgAq3an0CvDQrCPGHZgdMItVSFhD15Y">
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Strip -->
+<div class="bg-surface-container-low py-12 border-y border-primary-container/20">
+<div class="max-w-container-max mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center reveal">
+<span class="material-symbols-outlined text-primary mb-3 text-[32px]">medical_services</span>
+<span class="font-bold text-sm">Dipimpin Bidan Umi</span>
+</div>
+<div class="flex flex-col items-center text-center reveal delay-100">
+<span class="material-symbols-outlined text-primary mb-3 text-[32px]">home_pin</span>
+<span class="font-bold text-sm">Pulung Ponorogo</span>
+</div>
+<div class="flex flex-col items-center text-center reveal delay-200">
+<span class="material-symbols-outlined text-primary mb-3 text-[32px]">calendar_month</span>
+<span class="font-bold text-sm">Booking Mudah</span>
+</div>
+<div class="flex flex-col items-center text-center reveal delay-300">
+<span class="material-symbols-outlined text-primary mb-3 text-[32px]">school</span>
+<span class="font-bold text-sm">Edukasi Keluarga</span>
+</div>
+</div>
+</div>
+<!-- 3. Layanan Utama -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface overflow-hidden" id="layanan">
+<div class="max-w-container-max mx-auto px-6 text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold text-on-surface mb-4">Layanan Utama</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Kami mendampingi setiap langkah Anda dengan pelayanan yang holistik dan personal.</p>
+</div>
+<div class="max-w-container-max mx-auto px-6">
+<!-- Desktop Bento Grid -->
+<div class="hidden md:grid grid-cols-12 gap-6">
+<div class="col-span-8 bg-white p-8 rounded-2xl natural-shadow border border-primary-container/20 flex gap-8 items-center hover:-translate-y-1 transition-all reveal">
+<div class="flex-1">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">pregnant_woman</span>
+</div>
+<h3 class="text-2xl font-bold mb-3 text-on-surface">Pemeriksaan Kehamilan</h3>
+<p class="text-on-surface-variant mb-6 text-sm leading-relaxed">Pemantauan rutin untuk memastikan kesehatan ibu dan pertumbuhan optimal janin dengan sentuhan penuh kasih sayang.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all" href="#">Pelajari Selengkapnya <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="w-1/3 aspect-square rounded-xl overflow-hidden bg-primary-container/20">
+<img alt="Pemeriksaan Kehamilan" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhnQMd-icDKM2eR32tpDnQ0cfGfvdss5JHYb-IoTBDmB_C8ZbXBPwMKkCMmjbJS1Sp6SOAyI7UVD2kdr2ZRP2oFxWzpmRuoNTWWHERvactIU8tUJM5-ilM_twPSUgf-2Lxhich3VDL3fcDzsquRa8v_sS_RJOt-IEjnBwWocq1aM0EK8sC_Oxn3bA93m207VXXbDCobPZqVoPVzDhu5Z3gCA9bcq4BJDIGzCknWIpyxYTysR12kcLugXw">
+</div>
+</div>
+<div class="col-span-4 bg-white p-8 rounded-2xl natural-shadow border border-primary-container/20 hover:-translate-y-1 transition-all reveal delay-100">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">child_care</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-on-surface">Pendampingan Persalinan</h3>
+<p class="text-on-surface-variant mb-6 text-sm leading-relaxed">Proses persalinan yang nyaman dan aman dengan dukungan penuh kasih sayang dari tenaga ahli.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1" href="#">Pelajari <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+<div class="mt-4 rounded-xl overflow-hidden h-32">
+<img alt="Pendampingan Persalinan" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujX3IJ7muQS8TIpfS4eAWFVOYKCzq1xRYdQAkQ9cvfmOgfcGI0uZOZT56hGNIH34UUpCMFwICgJoDIwcGmIHx_xoLFXDaP0brr2M01-YCRAVOJPfB0oiY2TydDYofw1CaCaz4ChgkfK9ZbcZsnVq8Qie-iNsmr5oIulvxoumoOnJ1aQvWmqJqlr6XtNaLlmJ-zzHZ9cL6PD4FtnxS_610Pp76LjK-2BEr4gjDvv_qyxl1A7jFdbCmG944bP">
+</div>
+</div>
+<div class="col-span-4 bg-white p-8 rounded-2xl natural-shadow border border-primary-container/20 hover:-translate-y-1 transition-all reveal delay-200">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">baby_changing_station</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-on-surface">Nifas &amp; Bayi Baru Lahir</h3>
+<p class="text-on-surface-variant mb-6 text-sm leading-relaxed">Perawatan pasca melahirkan untuk pemulihan ibu dan pemantauan kesehatan awal buah hati Anda.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1" href="#">Pelajari <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+<div class="mt-4 rounded-xl overflow-hidden h-32">
+<img alt="Nifas &amp; Bayi Baru Lahir" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uj91Lk9fr5EM37fmmzMZg_nf7vSDllnGvfyycrTOLYrfUMTqbIBLmm_WKfMOdTNZ1aT2nkiJmmFs2Q_BXwcfXv-mrDy9qF1dJB9sFM_p-pztmzQf3zC2B5Q0IQa98pQfhR1sc7v-SypWmnLWYs9-LwFL4H3qyZ_bj7DNltNvyn7nEPMfYKna5-tAcHnp6XT3mOkKCsCXDCkF7GgATUDNjjI2XF0Gmw9CZ2TA-yaHgCbbIG2BBXlP27o00k">
+</div>
+</div>
+<div class="col-span-8 bg-white p-8 rounded-2xl natural-shadow border border-primary-container/20 flex gap-8 items-center hover:-translate-y-1 transition-all reveal delay-300">
+<div class="w-1/3 aspect-[4/3] rounded-xl overflow-hidden bg-primary-container/20">
+<img alt="Konseling ASI &amp; MPASI" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uic3gqmH3yP5ZaDwKwxYExa-7GI3hd-Iu3wVQozfG-oqdFM1AmxH6pNSrjeL0dBossFijPNZ2yT_rg2jMmU-m5AoO9pRl4kaFyC01MUjX5zdvaOvCouX6hoHSsYgWZywsyLv1-CVt3Rt_cky4XldAeg2G-hx8rBoVPgQ8htk2btHKWVBIQBVYkp5VN9uL_2F14CMXqb2ItROk2VvzVNV5YoGv-oIxYAzlPOdXJBP-6RT4j8dcfZhRt_O3zh">
+</div>
+<div class="flex-1 text-right">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6 ml-auto">
+<span class="material-symbols-outlined text-primary">volunteer_activism</span>
+</div>
+<h3 class="text-2xl font-bold mb-3 text-on-surface">Konseling ASI &amp; MPASI</h3>
+<p class="text-on-surface-variant mb-6 text-sm leading-relaxed">Edukasi pemberian nutrisi terbaik untuk tumbuh kembang anak yang optimal sejak hari pertama.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 justify-end hover:gap-2 transition-all" href="#">Selengkapnya <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Mobile Slider -->
+<div class="md:hidden relative">
+<div class="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-surface to-transparent"></div>
+<div class="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-surface to-transparent"></div>
+<div class="service-mobile-slider flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory hide-scrollbar" id="service-mobile-slider" aria-label="Geser layanan utama">
+<div class="service-card-mobile snap-center shrink-0 w-[85vw] bg-white p-6 rounded-2xl natural-shadow border border-primary-container/20">
+<img alt="Pemeriksaan Kehamilan" class="w-full h-40 object-cover rounded-xl mb-4" src="https://lh3.googleusercontent.com/aida/ADBb0uhnQMd-icDKM2eR32tpDnQ0cfGfvdss5JHYb-IoTBDmB_C8ZbXBPwMKkCMmjbJS1Sp6SOAyI7UVD2kdr2ZRP2oFxWzpmRuoNTWWHERvactIU8tUJM5-ilM_twPSUgf-2Lxhich3VDL3fcDzsquRa8v_sS_RJOt-IEjnBwWocq1aM0EK8sC_Oxn3bA93m207VXXbDCobPZqVoPVzDhu5Z3gCA9bcq4BJDIGzCknWIpyxYTysR12kcLugXw">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">pregnant_woman</span>
+</div>
+<h3 class="font-bold mb-2 text-on-surface">Pemeriksaan Kehamilan</h3>
+<p class="text-on-surface-variant text-sm mb-4">Pemantauan rutin untuk kesehatan ibu dan janin.</p>
+<a class="text-primary font-bold text-sm" href="#">Lihat Detail</a>
+</div>
+<div class="service-card-mobile snap-center shrink-0 w-[85vw] bg-white p-6 rounded-2xl natural-shadow border border-primary-container/20">
+<img alt="Pendampingan Persalinan" class="w-full h-40 object-cover rounded-xl mb-4" src="https://lh3.googleusercontent.com/aida/ADBb0ujX3IJ7muQS8TIpfS4eAWFVOYKCzq1xRYdQAkQ9cvfmOgfcGI0uZOZT56hGNIH34UUpCMFwICgJoDIwcGmIHx_xoLFXDaP0brr2M01-YCRAVOJPfB0oiY2TydDYofw1CaCaz4ChgkfK9ZbcZsnVq8Qie-iNsmr5oIulvxoumoOnJ1aQvWmqJqlr6XtNaLlmJ-zzHZ9cL6PD4FtnxS_610Pp76LjK-2BEr4gjDvv_qyxl1A7jFdbCmG944bP">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">child_care</span>
+</div>
+<h3 class="font-bold mb-2 text-on-surface">Pendampingan Persalinan</h3>
+<p class="text-on-surface-variant text-sm mb-4">Proses persalinan nyaman dengan dukungan penuh.</p>
+<a class="text-primary font-bold text-sm" href="#">Lihat Detail</a>
+</div>
+<div class="service-card-mobile snap-center shrink-0 w-[85vw] bg-white p-6 rounded-2xl natural-shadow border border-primary-container/20">
+<img alt="Nifas &amp; Bayi Baru Lahir" class="w-full h-40 object-cover rounded-xl mb-4" src="https://lh3.googleusercontent.com/aida/ADBb0uj91Lk9fr5EM37fmmzMZg_nf7vSDllnGvfyycrTOLYrfUMTqbIBLmm_WKfMOdTNZ1aT2nkiJmmFs2Q_BXwcfXv-mrDy9qF1dJB9sFM_p-pztmzQf3zC2B5Q0IQa98pQfhR1sc7v-SypWmnLWYs9-LwFL4H3qyZ_bj7DNltNvyn7nEPMfYKna5-tAcHnp6XT3mOkKCsCXDCkF7GgATUDNjjI2XF0Gmw9CZ2TA-yaHgCbbIG2BBXlP27o00k">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">baby_changing_station</span>
+</div>
+<h3 class="font-bold mb-2 text-on-surface">Nifas &amp; Bayi Baru Lahir</h3>
+<p class="text-on-surface-variant text-sm mb-4">Perawatan pasca melahirkan bagi ibu dan bayi.</p>
+<a class="text-primary font-bold text-sm" href="#">Lihat Detail</a>
+</div>
+<div class="service-card-mobile snap-center shrink-0 w-[85vw] bg-white p-6 rounded-2xl natural-shadow border border-primary-container/20">
+<img alt="Konseling ASI &amp; MPASI" class="w-full h-40 object-cover rounded-xl mb-4" src="https://lh3.googleusercontent.com/aida/ADBb0uic3gqmH3yP5ZaDwKwxYExa-7GI3hd-Iu3wVQozfG-oqdFM1AmxH6pNSrjeL0dBossFijPNZ2yT_rg2jMmU-m5AoO9pRl4kaFyC01MUjX5zdvaOvCouX6hoHSsYgWZywsyLv1-CVt3Rt_cky4XldAeg2G-hx8rBoVPgQ8htk2btHKWVBIQBVYkp5VN9uL_2F14CMXqb2ItROk2VvzVNV5YoGv-oIxYAzlPOdXJBP-6RT4j8dcfZhRt_O3zh">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">volunteer_activism</span>
+</div>
+<h3 class="font-bold mb-2 text-on-surface">Konseling ASI &amp; MPASI</h3>
+<p class="text-on-surface-variant text-sm mb-4">Edukasi nutrisi terbaik sejak hari pertama.</p>
+<a class="text-primary font-bold text-sm" href="#">Lihat Detail</a>
+</div>
+</div>
+<div class="swipe-hint mx-auto mt-1 h-1.5 w-28 rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- 4. Nilai Kami -->
+<section class="py-section-padding-desktop bg-surface-container-lowest overflow-hidden">
+<div class="max-w-container-max mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+<div class="relative reveal">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<div class="rounded-2xl overflow-hidden aspect-[3/4] natural-shadow">
+<img alt="Care" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhnQMd-icDKM2eR32tpDnQ0cfGfvdss5JHYb-IoTBDmB_C8ZbXBPwMKkCMmjbJS1Sp6SOAyI7UVD2kdr2ZRP2oFxWzpmRuoNTWWHERvactIU8tUJM5-ilM_twPSUgf-2Lxhich3VDL3fcDzsquRa8v_sS_RJOt-IEjnBwWocq1aM0EK8sC_Oxn3bA93m207VXXbDCobPZqVoPVzDhu5Z3gCA9bcq4BJDIGzCknWIpyxYTysR12kcLugXw">
+</div>
+</div>
+<div class="space-y-4">
+<div class="rounded-2xl overflow-hidden aspect-[3/4] natural-shadow">
+<img alt="Class Group" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhRJKzrHfF7GDpknHwIw2XgSUBv_SspRKi07UIsogZDQJ6DpkhxOmB1XvFWKeYliWRmXsmAdH5yJFHJLpdIzDukd9y22xn8fW06na41H1C4PDYI4qEFK22Kb-tgs6jj5iitDkAhMN5EXGAFLNo9kD17iRUUGPGD2uo6rSzIeG5vPuJ9dWGZGFTa7yc4dS4uRiXwERIhT4-BnpHMO0Q9yNkmtaIyYgAq3an0CvDQrCPGHZgdMItVSFhD15Y">
+</div>
+</div>
+</div>
+<div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-container rounded-3xl -z-10"></div>
+</div>
+<div class="reveal delay-200">
+<span class="text-primary font-bold uppercase tracking-widest text-xs mb-4 block">Nilai Kami</span>
+<h2 class="text-4xl font-bold mb-8 leading-tight text-on-surface">Lebih dari Sekadar Pemeriksaan Medis</h2>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]">done</span>
+</div>
+<div>
+<h4 class="font-bold mb-1 text-on-surface">Hati ke Hati bersama Bidan Umi</h4>
+<p class="text-on-surface-variant text-sm">Konsultasi yang mendalam dan ramah, membuat Anda merasa didengarkan dan didukung sepenuhnya.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]">done</span>
+</div>
+<div>
+<h4 class="font-bold mb-1 text-on-surface">Akses Mudah WhatsApp</h4>
+<p class="text-on-surface-variant text-sm">Tidak perlu antre lama. Konsultasi awal dan penjadwalan bisa dilakukan dengan satu pesan saja.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]">done</span>
+</div>
+<div>
+<h4 class="font-bold mb-1 text-on-surface">Pendekatan Ramah Keluarga</h4>
+<p class="text-on-surface-variant text-sm">Kami percaya dukungan suami dan keluarga adalah kunci kehamilan yang bahagia.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Mengenal Bidan Umi -->
+<section class="py-24 bg-surface-container-low" id="tentang">
+<div class="max-w-container-max mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+<div class="reveal">
+<div class="relative max-w-md mx-auto lg:mx-0">
+<div class="aspect-[4/5] rounded-[40px] overflow-hidden natural-shadow border-4 border-white">
+<img alt="Bidan Umi" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhbI0pG1H4Z9LVW3Pgz-Ia8G5ICURZjc6c29G0au7pUVqteTfyOPaniZqZdmaUL3GOAACGCk7_FgnU70aAZChnqakBJtRxUGnjAzzFAm9neW9XaUjO6gcWCLE3ecg7XLdxd2SXQ2eE_Fuu3R_0PDBqZ3adKI3LMkzHtKpKTyUiwgPY3K0xYNURwD5K0HgRtegv7qtzM0hKIDQqBxlWhIjaoXfCF8mOh5SyST-cV3MDTANiyqPdvR8kiFkun">
+</div>
+<div class="absolute -bottom-6 -right-6 bg-white/95 backdrop-blur p-6 rounded-2xl shadow-xl border border-primary-container/20 max-w-[240px]">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<span class="font-bold text-sm text-on-surface">Bidan Profesional</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Pelayanan profesional dengan hati yang tulus untuk keluarga Ponorogo.</p>
+</div>
+</div>
+</div>
+<div class="reveal delay-200">
+<div class="flex items-center gap-4 mb-6">
+<span class="text-primary font-bold tracking-widest uppercase text-xs">Profil Bidan</span>
+<div class="h-px flex-1 bg-primary/20"></div>
+</div>
+<h2 class="text-4xl font-bold mb-8 text-on-surface">Mengenal Bidan Umi</h2>
+<div class="relative mb-10 pl-8">
+<span class="material-symbols-outlined text-primary/20 text-[64px] absolute -top-4 -left-2">format_quote</span>
+<p class="text-xl italic text-on-surface-variant leading-relaxed">
+              "Setiap ibu berhak mendapatkan pengalaman kehamilan yang tenang dan berdaya. Di Klinik Mazaya, saya berkomitmen untuk menjadi sahabat sekaligus tenaga medis Anda."
+            </p>
+</div>
+<p class="text-on-surface-variant mb-12">
+            Bidan Umi telah melayani ratusan keluarga di Pulung, Ponorogo selama lebih dari satu dekade. Menggabungkan standar medis modern dengan pendekatan yang menyentuh sisi emosional setiap ibu.
+          </p>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-white p-6 rounded-2xl border border-primary-container/20">
+<span class="block text-3xl font-bold text-primary mb-1">10+</span>
+<span class="text-sm font-bold text-on-surface-variant">Tahun Pengalaman</span>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-primary-container/20">
+<span class="block text-3xl font-bold text-primary mb-1">500+</span>
+<span class="text-sm font-bold text-on-surface-variant">Keluarga Terlayani</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Alur Mudah Konsultasi -->
+<section class="py-section-padding-desktop bg-surface">
+<div class="max-w-container-max mx-auto px-6 text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-on-surface">Alur Mudah Konsultasi</h2>
+<p class="text-on-surface-variant">Langkah sederhana untuk memulai perjalanan kesehatan Anda bersama kami.</p>
+</div>
+<div class="max-w-container-max mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+<div class="reveal delay-100">
+<div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
+<span class="material-symbols-outlined text-[36px]">chat</span>
+<div class="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+</div>
+<h4 class="text-xl font-bold mb-3 text-on-surface">Chat WhatsApp</h4>
+<p class="text-sm text-on-surface-variant">Hubungi admin untuk konsultasi awal atau sekadar bertanya seputar layanan kami.</p>
+</div>
+<div class="reveal delay-200">
+<div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
+<span class="material-symbols-outlined text-[36px]">event_available</span>
+<div class="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+</div>
+<h4 class="text-xl font-bold mb-3 text-on-surface">Pilih Jadwal</h4>
+<p class="text-sm text-on-surface-variant">Tentukan waktu yang paling nyaman bagi Anda untuk datang berkunjung ke klinik.</p>
+</div>
+<div class="reveal delay-300">
+<div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
+<span class="material-symbols-outlined text-[36px]">medical_information</span>
+<div class="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+</div>
+<h4 class="text-xl font-bold mb-3 text-on-surface">Kunjungan Klinik</h4>
+<p class="text-sm text-on-surface-variant">Datanglah ke Klinik Mazaya di Pulung untuk mendapatkan pemeriksaan medis langsung.</p>
+</div>
+</div>
+</section>
+<!-- 7. Edukasi Ibu & Anak -->
+<section class="py-section-padding-desktop bg-surface-container-lowest" id="artikel">
+<div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal">
+<div class="text-left">
+<h2 class="text-3xl font-bold mb-2 text-on-surface">Edukasi Ibu &amp; Anak</h2>
+<p class="text-on-surface-variant">Wawasan praktis untuk kesehatan keluarga Anda sehari-hari.</p>
+</div>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:opacity-80 transition-all" href="#">Lihat Semua Artikel</a>
+</div>
+<div class="max-w-container-max mx-auto px-6 grid md:grid-cols-3 gap-8">
+<!-- Article Card 1 -->
+<div class="group reveal delay-100 cursor-pointer">
+<div class="aspect-video rounded-2xl overflow-hidden mb-6 natural-shadow">
+<img alt="Prep" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm4YIgYDHKkw_kDl0yuAgvuejbu4XkF5iucMKIQ-ZdxXag9qiPryQuQ9prVGfNimXAIzzaSOpsQnE2YIZ1pEPXgNd8VpQVItk7CaZMwnxEI0I0vo_H8UfsWbAEl0Piy5Cv36L1ew-VxZaurTI6rcKn7XopQRWduGvu3qw_rxkfTADOeADpFIDtz63s_TkAazDZfRcCAgRX0XUg7QzPhcVKFMl8fviuW1Zg86tUrS2OqDh9iihgcYNf3I7pZ4BxcpA5D9bGI8Ieccw8">
+</div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">Kehamilan</span>
+<h4 class="text-lg font-bold group-hover:text-primary transition-colors leading-snug text-on-surface">7 Hal Penting yang Wajib Disiapkan Sebelum Persalinan</h4>
+</div>
+<!-- Article Card 2 -->
+<div class="group reveal delay-200 cursor-pointer">
+<div class="aspect-video rounded-2xl overflow-hidden mb-6 natural-shadow">
+<img alt="Breastfeeding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVro4YHvnfEsAL9wZJuddP2n1LHCcu5rHTZhPzU4V2q-hrNv1NCTS01mr5xsC-puEFPiTlwXyQbxr9yG0bRMF1rQkI88e0vqfEIpe5S6HmHuFvCbR6ON3tQzyCAEPS0Rz4g1ejS_7W3RxMh8YBz80M1csqUG4zhxlRza_zPl-4p-n47ujkKk8Lm1M1y5s4wOQmOCAcItd1_frizkeuYITnzvBjFCYDgh29ympmUHXvWQIdX-0wLG7-FthyxcQCKfMvlVSjNKJzJkdA">
+</div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">Laktasi</span>
+<h4 class="text-lg font-bold group-hover:text-primary transition-colors leading-snug text-on-surface">Tips Sukses MengASIhi bagi Ibu Bekerja di Era Modern</h4>
+</div>
+<!-- Article Card 3 -->
+<div class="group reveal delay-300 cursor-pointer">
+<div class="aspect-video rounded-2xl overflow-hidden mb-6 natural-shadow">
+<img alt="Nutrition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA00VmR1tmRiAFk-wgpW8r4sc9rqrMfugNPF0zmaL5lfgm9kpenCBkJgdeQYJbjAR3acXcGSHQafQ5KiMqYIDtbC_PvLUVgk5oP7J3g56IujmYiSjrk2kt3ohBJW5iwbr0UDSeWLT1NMjJvD9ITYm4u9uOeQXJCQ8aDBzGNLTIJWKVYPHCSwNFN6m_t58dzRsWGyQ5LCDEse4A4cRGareAEDXhIBg_G-FsrNdYPypSHFRIzbarmxGJnKZPsU-AmJoxrW56FnT0Dw7Vr">
+</div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">Nutrisi</span>
+<h4 class="text-lg font-bold group-hover:text-primary transition-colors leading-snug text-on-surface">Daftar Makanan Super untuk Trimester Pertama yang Wajib Ada</h4>
+</div>
+</div>
+</section>
+<!-- 8. Galeri Aktivitas -->
+<section class="py-section-padding-desktop bg-surface" id="galeri">
+<div class="max-w-container-max mx-auto px-6 text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-on-surface">Galeri Aktivitas Mazaya</h2>
+<p class="text-on-surface-variant">Momen kehangatan dan kebersamaan dalam perjalanan kesehatan ibu dan anak.</p>
+</div>
+<div class="max-w-container-max mx-auto px-6">
+<div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+<button class="px-6 py-2 rounded-full bg-primary text-white font-bold text-sm">Semua</button>
+<button class="px-6 py-2 rounded-full bg-white border border-outline-variant text-on-surface-variant font-bold text-sm hover:border-primary transition-all">Kelas Kehamilan</button>
+<button class="px-6 py-2 rounded-full bg-white border border-outline-variant text-on-surface-variant font-bold text-sm hover:border-primary transition-all">Konsultasi</button>
+<button class="px-6 py-2 rounded-full bg-white border border-outline-variant text-on-surface-variant font-bold text-sm hover:border-primary transition-all">Layanan Homecare</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square rounded-2xl overflow-hidden reveal delay-100">
+<img alt="Activity" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0ujAWnOc0Cp_bmv1kum5-KyeABFvwJz8ad_Kd_ZteJaF__xcNMwSxPWbUAbvqK6YvVDAUJmEMFxZiPbdY7Ak5CJy2hrQ8Eopgzcga8B96opjz0eHCiRLqCptqoyDCVPQv6FB-PueoLhNLf_TiNdDzCrogT9CXgAOQZM0SFUd0R33nwCb9D8VbXuDeq-MGCSQrCRH30cbKlZKoFGPw-7FogHVI1WbQXf8VXUq6o4o5PnhZOW4l4w6d1QoSkHY">
+</div>
+<div class="aspect-square rounded-2xl overflow-hidden reveal delay-200">
+<img alt="Consult" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0uifx6_UPJv7INaouMhIL70gf8odPq3YgYFrrO8YLRAmXZLItwH3kJWIs4TWG-59CGctoC7oux1SaQWMU8GMJnF5KFr__CkyVERFNkU-RkfBhU19Pj_Tpu6vgz9CUnGkJJmNeNWKubV1ME-Ma44VAyQH_TuKEv9u4epRG0jPbdKgvXiBT1a_gYDFqDq4qodIxi15ZJoP27FadYRL4KqC4cQU9lC5KFixPP-vGqs9RRcapgo9FzSlFJ1rZrzd">
+</div>
+<div class="aspect-square rounded-2xl overflow-hidden reveal delay-300">
+<img alt="Baby Hand" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0uhEkcW7x8kaZXYOSig2YiV45fM6202zqkEKwKURM8Icn23zSAj2aqMuYAXfChl_av2m1spRJwiiiju2utbVzPeEMmdhd1OcoSvomXg3IocS2hjxXnBw8yvtsF3cL-HLDgNGP2yNz7lq7_wVsPhiQPpFBfQ93gXyykKwK6AKqVuu7mfHgMKbeOoeVdd-wF3FabThiEYDS39u03O2n7B6Ejy_2XJP6YqgV4ZITfo8NUmM0wYIK0-bwQYZ7jzq">
+</div>
+<div class="aspect-square rounded-2xl bg-primary-container/20 flex flex-col items-center justify-center p-6 text-center reveal delay-400 group cursor-pointer">
+<span class="material-symbols-outlined text-[40px] text-primary mb-2 group-hover:scale-110 transition-transform">photo_library</span>
+<p class="font-bold text-sm mb-1 text-on-surface">Lihat Galeri Lain</p>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Follow Instagram</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. Keluarga Mazaya (Testimonials) -->
+<section class="py-section-padding-desktop bg-surface-container-low overflow-visible" id="keluarga">
+<div class="max-w-container-max mx-auto px-6 text-center mb-16 reveal">
+<h2 class="text-3xl font-bold mb-4 text-on-surface">Keluarga Mazaya</h2>
+<p class="text-on-surface-variant">Kisah tulus dari mereka yang telah mempercayakan perjalanannya bersama kami.</p>
+</div>
+<div class="max-w-container-max mx-auto px-6">
+<div class="flex overflow-x-auto gap-6 pb-12 hide-scrollbar snap-x snap-mandatory">
+<!-- Testimonial 1 -->
+<div class="snap-start shrink-0 w-[320px] md:w-[400px] bg-white p-8 rounded-3xl natural-shadow reveal border border-primary-container/10">
+<div class="flex gap-1 text-tertiary mb-6">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-on-surface-variant italic mb-8 leading-relaxed">"Bidan Umi sangat sabar menjawab semua pertanyaan saya. Sebagai ibu baru, saya merasa jauh lebih tenang setelah berkonsultasi di sini. Kliniknya sangat homey."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-bold">SN</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Siti Nurhaliza</p>
+<p class="text-xs text-on-surface-variant">Ibu Rumah Tangga</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="snap-start shrink-0 w-[320px] md:w-[400px] bg-white p-8 rounded-3xl natural-shadow reveal delay-100 border border-primary-container/10">
+<div class="flex gap-1 text-tertiary mb-6">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-on-surface-variant italic mb-8 leading-relaxed">"Sangat terbantu dengan layanan WhatsApp-nya yang responsif. Penjelasan Bidan Umi sangat menenangkan dan mudah dimengerti untuk kami pasangan baru."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-bold">AP</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Andi Pratama</p>
+<p class="text-xs text-on-surface-variant">Wirausaha</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="snap-start shrink-0 w-[320px] md:w-[400px] bg-white p-8 rounded-3xl natural-shadow reveal delay-200 border border-primary-container/10">
+<div class="flex gap-1 text-tertiary mb-6">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-on-surface-variant italic mb-8 leading-relaxed">"Kelas hamil di sini seru banget! Bisa ketemu ibu-ibu lain dan belajar bareng dengan suasana yang santai tapi tetap edukatif."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-bold">RD</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Rina Dwi</p>
+<p class="text-xs text-on-surface-variant">Pegawai Swasta</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-section-padding-desktop bg-surface" id="faq">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="text-3xl font-bold text-center mb-12 reveal text-on-surface">Pertanyaan Sering Diajukan</h2>
+<div class="space-y-4">
+<details class="group reveal border border-primary-container/30 rounded-2xl p-6 hover:bg-surface-container-low transition-colors cursor-pointer">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<h4 class="font-bold text-sm text-on-surface">Apakah bisa periksa menggunakan BPJS?</h4>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 text-sm text-on-surface-variant leading-relaxed">
+    Saat ini Klinik Mazaya fokus pada layanan mandiri untuk memastikan kualitas waktu konsultasi yang optimal dan personal bagi setiap pasien. Namun, kami dapat memberikan rujukan jika diperlukan secara medis ke faskes tingkat lanjut.
+  </div>
+</details>
+<details class="group reveal border border-primary-container/30 rounded-2xl p-6 hover:bg-surface-container-low transition-colors cursor-pointer">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<h4 class="font-bold text-sm text-on-surface">Bagaimana cara booking jadwal periksa?</h4>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 text-sm text-on-surface-variant leading-relaxed">
+    Anda dapat melakukan booking dengan mudah melalui tombol WhatsApp yang tersedia di website ini. Admin kami akan segera membantu mengatur jadwal Anda agar tidak perlu menunggu lama di klinik.
+  </div>
+</details>
+<details class="group reveal border border-primary-container/30 rounded-2xl p-6 hover:bg-surface-container-low transition-colors cursor-pointer">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<h4 class="font-bold text-sm text-on-surface">Apa saja layanan unggulan Klinik Mazaya?</h4>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 text-sm text-on-surface-variant leading-relaxed">
+    Layanan unggulan kami meliputi Pemeriksaan Kehamilan holistik, Pendampingan Persalinan Sayang Ibu, serta Kelas Edukasi Persiapan Menjadi Orang Tua dan Konseling Laktasi.
+  </div>
+</details>
+<details class="group reveal border border-primary-container/30 rounded-2xl p-6 hover:bg-surface-container-low transition-colors cursor-pointer">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<h4 class="font-bold text-sm text-on-surface">Dimana lokasi Klinik Mazaya?</h4>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 text-sm text-on-surface-variant leading-relaxed">
+    Kami berlokasi di Jl. Raya Pulung, Kecamatan Pulung, Ponorogo. Lokasi kami sangat strategis dan mudah dijangkau oleh kendaraan pribadi maupun umum.
+  </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 bg-primary relative overflow-hidden reveal">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute -top-1/2 -left-1/4 w-[100%] h-[200%] rotate-45 border-r-[100px] border-white/30"></div>
+</div>
+<div class="max-w-container-max mx-auto px-6 text-center relative z-10">
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">Mulai Perjalanan Kehamilan <br> yang Bahagia Hari Ini</h2>
+<p class="text-white/80 mb-12 text-lg max-w-2xl mx-auto">Klik tombol di bawah untuk konsultasi pertama Anda bersama Bidan Umi melalui WhatsApp.</p>
+<a class="bg-white text-primary px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-primary-container transition-all inline-flex items-center gap-3" href="https://wa.me/6282245746496">
+<span class="material-symbols-outlined">chat_bubble</span> Hubungi Kami Sekarang
+        </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest pt-20 pb-10 border-t border-primary-container/20">
+<div class="max-w-container-max mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<img alt="Logo" class="h-10 w-auto mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCWOKvmw8KEv-NrLWZht4zu0GIUdT_W_vhsyYLKVR_zPq6bHHh04-lcMnGKZYXAEnoBUx7tAmMpKFdVes4f7TT2g8pncnP4hd91Ae8m5ZSu1nYK27BiOdaZhSJWI_i6r8gBnbjPAjBvvpk2uDzLEJuhVhAbDjaGAF4d-_FUhJKWsSWxfIStOUNcQlVD6O0Qxk3CKiQdm2esNFBqv1m2yTRd7JbnCI5SzfPA7Hcc8zxHBEAMgt8Km_Zl_fNO0vAPPBasXPQ00-k4J-i">
+<p class="text-sm text-on-surface-variant leading-relaxed">Pusat layanan kesehatan ibu dan anak terpadu di Pulung, Ponorogo. Mengedepankan profesionalitas dan nilai-nilai kasih sayang.</p>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-primary">Tautan Cepat</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#layanan">Layanan</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#tentang">Tentang Bidan Umi</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#artikel">Edukasi Ibu</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#galeri">Galeri Aktivitas</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-primary">Kontak Kami</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">call</span>
+            +62 822-4574-6496
+          </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<span class="">Jl. Raya Pulung, Kec. Pulung,<br>Ponorogo, Jawa Timur</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">mail</span>
+            klinikmazaya@gmail.com
+          </li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-primary">Jam Operasional</h5>
+<p class="text-sm text-on-surface-variant">Senin - Sabtu: 08.00 - 20.00</p>
+<p class="text-sm text-on-surface-variant">Minggu: Melalui Perjanjian</p>
+</div></div></footer>
+<script>
+  (() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+      revealItems.forEach((item) => revealObserver.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('active'));
+    }
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuClose = document.getElementById('mobile-menu-close');
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    const menuDrawer = document.getElementById('mobile-menu-drawer');
+    const menuLinks = menuDrawer ? menuDrawer.querySelectorAll('a') : [];
+
+    const setMenu = (isOpen) => {
+      if (!menuOverlay || !menuDrawer) return;
+      menuOverlay.classList.toggle('opacity-0', !isOpen);
+      menuOverlay.classList.toggle('pointer-events-none', !isOpen);
+      menuDrawer.classList.toggle('translate-x-full', !isOpen);
+      document.body.classList.toggle('overflow-hidden', isOpen);
+    };
+
+    menuBtn?.addEventListener('click', () => setMenu(true));
+    menuClose?.addEventListener('click', () => setMenu(false));
+    menuOverlay?.addEventListener('click', () => setMenu(false));
+    menuLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+
+    const hero = document.getElementById('hero-img-container');
+    if (hero && !reduceMotion) {
+      window.addEventListener('scroll', () => {
+        const offset = Math.min(window.scrollY * 0.035, 18);
+        hero.style.transform = `translate3d(0, ${offset}px, 0)`;
+      }, { passive: true });
+    }
+
+    const slider = document.getElementById('service-mobile-slider');
+    if (!slider || reduceMotion) return;
+
+    let autoScrollFrame = 0;
+    let lastTime = 0;
+    let pausedUntil = 0;
+    let direction = 1;
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    const pauseAutoScroll = (duration = 2600) => {
+      pausedUntil = performance.now() + duration;
+    };
+
+    const animateSlider = (time) => {
+      if (!lastTime) lastTime = time;
+      const delta = time - lastTime;
+      lastTime = time;
+
+      if (window.innerWidth < 768 && !isDragging && time > pausedUntil) {
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        slider.scrollLeft += direction * delta * 0.018;
+
+        if (slider.scrollLeft >= maxScroll - 1) direction = -1;
+        if (slider.scrollLeft <= 1) direction = 1;
+      }
+
+      autoScrollFrame = requestAnimationFrame(animateSlider);
+    };
+
+    slider.addEventListener('pointerdown', (event) => {
+      isDragging = true;
+      startX = event.clientX;
+      startScrollLeft = slider.scrollLeft;
+      slider.classList.add('dragging');
+      slider.setPointerCapture?.(event.pointerId);
+      pauseAutoScroll(3600);
+    });
+
+    slider.addEventListener('pointermove', (event) => {
+      if (!isDragging) return;
+      slider.scrollLeft = startScrollLeft - (event.clientX - startX);
+    });
+
+    const stopDragging = (event) => {
+      if (!isDragging) return;
+      isDragging = false;
+      slider.classList.remove('dragging');
+      slider.releasePointerCapture?.(event.pointerId);
+      pauseAutoScroll(2800);
+    };
+
+    slider.addEventListener('pointerup', stopDragging);
+    slider.addEventListener('pointercancel', stopDragging);
+    slider.addEventListener('mouseenter', () => pauseAutoScroll(1400));
+    slider.addEventListener('wheel', () => pauseAutoScroll(2200), { passive: true });
+    autoScrollFrame = requestAnimationFrame(animateSlider);
+    window.addEventListener('pagehide', () => cancelAnimationFrame(autoScrollFrame), { once: true });
+  })();
+</script>
+
+</body></html>

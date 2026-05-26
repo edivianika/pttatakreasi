@@ -21,6 +21,7 @@ import ToolsPage from "./components/ToolsPage";
 import JSONProjectPage from "./components/JSONProjectPage";
 import Lp2026Page from "./components/lp2026/Lp2026Page";
 import LegacyHomePage from "./components/LegacyHomePage";
+import MazayaPage from "./components/MazayaPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/jsonproject" element={<JSONProjectPage />} />
+          <Route path="/mazaya" element={<MazayaPage />} />
         </Routes>
       </BrowserRouter>
     </div>
