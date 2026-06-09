@@ -2,6 +2,18 @@
   "functions": {
     "api/keypano.js": {
       "maxDuration": 30
+    },
+    "api/promotion/analyze.js": {
+      "maxDuration": 300
+    },
+    "api/promotion/background.js": {
+      "maxDuration": 300
+    },
+    "api/promotion/variations.js": {
+      "maxDuration": 300
+    },
+    "api/promotion/refine.js": {
+      "maxDuration": 300
     }
   },
   "headers": [

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Wrench, ExternalLink, Download, FolderOpen } from 'lucide-react';
+import { ArrowLeft, Wrench, ExternalLink, Download, FolderOpen, Sparkles, ShieldCheck } from 'lucide-react';
 
 const ToolsPage = () => {
   useEffect(() => {
@@ -77,6 +77,33 @@ const ToolsPage = () => {
                 Anda dapat mengakses brosur, flyer, template presentasi, dan 
                 materi promosi lainnya untuk proyek Narraya, Grand Sezha, dan Green Sedah Residence.
               </p>
+            </div>
+
+            {/* Studio Promosi */}
+            <div className="bg-gradient-to-r from-emerald-50 to-amber-50 rounded-xl p-6 mb-8 border border-emerald-200 text-left">
+              <div className="flex flex-col md:flex-row md:items-center gap-5">
+                <div className="p-3 bg-emerald-100 rounded-xl text-emerald-700 w-fit">
+                  <Sparkles size={28} />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 text-emerald-800 text-sm font-semibold mb-2">
+                    <ShieldCheck size={16} />
+                    Fasad asli tetap terkunci
+                  </div>
+                  <h3 className="text-xl font-bold text-emerald-950 mb-2">Studio Promosi Syariah</h3>
+                  <p className="text-slate-600">
+                    Susun banner promosi konsisten dengan referensi properti, template terkurasi,
+                    brand kit terkunci, dan bantuan AI untuk brief kampanye.
+                  </p>
+                </div>
+                <Link
+                  to="/tools/studio-promosi"
+                  className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-3 rounded-lg font-semibold transition-colors whitespace-nowrap"
+                >
+                  <Sparkles size={18} />
+                  Buka Studio
+                </Link>
+              </div>
             </div>
 
             {/* Google Drive Link */}

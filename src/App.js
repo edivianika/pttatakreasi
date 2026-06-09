@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -23,6 +23,8 @@ import Lp2026Page from "./components/lp2026/Lp2026Page";
 import LegacyHomePage from "./components/LegacyHomePage";
 import MazayaPage from "./components/MazayaPage";
 import ScrollToTop from "./components/ScrollToTop";
+
+const StudioPromosiPage = lazy(() => import("./studio/StudioPromosiPage"));
 
 function App() {
   return (
@@ -49,6 +51,14 @@ function App() {
           <Route path="/cshandling" element={<CSHandlingPage />} />
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/tools" element={<ToolsPage />} />
+          <Route
+            path="/tools/studio-promosi"
+            element={
+              <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+                <StudioPromosiPage />
+              </Suspense>
+            }
+          />
           <Route path="/jsonproject" element={<JSONProjectPage />} />
           <Route path="/mazaya" element={<MazayaPage />} />
         </Routes>

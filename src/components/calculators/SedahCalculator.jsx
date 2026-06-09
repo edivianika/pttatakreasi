@@ -4,14 +4,17 @@ import { ArrowLeft, Calculator, Home, MapPin, DollarSign, MessageCircle, Phone }
 import { Link } from 'react-router-dom';
 import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPixel';
 
+const CASH_LUNAK_MONTHS = Array.from({ length: 29 }, (_, i) => i + 12); // 12–40 bulan
+const KREDIT_MONTHS = Array.from({ length: 37 }, (_, i) => i + 48); // 48–84 bulan
+
 const SedahCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
   const [discount, setDiscount] = useState(15000000); // 15 juta default
-  const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
+  const [cashLunakTerm, setCashLunakTerm] = useState(24); // 24 bulan default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
   const [cashLunakDPManual, setCashLunakDPManual] = useState(0); // DP manual in rupiah
-  const [kreditTerm, setKreditTerm] = useState(4); // 4 tahun default (kredit dimulai > 3 tahun)
+  const [kreditTerm, setKreditTerm] = useState(48); // 48 bulan default (kredit dimulai > 36 bulan)
   const [kreditDP, setKreditDP] = useState(30); // 30% default
   const [kreditDPMode, setKreditDPMode] = useState('persen'); // 'persen' or 'manual'
   const [kreditDPManual, setKreditDPManual] = useState(0); // DP manual in rupiah
@@ -32,10 +35,10 @@ const SedahCalculator = () => {
     { "unit": "A01", "lb": 45, "lt": 83, "hargaCash": 269048494, "sold": true },
     { "unit": "A02", "lb": 45, "lt": 123, "hargaCash": 365439334 },
     { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 319653685 },
-    { "unit": "A04", "lb": 45, "lt": 106, "hargaCash": 324473227 },
+    { "unit": "A04", "lb": 45, "lt": 106, "hargaCash": 324473227, "sold": true },
     { "unit": "A05", "lb": 45, "lt": 77, "hargaCash": 254589868 },
     { "unit": "A06", "lb": 45, "lt": 77, "hargaCash": 254589868, "sold": true },
-    { "unit": "A07", "lb": 45, "lt": 85, "hargaCash": 273868036 },
+    { "unit": "A07", "lb": 45, "lt": 85, "hargaCash": 273868036, "sold": true },
     { "unit": "A08", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
     { "unit": "A09", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
     { "unit": "A10", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
@@ -43,7 +46,7 @@ const SedahCalculator = () => {
     { "unit": "A12", "lb": 36, "lt": 68, "hargaCash": 224494429, "sold": true },
 
     { "unit": "B01", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
-    { "unit": "B02", "lb": 36, "lt": 66, "hargaCash": 219674887 },
+    { "unit": "B02", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
     { "unit": "B03", "lb": 36, "lt": 66, "hargaCash": 219674887 },
     { "unit": "B04", "lb": 36, "lt": 66, "hargaCash": 219674887, "sold": true },
     { "unit": "B05", "lb": 36, "lt": 86, "hargaCash": 267870307, "sold": true },
@@ -52,7 +55,7 @@ const SedahCalculator = () => {
     { "unit": "B08", "lb": 36, "lt": 83, "hargaCash": 260640994 },
     { "unit": "B09", "lb": 36, "lt": 89, "hargaCash": 275099620 },
 
-    { "unit": "C01", "lb": 45, "lt": 78, "hargaCash": 273499639 },
+    { "unit": "C01", "lb": 45, "lt": 78, "hargaCash": 260000000 },
     { "unit": "C02", "lb": 45, "lt": 77, "hargaCash": 254589868 },
     { "unit": "C03", "lb": 45, "lt": 77, "hargaCash": 254589868 },
     { "unit": "C04", "lb": 45, "lt": 97, "hargaCash": 302785288 },
@@ -129,13 +132,13 @@ const SedahCalculator = () => {
     const unit = unitData.find(item => item.unit === selectedUnit);
     if (!unit) return;
 
-    // Ensure discount doesn't exceed 20,000,000
-    const maxDiscount = 20000000;
+    // Ensure discount doesn't exceed 50,000,000
+    const maxDiscount = 50000000;
     const actualDiscount = Math.min(discount, maxDiscount);
     
     const hargaSetelahDiskon = unit.hargaCash - actualDiscount;
 
-    // Cash Lunak calculation (1-3 tahun, tanpa bunga)
+    // Cash Lunak calculation (12-40 bulan, tanpa bunga)
     // Note: 20% adalah panduan minimum, user bebas memasukkan nilai berapa pun.
     let dpCashLunakAmount;
     if (cashLunakDPMode === 'manual') {
@@ -147,9 +150,9 @@ const SedahCalculator = () => {
     }
     // Cash lunak: tanpa bunga, sisa harga dibagi rata ke total bulan
     const sisaCashLunak = hargaSetelahDiskon - dpCashLunakAmount;
-    const angsuranCashLunakAmount = sisaCashLunak / (cashLunakTerm * 12);
+    const angsuranCashLunakAmount = sisaCashLunak / cashLunakTerm;
 
-    // Kredit calculation (> 3 tahun, bunga flat 8% per tahun)
+    // Kredit calculation (> 36 bulan, bunga flat 8% per tahun)
     // Note: 20% adalah panduan minimum, user bebas memasukkan nilai berapa pun.
     let dpKreditAmount;
     if (kreditDPMode === 'manual') {
@@ -161,9 +164,9 @@ const SedahCalculator = () => {
     }
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
     // Flat interest: total bunga = pokok pinjaman × 8% × jumlah tahun
-    const totalBunga = sisaPinjaman * 0.08 * kreditTerm;
+    const totalBunga = sisaPinjaman * 0.08 * (kreditTerm / 12);
     const hargaKredit = hargaSetelahDiskon + totalBunga;
-    const angsuranKreditAmount = (sisaPinjaman + totalBunga) / (kreditTerm * 12);
+    const angsuranKreditAmount = (sisaPinjaman + totalBunga) / kreditTerm;
 
     setCalculation({
       unitInfo: unit,
@@ -178,7 +181,7 @@ const SedahCalculator = () => {
   }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, cashLunakDPMode, cashLunakDPManual, kreditTerm, kreditDP, kreditDPMode, kreditDPManual]);
 
   const handleDiscountChange = (value) => {
-    const maxDiscount = 20000000;
+    const maxDiscount = 50000000;
     const actualValue = Math.min(parseInt(value) || 0, maxDiscount);
     setDiscount(actualValue);
   };
@@ -205,11 +208,11 @@ Harga Normal: ${formatCurrency(calculation.hargaNormal)}
 Diskon: ${formatCurrency(discount)}
 Harga Setelah Diskon: ${formatCurrency(calculation.hargaSetelahDiskon)}
 
-Cash Lunak (${cashLunakTerm} tahun, DP ${cashLunakDPMode === 'persen' ? cashLunakDP + '%' : formatCurrency(cashLunakDPManual)}):
+Cash Lunak (${cashLunakTerm} bulan, DP ${cashLunakDPMode === 'persen' ? cashLunakDP + '%' : formatCurrency(cashLunakDPManual)}):
 - DP: ${formatCurrency(calculation.dpCashLunak)}
 - Angsuran: ${formatCurrency(calculation.angsuranCashLunak)}
 
-Kredit (${kreditTerm} tahun, DP ${kreditDPMode === 'persen' ? kreditDP + '%' : formatCurrency(kreditDPManual)}):
+Kredit (${kreditTerm} bulan, DP ${kreditDPMode === 'persen' ? kreditDP + '%' : formatCurrency(kreditDPManual)}):
 - DP: ${formatCurrency(calculation.dpKredit)}
 - Angsuran: ${formatCurrency(calculation.angsuranKredit)}
 
@@ -360,10 +363,10 @@ Mohon informasi lebih lanjut.`;
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
-                    max="20000000"
+                    max="50000000"
                     className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
-                  <p className="text-xs text-slate-500 mt-0.5">Maks: Rp 20.000.000</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Maks: Rp 50.000.000</p>
                   <p className="text-xs font-bold text-slate-600 mt-1">
                     {formatCurrency(discount)}
                   </p>
@@ -383,7 +386,7 @@ Mohon informasi lebih lanjut.`;
                 {/* Cash Lunak */}
                 <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-blue-600">
                   <h3 className="text-sm font-bold text-blue-800 mb-1 text-center">Harga Cash Lunak</h3>
-                  <p className="text-[10px] text-slate-500 text-center mb-2">1 – 3 tahun, tanpa bunga</p>
+                  <p className="text-[10px] text-slate-500 text-center mb-2">12 – 40 bulan, tanpa bunga</p>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-1">
                       <label className="text-xs text-slate-600">Jangka Waktu:</label>
@@ -392,9 +395,11 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setCashLunakTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={1}>1 Tahun</option>
-                        <option value={2}>2 Tahun</option>
-                        <option value={3}>3 Tahun</option>
+                        {CASH_LUNAK_MONTHS.map((month) => (
+                          <option key={month} value={month}>
+                            {month} Bulan
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="space-y-2">
@@ -483,7 +488,7 @@ Mohon informasi lebih lanjut.`;
                         {formatCurrency(calculation.angsuranCashLunak)}
                       </p>
                       <p className="text-xs text-slate-500">
-                        {cashLunakTerm * 12} kali angsuran
+                        {cashLunakTerm} kali angsuran
                       </p>
                     </div>
                   </div>
@@ -492,7 +497,7 @@ Mohon informasi lebih lanjut.`;
                 {/* Kredit */}
                 <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-rose-600">
                   <h3 className="text-sm font-bold text-rose-800 mb-1 text-center">Harga Kredit</h3>
-                  <p className="text-[10px] text-slate-500 text-center mb-2">4 – 7 tahun, margin 8% / tahun (flat)</p>
+                  <p className="text-[10px] text-slate-500 text-center mb-2">48 – 84 bulan, margin 8% / tahun (flat)</p>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-1">
                       <label className="text-xs text-slate-600">Jangka Waktu:</label>
@@ -501,10 +506,11 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={4}>4 Tahun</option>
-                        <option value={5}>5 Tahun</option>
-                        <option value={6}>6 Tahun</option>
-                        <option value={7}>7 Tahun</option>
+                        {KREDIT_MONTHS.map((month) => (
+                          <option key={month} value={month}>
+                            {month} Bulan
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="space-y-2">
@@ -599,7 +605,7 @@ Mohon informasi lebih lanjut.`;
                         {formatCurrency(calculation.angsuranKredit)}
                       </p>
                       <p className="text-xs text-slate-500">
-                        {kreditTerm * 12} kali angsuran
+                        {kreditTerm} kali angsuran
                       </p>
                     </div>
                   </div>
