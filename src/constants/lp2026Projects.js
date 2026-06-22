@@ -6,7 +6,7 @@ export const LP2026_EXCLUSIVE_PROJECTS = [
     id: "grand-sezha",
     name: "Grand Sezha",
     location: "Jl. Arif Rahman Hakim, Keniten.",
-    price: "Rp 530jt - 640jt",
+    price: "Rp 530jtan",
     imageBase: "grand-sezha",
     imageWidth: 1086,
     imageHeight: 1448,
@@ -55,14 +55,14 @@ export const LP2026_EXCLUSIVE_PROJECTS = [
     badge: "Diskon 20 Juta",
     badgeClass: "bg-tk-primary/90",
     location: "Desa Sedah, Jenangan. Area asri.",
-    price: "Mulai Rp 224jt",
+    price: "Rp 246jutaan",
     imageBase: "sedah-green",
     imageWidth: 1122,
     imageHeight: 1402,
     imageAlt:
       "Sedah Green Residence Ponorogo — hunian idaman keluarga Muslim, akad syariah dan cicilan ringan",
     seoDescription:
-      "Perumahan syariah kawasan asri Sedah Jenangan, mulai Rp 224jt dengan diskon 20 juta, cicilan flat tanpa riba.",
+      "Perumahan syariah kawasan asri Sedah Jenangan, mulai Rp 246jutaan dengan diskon 20 juta, cicilan flat tanpa riba.",
     features: [
       { icon: "trees", label: "Lingkungan Asri & Tenang" },
       { icon: "wallet", label: "DP Ringan & Cicilan Flat" },
