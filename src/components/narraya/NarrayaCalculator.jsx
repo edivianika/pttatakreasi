@@ -6,7 +6,7 @@ import { trackCalculatorUsage, trackWhatsAppClick } from '../../utils/facebookPi
 
 const NarrayaCalculator = () => {
   const [selectedUnit, setSelectedUnit] = useState('');
-  const [discount, setDiscount] = useState(75000000); // 75 juta default
+  const [discount, setDiscount] = useState(15000000); // 15 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
   const [cashLunakDPMode, setCashLunakDPMode] = useState('persen'); // 'persen' or 'manual'
@@ -29,21 +29,23 @@ const NarrayaCalculator = () => {
 
   // Unit data for Narraya Green Residence
   const unitData = [
-    { unit: "A01", lb: 65, lt: 84, hargaCash: 799628562 },
-    { unit: "A02", lb: 65, lt: 84, hargaCash: 799628562 },
-    { unit: "A03", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A04", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A05", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A06", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A07", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A08", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A09", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A10", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A11", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A12", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A13", lb: 65, lt: 84, hargaCash: 785628562 },
-    { unit: "A14", lb: 65, lt: 84, hargaCash: 785628562 },
+    { unit: "A01", lb: 65, lt: 84, hargaCash: 816628562, sold: true },
+    { unit: "A02", lb: 65, lt: 84, hargaCash: 816628562, sold: true },
+    { unit: "A03", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A04", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A05", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A06", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A07", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A08", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A09", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A10", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A11", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A12", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A13", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A14", lb: 65, lt: 84, hargaCash: 802628562 },
   ];
+
+  const getUnitInfo = (unitNumber) => unitData.find(item => item.unit === unitNumber);
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -76,8 +78,8 @@ const NarrayaCalculator = () => {
     // Track unit selection
     trackCalculatorUsage('Narraya', selectedUnit);
 
-    const unit = unitData.find(item => item.unit === selectedUnit);
-    if (!unit) return;
+    const unit = getUnitInfo(selectedUnit);
+    if (!unit || unit.sold) return;
 
     // Use the full discount amount entered by user
     const actualDiscount = discount;
@@ -122,7 +124,7 @@ const NarrayaCalculator = () => {
   }, [selectedUnit, discount, cashLunakTerm, cashLunakDP, cashLunakDPMode, cashLunakDPManual, kreditTerm, kreditDP, kreditDPMode, kreditDPManual]);
 
   const handleDiscountChange = (value) => {
-    const maxDiscount = 200000000;
+    const maxDiscount = 15000000;
     const actualValue = Math.min(parseInt(value) || 0, maxDiscount);
     setDiscount(actualValue);
   };
@@ -236,8 +238,8 @@ Mohon informasi lebih lanjut.`;
             >
               <option value="">-- Pilih Unit --</option>
               {unitData.map((unit) => (
-                <option key={unit.unit} value={unit.unit}>
-                  {unit.unit}
+                <option key={unit.unit} value={unit.unit} disabled={unit.sold}>
+                  {unit.unit} {unit.sold ? '(SOLD)' : ''}
                 </option>
               ))}
             </select>
@@ -298,7 +300,7 @@ Mohon informasi lebih lanjut.`;
                     type="number"
                     value={discount}
                     onChange={(e) => handleDiscountChange(e.target.value)}
-                    max="200000000"
+                    max="15000000"
                     className="w-full mt-1 p-1 text-xs rounded border border-slate-300 text-slate-900 font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />
                   <p className="text-xs font-bold text-slate-600 mt-1">
@@ -540,98 +542,124 @@ Mohon informasi lebih lanjut.`;
                   <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
                     {/* Left Column - A01, A03, A05, A07, A09, A11, A13 */}
                     <div className="space-y-2">
-                      {['A13', 'A11', 'A09', 'A07', 'A05', 'A03', 'A01'].map((unit, index) => (
-                        <motion.div
-                          key={unit}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
-                          className={`relative h-14 rounded-lg border-2 transition-all duration-300 cursor-pointer group ${
-                            selectedUnit === unit
-                              ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-700 shadow-xl scale-105'
-                              : 'bg-gradient-to-br from-yellow-200 to-yellow-300 border-yellow-400 hover:from-yellow-300 hover:to-yellow-400 hover:scale-102'
-                          }`}
-                          onClick={() => setSelectedUnit(unit)}
-                        >
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <span className={`text-sm font-bold transition-colors duration-300 ${
-                              selectedUnit === unit ? 'text-white' : 'text-slate-700 group-hover:text-slate-800'
-                            }`}>
-                              {unit}
-                            </span>
-                          </div>
-                          {selectedUnit === unit && (
-                            <>
-                              <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ duration: 0.3 }}
-                                className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
-                              >
+                      {['A13', 'A11', 'A09', 'A07', 'A05', 'A03', 'A01'].map((unit, index) => {
+                        const unitInfo = getUnitInfo(unit);
+                        const isSold = unitInfo?.sold;
+
+                        return (
+                          <motion.div
+                            key={unit}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                            className={`relative h-14 rounded-lg border-2 transition-all duration-300 group ${
+                              isSold
+                                ? 'bg-gradient-to-br from-slate-300 to-slate-400 border-slate-500 cursor-not-allowed opacity-80'
+                                : selectedUnit === unit
+                                  ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-700 shadow-xl scale-105 cursor-pointer'
+                                  : 'bg-gradient-to-br from-yellow-200 to-yellow-300 border-yellow-400 hover:from-yellow-300 hover:to-yellow-400 hover:scale-102 cursor-pointer'
+                            }`}
+                            onClick={() => !isSold && setSelectedUnit(unit)}
+                            aria-disabled={isSold}
+                          >
+                            <div className="absolute inset-0 flex flex-col items-center justify-center">
+                              <span className={`text-sm font-bold transition-colors duration-300 ${
+                                selectedUnit === unit ? 'text-white' : 'text-slate-700 group-hover:text-slate-800'
+                              }`}>
+                                {unit}
+                              </span>
+                              {isSold && (
+                                <span className="text-[10px] font-extrabold text-red-700 leading-none">
+                                  SOLD
+                                </span>
+                              )}
+                            </div>
+                            {selectedUnit === unit && (
+                              <>
                                 <motion.div
-                                  animate={{ scale: [1, 1.2, 1] }}
-                                  transition={{ duration: 1, repeat: Infinity }}
-                                  className="w-2 h-2 bg-white rounded-full"
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
+                                >
+                                  <motion.div
+                                    animate={{ scale: [1, 1.2, 1] }}
+                                    transition={{ duration: 1, repeat: Infinity }}
+                                    className="w-2 h-2 bg-white rounded-full"
+                                  ></motion.div>
+                                </motion.div>
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ duration: 0.5 }}
+                                  className="absolute inset-0 rounded-lg border-2 border-blue-300 animate-pulse"
                                 ></motion.div>
-                              </motion.div>
-                              <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5 }}
-                                className="absolute inset-0 rounded-lg border-2 border-blue-300 animate-pulse"
-                              ></motion.div>
-                            </>
-                          )}
-                        </motion.div>
-                      ))}
+                              </>
+                            )}
+                          </motion.div>
+                        );
+                      })}
                     </div>
                     
                     {/* Right Column - A02, A04, A06, A08, A10, A12, A14 */}
                     <div className="space-y-2">
-                      {['A14', 'A12', 'A10', 'A08', 'A06', 'A04', 'A02'].map((unit, index) => (
-                        <motion.div
-                          key={unit}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
-                          className={`relative h-14 rounded-lg border-2 transition-all duration-300 cursor-pointer group ${
-                            selectedUnit === unit
-                              ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-700 shadow-xl scale-105'
-                              : 'bg-gradient-to-br from-yellow-200 to-yellow-300 border-yellow-400 hover:from-yellow-300 hover:to-yellow-400 hover:scale-102'
-                          }`}
-                          onClick={() => setSelectedUnit(unit)}
-                        >
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <span className={`text-sm font-bold transition-colors duration-300 ${
-                              selectedUnit === unit ? 'text-white' : 'text-slate-700 group-hover:text-slate-800'
-                            }`}>
-                              {unit}
-                            </span>
-                          </div>
-                          {selectedUnit === unit && (
-                            <>
-                              <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ duration: 0.3 }}
-                                className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
-                              >
+                      {['A14', 'A12', 'A10', 'A08', 'A06', 'A04', 'A02'].map((unit, index) => {
+                        const unitInfo = getUnitInfo(unit);
+                        const isSold = unitInfo?.sold;
+
+                        return (
+                          <motion.div
+                            key={unit}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                            className={`relative h-14 rounded-lg border-2 transition-all duration-300 group ${
+                              isSold
+                                ? 'bg-gradient-to-br from-slate-300 to-slate-400 border-slate-500 cursor-not-allowed opacity-80'
+                                : selectedUnit === unit
+                                  ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-700 shadow-xl scale-105 cursor-pointer'
+                                  : 'bg-gradient-to-br from-yellow-200 to-yellow-300 border-yellow-400 hover:from-yellow-300 hover:to-yellow-400 hover:scale-102 cursor-pointer'
+                            }`}
+                            onClick={() => !isSold && setSelectedUnit(unit)}
+                            aria-disabled={isSold}
+                          >
+                            <div className="absolute inset-0 flex flex-col items-center justify-center">
+                              <span className={`text-sm font-bold transition-colors duration-300 ${
+                                selectedUnit === unit ? 'text-white' : 'text-slate-700 group-hover:text-slate-800'
+                              }`}>
+                                {unit}
+                              </span>
+                              {isSold && (
+                                <span className="text-[10px] font-extrabold text-red-700 leading-none">
+                                  SOLD
+                                </span>
+                              )}
+                            </div>
+                            {selectedUnit === unit && (
+                              <>
                                 <motion.div
-                                  animate={{ scale: [1, 1.2, 1] }}
-                                  transition={{ duration: 1, repeat: Infinity }}
-                                  className="w-2 h-2 bg-white rounded-full"
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center"
+                                >
+                                  <motion.div
+                                    animate={{ scale: [1, 1.2, 1] }}
+                                    transition={{ duration: 1, repeat: Infinity }}
+                                    className="w-2 h-2 bg-white rounded-full"
+                                  ></motion.div>
+                                </motion.div>
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ duration: 0.5 }}
+                                  className="absolute inset-0 rounded-lg border-2 border-blue-300 animate-pulse"
                                 ></motion.div>
-                              </motion.div>
-                              <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5 }}
-                                className="absolute inset-0 rounded-lg border-2 border-blue-300 animate-pulse"
-                              ></motion.div>
-                            </>
-                          )}
-                        </motion.div>
-                      ))}
+                              </>
+                            )}
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </div>
                   
@@ -653,6 +681,10 @@ Mohon informasi lebih lanjut.`;
                       <div className="flex items-center gap-1">
                         <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-blue-600 border border-blue-700 rounded"></div>
                         <span>Unit Terpilih</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-3 h-3 bg-gradient-to-br from-slate-300 to-slate-400 border border-slate-500 rounded"></div>
+                        <span>Sold</span>
                       </div>
                     </div>
                   </motion.div>
