@@ -38,11 +38,11 @@ const NarrayaCalculator = () => {
     { unit: "A07", lb: 65, lt: 84, hargaCash: 802628562 },
     { unit: "A08", lb: 65, lt: 84, hargaCash: 802628562 },
     { unit: "A09", lb: 65, lt: 84, hargaCash: 802628562 },
-    { unit: "A10", lb: 65, lt: 84, hargaCash: 802628562 },
-    { unit: "A11", lb: 65, lt: 84, hargaCash: 802628562 },
-    { unit: "A12", lb: 65, lt: 84, hargaCash: 802628562 },
-    { unit: "A13", lb: 65, lt: 84, hargaCash: 802628562 },
-    { unit: "A14", lb: 65, lt: 84, hargaCash: 802628562 },
+    { unit: "A10", lb: 50, lt: 84, lantai: 1, hargaCash: 670000000 },
+    { unit: "A11", lb: 50, lt: 84, lantai: 1, hargaCash: 670000000 },
+    { unit: "A12", lb: 50, lt: 84, lantai: 1, hargaCash: 670000000 },
+    { unit: "A13", lb: 50, lt: 84, lantai: 1, hargaCash: 670000000 },
+    { unit: "A14", lb: 50, lt: 84, lantai: 1, hargaCash: 670000000 },
   ];
 
   const getUnitInfo = (unitNumber) => unitData.find(item => item.unit === unitNumber);
@@ -281,7 +281,7 @@ Mohon informasi lebih lanjut.`;
                     {calculation.unitInfo.unit.charAt(0)} - {calculation.unitInfo.unit.substring(1)}
                   </p>
                   <p className="text-xs text-slate-600 mt-1">
-                    LT: {calculation.unitInfo.lt} / LB: {calculation.unitInfo.lb}
+                    LT: {calculation.unitInfo.lt} / LB: {calculation.unitInfo.lb} / {calculation.unitInfo.lantai || 2} lantai
                   </p>
                 </div>
 
