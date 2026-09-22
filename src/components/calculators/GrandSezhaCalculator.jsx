@@ -10,7 +10,7 @@ const GrandSezhaCalculator = () => {
   const [discount, setDiscount] = useState(20000000); // 50 juta default
   const [cashLunakTerm, setCashLunakTerm] = useState(2); // 2 tahun default
   const [cashLunakDP, setCashLunakDP] = useState(50); // 50% default
-  const [kreditTerm, setKreditTerm] = useState(3); // 3 tahun default
+  const [kreditTerm, setKreditTerm] = useState(5);
   const [kreditDP, setKreditDP] = useState(30); // 30% default
 
   const [calculation, setCalculation] = useState({
@@ -25,33 +25,32 @@ const GrandSezhaCalculator = () => {
   });
 
   // Unit data for Grand Sezha (Type 60, 80, 100)
-  // Note: These are example units. Actual unit data should be provided by the client.
   const unitData = [
-    { "unit": "A-01", "lb": 80, "lt": 89, "hargaCash": 809756931 },
-    { "unit": "A-02", "lb": 80, "lt": 89, "hargaCash": 809756931 },
-    { "unit": "A-03", "lb": 63, "lt": 82, "hargaCash": 717731835 },
-    { "unit": "A-04", "lb": 63, "lt": 82, "hargaCash": 717731835 },
-    { "unit": "A-05", "lb": 63, "lt": 81, "hargaCash": 714044679 },
-    { "unit": "A-06", "lb": 63, "lt": 81, "hargaCash": 714044679 },
-    { "unit": "A-07", "lb": 63, "lt": 80, "hargaCash": 710357522 },
-    { "unit": "A-08", "lb": 63, "lt": 80, "hargaCash": 710357522 },
-    { "unit": "A-09", "lb": 63, "lt": 79, "hargaCash": 706670366 },
+    { "unit": "A-01", "lb": 80, "lt": 89, "hargaCash": 809756931, booked: true },
+    { "unit": "A-02", "lb": 80, "lt": 89, "hargaCash": 809756931, booked: true },
+    { "unit": "A-03", "lb": 63, "lt": 82, "hargaCash": 717731835, booked: true },
+    { "unit": "A-04", "lb": 63, "lt": 82, "hargaCash": 717731835, booked: true },
+    { "unit": "A-05", "lb": 63, "lt": 81, "hargaCash": 714044679, booked: true },
+    { "unit": "A-06", "lb": 63, "lt": 81, "hargaCash": 714044679, booked: true },
+    { "unit": "A-07", "lb": 63, "lt": 80, "hargaCash": 710357522, booked: true },
+    { "unit": "A-08", "lb": 63, "lt": 80, "hargaCash": 710357522, booked: true },
+    { "unit": "A-09", "lb": 63, "lt": 79, "hargaCash": 706670366, booked: true },
   
-    { "unit": "B-01", "lb": 63, "lt": 79, "hargaCash": 706670366 },
-    { "unit": "B-02", "lb": 63, "lt": 79, "hargaCash": 686670366 },
-    { "unit": "B-03", "lb": 63, "lt": 78, "hargaCash": 682983209 },
-    { "unit": "B-04", "lb": 63, "lt": 78, "hargaCash": 682983209 },
-    { "unit": "B-05", "lb": 63, "lt": 78, "hargaCash": 682983209 },
-    { "unit": "B-06", "lb": 63, "lt": 76, "hargaCash": 675608896 },
-    { "unit": "B-07", "lb": 63, "lt": 75, "hargaCash": 671921740 },
-    { "unit": "B-08", "lb": 63, "lt": 75, "hargaCash": 671921740 },
-    { "unit": "B-09", "lb": 63, "lt": 75, "hargaCash": 671921740 },
-    { "unit": "B-10", "lb": 63, "lt": 75, "hargaCash": 671921740 },
+    { "unit": "B-01", "lb": 63, "lt": 79, "hargaCash": 706670366, booked: true },
+    { "unit": "B-02", "lb": 63, "lt": 79, "hargaCash": 686670366, booked: true },
+    { "unit": "B-03", "lb": 63, "lt": 78, "hargaCash": 682983209, booked: true },
+    { "unit": "B-04", "lb": 63, "lt": 78, "hargaCash": 682983209, booked: true },
+    { "unit": "B-05", "lb": 63, "lt": 78, "hargaCash": 682983209, booked: true },
+    { "unit": "B-06", "lb": 63, "lt": 76, "hargaCash": 675608896, booked: true },
+    { "unit": "B-07", "lb": 63, "lt": 75, "hargaCash": 671921740, booked: true },
+    { "unit": "B-08", "lb": 63, "lt": 75, "hargaCash": 671921740, booked: true },
+    { "unit": "B-09", "lb": 63, "lt": 75, "hargaCash": 671921740, booked: true },
+    { "unit": "B-10", "lb": 63, "lt": 75, "hargaCash": 671921740, booked: true },
   
     { "unit": "C-01", "lb": 50, "lt": 73, "hargaCash": 583912426 },
-    { "unit": "C-02", "lb": 50, "lt": 73, "hargaCash": 583912426 },
-    { "unit": "C-03", "lb": 50, "lt": 73, "hargaCash": 583912426 },
-    { "unit": "C-04", "lb": 50, "lt": 72, "hargaCash": 580225270 },
+    { "unit": "C-02", "lb": 50, "lt": 73, "hargaCash": 583912426, booked: true },
+    { "unit": "C-03", "lb": 50, "lt": 73, "hargaCash": 583912426, booked: true },
+    { "unit": "C-04", "lb": 50, "lt": 72, "hargaCash": 580225270, booked: true },
     { "unit": "C-05", "lb": 50, "lt": 72, "hargaCash": 580225270 },
     { "unit": "C-06", "lb": 50, "lt": 72, "hargaCash": 580225270 },
     { "unit": "C-07", "lb": 50, "lt": 71, "hargaCash": 576538113 },
@@ -64,8 +63,10 @@ const GrandSezhaCalculator = () => {
     { "unit": "D-03", "lb": 50, "lt": 68, "hargaCash": 565476644 },
     { "unit": "D-04", "lb": 50, "lt": 68, "hargaCash": 565476644 },
   
-    // Aulia Type 45 Satu Lantai
-    { "unit": "AULIA 1 LANTAI", "lb": 45, "lt": 60, "hargaCash": 480000000 }
+    // Aulia satu lantai; luas dan harga mengikuti tabel yang diberikan.
+    { "unit": "AULIA 1 LANTAI (LT 72 / LB 50)", "lb": 50, "lt": 72, "hargaCash": 580225270, project: "Aulia" },
+    { "unit": "AULIA 1 LANTAI (LT 70 / LB 45)", "lb": 45, "lt": 70, "hargaCash": 500000000, project: "Aulia" },
+    { "unit": "AULIA 1 LANTAI (LT 70 / LB 36)", "lb": 36, "lt": 70, "hargaCash": 480000000, project: "Aulia" }
   ]
   ;
 
@@ -127,11 +128,11 @@ const GrandSezhaCalculator = () => {
     const dpCashLunakAmount = hargaSetelahDiskon * (cashLunakDP / 100);
     const angsuranCashLunakAmount = (hargaSetelahDiskon - dpCashLunakAmount) / (cashLunakTerm * 12);
 
-    // Kredit calculation (8% interest rate)
+    // Kredit uses flat 8% annual interest on the balance after DP.
     const dpKreditAmount = hargaSetelahDiskon * (kreditDP / 100);
     const sisaPinjaman = hargaSetelahDiskon - dpKreditAmount;
     const totalBunga = sisaPinjaman * 0.08 * kreditTerm;
-    const hargaKredit = hargaSetelahDiskon + totalBunga;
+    const hargaKredit = dpKreditAmount + sisaPinjaman + totalBunga;
     const angsuranKreditAmount = (sisaPinjaman + totalBunga) / (kreditTerm * 12);
 
     setCalculation({
@@ -262,8 +263,8 @@ Mohon informasi lebih lanjut.`;
             >
               <option value="">-- Pilih Unit --</option>
               {unitData.map((unit) => (
-                <option key={unit.unit} value={unit.unit}>
-                  {unit.unit} (Type {unit.lb}, LT: {unit.lt})
+                <option key={unit.unit} value={unit.unit} disabled={unit.booked}>
+                  {unit.unit}{unit.project !== 'Aulia' ? ` (Type ${unit.lb}, LT: ${unit.lt})` : ''}{unit.booked ? ' — BOOKED' : ''}
                 </option>
               ))}
             </select>
@@ -282,8 +283,8 @@ Mohon informasi lebih lanjut.`;
             </h4>
             <div className="relative">
               <img 
-                src="/tatakreasi/perumahan-ponorogo-grand-sezha.png" 
-                alt="Site Plan Grand Sezha"
+                src="/grandsezha/siteplan-grand-sezha.jpeg" 
+                alt="Siteplan Grand Sezha dengan status unit booked"
                 className="w-full h-auto rounded-lg border border-slate-200 shadow-sm"
               />
             </div>
@@ -395,7 +396,7 @@ Mohon informasi lebih lanjut.`;
 
                 {/* Kredit */}
                 <div className="bg-white rounded-lg p-3 shadow-lg border-t-4 border-rose-600">
-                  <h3 className="text-sm font-bold text-rose-800 mb-2 text-center">Harga Kredit</h3>
+                  <h3 className="text-sm font-bold text-rose-800 mb-2 text-center">Kredit Syariah</h3>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-1">
                       <label className="text-xs text-slate-600">Jangka Waktu:</label>
@@ -404,8 +405,6 @@ Mohon informasi lebih lanjut.`;
                         onChange={(e) => setKreditTerm(parseInt(e.target.value))}
                         className="w-1/2 px-2 py-1 border rounded text-xs text-center font-medium bg-slate-100"
                       >
-                        <option value={1}>1 Tahun</option>
-                        <option value={2}>2 Tahun</option>
                         <option value={3}>3 Tahun</option>
                         <option value={4}>4 Tahun</option>
                         <option value={5}>5 Tahun</option>
@@ -427,7 +426,7 @@ Mohon informasi lebih lanjut.`;
                   </div>
                   <div className="mt-3 space-y-2">
                     <div>
-                      <p className="text-xs font-medium text-slate-500">Total Harga Kredit</p>
+                      <p className="text-xs font-medium text-slate-500">Harga Akad</p>
                       <p className="text-sm font-bold text-rose-900">
                         {formatCurrency(calculation.hargaKredit)}
                       </p>

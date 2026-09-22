@@ -34,9 +34,9 @@ const SedahCalculator = () => {
   const unitData = [
     { "unit": "A01", "lb": 45, "lt": 83, "hargaCash": 297573920, "sold": true },
     { "unit": "A02", "lb": 45, "lt": 123, "hargaCash": 391404725 },
-    { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 346835093 },
+    { "unit": "A03", "lb": 45, "lt": 104, "hargaCash": 346835093, "sold": true },
     { "unit": "A04", "lb": 45, "lt": 106, "hargaCash": 348526633, "sold": true },
-    { "unit": "A05", "lb": 45, "lt": 77, "hargaCash": 283499299 },
+    { "unit": "A05", "lb": 45, "lt": 77, "hargaCash": 283499299, "sold": true },
     { "unit": "A06", "lb": 45, "lt": 77, "hargaCash": 283499299, "sold": true },
     { "unit": "A07", "lb": 45, "lt": 85, "hargaCash": 302265460, "sold": true },
     { "unit": "A08", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
@@ -45,9 +45,9 @@ const SedahCalculator = () => {
     { "unit": "A11", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
     { "unit": "A12", "lb": 36, "lt": 68, "hargaCash": 251212368, "sold": true },
 
-    { "unit": "B01", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
+    { "unit": "B01", "lb": 36, "lt": 66, "hargaCash": 246520828 },
     { "unit": "B02", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
-    { "unit": "B03", "lb": 36, "lt": 66, "hargaCash": 246520828 },
+    { "unit": "B03", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
     { "unit": "B04", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
     { "unit": "B05", "lb": 36, "lt": 86, "hargaCash": 293436230, "sold": true },
     { "unit": "B06", "lb": 36, "lt": 87, "hargaCash": 295782001 },
@@ -61,7 +61,7 @@ const SedahCalculator = () => {
     { "unit": "C04", "lb": 45, "lt": 97, "hargaCash": 330414702 },
     { "unit": "C05", "lb": 45, "lt": 97, "hargaCash": 330414702 },
     { "unit": "C06", "lb": 45, "lt": 77, "hargaCash": 283499299 },
-    { "unit": "C07", "lb": 45, "lt": 78, "hargaCash": 285845069 },
+    { "unit": "C07", "lb": 45, "lt": 78, "hargaCash": 285845069, "sold": true },
     { "unit": "C08", "lb": 45, "lt": 67, "hargaCash": 275041598 },
     { "unit": "C09", "lb": 45, "lt": 68, "hargaCash": 275887368 },
     { "unit": "C10", "lb": 45, "lt": 68, "hargaCash": 275887368 },
@@ -71,8 +71,8 @@ const SedahCalculator = () => {
     { "unit": "D01", "lb": 36, "lt": 95, "hargaCash": 314548162 },
     { "unit": "D02", "lb": 36, "lt": 66, "hargaCash": 246520828 },
     { "unit": "D03", "lb": 36, "lt": 66, "hargaCash": 246520828 },
-    { "unit": "D04", "lb": 36, "lt": 66, "hargaCash": 246520828 },
-    { "unit": "D05", "lb": 36, "lt": 66, "hargaCash": 246520828 },
+    { "unit": "D04", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
+    { "unit": "D05", "lb": 36, "lt": 66, "hargaCash": 246520828, "sold": true },
     { "unit": "D06", "lb": 36, "lt": 66, "hargaCash": 246520828 },
     { "unit": "D07", "lb": 36, "lt": 66, "hargaCash": 246520828 },
     { "unit": "D08", "lb": 36, "lt": 66, "hargaCash": 246520828 },
@@ -300,7 +300,7 @@ Mohon informasi lebih lanjut.`;
                   disabled={unit.sold}
                   style={unit.sold ? { color: '#ef4444', fontStyle: 'italic' } : {}}
                 >
-                  {unit.unit} {unit.sold ? '(SOLD)' : ''}
+                  {unit.unit} {unit.sold ? '(BOOKED)' : ''}
                 </option>
               ))}
             </select>
