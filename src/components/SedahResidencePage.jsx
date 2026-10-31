@@ -1,9 +1,10 @@
+import { getResidenceSEO } from '../utils/residenceSeo';
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, MapPin, Menu, MessageCircle, X } from "lucide-react";
 import { trackPageView, trackLead, trackContact } from "../utils/facebookPixel";
 import { trackTikTokPageView, trackTikTokLead, trackTikTokContact } from "../utils/tiktokPixel";
 import { LP2026_SEO } from "../constants/siteLp2026";
-import { updatePageSEO, getProjectStructuredData } from "../utils/seoUtils";
+import { updatePageSEO } from "../utils/seoUtils";
 import { getKeypanoUrl } from "../utils/keypanoUrl";
 import "./SedahResidencePage.css";
 
@@ -74,13 +75,7 @@ export default function SedahResidencePage() {
   const mobileNav = useRef(null);
   useEffect(() => {
     document.documentElement.classList.add("sgr-active");
-    updatePageSEO({
-      title: "Sedah Green Residence — Rumah Syariah Mulai Rp240 Jutaan di Ponorogo",
-      description: "Rumah syariah di Sedah, Jenangan, Ponorogo mulai Rp240 jutaan. Pilihan tipe 36/66 dan 45/77, tanpa riba. Lihat kawasan dan jadwalkan survei.",
-      keywords: ["Sedah Green Residence", "rumah syariah Ponorogo", "perumahan Sedah Jenangan"],
-      image: "/sedah/kawasan.webp", url: "/sedahresidence",
-      structuredData: getProjectStructuredData({ name: "Sedah Green Residence", description: "Hunian syariah di Sedah, Jenangan, Ponorogo", price: 240000000, location: "Sedah, Jenangan, Ponorogo", image: "/sedah/kawasan.webp", url: "/sedahresidence", type: "Rumah Syariah" }),
-    });
+    updatePageSEO(getResidenceSEO('sedah'));
     trackPageView();
     trackTikTokPageView();
     return () => {
@@ -132,7 +127,7 @@ export default function SedahResidencePage() {
         <div className="sgr-hero-copy">
           <p className="sgr-eyebrow sgr-hero-location"><MapPin size={15} />SEDAH, JENANGAN · PONOROGO</p>
           <h1>Ruang untuk pulang.<em>Tempat bertumbuh.</em></h1>
-          <p className="sgr-hero-description">Rumah pertama, cerita baru. Temukan hunian syariah di lingkungan asri untuk keseharian yang lebih tenang bersama keluarga.</p>
+          <p className="sgr-hero-description">Sedah Green Residence menghadirkan rumah syariah di Ponorogo. Temukan hunian di lingkungan asri untuk keseharian yang lebih tenang bersama keluarga.</p>
           <div className="sgr-hero-price"><span>HARGA MULAI</span><strong>Rp240 <small>jutaan</small></strong></div>
           <div className="sgr-hero-actions"><WhatsAppButton onClick={() => contact()} /><a href="#pricing" className="sgr-text-link">Lihat pilihan rumah <ArrowDown size={16} /></a></div>
           <p className="sgr-hero-note"><Check size={15} /> Akad syariah · Tanpa riba, denda, dan sita</p>
@@ -163,7 +158,7 @@ export default function SedahResidencePage() {
 
       <section id="contact" className="sgr-contact"><div className="sgr-container"><div className="sgr-contact-top"><div><p className="sgr-eyebrow">LANGKAH BERIKUTNYA</p><h2>Yuk, lihat sendiri<br /><em>calon rumah Anda.</em></h2></div><div><p>Ceritakan kebutuhan keluarga Anda. Tim kami siap membantu memilih tipe, menjelaskan pembayaran, dan mengatur kunjungan.</p><WhatsAppButton onClick={() => contact()}><MessageCircle size={18} />Jadwalkan survei via WhatsApp</WhatsAppButton><button type="button" className="sgr-contact-brochure" onClick={() => contact("brosur")}>Ingin lihat brosurnya dulu? <ArrowUpRight size={15} /></button></div></div><div className="sgr-contact-details"><div><span>LOKASI HUNIAN</span><p>Sedah, Jenangan<br />Ponorogo, Jawa Timur</p></div><div><span>MARKETING OFFICE</span><p>Grand Sezha No. B10<br />Jl. Arif Rahman Hakim, Keniten, Ponorogo</p></div><div><span>WAKTU KUNJUNGAN</span><p>Setiap hari, 08.00–17.00 WIB<br />Buat janji melalui WhatsApp</p></div></div></div></section>
     </main>
-    <footer className="sgr-footer sgr-container"><Brand /><p>Bagian dari <a href="/">Tata Kreasi</a></p><span>© {new Date().getFullYear()} Sedah Green Residence</span></footer>
+    <footer className="sgr-footer sgr-container"><Brand /><a className="sgr-related-project" href="/narraya">Narraya Green Residence</a><p>Bagian dari <a href="/">Tata Kreasi</a></p><span>© {new Date().getFullYear()} Sedah Green Residence</span></footer>
     <div className="sgr-mobile-cta"><div><span>Harga mulai</span><strong>Rp240 jutaan</strong></div><WhatsAppButton onClick={() => contact()}>Jadwalkan survei</WhatsAppButton></div>
   </div>;
 }

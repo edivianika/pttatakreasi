@@ -1,5 +1,6 @@
 // TikTok Pixel utility functions
-export const ttq = window.ttq || function() {
+export const ttq = (typeof window !== 'undefined' && window.ttq) || function() {
+  if (typeof window === 'undefined') return;
   (window.ttq.q = window.ttq.q || []).push(arguments);
 };
 

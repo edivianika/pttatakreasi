@@ -1,0 +1,24 @@
+{
+  "sedah": {
+    "name": "Sedah Green Residence",
+    "path": "/sedahresidence",
+    "title": "Sedah Green Residence | Rumah Syariah Ponorogo Rp240 Jutaan",
+    "description": "Rumah syariah di Sedah, Jenangan, Ponorogo mulai Rp240 jutaan. Pilih tipe 36/66 atau 45/77, jelajahi virtual tour, dan jadwalkan survei bersama Tata Kreasi.",
+    "keywords": ["Sedah Green Residence", "rumah syariah Ponorogo", "perumahan Sedah Jenangan"],
+    "image": "/sedah/kawasan.webp",
+    "imageAlt": "Visualisasi kawasan Sedah Green Residence di Sedah, Jenangan, Ponorogo",
+    "streetAddress": "Sedah, Jenangan",
+    "themeColor": "#263f33"
+  },
+  "narraya": {
+    "name": "Narraya Green Residence",
+    "path": "/narraya",
+    "title": "Narraya Green Residence | Hunian Syariah Premium Ponorogo",
+    "description": "Hunian premium syariah di Jalan Norroyono, Brotonegaran, Ponorogo. Kenali rumah dua lantai, lihat denah dan virtual tour, lalu jadwalkan kunjungan pribadi.",
+    "keywords": ["Narraya Green Residence", "rumah premium Ponorogo", "rumah syariah Brotonegaran", "perumahan Jalan Norroyono"],
+    "image": "/narraya/premium/architecture.webp",
+    "imageAlt": "Visualisasi rumah dua lantai Narraya Green Residence, Jalan Norroyono, Brotonegaran, Ponorogo",
+    "streetAddress": "Jalan Norroyono, Brotonegaran",
+    "themeColor": "#20251f"
+  }
+}
