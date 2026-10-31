@@ -41,6 +41,22 @@
   ],
   "rewrites": [
     {
+      "source": "/sedahresidence",
+      "destination": "/sedahresidence/index.html"
+    },
+    {
+      "source": "/sedahresidence/",
+      "destination": "/sedahresidence/index.html"
+    },
+    {
+      "source": "/narraya",
+      "destination": "/narraya/index.html"
+    },
+    {
+      "source": "/narraya/",
+      "destination": "/narraya/index.html"
+    },
+    {
       "source": "/sedah-green-residence",
       "destination": "/sedah-green-residence/index.html"
     },

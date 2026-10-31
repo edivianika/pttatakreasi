@@ -125,6 +125,7 @@ export const updatePageSEO = (config) => {
   // Update title
   if (title) {
     updateTitle(title);
+    updateMetaTag('title', title);
   }
 
   // Update basic meta tags
@@ -146,7 +147,8 @@ export const updatePageSEO = (config) => {
     description,
     image: fullImageUrl,
     url: fullUrl || (typeof window !== 'undefined' ? window.location.href : ''),
-    type
+    type,
+    siteName: config.siteName
   });
 
   // Update Twitter Card
@@ -155,6 +157,22 @@ export const updatePageSEO = (config) => {
     description,
     image: fullImageUrl
   });
+
+  if (fullUrl) {
+    updateMetaTag('twitter:url', fullUrl);
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(link => {
+      link.setAttribute('href', fullUrl);
+    });
+  }
+  if (config.imageAlt) {
+    updateMetaTag('og:image:alt', config.imageAlt, true);
+    updateMetaTag('twitter:image:alt', config.imageAlt);
+    document.querySelectorAll('meta[property="og:image:width"], meta[property="og:image:height"]').forEach(meta => meta.remove());
+  }
+  if (config.themeColor) updateMetaTag('theme-color', config.themeColor);
+  if (config.omitGeoCoordinates) {
+    document.querySelectorAll('meta[name="geo.position"], meta[name="ICBM"]').forEach(meta => meta.remove());
+  }
 
   // Update canonical
   if (fullUrl) {
@@ -165,15 +183,9 @@ export const updatePageSEO = (config) => {
 
   // Add structured data if provided
   if (structuredData) {
-    let script = document.querySelector('script[type="application/ld+json"]');
-    
-    if (!script) {
-      script = document.createElement('script');
-      script.type = 'application/ld+json';
-      document.head.appendChild(script);
-    }
-
-    script.textContent = JSON.stringify(structuredData, null, 2);
+    setJsonLdScript('page-jsonld', structuredData);
+  } else {
+    removeJsonLdScript('page-jsonld');
   }
 };
 

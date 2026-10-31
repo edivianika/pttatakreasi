@@ -1,5 +1,6 @@
 // Facebook Pixel utility functions
-export const fbq = window.fbq || function() {
+export const fbq = (typeof window !== 'undefined' && window.fbq) || function() {
+  if (typeof window === 'undefined') return;
   (window.fbq.q = window.fbq.q || []).push(arguments);
 };
 

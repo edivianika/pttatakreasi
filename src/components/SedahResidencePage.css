@@ -13,3 +13,5 @@
 @media(max-width:360px){.sgr-hero h1{font-size:48px}.sgr-hero h1 em{font-size:31px}.sgr-hero-actions{align-items:flex-start;flex-direction:column}.sgr-contact-top .sgr-button{font-size:11px!important;gap:8px}}
 @media(prefers-reduced-motion:reduce){.sgr-page *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(prefers-reduced-motion:reduce){html.sgr-active{scroll-behavior:auto!important}}
+
+.sgr-related-project{font-size:11px;border-bottom:1px solid #aaa48f;padding-block:8px}
